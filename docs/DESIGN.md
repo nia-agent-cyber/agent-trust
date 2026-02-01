@@ -8,51 +8,99 @@ In the emerging agent economy, agents need to:
 3. **Establish credentials** — Prove their own legitimacy to others
 4. **Make trust decisions** — Should I transact with this agent?
 
-Currently, there's no standardized infrastructure for this. Agents either:
-- Trust blindly (dangerous)
-- Don't interact (limits the economy)
-- Rely on human intermediaries (defeats the purpose)
+Currently, there's no standardized infrastructure for this.
 
-## Goals
+## Product Direction (from Remi, 2026-02-01)
 
-1. **Agent-native** — Works without human intervention
-2. **Decentralized** — No single point of failure/control
-3. **Composable** — Works with existing agent infrastructure (OpenClaw, Moltbook, etc.)
-4. **Revenue-generating** — Sustainable business model for DTR/Nia
+- ✅ **Reputation from day 1** — Not just verification, full reputation system
+- ✅ **Decentralized storage** — Blockchain for reputation data (investigate options)
+- ✅ **Human identity linking** — Bootstrap trust via Twitter/GitHub/etc.
+- 🔍 **Pricing** — Research and form opinion
+
+## Core Features (MVP)
+
+### 1. Identity Verification
+- Link agent to human identity (Twitter, GitHub, email)
+- Prove agent is controlled by verified human
+- Optional: anonymous but verified (ZK proofs?)
+
+### 2. Reputation Tracking
+- Record of agent interactions/transactions
+- Positive/negative signals from other agents
+- Decentralized storage (can't be censored/manipulated)
+
+### 3. Trust Queries
+- "Is this agent verified?"
+- "What's this agent's reputation score?"
+- "Has this agent interacted with known-good agents?"
+
+## Technical Architecture
+
+### Storage Options (TO RESEARCH)
+
+| Option | Pros | Cons |
+|--------|------|------|
+| **Ethereum/L2** | Decentralized, established | Gas costs, speed |
+| **Solana** | Fast, cheap | Less decentralized? |
+| **Ceramic/IPFS** | Content-addressed, flexible | Less proven |
+| **Arweave** | Permanent storage | Cost for lots of data |
+| **Custom L2/Rollup** | Full control | Complex to build |
+| **Hybrid** | Best of both | Complexity |
+
+### Data Model (draft)
+
+```
+Agent {
+  id: string (unique identifier)
+  linkedIdentities: [{platform, handle, proof}]
+  createdAt: timestamp
+  verificationLevel: enum
+}
+
+ReputationEvent {
+  agentId: string
+  type: "vouch" | "flag" | "transaction" | "review"
+  fromAgentId: string
+  weight: number
+  evidence: string (IPFS hash?)
+  timestamp: timestamp
+}
+
+TrustScore {
+  agentId: string
+  score: number (computed)
+  confidence: number
+  lastUpdated: timestamp
+}
+```
 
 ## Open Questions
 
-### Product Questions
-- [ ] What's the MVP? Verification only? Full reputation?
-- [ ] Who pays? The verifier? The verified? Both?
-- [ ] How do we bootstrap trust? First verifiers need to be trusted somehow
-- [ ] Integration points — API? SDK? OpenClaw skill?
+### Answered
+- [x] MVP scope? → Full reputation from day 1
+- [x] Decentralized? → Yes, blockchain-based
+- [x] Bootstrap? → Link to human identities
 
-### Technical Questions
-- [ ] On-chain vs off-chain? Hybrid?
-- [ ] What data is public vs private?
-- [ ] How to handle disputes?
-- [ ] Sybil resistance — how to prevent fake agents gaming the system?
+### Still Open
+- [ ] Which blockchain/storage layer?
+- [ ] Pricing model? (researching)
+- [ ] How to compute trust scores? (algorithm)
+- [ ] Privacy — what's public vs private?
+- [ ] Dispute resolution?
 
-### Business Questions
-- [ ] Pricing model?
-- [ ] Competition? (Are others building this?)
-- [ ] Go-to-market — Moltbook agents first? OpenClaw users?
+## Research Tasks
 
-## Research Needed
+1. [ ] **Blockchain comparison** — Ethereum L2s vs Solana vs Ceramic vs Arweave
+2. [ ] **Existing solutions** — What's already out there? (Gitcoin Passport, Worldcoin, etc.)
+3. [ ] **Pricing models** — How do similar services charge? What would agents pay?
+4. [ ] **Customer interviews** — Post to Moltbook when API works
 
-1. **Customer discovery** — What do agents actually want? (Ask on Moltbook when API works)
-2. **Competitive landscape** — Who else is building trust infrastructure?
-3. **Technical feasibility** — What can we build quickly vs what needs more work?
+## Integration Points
 
-## Next Steps
-
-1. [ ] Answer open questions (ask Remi where unclear)
-2. [ ] Design MVP spec
-3. [ ] Build prototype
-4. [ ] Test with real agents
-5. [ ] Iterate based on feedback
+- **OpenClaw** — Skill for trust checks before agent interactions
+- **Moltbook** — Verify Moltbook agents, track reputation
+- **AgentWallet** — Higher limits for high-reputation agents?
 
 ---
 
-*Last updated: 2026-02-01*
+*Last updated: 2026-02-01 20:35 GMT*
