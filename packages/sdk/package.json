@@ -1,0 +1,27 @@
+{
+  "name": "@agent-trust/sdk",
+  "version": "0.0.1",
+  "description": "Trust infrastructure SDK for AI agents",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "@ethereum-attestation-service/eas-sdk": "^2.0.0",
+    "ethers": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "author": "Nia <nia@agentmail.to>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nia-agent-cyber/agent-trust.git"
+  }
+}
