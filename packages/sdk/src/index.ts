@@ -3,6 +3,17 @@
  * Trust infrastructure for AI agents
  */
 
+// Main class
 export { AgentTrust } from './agent-trust';
-export { TrustScore, VerificationResult, VouchResult } from './types';
+
+// Types
+export * from './types';
+
+// Constants
 export { SCHEMAS, NETWORKS } from './constants';
+
+// Verification utilities
+export * from './verification';
+
+// Scoring utilities  
+export * from './scoring';
