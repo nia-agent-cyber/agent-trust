@@ -3,6 +3,7 @@
  */
 
 import { EAS, SchemaEncoder } from '@ethereum-attestation-service/eas-sdk';
+import { ethers } from 'ethers';
 import { NETWORKS, SCHEMAS, NetworkName } from './constants';
 import {
   AgentTrustConfig,
@@ -14,6 +15,21 @@ import {
   FlagRequest,
   FlagResult,
 } from './types';
+import { 
+  generateTwitterChallenge, 
+  verifyTwitterProof,
+  hashTwitterProof,
+  TwitterChallenge,
+  TwitterProof,
+} from './verification/twitter';
+import {
+  generateGitHubChallenge,
+  verifyGitHubProof,
+  hashGitHubProof,
+  GitHubChallenge,
+  GitHubProof,
+} from './verification/github';
+import { calculateTrustScore, getDefaultTrustScore, ScoreInputs } from './scoring/trust-score';
 
 export class AgentTrust {
   private eas: EAS;
@@ -188,8 +204,76 @@ export class AgentTrust {
    * Hash a proof string to bytes32
    */
   private hashProof(proof: string): string {
-    // Simple keccak256 hash - in production use ethers.keccak256
-    // For now, return placeholder
-    return '0x' + '0'.repeat(64);
+    return ethers.keccak256(ethers.toUtf8Bytes(proof));
+  }
+
+  // ============ Verification Challenges ============
+
+  /**
+   * Generate a Twitter verification challenge
+   */
+  generateTwitterChallenge(agentId: string, handle: string): TwitterChallenge {
+    return generateTwitterChallenge(agentId, handle);
+  }
+
+  /**
+   * Complete Twitter verification with proof
+   */
+  async completeTwitterVerification(proof: TwitterProof): Promise<VerificationResult> {
+    // Verify the proof off-chain first
+    const verifyResult = await verifyTwitterProof(proof);
+    if (!verifyResult.valid) {
+      return { success: false, error: verifyResult.error };
+    }
+
+    // Create on-chain attestation
+    return this.verify({
+      agentId: proof.challenge.agentId,
+      platform: 'twitter',
+      handle: proof.challenge.handle,
+      proof: proof.tweetUrl,
+    });
+  }
+
+  /**
+   * Generate a GitHub verification challenge
+   */
+  generateGitHubChallenge(agentId: string, username: string): GitHubChallenge {
+    return generateGitHubChallenge(agentId, username);
+  }
+
+  /**
+   * Complete GitHub verification with proof
+   */
+  async completeGitHubVerification(proof: GitHubProof): Promise<VerificationResult> {
+    // Verify the proof off-chain first (calls GitHub API)
+    const verifyResult = await verifyGitHubProof(proof);
+    if (!verifyResult.valid) {
+      return { success: false, error: verifyResult.error };
+    }
+
+    // Create on-chain attestation
+    return this.verify({
+      agentId: proof.challenge.agentId,
+      platform: 'github',
+      handle: proof.challenge.username,
+      proof: proof.gistUrl,
+    });
+  }
+
+  // ============ Utility Methods ============
+
+  /**
+   * Get network configuration
+   */
+  getNetworkConfig() {
+    return NETWORKS[this.network];
+  }
+
+  /**
+   * Check if schemas are registered
+   */
+  areSchemasRegistered(): boolean {
+    return !!(SCHEMAS.verification.uid && SCHEMAS.vouch.uid && SCHEMAS.flag.uid);
   }
 }
