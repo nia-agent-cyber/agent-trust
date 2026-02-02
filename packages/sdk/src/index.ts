@@ -17,3 +17,6 @@ export * from './verification';
 
 // Scoring utilities  
 export * from './scoring';
+
+// Query utilities
+export { getTrustScore, getAttestationSummary, fetchAttestationsForAgent } from './query';
