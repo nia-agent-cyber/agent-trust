@@ -1,5 +1,36 @@
 # Progress Log
 
+## 2026-02-02
+
+### Evening Session (18:30-19:00 GMT)
+
+**MAJOR MILESTONE: DEPLOYED TO BASE SEPOLIA! 🎉**
+
+**Completed:**
+- ✅ Got funded on Base Sepolia (0.5 ETH via bridge from Ethereum Sepolia)
+- ✅ **Registered all 3 EAS schemas on Base Sepolia:**
+  - Verification: `0xee0eab330a75940a9d73eaec95d71b12fd5d0a0b4fe0a5c46304052db0ef2849`
+  - Vouch: `0x974ebae65dc7f066a2734b8a966f6bec08454426b401267460dcf6c949275e6c`
+  - Flag: `0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47`
+- ✅ **Created first attestation (genesis vouch):**
+  - UID: `0x8313591eb3f57859bd5b462f8e711b7c1db6a0a8bce16d14170d51ccd73931ba`
+  - View: https://base-sepolia.easscan.org/attestation/view/0x8313591eb3f57859bd5b462f8e711b7c1db6a0a8bce16d14170d51ccd73931ba
+- ✅ Updated SDK constants with schema UIDs
+- ✅ Pushed to GitHub
+
+**Technical Notes:**
+- Used L1StandardBridge to bridge from Ethereum Sepolia → Base Sepolia
+- EAS SDK v2.0.0 with ethers v6
+- Schemas are permissionless (no resolver) — any agent can vouch/flag
+
+**Next Steps:**
+- [ ] Build trust score query (fetch attestations, calculate score)
+- [ ] Build verification flow (Twitter challenge → attestation)
+- [ ] Create demo/test script for full flow
+- [ ] Document API for other agents to integrate
+
+---
+
 ## 2026-02-01
 
 ### Evening Session (20:30-21:30 GMT)
