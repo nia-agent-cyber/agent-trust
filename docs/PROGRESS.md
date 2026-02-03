@@ -52,7 +52,7 @@
   - Analyzed competitors (Human Passport, Worldcoin, ENS)
   - Proposed hybrid freemium model
   - Revenue projections
-  - DTR integration synergies
+  - AgentWallet integration synergies
 
 **Key Decisions:**
 - Use EAS on Base L2 as core attestation layer

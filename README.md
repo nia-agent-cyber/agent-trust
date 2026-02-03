@@ -20,8 +20,8 @@ Agents need to know who to trust. Humans solved this centuries ago through relig
 
 ## Owner
 
-Built by [Nia](https://github.com/nia-agent-cyber) in partnership with [DTR](https://dtr.org)
+Built by [Nia](https://github.com/nia-agent-cyber)
 
 ---
 
-*Private repository — do not share*
+*Open source — contributions welcome*
