@@ -129,6 +129,12 @@ export async function fetchAttestationsForAgent(
 }
 
 /**
+ * Cache for attester scores to avoid duplicate API calls
+ */
+const attesterScoreCache = new Map<string, { score: number; timestamp: number }>();
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes cache TTL
+
+/**
  * Get trust score for an agent
  */
 export async function getTrustScore(
@@ -141,9 +147,12 @@ export async function getTrustScore(
       network
     );
 
-    // For now, use default weights for attesters
-    // TODO: Recursively fetch attester scores (with caching/depth limit)
-    const attesterScores = new Map<string, number>();
+    // Recursively fetch attester scores with caching and depth limit
+    const attesterScores = await fetchAttesterScoresRecursively(
+      [...verifications, ...vouches, ...flags],
+      network,
+      2 // max depth to prevent cycles and limit API calls
+    );
 
     const inputs: ScoreInputs = {
       verifications,
@@ -157,6 +166,138 @@ export async function getTrustScore(
     console.error('Error fetching trust score:', error);
     return getDefaultTrustScore();
   }
+}
+
+/**
+ * Recursively fetch trust scores for attesters
+ * @param attestations All attestations to get attester scores for
+ * @param network Network to query
+ * @param maxDepth Maximum recursion depth (prevents cycles)
+ * @param visited Set of already visited addresses (prevents cycles)
+ * @param currentDepth Current recursion depth
+ */
+async function fetchAttesterScoresRecursively(
+  attestations: (VerificationAttestation | VouchAttestation | FlagAttestation)[],
+  network: NetworkName,
+  maxDepth: number,
+  visited: Set<string> = new Set(),
+  currentDepth: number = 0
+): Promise<Map<string, number>> {
+  const scores = new Map<string, number>();
+  
+  if (currentDepth >= maxDepth) {
+    // At max depth, assign default scores
+    for (const att of attestations) {
+      if (!scores.has(att.attester)) {
+        scores.set(att.attester, 50); // Default score
+      }
+    }
+    return scores;
+  }
+
+  // Get unique attesters
+  const uniqueAttesters = [...new Set(attestations.map(att => att.attester))];
+  
+  // Process each attester
+  for (const attester of uniqueAttesters) {
+    try {
+      // Skip if already visited (cycle prevention)
+      if (visited.has(attester.toLowerCase())) {
+        scores.set(attester, 50); // Default score for cycles
+        continue;
+      }
+
+      // Check cache first
+      const cacheKey = `${attester.toLowerCase()}-${network}`;
+      const cached = attesterScoreCache.get(cacheKey);
+      if (cached && (Date.now() - cached.timestamp) < CACHE_TTL_MS) {
+        scores.set(attester, cached.score);
+        continue;
+      }
+
+      // Mark as visited for cycle prevention
+      const newVisited = new Set([...visited, attester.toLowerCase()]);
+
+      // Fetch attester's attestations
+      const attesterAttestations = await fetchAttestationsForAgent(attester, network);
+      
+      // If attester has no attestations, use default score
+      if (attesterAttestations.verifications.length === 0 && 
+          attesterAttestations.vouches.length === 0 && 
+          attesterAttestations.flags.length === 0) {
+        const defaultScore = 50;
+        scores.set(attester, defaultScore);
+        attesterScoreCache.set(cacheKey, { score: defaultScore, timestamp: Date.now() });
+        continue;
+      }
+
+      // Recursively calculate attester's score
+      const allAttesterAttestations = [
+        ...attesterAttestations.verifications,
+        ...attesterAttestations.vouches,
+        ...attesterAttestations.flags,
+      ];
+
+      const nestedAttesterScores = await fetchAttesterScoresRecursively(
+        allAttesterAttestations,
+        network,
+        maxDepth,
+        newVisited,
+        currentDepth + 1
+      );
+
+      // Calculate the attester's trust score
+      const attesterScore = calculateTrustScore({
+        verifications: attesterAttestations.verifications,
+        vouches: attesterAttestations.vouches,
+        flags: attesterAttestations.flags,
+        attesterScores: nestedAttesterScores,
+      });
+
+      scores.set(attester, attesterScore.score);
+      
+      // Cache the result
+      attesterScoreCache.set(cacheKey, { 
+        score: attesterScore.score, 
+        timestamp: Date.now() 
+      });
+
+    } catch (error) {
+      // On error, assign default score
+      console.warn(`Error fetching score for attester ${attester}:`, error);
+      scores.set(attester, 50);
+    }
+  }
+
+  return scores;
+}
+
+/**
+ * Clear the attester score cache
+ * Useful for testing or when fresh data is needed
+ */
+export function clearAttesterScoreCache(): void {
+  attesterScoreCache.clear();
+}
+
+/**
+ * Get cache statistics for debugging
+ */
+export function getAttesterScoreCacheStats(): {
+  size: number;
+  entries: Array<{ address: string; score: number; age: number }>;
+} {
+  const now = Date.now();
+  const entries = Array.from(attesterScoreCache.entries()).map(([key, value]) => ({
+    address: key,
+    score: value.score,
+    age: now - value.timestamp,
+  }));
+
+  return {
+    size: attesterScoreCache.size,
+    entries,
+  };
 }
 
 /**
