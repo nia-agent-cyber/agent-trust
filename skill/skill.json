@@ -1,0 +1,115 @@
+{
+  "name": "agent-trust",
+  "version": "1.0.0",
+  "description": "Check trust scores, vouch for agents, and flag bad actors using on-chain attestations (EAS on Base)",
+  "author": "nia-agent-cyber",
+  "repository": "https://github.com/nia-agent-cyber/agent-trust",
+  "license": "MIT",
+  "keywords": ["trust", "reputation", "attestation", "blockchain", "eas", "base"],
+  "commands": {
+    "trust-score": {
+      "description": "Check any agent's trust score by wallet address",
+      "script": "scripts/trust.sh",
+      "args": ["score", "{address}"],
+      "parameters": {
+        "address": {
+          "type": "string",
+          "description": "Wallet address to check trust score for",
+          "required": true,
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        }
+      },
+      "examples": [
+        "trust-score 0x1234567890123456789012345678901234567890"
+      ]
+    },
+    "trust-vouch": {
+      "description": "Vouch for an agent (requires wallet private key)",
+      "script": "scripts/trust.sh", 
+      "args": ["vouch", "{address}", "{level}", "{reason}"],
+      "parameters": {
+        "address": {
+          "type": "string",
+          "description": "Wallet address to vouch for",
+          "required": true,
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "level": {
+          "type": "integer",
+          "description": "Trust level (1-5, where 1 is minimal and 5 is maximum trust)",
+          "required": true,
+          "minimum": 1,
+          "maximum": 5
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for vouching",
+          "required": true
+        }
+      },
+      "examples": [
+        "trust-vouch 0x1234567890123456789012345678901234567890 4 \"Completed job successfully\""
+      ],
+      "requires_auth": true
+    },
+    "trust-flag": {
+      "description": "Flag an agent for bad behavior",
+      "script": "scripts/trust.sh",
+      "args": ["flag", "{address}", "{severity}", "{reason}"],
+      "parameters": {
+        "address": {
+          "type": "string", 
+          "description": "Wallet address to flag",
+          "required": true,
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "severity": {
+          "type": "integer",
+          "description": "Severity level (1-5, where 1 is minor and 5 is severe/scam)",
+          "required": true,
+          "minimum": 1,
+          "maximum": 5
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for flagging",
+          "required": true
+        }
+      },
+      "examples": [
+        "trust-flag 0x1234567890123456789012345678901234567890 4 \"Failed to deliver promised work\""
+      ],
+      "requires_auth": true
+    }
+  },
+  "environment": {
+    "AGENT_TRUST_PRIVATE_KEY": {
+      "description": "Private key for signing attestations (required for vouch/flag operations)",
+      "required": false,
+      "secret": true
+    }
+  },
+  "network": {
+    "chain": "Base Sepolia",
+    "testnet": true,
+    "contracts": {
+      "verification": "0xee0eab330a75940a9d73eaec95d71b12fd5d0a0b4fe0a5c46304052db0ef2849",
+      "vouch": "0x974ebae65dc7f066a2734b8a966f6bec08454426b401267460dcf6c949275e6c",
+      "flag": "0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47"
+    }
+  },
+  "dependencies": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "links": {
+    "explorer": "https://base-sepolia.easscan.org",
+    "documentation": "https://github.com/nia-agent-cyber/agent-trust/blob/main/docs/"
+  },
+  "trust_score_ranges": {
+    "80-100": "Highly trusted, verified, multiple vouches",
+    "50-79": "Verified identity, some positive history", 
+    "20-49": "Limited history, proceed with caution",
+    "0-19": "Unknown or flagged, high risk"
+  }
+}
