@@ -30,6 +30,7 @@ import {
   GitHubProof,
 } from './verification/github';
 import { calculateTrustScore, getDefaultTrustScore, ScoreInputs } from './scoring/trust-score';
+import { getTrustScore, getAttestationSummary } from './query';
 
 export class AgentTrust {
   private eas: EAS;
@@ -51,21 +52,37 @@ export class AgentTrust {
    * Get trust score for an agent
    */
   async getScore(agentId: string): Promise<TrustScore> {
-    // TODO: Implement score calculation
-    // 1. Fetch verification attestations
-    // 2. Fetch vouch attestations
-    // 3. Fetch flag attestations
-    // 4. Calculate weighted score
+    try {
+      // Validate agent ID format (should be an Ethereum address)
+      if (!ethers.isAddress(agentId)) {
+        throw new Error('Invalid agent ID: must be a valid Ethereum address');
+      }
 
-    // Placeholder implementation
-    return {
-      score: 0,
-      confidence: 0,
-      attestationCount: 0,
-      verified: false,
-      linkedPlatforms: [],
-      updatedAt: Date.now(),
-    };
+      // Use the query module to fetch attestations and calculate trust score
+      return await getTrustScore(agentId, this.network);
+    } catch (error: any) {
+      console.error(`Error fetching trust score for agent ${agentId}:`, error);
+      // Return default score on error
+      return getDefaultTrustScore();
+    }
+  }
+
+  /**
+   * Get detailed attestation summary for an agent (useful for debugging)
+   */
+  async getAttestationSummary(agentId: string) {
+    try {
+      // Validate agent ID format (should be an Ethereum address)
+      if (!ethers.isAddress(agentId)) {
+        throw new Error('Invalid agent ID: must be a valid Ethereum address');
+      }
+
+      // Use the query module to get detailed attestation summary
+      return await getAttestationSummary(agentId, this.network);
+    } catch (error: any) {
+      console.error(`Error fetching attestation summary for agent ${agentId}:`, error);
+      throw error;
+    }
   }
 
   /**
