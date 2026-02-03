@@ -20,3 +20,6 @@ export * from './scoring';
 
 // Query utilities
 export { getTrustScore, getAttestationSummary, fetchAttestationsForAgent } from './query';
+
+// Soulbound Credentials
+export * from './credentials';

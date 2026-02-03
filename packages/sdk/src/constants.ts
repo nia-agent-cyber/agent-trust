@@ -43,6 +43,14 @@ export const SCHEMAS = {
     schema: 'address flagged, uint8 severity, string reason, bytes32 evidenceHash',
     revocable: true,
   },
+  
+  // Soulbound Credential: "address agentId, string credentialType, bytes32 evidenceHash, string context, uint64 issuedAt"
+  // NOTE: Schema UID to be registered on Base Sepolia. For now using placeholder.
+  credential: {
+    uid: '0x0000000000000000000000000000000000000000000000000000000000000000', // TODO: Register schema
+    schema: 'address agentId, string credentialType, bytes32 evidenceHash, string context, uint64 issuedAt',
+    revocable: false, // TRUE soulbound — cannot be revoked
+  },
 } as const;
 
 export type NetworkName = keyof typeof NETWORKS;
