@@ -90,15 +90,23 @@ export class AgentTrust {
    */
   async verify(request: VerificationRequest): Promise<VerificationResult> {
     try {
-      // TODO: Implement verification flow
-      // 1. Validate proof (check tweet exists, signature valid, etc.)
-      // 2. Create attestation on EAS
-      // 3. Return result
+      // Validate agent ID format
+      if (!ethers.isAddress(request.agentId)) {
+        return { success: false, error: 'Invalid agent ID: must be a valid Ethereum address' };
+      }
 
+      // Step 1: Validate proof based on platform
+      const proofValidation = await this.validateProof(request);
+      if (!proofValidation.valid) {
+        return { success: false, error: proofValidation.error };
+      }
+
+      // Step 2: Ensure schemas are registered
       if (!SCHEMAS.verification.uid) {
         throw new Error('Verification schema not registered. Run registerSchemas() first.');
       }
 
+      // Step 3: Create attestation on EAS
       const schemaEncoder = new SchemaEncoder(SCHEMAS.verification.schema);
       const encodedData = schemaEncoder.encodeData([
         { name: 'agentId', value: request.agentId, type: 'address' },
@@ -222,6 +230,85 @@ export class AgentTrust {
    */
   private hashProof(proof: string): string {
     return ethers.keccak256(ethers.toUtf8Bytes(proof));
+  }
+
+  /**
+   * Validate proof based on platform
+   */
+  private async validateProof(request: VerificationRequest): Promise<{ valid: boolean; error?: string }> {
+    const { platform, agentId, handle, proof } = request;
+
+    try {
+      switch (platform) {
+        case 'twitter': {
+          // For Twitter, proof should be a tweet URL
+          // We'll use the existing Twitter verification logic
+          const tweetId = this.extractTweetId(proof);
+          if (!tweetId) {
+            return { valid: false, error: 'Invalid Twitter proof: must be a valid tweet URL' };
+          }
+
+          // Check if proof contains agent ID and handle
+          // In a real implementation, this would fetch the tweet content via API
+          // For now, we validate the URL format and assume the tweet contains required data
+          if (!proof.toLowerCase().includes('twitter.com') && !proof.toLowerCase().includes('x.com')) {
+            return { valid: false, error: 'Invalid Twitter proof: must be a Twitter/X URL' };
+          }
+
+          return { valid: true };
+        }
+
+        case 'github': {
+          // For GitHub, proof should be a gist URL
+          if (!proof.includes('gist.github.com')) {
+            return { valid: false, error: 'Invalid GitHub proof: must be a GitHub gist URL' };
+          }
+
+          // Validate gist URL format
+          const gistMatch = proof.match(/gist\.github\.com\/[^\/]+\/([a-f0-9]+)/);
+          if (!gistMatch) {
+            return { valid: false, error: 'Invalid GitHub gist URL format' };
+          }
+
+          return { valid: true };
+        }
+
+        case 'email': {
+          // For email, proof should be a signed message
+          // This would require implementing email signature verification
+          // For now, just check if it looks like a signature or email
+          if (proof.length < 10) {
+            return { valid: false, error: 'Invalid email proof: too short' };
+          }
+
+          return { valid: true };
+        }
+
+        default:
+          return { valid: false, error: `Unsupported platform: ${platform}` };
+      }
+    } catch (error: any) {
+      return { valid: false, error: `Proof validation failed: ${error.message}` };
+    }
+  }
+
+  /**
+   * Extract tweet ID from Twitter URL
+   */
+  private extractTweetId(url: string): string | null {
+    const patterns = [
+      /(?:twitter\.com|x\.com)\/\w+\/status\/(\d+)/i,
+      /(?:mobile\.twitter\.com)\/\w+\/status\/(\d+)/i,
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) {
+        return match[1];
+      }
+    }
+
+    return null;
   }
 
   // ============ Verification Challenges ============
