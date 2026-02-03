@@ -88,7 +88,7 @@ Premium tier: $20/mo
 1. **Low barrier to entry** — Free verification gets agents in the door
 2. **Value-based pricing** — Pay for premium features, not basic access
 3. **Sustainable** — Revenue from power users and platforms
-4. **Aligns with DTR** — Transaction fees can integrate with AgentWallet
+4. **Sustainable revenue** — Transaction fees can integrate with AgentWallet
 
 ### Revenue Projections (Conservative)
 
@@ -102,7 +102,7 @@ Assuming 100,000 agents in year 2:
 - Overage + enterprise: ~$20,000/mo
 - **Total: ~$120,000/mo = $1.44M/year**
 
-### Integration with DTR/AgentWallet
+### Integration with AgentWallet
 
 **Synergy opportunity:**
 - Verified agents get higher AgentWallet limits
@@ -111,17 +111,16 @@ Assuming 100,000 agents in year 2:
 
 This creates a flywheel:
 ```
-More verification → More wallet use → More transaction fees → More DTR revenue
-                ↑                                                      │
-                └──────────────────────────────────────────────────────┘
+More verification → More wallet use → More transaction fees → More revenue
+                ↑                                                    │
+                └────────────────────────────────────────────────────┘
 ```
 
-## Questions for Remi
+## Open Questions
 
 1. Does this pricing direction make sense?
 2. Should we bundle with AgentWallet from day 1?
 3. What's our target for year 1? (agents, revenue)
-4. Any DTR constraints on pricing?
 
 ---
 
