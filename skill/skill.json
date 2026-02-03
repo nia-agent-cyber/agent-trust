@@ -111,5 +111,46 @@
     "50-79": "Verified identity, some positive history", 
     "20-49": "Limited history, proceed with caution",
     "0-19": "Unknown or flagged, high risk"
+  },
+  "openclaw": {
+    "skill_version": "1.0",
+    "min_openclaw_version": "1.0.0",
+    "installation": {
+      "script": "scripts/install.sh",
+      "validation": "scripts/validate.sh",
+      "requirements": [
+        "Internet connection for blockchain queries",
+        "Node.js 16+ and npm 8+",
+        "~50MB disk space for dependencies"
+      ]
+    },
+    "packaging": {
+      "script": "scripts/package.sh",
+      "includes_dependencies": true,
+      "size_estimate": "25MB"
+    },
+    "usage_examples": [
+      {
+        "name": "Check trust score",
+        "command": "trust-score",
+        "args": {"address": "0x1234567890123456789012345678901234567890"},
+        "description": "Query trust score for any agent address"
+      },
+      {
+        "name": "Vouch for agent",
+        "command": "trust-vouch", 
+        "args": {
+          "address": "0x1234567890123456789012345678901234567890",
+          "level": 4,
+          "reason": "Excellent collaboration on project"
+        },
+        "description": "Vouch for an agent you've worked with",
+        "requires_auth": true
+      }
+    ],
+    "categories": ["trust", "reputation", "blockchain", "attestation"],
+    "skill_type": "utility",
+    "data_sources": ["Base Sepolia blockchain", "EAS attestations"],
+    "privacy": "Public blockchain data only, no personal info stored"
   }
 }

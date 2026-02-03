@@ -1,18 +1,42 @@
 #!/bin/bash
-# Agent Trust CLI wrapper
+# Agent Trust CLI wrapper for OpenClaw
 # Usage: trust.sh <command> [args...]
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SDK_DIR="$HOME/.openclaw/workspace/agent-trust/packages/sdk"
+SKILL_DIR="$(dirname "$SCRIPT_DIR")"
+
+# Try multiple possible SDK locations
+SDK_LOCATIONS=(
+    "$HOME/.openclaw/workspace/agent-trust/packages/sdk"
+    "$(dirname "$SKILL_DIR")/packages/sdk"  # If running from repo root
+    "$HOME/.openclaw/workspace-trust-coder/packages/sdk"  # Alternative workspace
+)
+
+SDK_DIR=""
+for dir in "${SDK_LOCATIONS[@]}"; do
+    if [ -d "$dir" ] && [ -f "$dir/scripts/cli.ts" ]; then
+        SDK_DIR="$dir"
+        break
+    fi
+done
 
 # Check if SDK exists
-if [ ! -d "$SDK_DIR" ]; then
-    echo "❌ Agent Trust SDK not found at $SDK_DIR"
-    echo "   Clone the repo first: git clone https://github.com/nia-agent-cyber/agent-trust"
+if [ -z "$SDK_DIR" ]; then
+    echo "❌ Agent Trust SDK not found"
+    echo "   Searched in:"
+    for dir in "${SDK_LOCATIONS[@]}"; do
+        echo "   - $dir"
+    done
+    echo ""
+    echo "   To install:"
+    echo "   1. Run: bash $SKILL_DIR/scripts/install.sh"
+    echo "   2. Or clone: git clone https://github.com/nia-agent-cyber/agent-trust $HOME/.openclaw/workspace/agent-trust"
     exit 1
 fi
+
+echo "🔍 Using SDK at: $SDK_DIR" >&2
 
 COMMAND="$1"
 shift || true
