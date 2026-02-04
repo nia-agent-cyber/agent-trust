@@ -19,4 +19,10 @@ export * from './verification';
 export * from './scoring';
 
 // Query utilities
-export { getTrustScore, getAttestationSummary, fetchAttestationsForAgent } from './query';
+export { 
+  getTrustScore, 
+  getAttestationSummary, 
+  fetchAttestationsForAgent,
+  clearAttesterScoreCache,
+  getAttesterScoreCacheStats 
+} from './query';
