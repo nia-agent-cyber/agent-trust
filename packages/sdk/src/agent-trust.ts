@@ -18,6 +18,7 @@ import {
 import { 
   generateTwitterChallenge, 
   verifyTwitterProof,
+  verifyTwitterProofWithFallback,
   hashTwitterProof,
   TwitterChallenge,
   TwitterProof,
@@ -36,10 +37,12 @@ export class AgentTrust {
   private eas: EAS;
   private network: NetworkName;
   private provider: any;
+  private twitterApiKey?: string;
 
   constructor(config: AgentTrustConfig) {
     this.network = config.network;
     this.provider = config.provider;
+    this.twitterApiKey = config.twitterApiKey;
 
     const networkConfig = NETWORKS[this.network];
     const easAddress = config.easAddress || networkConfig.easAddress;
@@ -324,8 +327,11 @@ export class AgentTrust {
    * Complete Twitter verification with proof
    */
   async completeTwitterVerification(proof: TwitterProof): Promise<VerificationResult> {
-    // Verify the proof off-chain first
-    const verifyResult = await verifyTwitterProof(proof);
+    // Verify the proof off-chain first using API if available
+    const verifyResult = this.twitterApiKey 
+      ? await verifyTwitterProof(proof, this.twitterApiKey)
+      : await verifyTwitterProofWithFallback(proof);
+      
     if (!verifyResult.valid) {
       return { success: false, error: verifyResult.error };
     }

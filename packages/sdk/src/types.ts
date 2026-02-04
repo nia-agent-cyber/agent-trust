@@ -90,4 +90,6 @@ export interface AgentTrustConfig {
   provider: any; // ethers.Provider | ethers.Signer
   /** Optional: custom EAS address */
   easAddress?: string;
+  /** Optional: Twitter API Bearer token for tweet verification */
+  twitterApiKey?: string;
 }

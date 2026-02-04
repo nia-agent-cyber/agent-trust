@@ -71,10 +71,11 @@ export function generateTwitterChallenge(
 
 /**
  * Verify a Twitter proof
- * In production, this would call Twitter API to fetch the tweet
+ * Fetches tweet from Twitter API and verifies content
  */
 export async function verifyTwitterProof(
-  proof: TwitterProof
+  proof: TwitterProof,
+  twitterApiKey?: string
 ): Promise<TwitterVerificationResult> {
   const { tweetUrl, challenge } = proof;
 
@@ -89,20 +90,52 @@ export async function verifyTwitterProof(
     return { valid: false, error: 'Invalid tweet URL' };
   }
 
-  // TODO: In production, fetch tweet from Twitter API and verify:
-  // 1. Tweet exists
-  // 2. Tweet author matches expected handle
-  // 3. Tweet contains the challenge code
-  // 4. Tweet contains the agent address
-  
-  // For now, return placeholder
-  // This would need Twitter API credentials to actually verify
-  
-  return {
-    valid: true, // Placeholder - implement real verification
-    tweetId,
-    handle: challenge.handle,
-  };
+  try {
+    // Fetch tweet content from Twitter API
+    const tweetData = await fetchTweetData(tweetId, twitterApiKey);
+    
+    if (!tweetData) {
+      return { valid: false, error: 'Tweet not found or private' };
+    }
+
+    // Verify tweet author matches expected handle
+    const actualHandle = tweetData.author_username.toLowerCase();
+    const expectedHandle = challenge.handle.replace('@', '').toLowerCase();
+    
+    if (actualHandle !== expectedHandle) {
+      return { 
+        valid: false, 
+        error: `Tweet author (@${actualHandle}) does not match expected handle (@${expectedHandle})` 
+      };
+    }
+
+    // Verify tweet contains the challenge code
+    if (!tweetData.text.includes(challenge.code)) {
+      return { valid: false, error: 'Tweet does not contain the challenge code' };
+    }
+
+    // Verify tweet contains the agent address
+    if (!tweetData.text.includes(challenge.agentId)) {
+      return { valid: false, error: 'Tweet does not contain the agent address' };
+    }
+
+    // Additional verification: check for required AgentTrust hashtag/mention
+    if (!tweetData.text.includes('@AgentTrust') && !tweetData.text.includes('#AgentTrust')) {
+      return { valid: false, error: 'Tweet must mention @AgentTrust or include #AgentTrust hashtag' };
+    }
+
+    return {
+      valid: true,
+      tweetId,
+      handle: actualHandle,
+    };
+
+  } catch (error: any) {
+    return { 
+      valid: false, 
+      error: `Failed to verify tweet: ${error.message}` 
+    };
+  }
 }
 
 /**
@@ -139,6 +172,129 @@ function extractTweetId(url: string): string | null {
   }
 
   return null;
+}
+
+/**
+ * Tweet data structure from Twitter API v2
+ */
+interface TwitterApiTweet {
+  id: string;
+  text: string;
+  author_id: string;
+  author_username: string;
+  created_at: string;
+  public_metrics?: {
+    retweet_count: number;
+    like_count: number;
+    reply_count: number;
+    quote_count: number;
+  };
+}
+
+/**
+ * Fetch tweet data from Twitter API v2
+ */
+async function fetchTweetData(
+  tweetId: string,
+  apiKey?: string
+): Promise<TwitterApiTweet | null> {
+  // If no API key provided, return null (fallback to basic validation)
+  if (!apiKey) {
+    console.warn('No Twitter API key provided. Skipping tweet content verification.');
+    return null;
+  }
+
+  try {
+    // Twitter API v2 endpoint for single tweet lookup
+    const url = `https://api.twitter.com/2/tweets/${tweetId}?expansions=author_id&user.fields=username&tweet.fields=created_at,public_metrics`;
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return null; // Tweet not found
+      }
+      throw new Error(`Twitter API error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    
+    // Handle Twitter API v2 response structure
+    if (!data.data || !data.includes?.users?.[0]) {
+      return null;
+    }
+
+    const tweet = data.data;
+    const author = data.includes.users[0];
+
+    return {
+      id: tweet.id,
+      text: tweet.text,
+      author_id: tweet.author_id,
+      author_username: author.username,
+      created_at: tweet.created_at,
+      public_metrics: tweet.public_metrics,
+    };
+
+  } catch (error: any) {
+    console.error('Error fetching tweet data:', error);
+    throw new Error(`Failed to fetch tweet: ${error.message}`);
+  }
+}
+
+/**
+ * Verify Twitter proof with fallback to basic validation
+ */
+export async function verifyTwitterProofWithFallback(
+  proof: TwitterProof
+): Promise<TwitterVerificationResult> {
+  // Try full API verification first
+  const apiResult = await verifyTwitterProof(proof, process.env.TWITTER_API_KEY);
+  
+  // If API verification failed due to missing API key, fall back to basic validation
+  if (!apiResult.valid && apiResult.error?.includes('No Twitter API key')) {
+    return verifyTwitterProofBasic(proof);
+  }
+  
+  return apiResult;
+}
+
+/**
+ * Basic Twitter proof validation (without API call)
+ * Used as fallback when Twitter API is not available
+ */
+function verifyTwitterProofBasic(proof: TwitterProof): TwitterVerificationResult {
+  const { tweetUrl, challenge } = proof;
+
+  // Check if challenge expired
+  if (Date.now() > challenge.expiresAt) {
+    return { valid: false, error: 'Challenge expired' };
+  }
+
+  // Extract tweet ID from URL
+  const tweetId = extractTweetId(tweetUrl);
+  if (!tweetId) {
+    return { valid: false, error: 'Invalid tweet URL' };
+  }
+
+  // Basic URL validation - ensure it's a Twitter/X URL
+  if (!tweetUrl.match(/(twitter\.com|x\.com)/i)) {
+    return { valid: false, error: 'URL must be from twitter.com or x.com' };
+  }
+
+  console.warn('Using basic Twitter verification - tweet content not verified');
+  
+  return {
+    valid: true,
+    tweetId,
+    handle: challenge.handle,
+  };
 }
 
 /**
