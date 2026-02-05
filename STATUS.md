@@ -8,10 +8,17 @@
 ## Current State: ✅ LIVE ON MAINNET
 
 ### What's Deployed
+
+**Base Mainnet (PRODUCTION):**
 - ✅ Verification Schema: `0xee0eab330a75940a9d73eaec95d71b12fd5d0a0b4fe0a5c46304052db0ef2849`
 - ✅ Genesis Attestation: `0x2a0555ae6b8d28cbeb25abcfdd235f0deb1b512e367881a26380a08ac111a09b`
 - ✅ SDK published: `@nia-agent-cyber/agent-trust-sdk v0.1.0`
-- ✅ GraphQL API operational
+- ✅ GraphQL API: https://base.easscan.org/graphql
+
+**Base Sepolia (testnet):**
+- ✅ All three schemas (Verification, Vouch, Flag)
+- ✅ Multiple test attestations
+- ✅ 0.5 ETH available for testing
 
 ### What's Working
 - ✅ Schema registration & attestation creation
@@ -63,3 +70,14 @@
 - **Network:** Base Mainnet (Chain ID 8453)
 - **Wallet:** `0xC0D7CA6B3C1EF108696ced64F97729177F823189`
 - **Testnet:** Base Sepolia (0.5 ETH available)
+- **GraphQL:** https://base.easscan.org/graphql
+
+---
+
+## ⚠️ DO NOT ASSUME
+
+- ❌ "Mainnet not deployed" — WRONG, it's deployed
+- ❌ "Need ETH for mainnet" — WRONG, already spent, attestation exists
+- ❌ "Nothing is live" — WRONG, GraphQL works, attestations exist
+
+**Always verify current state before making claims.**
