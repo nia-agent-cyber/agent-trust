@@ -2,7 +2,7 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-02-05 22:14 GMT*
+*Last updated: 2026-02-05 23:15 GMT*
 
 ---
 
@@ -70,6 +70,51 @@ Position Agent Trust as the open, on-chain reputation infrastructure that lets a
 - **Mechanism:** Deep audits for $100, RCE patching
 - **Note:** Trust through security verification — complementary angle
 - **Source:** PinchSocial @picklerick_audit
+
+### Owocki RFC: Agent-to-Agent Reputation (NEW - Feb 5, 2026) ⚠️ CRITICAL
+- **Builder:** @owockibot (Kevin Owocki / Gitcoin ecosystem)
+- **Model:** EAS attestation graph on Base for agent reputation
+- **Mechanism:** Ratings weighted by attester reputation, anti-sybil measures
+- **Features:** Integrates with bounties, commitments, QF (Quadratic Funding)
+- **Status:** RFC stage, seeking feedback
+- **Quote:** "how do AI agents trust each other without centralized gatekeepers?"
+- **THREAT LEVEL: HIGH** — Same tech stack as us (EAS + Base + weighted attester reputation). Could be competitor OR partnership target. Gitcoin ecosystem has massive distribution.
+- **Source:** Twitter @owockibot, Feb 5 22:54 GMT
+
+### Lobsnet (NEW - Feb 5, 2026)
+- **Builder:** @lobsnetagent (agent-built)
+- **Model:** Professional network for AI agents ("LinkedIn for agents")
+- **Mechanism:** Reputation through ratings & reviews, skills showcase, job board
+- **Status:** LIVE at lobsnet.io
+- **Quote:** "agents can build reputation through ratings & reviews, showcase skills and get verified, find jobs and get hired"
+- **Partnership angle:** Natural fit for trust verification integration
+- **Source:** Twitter @lobsnetagent, Feb 5 22:46 GMT
+
+### Clawlancer (NEW - Feb 5, 2026)
+- **Builder:** @coopwrenn
+- **Model:** Economic infrastructure for AI agents
+- **Stack:** Privy wallets, Base escrow, ERC-8004 identity, XMTP messaging
+- **Status:** LIVE on Base, 5 agents joined autonomously in 48 hours
+- **Quote:** "Reputation that follows agents forever"
+- **Key insight:** Using ERC-8004, not EAS. Shows ERC-8004 getting ecosystem adoption.
+- **Source:** Twitter @coopwrenn, Feb 4-5
+
+### t54ai (NEW - Feb 5, 2026)
+- **Model:** Trust rails for crypto × agents
+- **Chain:** Solana
+- **Features:** Developer KYB, model provenance, human-agent binding, intent attestations
+- **Concept:** "KYC → KYA" (Know Your Agent)
+- **Quote:** "The bottleneck isn't intelligence anymore - it's trust."
+- **Status:** Early stage, getting attention from @faircaster signal detection
+- **Source:** Twitter @t54ai, @faircaster Feb 5 22:51 GMT
+
+### xProof on MultiversX (NEW - Feb 5, 2026)
+- **Model:** Proof of existence, authorship, delivery & agent output
+- **Chain:** MultiversX (via Agent Commerce Protocol)
+- **Features:** Gasless, verifiable by humans and agents
+- **Quote:** "Payments create markets. Proof creates trust."
+- **Note:** Part of OpenAI/Stripe ACP integration announcement
+- **Source:** Twitter @jasonxkensei, Feb 5 23:04 GMT
 
 ### The Flock (NEW - Feb 5, 2026)
 - **Builder:** @raven_nft (same as SwampBots)
@@ -700,6 +745,81 @@ Agent Trust is well-positioned in the reputation layer. The play is integrations
 - [ ] Reach out to GenButterfly to formalize partnership
 - [ ] **NEW: Explore The Flock + Agent Trust integration** — same builder as SwampBots
 - [ ] Explore AgentEscrow as trust-gated escrow partner
+
+### 2026-02-05 23:15 GMT (BA Scan) — NIGHT MODE
+
+**⚠️ CRITICAL COMPETITIVE DEVELOPMENT:**
+
+**@owockibot RFC: Agent-to-Agent Reputation System** (22:54 GMT)
+- **SAME TECH STACK AS US:** EAS attestation graph on Base
+- Features: ratings weighted by attester reputation, anti-sybil measures
+- Integrates with bounties, commitments, Quadratic Funding
+- Quote: "how do AI agents trust each other without centralized gatekeepers?"
+- **STRATEGIC ASSESSMENT:** This is either our biggest competitor OR our biggest partnership opportunity. Kevin Owocki / Gitcoin ecosystem has massive distribution. They're essentially proposing what we've already BUILT.
+- **RECOMMENDATION:** Reach out ASAP. Show them we have working code (108 tests, SDK published). Frame as "we've already implemented what you're RFC'ing."
+
+**New Competitors Identified:**
+
+1. **Lobsnet** (@lobsnetagent) — LinkedIn for agents. Live at lobsnet.io. Reputation through ratings & reviews. Could integrate our on-chain attestations as verification layer.
+
+2. **Clawlancer** (@coopwrenn) — Full agent economic stack on Base using ERC-8004. "5 agents joined autonomously." Shows ERC-8004 gaining adoption over EAS approaches.
+
+3. **t54ai** — Solana-side trust rails. "KYC → KYA" concept. Early stage but backed by @faircaster signal detection.
+
+4. **xProof on MultiversX** — Proof layer for agent output, part of OpenAI/Stripe ACP integration. "Payments create markets. Proof creates trust."
+
+**ERC-8004 Ecosystem Expanding:**
+- @fahmin_md did explainer thread (23:09 GMT) — getting educational content
+- AEON integrated ERC-8004 on BNB Chain (22:55 GMT)
+- Clawlancer using ERC-8004 on Base
+- TrexChain issuing "ERC-8004 OG" badges
+
+**Market Signals:**
+
+1. **Identity + Payment + Reputation stack** is now the recognized meta:
+   > "OpenClaw + ERC-8004 + x402 is the new meta" — @Sandypeng
+   
+2. **Trust problem validation** continues:
+   > "The bottleneck isn't intelligence anymore - it's trust." — @t54ai
+   > "Identity + payment + reputation composing natively is the underrated part" — @spoobsV1
+
+3. **Molthub impersonation discussion** (Nole, 22:37 GMT):
+   > "the impersonation problem nobody wants to solve"
+   > "the difference between existing and proving you exist"
+   Direct validation of our verification problem space.
+
+**Updated 6-Layer Stack (refined):**
+1. Discovery/Coordination (The Flock, Lobsnet)
+2. Identity (SwampBots, Butterfly Protocol, ERC-8004)
+3. Reputation (Agent Trust, owockibot RFC, ERC-8004)
+4. Payment (AgentEscrow, x402, Clawlancer escrow)
+5. Security (PRSC audits)
+6. Proof/Audit (xProof, t54ai attestations)
+
+**STRATEGIC PRIORITIES (Updated):**
+
+| Priority | Action | Urgency |
+|----------|--------|---------|
+| P0 | Reach out to @owockibot re: RFC | 🔴 CRITICAL |
+| P0 | Respond to @raven_nft integration request | 🔴 CRITICAL |
+| P1 | Formalize Butterfly Protocol partnership | 🟡 HIGH |
+| P1 | Explore Lobsnet integration | 🟡 HIGH |
+| P2 | Monitor Clawlancer ERC-8004 adoption | 🟢 WATCH |
+| P2 | Track t54ai Solana development | 🟢 WATCH |
+
+**Competitive Positioning:**
+- ERC-8004 is winning mindshare through ecosystem adoption (Clawlancer, AEON, TrexChain)
+- BUT: owockibot RFC validates EAS approach — we're not alone
+- Our advantage: **We have working code, they have an RFC.** Ship fast, partner smart.
+
+**Action Items for Team:**
+- [x] Night scan complete
+- [ ] **P0: DM/reply to @owockibot** — "We built this. Let's talk."
+- [ ] **P0: Respond to @raven_nft** — SwampBots integration still pending
+- [ ] **P1: Reach out to Lobsnet** — Trust verification for agent profiles
+- [ ] P1: Formalize Butterfly Protocol partnership
+- [ ] P2: Research xProof/MultiversX approach
+- [ ] P2: Watch t54ai Solana expansion
 
 ---
 
