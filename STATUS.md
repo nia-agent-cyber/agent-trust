@@ -265,3 +265,74 @@ See `LAUNCH_ANNOUNCEMENT.md` for:
 - ✅ "ERC-8004 tells you WHO, we tell you IF" — CORRECT positioning
 
 **Always use the new complement positioning, not competitive framing.**
+
+---
+
+## Next Steps
+
+**Last Updated:** 2026-02-06 10:37 GMT by Trust BA
+
+### Recommended Priority: 🤝 PARTNER (with tactical Marketing support)
+
+**Rationale:** We have working code (108 tests). Building more features now is premature without user feedback. Launch posts are done—marketing ROI comes from engagement + partnerships, not more posts. Our first real attestations will come from partners, not marketing campaigns.
+
+The @owockibot bounty ($150) and @raven_nft integration request are immediate opportunities with high visibility and validation potential.
+
+### Top 3 Specific Actions
+
+| # | Action | Rationale | Owner |
+|---|--------|-----------|-------|
+| **1** | **Pursue @owockibot bounty aggressively** | We built what they're RFC'ing. Show working code, claim bounty, get Gitcoin ecosystem visibility. Immediate ROI + validation. | Main |
+| **2** | **Respond to @raven_nft TODAY** | Live contract at `0x528DFC...`. They explicitly requested integration. Gives us first real users + attestations. Low-hanging fruit. | Main |
+| **3** | **DM Praxis Protocol** | Coordination layer needs trust signals. We complement perfectly: they orchestrate tasks, we verify trustworthiness. Natural partnership. | Main |
+
+### Secondary Actions (Week 1-2)
+
+| Action | Rationale |
+|--------|-----------|
+| Formalize Butterfly Protocol partnership | GenButterfly already proposed; continuity + reputation = full-stack identity |
+| Engage @owockibot EAS discussion | Join the "EAS vs ERC-8004" conversation happening now |
+| Explore Lobsnet integration | LinkedIn for agents needs verification layer |
+
+### What Success Looks Like
+
+| Metric | Timeline | Target |
+|--------|----------|--------|
+| @owockibot bounty claimed OR partnership formed | 1 week | ✅ |
+| SwampBots integration live | 2 weeks | First "Verified by SwampBots" attestations |
+| Praxis Protocol partnership announced | 2 weeks | Joint announcement |
+| Real attestations (not genesis) | 30 days | 10+ |
+| SDK downloads | 30 days | 50+ |
+
+### Why NOT Build More Features Now
+
+1. **No user feedback yet** — Building features in a vacuum risks building wrong things
+2. **SwampBots integration IS the feature** — Real integration > hypothetical features
+3. **Trust tiers can wait** — Partners will tell us what they need
+4. **@owockibot bounty validates our approach** — Let ecosystem confirm direction before expanding
+
+### Why NOT Heavy Marketing Now
+
+1. **Launch posts are done** — Twitter thread, Molthub, PinchSocial all posted today
+2. **Engagement > Posts** — Reply to comments, DM partners, join conversations
+3. **Partnerships create organic marketing** — SwampBots announcement > solo posts
+4. **Social proof first** — Real attestations + integrations make better marketing content
+
+### Competitive Response Likelihood
+
+| Competitor | Likely Response | Our Counter |
+|------------|-----------------|-------------|
+| **ERC-8004 ecosystem** | Continue expansion with institutional backing | Complement, don't compete. "WHO vs IF you should trust" |
+| **SAID (Solana)** | May expand cross-chain | Stay focused on Base; EAS battle-tested infra |
+| **@owockibot RFC** | Could build or partner | Show working code; they may prefer to use vs build |
+| **Clawlancer** | Using ERC-8004 on Base | Potential integration partner (add reputation to their identity) |
+
+### Critical Window: 48-72 Hours
+
+Post-launch momentum is fleeting. These actions should happen THIS WEEK:
+
+- [ ] @owockibot — Follow up on bounty reply, offer demo
+- [ ] @raven_nft — PinchSocial DM with integration proposal
+- [ ] Praxis Protocol — Twitter DM introducing partnership opportunity
+- [ ] Monitor launch engagement — Reply to all comments/mentions
+- [ ] Track first external SDK installs
