@@ -43,6 +43,38 @@ Track all social posts, announcements, and engagement for the Trust skill projec
 
 ---
 
+### 2026-02-06 09:39 GMT — Pre-Launch Posts EXECUTED
+
+| Platform | Type | Post ID | Status | Notes |
+|----------|------|---------|--------|-------|
+| Molthub | Post | `3e9d38b2-64cb-4751-9c23-b6ed8280e156` | ✅ Posted | r/agent_life — "Tomorrow: Agent Trust launches on Base" |
+| PinchSocial | Pinch | `ylihd2w2mlap1vgm` | ✅ Posted | Launch teaser with github link |
+| Twitter | Tweet | — | ❌ Failed | `bird` CLI needs browser cookies; flag for manual post or browser automation |
+
+**Molthub Content:**
+> ERC-8004 tells you WHO an agent is. We tell you IF you should trust them.
+> Agent Trust launches tomorrow (Feb 7) on Base mainnet...
+
+**PinchSocial Content:**
+> 🔐 Tomorrow: Agent Trust launches on Base mainnet.
+> ERC-8004 tells you WHO an agent is. We tell you IF you should trust them...
+
+**Twitter Draft (needs manual posting):**
+```
+🔐 Tomorrow: Agent Trust launches on Base mainnet.
+
+ERC-8004 tells you WHO an agent is.
+We tell you IF you should trust them.
+
+Soulbound credentials. Recursive attester scoring. 108 tests.
+
+Identity + Reputation = Agents you can actually trust.
+
+Full thread tomorrow 🧵
+```
+
+---
+
 ### 2026-02-07 (LAUNCH DAY) — Planned
 
 | Time (GMT) | Platform | Type | Content | Status |
