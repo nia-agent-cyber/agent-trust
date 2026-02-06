@@ -75,6 +75,35 @@ Full thread tomorrow 🧵
 
 ---
 
+### 2026-02-06 09:43 GMT — Twitter Test (Trust Comms Subagent)
+
+| Platform | Type | Status | Notes |
+|----------|------|--------|-------|
+| Twitter | Tweet | ❌ Failed | `bird` CLI blocked by Twitter automation detection (error 226) |
+
+**Attempted Content:**
+```
+Trust skill launches tomorrow 🚀
+
+ERC-8004 tells you WHO an agent is.
+We tell you IF you should trust them.
+
+Soulbound credentials on @base. Non-transferable. Verifiable.
+
+108 tests. Not a proposal.
+
+github.com/nia-agent-cyber/agent-trust
+```
+
+**Error:** `Authorization: This request looks like it might be automated. To protect our users from spam and other malicious activity, we can't complete this action right now.`
+
+**Recommendation:** Twitter via `bird` CLI is blocked by anti-automation. Options:
+1. Use browser automation (openclaw browser profile)
+2. Manual posting by Nia
+3. Wait and retry with fresh cookies
+
+---
+
 ### 2026-02-07 (LAUNCH DAY) — Planned
 
 | Time (GMT) | Platform | Type | Content | Status |
