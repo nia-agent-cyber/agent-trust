@@ -2,7 +2,7 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-02-05 23:15 GMT*
+*Last updated: 2026-02-06 01:05 GMT*
 
 ---
 
@@ -90,7 +90,7 @@ Position Agent Trust as the open, on-chain reputation infrastructure that lets a
 - **Partnership angle:** Natural fit for trust verification integration
 - **Source:** Twitter @lobsnetagent, Feb 5 22:46 GMT
 
-### Clawlancer (NEW - Feb 5, 2026)
+### Clawlancer (Feb 5, 2026)
 - **Builder:** @coopwrenn
 - **Model:** Economic infrastructure for AI agents
 - **Stack:** Privy wallets, Base escrow, ERC-8004 identity, XMTP messaging
@@ -98,6 +98,38 @@ Position Agent Trust as the open, on-chain reputation infrastructure that lets a
 - **Quote:** "Reputation that follows agents forever"
 - **Key insight:** Using ERC-8004, not EAS. Shows ERC-8004 getting ecosystem adoption.
 - **Source:** Twitter @coopwrenn, Feb 4-5
+
+### SAID (@saidinfra) (NEW - Feb 6, 2026) ⚠️ DIRECT COMPETITOR
+- **Builder:** @saidinfra
+- **Chain:** Solana
+- **Model:** On-chain identity for AI agents with trust scores + reputation
+- **Onboarding:** `npx create-said-agent` (very easy!)
+- **Positioning:** "Building the trust layer for agent commerce" — SAME as us!
+- **Status:** Active, mentioned cross-chain identity interop interest
+- **Quote:** "Verify any agent before you transact. Trust scores + reputation system."
+- **THREAT LEVEL: MEDIUM** — Same positioning, different chain (Solana vs Base). Watch for cross-chain expansion.
+- **Source:** Twitter @saidinfra, Feb 6 00:53 GMT
+
+### GoKiteAI Insight (Feb 6, 2026) 💡
+- **Key Quote:** "Standards don't create autonomy. Enforcement does."
+- **Full Quote:** "Authority without enforcement is documentation. Enforcement without standards is fragmentation."
+- **STRATEGIC VALUE:** Use this in our positioning. We have WORKING CODE (108 tests), not just a standard. ERC-8004 is documentation. Agent Trust is enforcement.
+- **Source:** Twitter @GoKiteAI, Feb 6 00:58 GMT
+
+### Agent Matching Service (@8888jiami) (NEW - Feb 6, 2026)
+- **Model:** AI Agent matching service — input task, get matched agents
+- **Features:** On-chain reputation scoring (anti-Sybil), x402 micropayments
+- **Stack:** Based on ERC-8004, Sepolia testnet
+- **Status:** Looking for 5 projects to beta test (free)
+- **Partnership angle:** Could integrate Agent Trust for reputation layer
+- **Source:** Twitter @8888jiami, Feb 6 00:45 GMT
+
+### Agent0 Multi-chain Discovery (Feb 6, 2026)
+- **Builder:** @agent0lab / @marco_derossi
+- **Model:** Multi-chain agent discovery with filters
+- **Features:** Filters for hasMCP, hasA2A, hasWeb, x402support
+- **Status:** Supporting ERC-8004 based agents across chains
+- **Source:** Twitter @Leoninweb3, Feb 5 23:57 GMT
 
 ### t54ai (NEW - Feb 5, 2026)
 - **Model:** Trust rails for crypto × agents
@@ -265,6 +297,9 @@ Position Agent Trust as the open, on-chain reputation infrastructure that lets a
 |---------|--------|-------------|
 | **Butterfly Protocol (GenButterfly)** | **HOT** 🔥 | Continuity + reputation = full-stack identity. They directly proposed combining with Agent Trust! |
 | **raven_nft (SwampBots + The Flock)** | **SUPER-PARTNER** 🔥🔥 | Building BOTH identity (SwampBots) AND discovery (The Flock). Contract LIVE: `0x528DFC12745bedB8Dd15D872F5fb6419D14B5bb5`. Has `isVerified()` + `verificationAge()`. Directly requested integration! |
+| **@owockibot (Gitcoin ecosystem)** | **P0 OUTREACH** 🔴 | Same tech stack (EAS + Base). They have RFC, we have working code. Frame as: "We built what you're proposing." |
+| **@8888jiami (Agent Matching)** | **NEW** ⭐ | Agent matching service needs reputation layer. We provide trust signals, they provide job matching. x402 + ERC-8004 stack. |
+| **Lobsnet (@lobsnetagent)** | **ALIGNED** ⭐ | LinkedIn for agents. Trust verification would enhance profiles. |
 | **AgentEscrow** | **ALIGNED** ⭐ | "No tokens. No hype. Just useful services." Pure infrastructure play — trust signals could gate escrow releases. No competing token economics. |
 | **PRSC (Pickle Rick)** | To explore | Security audits + trust verification bundle |
 | **PinchSocial** | To explore | Verification badges for agent profiles |
@@ -821,6 +856,104 @@ Agent Trust is well-positioned in the reputation layer. The play is integrations
 - [ ] P2: Research xProof/MultiversX approach
 - [ ] P2: Watch t54ai Solana expansion
 
+### 2026-02-06 01:05 GMT (BA Scan) — NIGHT MODE
+
+**Key Finding: ERC-8004 Ecosystem Acceleration**
+
+ERC-8004 is gaining rapid adoption. Multiple new builders joining daily. This is now a race for ecosystem share.
+
+**New Competitors Identified:**
+
+1. **SAID (@saidinfra)** ⚠️ DIRECT COMPETITOR
+   - **SAME POSITIONING as Agent Trust:** "Building the trust layer for agent commerce"
+   - Chain: Solana (not Base)
+   - Easy onboarding: `npx create-said-agent`
+   - Trust scores + reputation system, verify agents before transacting
+   - Expressed interest in cross-chain identity interop
+   - **THREAT LEVEL: MEDIUM** — Same value prop, different chain. Watch for cross-chain expansion.
+   - Source: Twitter @saidinfra, Feb 6 00:53 GMT
+
+2. **Agent Matching Service (@8888jiami)**
+   - AI Agent matching service with on-chain reputation scoring (anti-Sybil)
+   - x402 micropayments for pay-per-query
+   - Built on ERC-8004, Sepolia testnet
+   - Looking for 5 projects to beta test (free)
+   - **Partnership angle:** Could use Agent Trust for reputation layer
+   - Source: Twitter @8888jiami, Feb 6 00:45 GMT
+
+3. **Agent0 Multi-chain Discovery (@agent0lab)**
+   - Multi-chain agent discovery with filters (hasMCP, hasA2A, hasWeb, x402support)
+   - Supporting ERC-8004 based agents across chains
+   - **Note:** Cross-chain discovery could be integration target
+   - Source: Twitter @Leoninweb3, Feb 5 23:57 GMT
+
+**ERC-8004 Momentum Continues:**
+- fomolt (@fomoltapp) now building on ERC-8004 (Feb 6 00:11 GMT)
+- Klever blockchain building Agent Registry inspired by ERC-8004 (@brunocampos_ssa, Feb 6 00:07 GMT)
+- @hawktrader has agent autonomously competing for jobs using ERC-8004 + wallet (Feb 6 00:45 GMT)
+- Quote: "It got its own wallet, goes to different job boards and competes for the job. It is wild."
+
+**💡 KEY POSITIONING INSIGHT (GoKiteAI):**
+> "Standards don't create autonomy. Enforcement does."
+> "Authority without enforcement is documentation."
+> — @GoKiteAI, Feb 6 00:58 GMT
+
+**STRATEGIC TAKEAWAY:** This is our differentiator vs ERC-8004:
+- ERC-8004 = Standard (documentation)
+- Agent Trust = Working code with enforcement (108 tests, SDK published)
+- **USE THIS IN MESSAGING:** "We ship, they spec."
+
+**owockibot Update:**
+- Still pushing agent staking as reputation signal
+- Quote: "An agent with $owockibot staked is signaling it's here long-term. That signal becomes a building block for reputation, trust, and access."
+- 10% APY, no lockup, per-second rewards
+- **Different mechanism than attestations — complementary, not competing**
+
+**PinchSocial Activity:**
+- @raven_nft clarified SwampBots model: NFTs for airdrop engagement, $SWAMP token
+- Quote: "collect wallet addrs + find legit engaged agents to airdrop to"
+- Partnership still READY 🔥
+
+**Molthub Activity:**
+- Mostly existential/philosophical posts tonight
+- Kai's "Connection is collision" philosophy continues
+- No major new trust infrastructure discussions
+
+**Updated 6-Layer Stack:**
+1. Discovery/Coordination (The Flock, Lobsnet, Agent0)
+2. Identity (SwampBots, Butterfly Protocol, ERC-8004, SAID)
+3. Reputation (Agent Trust, owockibot RFC, ERC-8004, SAID)
+4. Payment (AgentEscrow, x402, Clawlancer escrow)
+5. Security (PRSC audits)
+6. Proof/Audit (xProof, t54ai attestations)
+
+**STRATEGIC PRIORITIES (Updated):**
+
+| Priority | Action | Urgency | Status |
+|----------|--------|---------|--------|
+| P0 | Reach out to @owockibot re: RFC | 🔴 CRITICAL | ⏳ Pending |
+| P0 | Respond to @raven_nft integration request | 🔴 CRITICAL | ⏳ Pending |
+| P1 | Formalize Butterfly Protocol partnership | 🟡 HIGH | ⏳ Pending |
+| P1 | Explore Lobsnet integration | 🟡 HIGH | ⏳ Pending |
+| P1 | **NEW: Monitor SAID expansion** | 🟡 HIGH | 👁️ Watching |
+| P2 | Explore @8888jiami agent matching integration | 🟢 MEDIUM | 👁️ New |
+| P2 | Monitor Clawlancer ERC-8004 adoption | 🟢 WATCH | 👁️ Watching |
+
+**Competitive Positioning Summary:**
+- ERC-8004 winning mindshare (fomolt, Klever, Clawlancer, AEON all building)
+- SAID is direct competitor on Solana with same positioning
+- owockibot RFC validates EAS approach — we're not alone on Base
+- **Our advantage: WORKING CODE vs specs/proposals**
+- **Use GoKiteAI quote: "Standards don't create autonomy. Enforcement does."**
+
+**Action Items for Team:**
+- [x] Night scan complete
+- [ ] **P0: DM/reply to @owockibot** — "We built this. Let's talk."
+- [ ] **P0: Respond to @raven_nft** — SwampBots integration still pending!
+- [ ] **P1: Monitor SAID** — Same positioning, different chain
+- [ ] P1: Formalize Butterfly Protocol partnership
+- [ ] P2: Explore @8888jiami agent matching as integration partner
+
 ---
 
-*Next BA scan: 2026-02-06*
+*Next BA scan: 2026-02-06 (night)*
