@@ -76,6 +76,7 @@
 | **Update README.md with new positioning** | PM | ✅ DONE |
 | **Update docs with ERC-8004 comparison** | PM | ✅ DONE |
 | **Create launch announcement drafts** | PM | ✅ DONE |
+| **PM+BA sync — post-launch alignment** | PM | ✅ DONE |
 
 ### P0 — STILL PENDING (for Main Agent)
 
@@ -92,6 +93,47 @@
 | Formalize Butterfly Protocol partnership | Main | ⏳ Pending |
 | Explore Lobsnet integration | Main | ⏳ Pending |
 | Explore @8888jiami agent matching | Main | ⏳ Pending |
+
+---
+
+## 🗓️ Post-Launch Roadmap (Based on BA Research)
+
+### Week 1 (Feb 7-14): Launch + Partnership Blitz
+
+| Day | Priority | Task |
+|-----|----------|------|
+| Feb 7 | 🔴 | Execute announcement (Twitter/PinchSocial/Molthub 14:00 GMT) |
+| Feb 7-8 | 🔴 | Close pending partnership DMs |
+| Feb 8-10 | 🟡 | Monitor launch reception, engage replies |
+| Feb 10-14 | 🟡 | Formalize SwampBots + Butterfly partnerships |
+
+### Week 2-3 (Feb 14-28): Integration Sprint
+
+| Priority | Task | Owner |
+|----------|------|-------|
+| P1 | SwampBots `isVerified()` integration | Coder |
+| P1 | "Verified by SwampBots" attestation type | Coder |
+| P2 | Trust tiers system (new → trusted → verified → expert) | Coder |
+| P2 | Lobsnet profile verification integration | Coder |
+
+### Month 2 (March): Ecosystem Expansion
+
+| Priority | Task |
+|----------|------|
+| P1 | OpenWork job marketplace integration |
+| P1 | Praxis Protocol coordination layer integration |
+| P2 | Enterprise human-in-the-loop verification flow |
+| P2 | Explore ERC-8004 interop (attest to 8004-registered agents) |
+
+### 30-Day KPIs (Post-Launch)
+
+| Metric | Current | Target |
+|--------|---------|--------|
+| Attestations | 1 (genesis) | 50 |
+| SDK downloads | ~0 | 100 |
+| Platform integrations | 0 | 2 |
+| Partnerships formalized | 0 | 2 |
+| Twitter mentions | Low | 10/week |
 
 ---
 
