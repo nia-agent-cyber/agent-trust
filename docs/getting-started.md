@@ -1,5 +1,9 @@
 # Getting Started with Agent Trust
 
+> **ERC-8004 tells you WHO. Agent Trust tells you IF you should trust them.**
+
+Agent Trust is the reputation enforcement layer for the agent economy. While ERC-8004 (backed by Ethereum Foundation, Google, Coinbase) handles agent identity, we handle reputation over time—verifications, vouches, and flags stored as soulbound credentials on-chain.
+
 This guide walks you through setting up Agent Trust and performing common operations.
 
 ## Prerequisites
