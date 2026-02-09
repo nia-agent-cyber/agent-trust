@@ -15,7 +15,7 @@
 - Working SDK and mainnet deployment confirmed
 
 **🔴 CRITICAL ISSUES:**
-1. **Partnership Outreach Stalled** — DMs drafted Feb 6 remain UNSENT after 3+ days
+1. **Partnership Outreach CRITICAL** — DMs updated and ready for IMMEDIATE manual sending (4+ days overdue)
 2. **Competitors Building Our Solution** — owockibot deployed EAS-based reputation system while we delayed
 3. **Market Momentum Shifting** — ERC-8004 expanding to 4 chains, 10K+ agents deployed
 4. **No Real Usage** — Still only 1 attestation (genesis), no SDK installs tracked
@@ -81,9 +81,9 @@ DM drafts were created Feb 6 in `PARTNERSHIP_DMS.md` but **never sent**. These a
 
 | Task | Owner | Status | Notes |
 |------|-------|--------|-------|
-| **Send @owockibot DM** | Main/Comms | 🔴 NOT SENT | Draft ready 3 days |
-| **Send @raven_nft DM** | Main/Comms | 🔴 NOT SENT | They requested integration! |
-| **Send Praxis Protocol DM** | Main/Comms | 🔴 NOT SENT | Draft ready 3 days |
+| **Send @owockibot DM** | Manual/Browser | 🔴 READY TO SEND | PARTNERSHIP_DMS_UPDATED.md #1 - automation blocked |
+| **Send @raven_nft DM** | Manual/Browser | 🔴 READY TO SEND | PARTNERSHIP_DMS_UPDATED.md #2 - they requested integration! |
+| **Send Praxis Protocol DM** | Manual/Browser | 🔴 READY TO SEND | PARTNERSHIP_DMS_UPDATED.md #3 - automation blocked |
 
 ### P1 — HIGH
 
