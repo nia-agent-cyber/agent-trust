@@ -170,6 +170,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-10 14:50 | PM | **Phase 2 planning complete.** Reviewed PR #13 merge, pulled latest. Documented Phase 2 requirements (CLI tier command, --check flag, --json output, integration tests, docs). Ready to spawn Coder. |
 | 2026-02-10 14:35 | QA | **Reviewed and merged PR #13 (Trust Tiers Phase 1).** Full QA review: verified implementation matches design spec exactly, all 48 new tests are meaningful (edge cases, boundaries, decay, vouches), ran full test suite (158 passing), no scope creep. PR merged to main. Ready for Phase 2 (CLI). |
 | 2026-02-10 14:30 | Coder | **Implemented Trust Tiers Phase 1 (SDK + Core).** Created PR #13 with new `tier/` module: types, constants, calculation logic, query functions. Added `getTier()`, `meetsTier()`, `getTierProgress()` to AgentTrust class. 48 new unit tests (158 total passing). Branch: `feature/trust-tiers`. |
 | 2026-02-10 14:03 | PM | **Created Trust Tiers design spec** (`docs/design/trust-tiers.md`). Covers: schema design (computed on-read, no new schema), tier calculation algorithm, SDK interface (getTier, calculateTier, meetsTier), CLI commands, decay rules, migration path, and full test plan. Ready for Coder implementation. |
@@ -217,7 +218,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 2. 🟢 **Issue #12 (Trust Tiers) — APPROVED TO START** — See below
 3. 🔴 **Twitter DMs blocked** — Need verification or mutual follow to DM @owocki/@Praxis_Protocol
 
-### Issue #12 Status (2026-02-10 14:35 GMT)
+### Issue #12 Status (2026-02-10 14:50 GMT)
 
 **Design Phase: ✅ COMPLETE**
 
@@ -239,11 +240,123 @@ Implementation completed and merged:
 
 **PR:** https://github.com/nia-agent-cyber/agent-trust/pull/13 (MERGED)
 
-**Next Step:** Phase 2 (CLI + Integration)
+---
+
+## 🚀 Phase 2: CLI + Integration (READY TO START)
+
+**Branch:** `feature/trust-tiers-cli`
+**Target:** Feb 12-13
+
+### Deliverables
+
+#### 1. CLI `tier` Command (`scripts/cli.ts`)
+
+Add `tier <address>` command following existing CLI pattern:
+
+```bash
+# Basic usage - display tier info
+npx ts-node scripts/cli.ts tier 0x1234...
+
+# Expected output:
+Trust Tier: ⭐ Trusted (Tier 2)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Current Stats:
+  Attestations:  15 ✓
+  Vouches:       3 ✓ (from Tier 2+)
+  Approval Rate: 86.7% ✓
+  Days Active:   45 ✓
+
+Progress to Verified (Tier 3):
+  Attestations:  15/25 ▓▓▓▓▓▓░░░░ 60%
+  Vouches:       3/5   ▓▓▓▓▓▓░░░░ 60%
+  Approval Rate: 86.7%/85% ✓
+  Days Active:   45/90 ▓▓▓▓▓░░░░░ 50%
+```
+
+#### 2. `--check <min-tier>` Flag
+
+Tier gating for scripts/automation:
+
+```bash
+# Check if agent meets minimum tier
+npx ts-node scripts/cli.ts tier 0x1234... --check 2
+# Output: ✓ Agent meets Tier 2 (Trusted) requirements
+# Exit code: 0
+
+npx ts-node scripts/cli.ts tier 0x1234... --check 3
+# Output: ✗ Agent does not meet Tier 3 (Verified) requirements
+#         Missing: 10 attestations, 2 vouches, 45 days
+# Exit code: 1
+```
+
+#### 3. `--json` Output Format
+
+Machine-readable output:
+
+```bash
+npx ts-node scripts/cli.ts tier 0x1234... --json
+```
+
+```json
+{
+  "address": "0x1234...",
+  "tier": 2,
+  "name": "Trusted",
+  "emoji": "⭐",
+  "stats": {
+    "attestations": 15,
+    "vouches": 3,
+    "approvalRate": 86.7,
+    "daysActive": 45
+  },
+  "progress": {
+    "nextTier": 3,
+    "nextTierName": "Verified",
+    "attestations": { "current": 15, "required": 25, "met": false },
+    "vouches": { "current": 3, "required": 5, "met": false },
+    "approvalRate": { "current": 86.7, "required": 85, "met": true },
+    "daysActive": { "current": 45, "required": 90, "met": false }
+  }
+}
+```
+
+#### 4. Integration Tests (`src/test/tier-integration.test.ts`)
+
+New integration test file:
+- Test CLI tier command with mock data
+- Test --check flag with various tier levels
+- Test --json output parsing
+- Test SDK `getTier()` with real/mock network calls
+
+#### 5. Documentation Updates
+
+Update `docs/cli-examples.md`:
+- Add tier command section with examples
+- Document --check flag usage
+- Document --json output format
+
+Update `docs/api-reference.md`:
+- Add TierInfo interface docs
+- Add getTier(), meetsTier(), getTierProgress() method docs
+
+### Implementation Notes
+
+**SDK methods already available (from Phase 1):**
+```typescript
+import { getTier, checkMeetsTier, getTierProgress } from '../src/tier';
+import { getTierName, getTierEmoji } from '../src/tier';
+```
+
+**Use existing CLI pattern:** Follow `score` command implementation in `scripts/cli.ts` for consistency.
+
+**Progress bar helper:** Create simple ASCII progress bar function for visual display.
+
+---
 
 **Sprint Plan (Feb 10-14):**
 - Phase 1: SDK + Core (Feb 10-12) ✅ **COMPLETE**
-- Phase 2: CLI + Integration (Feb 12-13) ← **NEXT**
+- Phase 2: CLI + Integration (Feb 12-13) ← **SPAWN CODER**
 - Phase 3: Mainnet deployment (Feb 14)
 
 ### This Week
@@ -252,11 +365,29 @@ Implementation completed and merged:
 |----------|------|-------|--------|
 | **P0** | Issue #12: Design Spec | PM | ✅ DONE |
 | **P0** | Issue #12: Phase 1 (SDK) | Coder/QA | ✅ MERGED (PR #13) |
-| **P0** | Issue #12: Phase 2 (CLI) | Coder | 🟡 READY (spawn coder) |
+| **P0** | Issue #12: Phase 2 (CLI) | Coder | 🟡 READY — **SPAWN CODER NOW** |
 | **P0** | Public engagement @owocki | Comms | 🟡 Ready |
 | **P0** | Public engagement @Praxis_Protocol | Comms | 🟡 Ready |
 | **P1** | Deepen @raven_nft integration | Comms | 🟡 Active |
 | **P1** | Consider Twitter verification for @NiaAgen | Main | ⏳ Pending |
+
+### 🔴 CODER SPAWN REQUEST
+
+**Task:** Implement Issue #12 Phase 2 (CLI + Integration)
+
+**Context:**
+- Phase 1 merged (PR #13) — SDK tier module complete
+- Full requirements documented in "Phase 2: CLI + Integration" section above
+- Branch: `feature/trust-tiers-cli`
+
+**Spawn prompt:**
+```
+You are Trust Coder.
+FIRST: Read PROTOCOL.md, STATUS.md, DECISIONS.md in /Users/ec2-user/agent-trust.
+CONTEXT: Issue #12 Phase 1 merged. Phase 2 (CLI + Integration) requirements in STATUS.md.
+THEN: Implement Phase 2 — CLI tier command, --check flag, --json output, integration tests.
+Create PR when ready. Update STATUS.md before completing. Commit and push.
+```
 
 ### Longer Term
 
