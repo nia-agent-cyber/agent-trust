@@ -22,6 +22,109 @@ npm run build
 npx ts-node scripts/cli.ts <command> [options]
 ```
 
+### Check Trust Tier
+
+Query the trust tier for any agent address with visual progress indicators:
+
+```bash
+# Basic usage - shows tier and progress to next level
+npx ts-node scripts/cli.ts tier 0xC0D7CA6B3C1EF108696ced64F97729177F823189
+
+# Output:
+# Trust Tier: ⭐ Trusted (Tier 2)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+# Current Stats:
+#   Attestations:  15 ✓
+#   Vouches:       3 ✓
+#   Approval Rate: 86.7% ✓
+#   Days Active:   45 ✓
+#
+# Progress to Verified (Tier 3):
+#   Attestations:  15/25 ▓▓▓▓▓▓░░░░ 60%
+#   Vouches:       3/5   ▓▓▓▓▓▓░░░░ 60%
+#   Approval Rate: 86.7%/85% ✓
+#   Days Active:   45/90 ▓▓▓▓▓░░░░░ 50%
+```
+
+### Tier Gating (--check flag)
+
+Use the `--check` flag for automated tier verification in scripts:
+
+```bash
+# Check if agent meets minimum tier (exits 0 if yes, 1 if no)
+npx ts-node scripts/cli.ts tier 0xAgentAddress --check 2
+
+# Output (if meets tier):
+# ✓ Agent meets Tier 2 (Trusted) requirements
+
+# Output (if doesn't meet tier):
+# ✗ Agent does not meet Tier 2 (Trusted) requirements
+#   Current tier: 1 (Contributor)
+#   Missing: 5 attestations, 2 vouches, 20 days
+
+# Use in scripts:
+if npx ts-node scripts/cli.ts tier 0xAgentAddress --check 2; then
+  echo "Agent is trusted, proceeding..."
+else
+  echo "Agent does not meet trust requirements"
+  exit 1
+fi
+```
+
+### JSON Output (--json flag)
+
+Get machine-readable output for integration with other tools:
+
+```bash
+npx ts-node scripts/cli.ts tier 0xAgentAddress --json
+
+# Output:
+# {
+#   "address": "0x1234...",
+#   "tier": 2,
+#   "name": "Trusted",
+#   "emoji": "⭐",
+#   "stats": {
+#     "attestations": 15,
+#     "vouches": 3,
+#     "approvalRate": 86.7,
+#     "daysActive": 45
+#   },
+#   "progress": {
+#     "nextTier": 3,
+#     "nextTierName": "Verified",
+#     "attestations": { "current": 15, "required": 25, "met": false },
+#     "vouches": { "current": 3, "required": 5, "met": false },
+#     "approvalRate": { "current": 86.7, "required": 85, "met": true },
+#     "daysActive": { "current": 45, "required": 90, "met": false }
+#   }
+# }
+
+# Combine with --check for JSON gating output:
+npx ts-node scripts/cli.ts tier 0xAgentAddress --check 2 --json
+
+# Output:
+# {
+#   "address": "0x1234...",
+#   "meetsTier": true,
+#   "requiredTier": 2,
+#   "requiredTierName": "Trusted",
+#   "actualTier": 2,
+#   "actualTierName": "Trusted"
+# }
+```
+
+### Tier Levels Reference
+
+| Tier | Name | Emoji | Requirements |
+|------|------|-------|--------------|
+| 0 | New | 🆕 | No requirements (default) |
+| 1 | Contributor | 🔧 | 3 attestations, 50% approval, 7 days |
+| 2 | Trusted | ⭐ | 10 attestations, 2 vouches, 70% approval, 30 days |
+| 3 | Verified | ✅ | 25 attestations, 5 vouches, 85% approval, 90 days |
+| 4 | Expert | 👑 | 50 attestations, 10 vouches, 95% approval, 180 days |
+
 ### Check Trust Score
 
 Query the trust score for any agent address:
