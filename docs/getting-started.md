@@ -182,6 +182,104 @@ if (result.success) {
 }
 ```
 
+## Trust Tiers
+
+Trust Tiers provide human-readable reputation levels (0-4) computed from attestation data. Use tiers for access control and reputation gating.
+
+| Tier | Name | Emoji | Requirements |
+|------|------|-------|--------------|
+| 0 | New | 🆕 | No requirements (default) |
+| 1 | Contributor | 🔧 | 3 attestations, 50% approval, 7 days |
+| 2 | Trusted | ⭐ | 10 attestations, 2 vouches, 70% approval, 30 days |
+| 3 | Verified | ✅ | 25 attestations, 5 vouches, 85% approval, 90 days |
+| 4 | Expert | 👑 | 50 attestations, 10 vouches, 95% approval, 180 days |
+
+### 7. Get Agent Tier
+
+```typescript
+const tierInfo = await agentTrust.getTier('0xAgentAddress');
+
+console.log(`Tier: ${tierInfo.emoji} ${tierInfo.name} (Tier ${tierInfo.tier})`);
+// Output: Tier: ⭐ Trusted (Tier 2)
+
+// Check current stats
+console.log('\nStats:');
+console.log(`  Attestations: ${tierInfo.progress?.attestations.current || 0}`);
+console.log(`  Vouches: ${tierInfo.progress?.vouches.current || 0}`);
+console.log(`  Approval Rate: ${tierInfo.progress?.approvalRate.current || 0}%`);
+console.log(`  Days Active: ${tierInfo.progress?.daysActive.current || 0}`);
+
+// Show progress to next tier
+if (tierInfo.nextTier !== null) {
+  console.log(`\nProgress to ${tierInfo.nextTier}:`);
+  const p = tierInfo.progress!;
+  console.log(`  Attestations: ${p.attestations.current}/${p.attestations.required} ${p.attestations.met ? '✓' : ''}`);
+  console.log(`  Vouches: ${p.vouches.current}/${p.vouches.required} ${p.vouches.met ? '✓' : ''}`);
+}
+```
+
+### 8. Check Tier Requirements (Tier Gating)
+
+Use `meetsTier()` for access control based on reputation:
+
+```typescript
+// Check if agent meets minimum tier
+const isTrusted = await agentTrust.meetsTier('0xAgentAddress', 2);
+
+if (isTrusted) {
+  console.log('✅ Agent meets Trusted tier requirements');
+  // Grant access to premium features
+} else {
+  console.log('❌ Agent does not meet Trusted tier requirements');
+  // Restrict access
+}
+
+// Common tier gating patterns
+const tierGates = {
+  basicAccess: 1,    // Contributor - basic participation
+  fullFeatures: 2,   // Trusted - full feature access
+  moderation: 3,     // Verified - moderation privileges
+  governance: 4,     // Expert - governance voting
+};
+
+const canModerate = await agentTrust.meetsTier(agentAddress, tierGates.moderation);
+```
+
+### 9. CLI Tier Commands
+
+Check tiers from the command line:
+
+```bash
+# Get tier with visual progress bars
+npx ts-node scripts/cli.ts tier 0xAgentAddress
+
+# Output:
+# Trust Tier: ⭐ Trusted (Tier 2)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+# Progress to Verified (Tier 3):
+#   Attestations:  15/25 ▓▓▓▓▓▓░░░░ 60%
+#   Vouches:       3/5   ▓▓▓▓▓▓░░░░ 60%
+#   Approval Rate: 86.7%/85% ✓
+#   Days Active:   45/90 ▓▓▓▓▓░░░░░ 50%
+
+# Tier gating with exit codes (for scripts)
+npx ts-node scripts/cli.ts tier 0xAgentAddress --check 2
+# Exits 0 if meets tier, 1 if not
+
+# JSON output for automation
+npx ts-node scripts/cli.ts tier 0xAgentAddress --json
+# Returns structured JSON with tier info and progress
+
+# Use in shell scripts
+if npx ts-node scripts/cli.ts tier 0xAgentAddress --check 2; then
+  echo "Agent is trusted, proceeding..."
+else
+  echo "Insufficient reputation"
+  exit 1
+fi
+```
+
 ## Direct GraphQL Queries
 
 For advanced use cases, you can query the EAS GraphQL API directly:

@@ -1,6 +1,6 @@
 {
   "name": "@nia-agent-cyber/agent-trust-sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Trust infrastructure SDK for AI agents",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
