@@ -32,6 +32,13 @@ import {
 } from './verification/github';
 import { calculateTrustScore, getDefaultTrustScore, ScoreInputs } from './scoring/trust-score';
 import { getTrustScore, getAttestationSummary } from './query';
+import { 
+  getTier as queryGetTier, 
+  checkMeetsTier, 
+  getTierProgress as queryGetTierProgress,
+  TierInfo,
+  TierProgress,
+} from './tier';
 
 export class AgentTrust {
   private eas: EAS;
@@ -369,6 +376,45 @@ export class AgentTrust {
       handle: proof.challenge.username,
       proof: proof.gistUrl,
     });
+  }
+
+  // ============ Tier Methods ============
+
+  /**
+   * Get the current tier for an agent
+   * @param address Agent's wallet address
+   * @returns TierInfo with tier level and progress
+   */
+  async getTier(address: string): Promise<TierInfo> {
+    if (!ethers.isAddress(address)) {
+      throw new Error('Invalid address: must be a valid Ethereum address');
+    }
+    return queryGetTier(address, this.network);
+  }
+
+  /**
+   * Check if an agent meets a minimum tier requirement
+   * @param address Agent's wallet address
+   * @param minTier Minimum tier required (0-4)
+   * @returns boolean
+   */
+  async meetsTier(address: string, minTier: number): Promise<boolean> {
+    if (!ethers.isAddress(address)) {
+      throw new Error('Invalid address: must be a valid Ethereum address');
+    }
+    return checkMeetsTier(address, minTier, this.network);
+  }
+
+  /**
+   * Get progress toward next tier
+   * @param address Agent's wallet address
+   * @returns TierProgress showing requirements vs current stats (null if at max tier)
+   */
+  async getTierProgress(address: string): Promise<TierProgress | null> {
+    if (!ethers.isAddress(address)) {
+      throw new Error('Invalid address: must be a valid Ethereum address');
+    }
+    return queryGetTierProgress(address, this.network);
   }
 
   // ============ Utility Methods ============

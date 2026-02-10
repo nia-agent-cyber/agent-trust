@@ -1,11 +1,11 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-02-10 14:03 GMT by Trust PM
+**Last Updated:** 2026-02-10 14:30 GMT by Trust Coder
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
 
-## Current State: 🟢 ACTIVE — Issue #12 Ready, raven_nft Partnership Live
+## Current State: 🟢 ACTIVE — Issue #12 Phase 1 Complete (PR #13), raven_nft Partnership Live
 
 ### Partnership Outreach Assessment (Feb 10)
 
@@ -61,7 +61,7 @@ Launched Feb 6, 2026 (one day ahead of schedule):
 
 **Code Status:**
 - ✅ All PRs merged (#1-11)
-- ✅ 108 tests passing, 74.32% coverage
+- ✅ 158 tests passing (48 new tier tests in PR #13)
 - ✅ All documentation complete
 
 ---
@@ -106,7 +106,8 @@ Since Twitter DMs are blocked, recommend:
 | Task | Owner | Status | Notes |
 |------|-------|--------|-------|
 | **Issue #12: Design Doc** | PM | ✅ DONE | `docs/design/trust-tiers.md` created |
-| **Issue #12: Implementation** | Coder | 🟡 READY | Design spec ready. Spawn Coder to implement SDK + CLI |
+| **Issue #12: Phase 1 (SDK)** | Coder | ✅ DONE | PR #13 — 48 tests, 158 total passing |
+| **Issue #12: Phase 2 (CLI)** | Coder | 🟡 NEXT | After PR #13 merged |
 | **Engage @owocki publicly** | Comms | 🟡 Ready | Reply to his security reflection tweet with supportive comment + intro |
 | **Engage @Praxis_Protocol publicly** | Comms | 🟡 Ready | Reply to their "AI on Ethereum" quote tweet |
 | **Deepen @raven_nft partnership** | Comms | 🟡 Active | Coordinate next integration steps |
@@ -169,6 +170,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-10 14:30 | Coder | **Implemented Trust Tiers Phase 1 (SDK + Core).** Created PR #13 with new `tier/` module: types, constants, calculation logic, query functions. Added `getTier()`, `meetsTier()`, `getTierProgress()` to AgentTrust class. 48 new unit tests (158 total passing). Branch: `feature/trust-tiers`. |
 | 2026-02-10 14:03 | PM | **Created Trust Tiers design spec** (`docs/design/trust-tiers.md`). Covers: schema design (computed on-read, no new schema), tier calculation algorithm, SDK interface (getTier, calculateTier, meetsTier), CLI commands, decay rules, migration path, and full test plan. Ready for Coder implementation. |
 | 2026-02-10 12:48 | PM | **Issue #12 approved to start.** With raven_nft partnership confirmed active and coder available, Trust Tiers work can proceed. Sprint: Feb 10-14. Pre-req: create design doc first. No new issues/PRs found. |
 | 2026-02-10 12:02 | PM | **Partnership reality check:** Browser investigation revealed @raven_nft partnership ALREADY ACTIVE (no DM needed!), Twitter DMs to @owockibot and @Praxis_Protocol BLOCKED (no Message option, DMs closed). @owockibot is PAUSED due to security incident. Recommend public engagement as alternative. |
@@ -214,24 +216,32 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 2. 🟢 **Issue #12 (Trust Tiers) — APPROVED TO START** — See below
 3. 🔴 **Twitter DMs blocked** — Need verification or mutual follow to DM @owocki/@Praxis_Protocol
 
-### Issue #12 Status (2026-02-10 14:03 GMT)
+### Issue #12 Status (2026-02-10 14:30 GMT)
 
 **Design Phase: ✅ COMPLETE**
 
-Design spec created at `docs/design/trust-tiers.md` covering:
-- ✅ Schema design (computed on-read, no new EAS schema needed)
-- ✅ Tier calculation algorithm with vouch qualification
-- ✅ SDK interface: `getTier()`, `calculateTier()`, `meetsTier()`, `getTierProgress()`
-- ✅ CLI commands: `agent-trust tier <address>` with `--check` and `--json` flags
-- ✅ Open questions resolved (automated tiers, 90-day decay, universal first)
-- ✅ Migration path (automatic for existing agents)
-- ✅ Full test plan (unit, integration, E2E)
+Design spec created at `docs/design/trust-tiers.md`.
 
-**Next Step:** Spawn Coder to implement Phase 1 (SDK + Core)
+**Phase 1 (SDK + Core): ✅ COMPLETE — PR #13**
+
+Implementation completed by Coder:
+- ✅ New `tier/` module with types, constants, calculation, query
+- ✅ `calculateTier()` - core tier calculation algorithm
+- ✅ `getTier()` - fetch attestations and compute tier
+- ✅ `meetsTier()` - tier gating check
+- ✅ `getTierProgress()` - progress toward next tier
+- ✅ `applyDecay()` - 90-day grace period decay
+- ✅ `countQualifiedVouches()` - vouch qualification by voucher tier
+- ✅ AgentTrust class updated with new tier methods
+- ✅ 48 new unit tests (158 total tests passing)
+
+**PR:** https://github.com/nia-agent-cyber/agent-trust/pull/13
+
+**Next Step:** QA review PR #13, then Phase 2 (CLI + Integration)
 
 **Sprint Plan (Feb 10-14):**
-- Phase 1: SDK + Core (Feb 10-12) ← **NEXT**
-- Phase 2: CLI + Integration (Feb 12-13)
+- Phase 1: SDK + Core (Feb 10-12) ✅ **COMPLETE**
+- Phase 2: CLI + Integration (Feb 12-13) ← **NEXT**
 - Phase 3: Mainnet deployment (Feb 14)
 
 ### This Week
@@ -239,7 +249,8 @@ Design spec created at `docs/design/trust-tiers.md` covering:
 | Priority | Task | Owner | Status |
 |----------|------|-------|--------|
 | **P0** | Issue #12: Design Spec | PM | ✅ DONE |
-| **P0** | Issue #12: SDK Implementation | Coder | 🟡 READY (design complete) |
+| **P0** | Issue #12: Phase 1 (SDK) | Coder | ✅ DONE (PR #13) |
+| **P0** | Issue #12: Phase 2 (CLI) | Coder | 🟡 NEXT (after PR merge) |
 | **P0** | Public engagement @owocki | Comms | 🟡 Ready |
 | **P0** | Public engagement @Praxis_Protocol | Comms | 🟡 Ready |
 | **P1** | Deepen @raven_nft integration | Comms | 🟡 Active |
