@@ -18,6 +18,9 @@ export * from './verification';
 // Scoring utilities  
 export * from './scoring';
 
+// Tier utilities
+export * from './tier';
+
 // Query utilities
 export { 
   getTrustScore, 
