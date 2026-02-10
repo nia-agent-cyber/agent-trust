@@ -495,3 +495,173 @@ const score = calculateTrustScore(inputs);
 // Get default (empty) score
 const empty = getDefaultTrustScore();
 ```
+
+---
+
+## Tier Functions
+
+Trust tiers provide human-readable reputation levels (0-4) computed from attestation data.
+
+### getTier
+
+Get complete tier information for an agent.
+
+```typescript
+import { getTier } from '@nia-agent-cyber/agent-trust-sdk';
+
+const tierInfo = await getTier('0xAgentAddress', 'base');
+// {
+//   tier: 2,
+//   name: 'Trusted',
+//   emoji: '⭐',
+//   requirements: { minAttestations: 10, minVouches: 2, ... },
+//   progress: {
+//     attestations: { current: 15, required: 25, met: false },
+//     vouches: { current: 3, required: 5, met: false },
+//     approvalRate: { current: 86.7, required: 85, met: true },
+//     daysActive: { current: 45, required: 90, met: false }
+//   },
+//   nextTier: 3
+// }
+```
+
+### checkMeetsTier
+
+Check if an agent meets a minimum tier requirement. Useful for tier gating.
+
+```typescript
+import { checkMeetsTier } from '@nia-agent-cyber/agent-trust-sdk';
+
+const meetsTrusted = await checkMeetsTier('0xAgentAddress', 2, 'base');
+// true if agent is Tier 2 (Trusted) or higher
+
+// Use for access control
+if (await checkMeetsTier(agentAddress, 2)) {
+  // Allow access to Trusted+ features
+}
+```
+
+### getTierProgress
+
+Get progress toward the next tier (null if at max tier).
+
+```typescript
+import { getTierProgress } from '@nia-agent-cyber/agent-trust-sdk';
+
+const progress = await getTierProgress('0xAgentAddress', 'base');
+// {
+//   attestations: { current: 15, required: 25, met: false },
+//   vouches: { current: 3, required: 5, met: false },
+//   approvalRate: { current: 86.7, required: 85, met: true },
+//   daysActive: { current: 45, required: 90, met: false }
+// }
+```
+
+### getTierName / getTierEmoji
+
+Get metadata for a tier level.
+
+```typescript
+import { getTierName, getTierEmoji } from '@nia-agent-cyber/agent-trust-sdk';
+
+getTierName(2);  // 'Trusted'
+getTierEmoji(2); // '⭐'
+```
+
+### clearTierCache
+
+Clear the tier calculation cache (useful for testing).
+
+```typescript
+import { clearTierCache } from '@nia-agent-cyber/agent-trust-sdk';
+
+clearTierCache();
+```
+
+### Tier Constants
+
+```typescript
+import {
+  TIER_NEW,        // 0
+  TIER_CONTRIBUTOR, // 1
+  TIER_TRUSTED,    // 2
+  TIER_VERIFIED,   // 3
+  TIER_EXPERT,     // 4
+  MAX_TIER,        // 4
+  TIER_REQUIREMENTS,
+  TIER_METADATA,
+} from '@nia-agent-cyber/agent-trust-sdk';
+
+// Requirements for each tier
+TIER_REQUIREMENTS[TIER_TRUSTED];
+// {
+//   minAttestations: 10,
+//   minVouches: 2,
+//   minVouchTier: 2,
+//   minApprovalRate: 70,
+//   minDaysActive: 30
+// }
+```
+
+### Tier Types
+
+```typescript
+interface TierInfo {
+  /** Tier level (0-4) */
+  tier: number;
+  /** Tier name */
+  name: string;
+  /** Tier emoji */
+  emoji: string;
+  /** Tier requirements */
+  requirements: TierRequirements;
+  /** Progress toward next tier (null if at max tier) */
+  progress: TierProgress | null;
+  /** Next tier level (null if at max tier) */
+  nextTier: number | null;
+}
+
+interface TierProgress {
+  attestations: RequirementProgress;
+  vouches: RequirementProgress;
+  approvalRate: RequirementProgress;
+  daysActive: RequirementProgress;
+}
+
+interface RequirementProgress {
+  /** Current value */
+  current: number;
+  /** Required value */
+  required: number;
+  /** Whether requirement is met */
+  met: boolean;
+}
+
+interface TierRequirements {
+  minAttestations: number;
+  minVouches: number;
+  minVouchTier: number;
+  minApprovalRate: number;
+  minDaysActive: number;
+}
+
+interface AgentStats {
+  totalAttestations: number;
+  qualifiedVouches: number;
+  approvalRate: number;
+  daysActive: number;
+  flags: number;
+  firstAttestationTime: number | null;
+  lastPositiveAttestationTime: number | null;
+}
+```
+
+### Tier Levels Reference
+
+| Tier | Name | Emoji | Attestations | Vouches | Approval | Days |
+|------|------|-------|--------------|---------|----------|------|
+| 0 | New | 🆕 | 0 | 0 | 0% | 0 |
+| 1 | Contributor | 🔧 | 3 | 0 | 50% | 7 |
+| 2 | Trusted | ⭐ | 10 | 2 | 70% | 30 |
+| 3 | Verified | ✅ | 25 | 5 | 85% | 90 |
+| 4 | Expert | 👑 | 50 | 10 | 95% | 180 |
