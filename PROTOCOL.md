@@ -17,6 +17,33 @@ How to work on this project. **Read this first every session.**
 - Add decisions to `DECISIONS.md` when you make them (with date + reasoning)
 - Create GitHub issues for external tracking if needed
 
+## Progress Updates (REQUIRED for long tasks)
+
+**For tasks taking >5 minutes, send progress updates to Nia.**
+
+Use this at natural milestones (not every minute):
+```
+sessions_send(label: "main", message: "[TRUST] <your update>")
+```
+
+**When to update:**
+- Starting a significant subtask
+- Hitting a blocker or unexpected issue
+- Completing a major milestone
+- Finding something that needs human attention
+
+**Format:** Keep it brief and actionable:
+```
+[TRUST] Starting credential schema update
+[TRUST] ⚠️ Blocked: EAS GraphQL returning 429
+[TRUST] ✅ PR #15 ready for review
+[TRUST] Found breaking change in SDK — needs Remi
+```
+
+Nia routes these to the correct Telegram topic so Remi stays informed.
+
+---
+
 ## Session End (REQUIRED)
 
 1. **Update `STATUS.md`** with:
