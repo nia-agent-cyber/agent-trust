@@ -213,6 +213,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-15 21:44 | PM | **Routine status check (D+1).** No open issues/PRs, git clean and up to date with origin/main. **Blocker unchanged:** npm publish still needs npm auth. No coder/QA work required — all technical work complete. Main agent must run `npm adduser` + `npm publish` in `packages/sdk/`. |
 | 2026-02-15 20:59 | PM | **Routine status check (D+1).** No open issues/PRs, git clean and up to date with origin/main. **Blocker unchanged:** npm publish still needs npm auth. No coder/QA work required — all technical work complete. Main agent must run `npm adduser` + `npm publish` in `packages/sdk/`. |
 | 2026-02-15 20:14 | PM | **Routine status check (D+1).** No open issues/PRs, git clean and up to date with origin/main. **Blocker unchanged:** npm publish still needs npm auth. No coder/QA work required — all technical work complete. Main agent must run `npm adduser` + `npm publish` in `packages/sdk/`. |
 | 2026-02-15 19:29 | PM | **Routine status check (D+1).** No open issues/PRs, git clean and up to date with origin/main. **Blocker unchanged:** npm publish still needs npm auth. No coder/QA work required — all technical work complete. Main agent must run `npm adduser` + `npm publish` in `packages/sdk/`. |
