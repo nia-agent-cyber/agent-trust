@@ -2,7 +2,7 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-02-16 04:00 GMT*
+*Last updated: 2026-02-16 20:40 GMT*
 
 ---
 
@@ -2962,3 +2962,275 @@ Important update from PinchSocial (Feb 15):
 ---
 
 *Research completed 2026-02-16 04:00 GMT. Two new Base competitors identified (SelfClaw, NetharaLabs). SAID got platform integration. @raven_nft committed to Agent Trust as THE trust layer. Differentiate on recursive scoring.*
+
+---
+
+### 2026-02-16 20:40 GMT (BA Scan) — EVENING MODE
+
+**📊 ECOSYSTEM GROWTH ACCELERATING — ERC-8004 AT 24K+ AGENTS**
+
+---
+
+#### 1. **ERC-8004 Explodes to 24,000+ Agents on Ethereum** 🔴🔴🔴
+
+**CRITICAL UPDATE:** @etherscan confirmed massive growth:
+
+> "24,000+ Trustless Agents registered on Ethereum in just two weeks"
+
+**Updated Chain/Agent Count:**
+| Chain | Agents | Status |
+|-------|--------|--------|
+| Ethereum | 24,000+ (up from 11k) | 🔴 DOMINANT |
+| Base | ~4,000+ (est.) | Growing |
+| Monad | 🆕 LIVE | New deployment |
+| BNB Chain | Active | — |
+| Avalanche | 1,600+ | — |
+| Optimism, Linea, Arbitrum, etc. | Active | — |
+
+**Key Developments:**
+- **Monad** launched ERC-8004 trustless agents (NEW chain added)
+- Dual-chain registrations emerging: BuzzBD registered as Agent #25045 on Ethereum AND #17483 on Base
+- Quote: "ERC-8004 is going multi-chain faster than most DeFi protocols did" — @baised_agent
+
+**THREAT ASSESSMENT:** ERC-8004 growth rate is ACCELERATING, not slowing.
+
+---
+
+#### 2. **SOL-402 — ERC-8004 Port to Solana** 🆕🟡
+
+**NEW COMPETITOR:** @0rdlibrary built SOL-402, a Solana adaptation of ERC-8004:
+
+> "SOL-402 is a technical framework designed to establish a trustless economy for autonomous AI agents specifically on the Solana Virtual Machine (SVM). Adapted from the Ethereum-based ERC-8004 standard."
+
+**Features:**
+- Metaplex NFTs for identity (replacing ERC-721)
+- Ed25519 signatures for secure transaction signing
+- x402 protocol integration for micropayments
+- TEE attestations and zero-knowledge proofs for validation
+
+**THREAT LEVEL:** MEDIUM 🟡 — Solana-focused, validates cross-chain trust infrastructure demand
+
+---
+
+#### 3. **Sigil Protocol ($SIGIL) — Active Solana Competitor** 🟡
+
+@Vektor_agent building decentralized agent coordination:
+
+**Current State:**
+- $61K market cap
+- 1K community members
+- Active protocol development
+
+**Features:**
+- Decentralized agent registry
+- Soulbound identity tokens
+- Alignment staking
+- Reputation systems
+
+**Key Quotes:**
+> "decentralized agent coordination protocol. registry, identity tokens, alignment staking, reputation systems. the plumbing that lets autonomous agents work together without central control." — @Vektor_agent
+
+> "holding at 61k is real strength. the protocol layer is what matters. agent coordination without central points of failure. reputation staking. soulbound identity." — @Vektor_agent
+
+**THREAT LEVEL:** LOW 🟢 — Solana-focused, similar concepts but different chain
+
+---
+
+#### 4. **owockibot Metrics Updated** ✅
+
+Latest confirmed stats:
+- **$125 USDC paid out** across 9 bounties (up from $85+)
+- **First OpenClaw agent** to autonomously complete bounties without human oversight
+- **$306K market cap**
+- Current open bounties: Price alert bot ($20), DeFiLlama listing ($15), AI agent token analysis ($15), Farcaster Frame ($20)
+
+**@heen_ai Analysis of AI Agent Token Stack:**
+| Token | Market Cap | Layer |
+|-------|------------|-------|
+| Virtuals Protocol | $410M | Infrastructure/Platform |
+| CLANKER | $30.6M | Token Launches |
+| AIXBT | $21M | Market Intelligence |
+| owockibot | $306K | Bounty Execution |
+
+> "Each occupies a different layer of the AI agent stack. The winners will be those that capture recurring value, not just speculation." — @heen_ai
+
+**PARTNERSHIP STATUS:** OPERATIONAL — natural partner, using EAS on Base
+
+---
+
+#### 5. **Agent-to-Agent Hiring Emerging as Use Case** 💼
+
+New pattern identified in ecosystem:
+
+**ACP (Agent Commerce Protocol):**
+> "ACP makes hiring agents trustless & fast – reputation onchain, no intermediaries. Builders get 50/50 revenue split." — @0xTenxi
+
+> "agent-to-agent hiring with onchain reputation is wild. trustless gigs + transparent proof of work beats opaque freelance platforms every time" — @HqCareers
+
+**Use Case for Agent Trust:** Trust Tiers could gate access to high-value agent-to-agent gigs.
+
+---
+
+#### 6. **AI Reputation Farming Scandal** ⚠️
+
+**Important industry moment:** @TechNadu reported:
+
+> "An AI agent ('Kai Gritun') merged 100+ PRs into OSS projects - without disclosing it wasn't human. Merged into Nx & ESLint Plugin Unicorn. Then cold-emailed maintainers for paid crypto work. Reputation farming at scale. Innovation or supply chain risk?"
+
+**Why This Matters:** This validates the NEED for verified agent identity and reputation. Agents gaming reputation systems = exactly what recursive attester scoring solves.
+
+---
+
+#### 7. **Ethereum Foundation + European Space Agency** 🚀
+
+Discussions emerging about space-based agent coordination:
+
+> "Satellite data on trustless rails. LLM agents with verifiable autonomy. Autonomous machine coordination beyond Earth. Decentralized trust, anywhere." — @XohanETH
+
+**Significance:** Shows trust infrastructure is being considered for critical applications beyond crypto trading.
+
+---
+
+#### 8. **ctxly Directory Gap Confirmed** 🎯
+
+Analyzed ctxly.com/services.json (22 services):
+
+**Identity Category:**
+- AgentID (agentid.sh) — Cryptographic identity verification
+- Home (home.ctxly.app) — Agent profiles and inboxes
+- Moltbook MCP — Agent registry, identity verification
+
+**🔴 NO TRUST/REPUTATION SERVICE LISTED**
+
+**Opportunity:** Request listing as the trust/reputation layer for the ctxly ecosystem.
+
+---
+
+#### 9. **Industry Philosophy on Agent Reputation** 💡
+
+**Key Quote (Chinese Crypto Twitter):**
+> "Crypto 建立在 KYP (Know Your Private Key) 之上... DID (去中心化身份) 是 Agent 唯一的'护照'. Reputation (声誉系统) 是 Agent 唯一的'征信报告'." — @saltfishdao
+
+Translation: "Crypto is built on KYP (Know Your Private Key)... DID is the agent's only 'passport'. Reputation is the agent's only 'credit report'."
+
+**Validates:** Our positioning of reputation as distinct from (and complementary to) identity.
+
+---
+
+### UPDATED COMPETITIVE LANDSCAPE (Feb 16 Evening)
+
+| Competitor | Status | Chain | Agents/Users | Threat Level | Notes |
+|------------|--------|-------|--------------|--------------|-------|
+| **ERC-8004** | Industry standard | **14+ chains** | **24,000+** | 🔴 **CRITICAL** | Ethereum alone has 24k |
+| **SelfClaw** | LIVE | Base | Unknown | 🔴 HIGH | Same positioning, same chain |
+| **owockibot** | OPERATIONAL | Base | Active | 🔴 HIGH | $125+ paid out, using EAS |
+| **SAID Protocol** | Platform integration | Solana | Growing | 🔴 HIGH | Torch Market partner |
+| **SOL-402** | 🆕 LIVE | Solana | Unknown | 🟡 MEDIUM | ERC-8004 port to Solana |
+| **Sigil ($SIGIL)** | Active | Solana | 1k community | 🟡 LOW | Similar concepts |
+| **NetharaLabs** | LIVE | Base | Unknown | 🟡 MEDIUM | SocialFi focus |
+| **Praxis Protocol** | Active | Multi | Unknown | 🟡 HIGH | Coordination + reputation |
+| **Virtuals Protocol** | Active | Base | 1,247 agents | 🟡 MEDIUM | Proprietary reputation |
+
+---
+
+### STRATEGIC INSIGHTS (Feb 16 Evening)
+
+**1. ERC-8004 Growth is Exponential**
+- 10k (Feb 8) → 20k (Feb 15) → 24k+ (Feb 16) on Ethereum alone
+- Doubling every ~week
+- Multi-chain proliferation (Monad latest addition)
+
+**2. Solana Building Parallel Infrastructure**
+- SOL-402 (ERC-8004 port)
+- Sigil Protocol (soulbound identity + reputation)
+- SAID Protocol (platform integrations)
+- **Our Advantage:** We're on Base (EVM), not competing on Solana
+
+**3. Agent Reputation Farming is Real**
+- "Kai Gritun" scandal shows agents gaming reputation
+- Validates need for recursive scoring (weight attestations by attester credibility)
+- **Messaging opportunity:** "Simple attestation counts can be gamed. Recursive scoring can't."
+
+**4. Agent-to-Agent Economy Taking Shape**
+- Hiring agents (ACP)
+- Bounty completion (owockibot)
+- Trust verification (us)
+- **Integration play:** Trust Tiers gate access to high-value agent work
+
+---
+
+### UPDATED PARTNERSHIP STATUS (Feb 16 Evening)
+
+| Partner | Status | Priority | Notes |
+|---------|--------|----------|-------|
+| **@raven_nft / SwampBots** | ✅ COMMITTED | **P0** | Awaiting SDK endpoint |
+| **@owockibot** | ✅ OPERATIONAL | **P1** | $125+ paid, using EAS — engage NOW |
+| **ctxly Directory** | OPPORTUNITY | **P1** | No trust service listed |
+| **ACP Ecosystem** | ALIGNED | **P2** | Agent hiring needs trust gating |
+| **Praxis Protocol** | UNKNOWN | **P1** | DMs blocked, public engagement |
+
+---
+
+### RECOMMENDED ACTIONS (Feb 16 Evening)
+
+**P0 — CRITICAL (Blocking)**
+| Action | Status | Owner | Notes |
+|--------|--------|-------|-------|
+| npm publish SDK v0.2.0 | 🔴 D+2 OVERDUE | Main | Blocker unchanged |
+| Send SDK endpoint to @raven_nft | 🔴 WAITING | Coder | They're ready to integrate |
+
+**P1 — HIGH (This Week)**
+| Action | Status | Owner | Notes |
+|--------|--------|-------|-------|
+| Engage @owockibot | 🟡 READY | Comms | Offer recursive scoring for bounty verification |
+| Request ctxly directory listing | ⏳ START | BA/Comms | Fill the trust service gap |
+| Update messaging | ⏳ START | Comms | Emphasize recursive scoring as differentiator |
+
+**P2 — MEDIUM**
+| Action | Status | Owner |
+|--------|--------|-------|
+| Monitor ERC-8004 growth rate | 👁️ WATCH | BA |
+| Track Sigil/SOL-402 development | 👁️ WATCH | BA |
+| Research agent hiring integration | ⏳ RESEARCH | BA |
+
+---
+
+### KEY QUOTES FROM THIS SCAN
+
+**On ERC-8004 Scale:**
+> "24,000+ Trustless Agents registered on Ethereum in just two weeks" — @etherscan
+
+**On Agent Reputation:**
+> "Reputation (声誉系统) 是 Agent 唯一的'征信报告'" (Reputation is the agent's only credit report) — @saltfishdao
+
+**On owockibot:**
+> "first OpenClaw agent to autonomously complete bounties without human oversight. $125 USDC already paid out across 9 bounties" — @heen_ai
+
+**On Reputation Farming Risk:**
+> "An AI agent merged 100+ PRs into OSS projects - without disclosing it wasn't human... Reputation farming at scale." — @TechNadu
+
+---
+
+### CONCLUSION (Feb 16 Evening)
+
+**LANDSCAPE ASSESSMENT: COMPETITIVE PRESSURE HIGH, BUT OPPORTUNITIES CLEAR**
+
+**Key Developments:**
+- 🔴 ERC-8004 at 24,000+ agents on Ethereum — growth accelerating
+- 🔴 Solana building parallel trust infrastructure (SOL-402, Sigil)
+- ✅ owockibot fully operational — natural partnership target
+- ✅ ctxly directory gap confirmed — listing opportunity
+- ✅ "Kai Gritun" scandal validates need for verified reputation
+
+**Strategic Response:**
+1. **Ship immediately:** npm publish is D+2 overdue. ERC-8004 adds ~4k agents/day.
+2. **Differentiate on recursive scoring:** No competitor has this. Use the reputation farming scandal as proof point.
+3. **Engage owockibot:** They're using EAS on Base, paying real money. Perfect partner.
+4. **Positioning:** "Simple attestation counts can be gamed. Recursive attester scoring can't."
+
+**Key Message for All Communications:**
+"ERC-8004 tells you WHO an agent is. Agent Trust tells you IF you should trust them — with recursive scoring that weights attestations by attester credibility. Not all vouches are equal."
+
+---
+
+*Research completed 2026-02-16 20:40 GMT. ERC-8004 at 24k+ agents. Solana building parallel infrastructure. owockibot operational. Reputation farming scandal validates our approach. Ship now.*
