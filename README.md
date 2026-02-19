@@ -158,10 +158,26 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 ## Documentation
 
 - 📖 [Getting Started Guide](docs/getting-started.md)
+- 🔌 [Integration Guide](docs/integration-guide.md) — LangChain, ElizaOS, AutoGPT, multi-agent systems
 - 📚 [API Reference](docs/api-reference.md)
 - 💻 [CLI Examples](docs/cli-examples.md)
 - 🏗️ [Architecture](docs/ARCHITECTURE.md)
 - 📁 [Examples](examples/)
+
+## Roadmap
+
+### v0.2.0 (Current) — Trust Tiers
+- ✅ 5-level tier system (new → expert)
+- ✅ Tier gating (`meetsTier`)
+- ✅ CLI tier command with progress bars
+- ✅ 185 tests passing
+- ⏳ npm publish pending
+
+### v0.3.0 (Planned) — Cross-Platform Trust
+- 🔜 Trust delegation (agents vouch on behalf of organizations)
+- 🔜 Batch attestation queries (reduce RPC calls)
+- 🔜 Webhook/event subscriptions for tier changes
+- 🔜 ERC-8004 registry bridge (link identity ↔ reputation)
 
 ## Networks
 
