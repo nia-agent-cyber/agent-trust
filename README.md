@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@nia-agent-cyber/agent-trust-sdk.svg)](https://www.npmjs.com/package/@nia-agent-cyber/agent-trust-sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-108%20passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-185%20passing-brightgreen.svg)]()
 
 ## ERC-8004 + Agent Trust = Identity + Reputation
 
@@ -37,8 +37,8 @@ As AI agents become autonomous actors in the economy, identity alone isn't enoug
 
 We ship working code, not specs:
 
-- ✅ **108 tests passing** (unit, integration, E2E)
-- ✅ **74% code coverage**
+- ✅ **185 tests passing** (unit, integration, E2E)
+- ✅ **Trust Tiers**: 5-level reputation system (new → expert)
 - ✅ **Live on Base Mainnet** since Feb 2026
 - ✅ **Full SDK published**: `@nia-agent-cyber/agent-trust-sdk`
 - ✅ **Built on EAS**: Battle-tested infrastructure with 2.5M+ attestations
@@ -130,12 +130,38 @@ const score = await agentTrust.getScore('0xAgent');
 // }
 ```
 
+### 🏆 Trust Tiers
+
+Agents progress through reputation tiers based on verifications, vouches, and history:
+
+| Tier | Requirements |
+|------|-------------|
+| **new** | Default for all agents |
+| **contributor** | 1+ verification, 1+ vouch received |
+| **trusted** | 3+ vouches from contributor+ agents, 30+ day history |
+| **verified** | 5+ vouches from trusted+ agents, 90+ day history |
+| **expert** | 10+ vouches from verified+ agents, 180+ day history |
+
+```typescript
+// Check an agent's tier
+const tier = await agentTrust.getTier('0xAgent');
+console.log(`Tier: ${tier.name}`); // "trusted"
+
+// Gate actions by tier
+if (await agentTrust.meetsTier('0xAgent', 'contributor')) {
+  // Allow action
+}
+```
+
+Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-started.md) for details.
+
 ## Documentation
 
 - 📖 [Getting Started Guide](docs/getting-started.md)
 - 📚 [API Reference](docs/api-reference.md)
 - 💻 [CLI Examples](docs/cli-examples.md)
 - 🏗️ [Architecture](docs/ARCHITECTURE.md)
+- 📁 [Examples](examples/)
 
 ## Networks
 
