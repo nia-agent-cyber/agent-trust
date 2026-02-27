@@ -5,7 +5,7 @@
 
 ---
 
-## Current State: 🟢 SDK v0.2.0 PUBLISHED + ANNOUNCED
+## Current State: 🟢 SDK v0.2.0 PUBLISHED — PLANNING v0.3.0
 
 ### Comms Status (Feb 27)
 
@@ -207,6 +207,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 14:03 | PM | **v0.3.0 planning.** SDK v0.2.0 blocker resolved. Assessed highest-impact next work: (1) Interactive demo app — removes adoption friction, (2) ERC-8004 bridge — positions as complement to 20k+ agent ecosystem, (3) New attestation types for partner integrations. Recommended starting demo app sprint immediately. |
 | 2026-02-27 12:08 | PM | **🚀 SDK v0.2.0 PUBLISHED to GitHub Packages!** Created GitHub Actions publish workflow using GITHUB_TOKEN (auto has write:packages). Workflow dispatch succeeded (run #22481867150). 13-day npm auth blocker bypassed via CI. |
 | 2026-02-27 10:05 | PM | **GitHub Packages configured.** Added publishConfig, .npmrc, updated README. Publish attempt blocked by missing `write:packages` scope on gh token. Main agent needs to run `gh auth refresh -h github.com -s write:packages` then publish. |
 | 2026-02-27 08:01 | PM | **D+13 check.** npm auth still ENEEDAUTH. Proposed GitHub Packages workaround as alternative. Repo clean, no issues/PRs. Escalating with concrete options for Remi. |
@@ -288,7 +289,59 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 ---
 
-## RECOMMENDED NEXT ACTIONS
+## v0.3.0 ROADMAP — Next Feature Work (Planned Feb 27)
+
+### Strategic Assessment
+
+SDK v0.2.0 is live on GitHub Packages. The blocker is resolved. Now the question is: what moves the needle most?
+
+**Current reality:**
+- 0 real users / integrations (besides genesis attestation)
+- Intense competition: ERC-8004 (20k+ agents), SelfClaw, SAID, owockibot all building trust layers
+- Our differentiator: recursive attester scoring + working SDK on Base with EAS
+- Existing docs/examples are good but nobody's using them yet
+
+**Highest-impact priorities (ordered):**
+
+### P0: Interactive Demo App (HIGHEST IMPACT)
+**Why:** Nobody will install an SDK to "try" trust infrastructure. A live demo removes all friction. Show don't tell.
+- **What:** Web app (Next.js or simple static) that lets you:
+  - Enter any Base address → see trust tier, attestation history, score breakdown
+  - Issue a test vouch/verification (with connected wallet)
+  - Visualize the trust graph between agents
+- **Scope:** 2-3 day sprint (Coder + QA)
+- **Impact:** Converts "interesting idea" → "I can see it working" → adoption
+- **Deliverable:** Live at a URL (GitHub Pages or Vercel), linked from README
+
+### P1: ERC-8004 Bridge/Interop
+**Why:** ERC-8004 has 20k+ agents. If we can read ERC-8004 registrations and layer our reputation scoring on top, we instantly gain relevance to that ecosystem.
+- **What:** SDK module that queries ERC-8004 registry on Base and enriches with Agent Trust reputation data
+- **Scope:** 1-2 day sprint
+- **Impact:** Positions us as "the reputation layer FOR ERC-8004 agents" — complement, not competitor
+- **Deliverable:** `agentTrust.getEnrichedProfile(address)` → ERC-8004 identity + Agent Trust reputation
+
+### P2: New Attestation Types
+**Why:** Current schemas (Verification, Vouch, Flag) are minimal. Real use cases need more.
+- **Candidates:**
+  - `SecurityAudit` — agent passed security review (PRSC integration angle)
+  - `TaskCompletion` — agent completed a bounty/task successfully (owockibot/OpenWork integration)
+  - `PaymentReliable` — agent completed payment without issues (AgentEscrow integration)
+- **Scope:** 1 day per attestation type
+- **Impact:** Each new type = new integration opportunity with specific partners
+
+### P3: Documentation & Developer Experience
+- API playground (Swagger/OpenAPI)
+- Video walkthrough
+- "5-minute quickstart" that actually works in 5 minutes
+
+### Recommended Sprint Order
+1. **Demo App** (Feb 28 - Mar 2) — spawn Coder
+2. **ERC-8004 Bridge** (Mar 3-4) — spawn Coder
+3. **New attestation types** (Mar 5+) — as partnership opportunities materialize
+
+---
+
+## RECOMMENDED NEXT ACTIONS (LEGACY)
 
 ### Immediate (Phase 3 Prep — Before Feb 14)
 
