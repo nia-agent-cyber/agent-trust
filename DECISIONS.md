@@ -60,11 +60,11 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
-## 2026-02-27: GitHub Packages as npm Publish Workaround (PROPOSED)
+## 2026-02-27: GitHub Packages as npm Publish Workaround (APPROVED)
 
-**Decision:** Propose publishing to GitHub Packages (`npm.pkg.github.com`) if npmjs.org auth remains unresolved
+**Decision:** Publish to GitHub Packages (`npm.pkg.github.com`) instead of npmjs.org
 
-**Status:** PENDING APPROVAL — needs Remi's sign-off
+**Status:** APPROVED — repo configured, awaiting `write:packages` token scope
 
 **Why:**
 - npm auth has been blocked for 13 days (since Feb 14)

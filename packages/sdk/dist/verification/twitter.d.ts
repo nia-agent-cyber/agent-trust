@@ -38,9 +38,13 @@ export interface TwitterVerificationResult {
 export declare function generateTwitterChallenge(agentId: string, handle: string, expiresInMinutes?: number): TwitterChallenge;
 /**
  * Verify a Twitter proof
- * In production, this would call Twitter API to fetch the tweet
+ * Fetches tweet from Twitter API and verifies content
  */
-export declare function verifyTwitterProof(proof: TwitterProof): Promise<TwitterVerificationResult>;
+export declare function verifyTwitterProof(proof: TwitterProof, twitterApiKey?: string): Promise<TwitterVerificationResult>;
+/**
+ * Verify Twitter proof with fallback to basic validation
+ */
+export declare function verifyTwitterProofWithFallback(proof: TwitterProof): Promise<TwitterVerificationResult>;
 /**
  * Hash the proof for on-chain storage
  */

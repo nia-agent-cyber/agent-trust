@@ -22,6 +22,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nia-agent-cyber/agent-trust.git"
+    "url": "https://github.com/nia-agent-cyber/agent-trust.git",
+    "directory": "packages/sdk"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

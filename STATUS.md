@@ -1,41 +1,34 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-02-27 08:01 GMT by Trust PM
+**Last Updated:** 2026-02-27 10:05 GMT by Trust PM
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
 
-## Current State: 🔴 DEPLOYMENT OVERDUE (D+13) — npm Auth Blocker Unresolved
+## Current State: 🟡 GITHUB PACKAGES CONFIGURED — Needs Token Scope
 
-### PM Assessment (Feb 27, 08:01 GMT)
+### PM Assessment (Feb 27, 10:05 GMT)
 
-**⚠️ FEB 14 DEPLOYMENT NEVER COMPLETED — Now D+13**
+**GitHub Packages workaround approved and configured. One blocker remains: `write:packages` scope.**
 
-SDK v0.2.0 has been ready since Feb 14 but remains unpublished. The npm auth blocker has persisted for **13 days** despite repeated escalation.
+**✅ What was done (Feb 27):**
+- Configured `packages/sdk/package.json` with `publishConfig` pointing to `npm.pkg.github.com`
+- Added `repository.directory` field for GitHub Packages
+- Created `.npmrc` in repo root with GitHub registry config
+- Updated README.md installation section with GitHub Packages setup instructions
+- Attempted publish — **blocked by missing `write:packages` scope on GitHub token**
 
-**✅ Technical State (Verified Feb 27):**
-- **Code:** All PRs merged (#1-14), no open issues/PRs, clean working tree
-- **Documentation:** Complete
-- **Version:** SDK v0.2.0 in package.json
-- **Repository:** Clean state, up to date with origin/main
+**🔐 BLOCKER: GitHub Token Scope**
+- Current `gh auth` scopes: `gist`, `read:org`, `repo`, `workflow`
+- **Missing:** `write:packages` scope
+- Fix: Run `gh auth refresh -h github.com -s write:packages` (requires browser device auth)
+- Then: Set token in `~/.npmrc` and run `npm publish` in `packages/sdk/`
 
-**🔐 BLOCKER: npm Authentication (D+13, UNCHANGED)**
-- `npm whoami` → ENEEDAUTH
-- No npm credentials in `pass` or `.npmrc`
-- **Action needed:** Main agent must run `npm adduser` (interactive TTY login) then `npm publish` in `packages/sdk/`
-
-**🔄 WORKAROUND OPTION: GitHub Packages**
-- We have working GitHub auth (`gh auth status` ✓)
-- Could publish to GitHub npm registry (`npm.pkg.github.com`) instead of npmjs.org
-- Trade-off: users need to configure GitHub registry for `@nia-agent-cyber` scope
-- **Decision needed from Remi:** Switch to GitHub Packages, or provide npm credentials?
-
-**🎯 IMMEDIATE ACTIONS (for Main Agent / Remi):**
-1. **Option A:** Run `npm adduser` + `npm publish` in `packages/sdk/` (requires npm account)
-2. **Option B:** Approve GitHub Packages workaround (PM can execute this autonomously)
-3. **Comms:** Once published anywhere, post Trust Tiers v0.2.0 launch announcement
-
-**No Coder/QA Work Needed** — All technical work complete. Blocker is purely npm auth.
+**🎯 IMMEDIATE ACTION (for Main Agent):**
+1. Run: `gh auth refresh -h github.com -s write:packages` (complete browser device flow)
+2. Run: `echo "//npm.pkg.github.com/:_authToken=$(gh auth token)" > ~/.npmrc`
+3. Run: `cd /Users/nia/repos/agent-trust/packages/sdk && npm publish`
+4. After publish: Trigger Comms for Trust Tiers v0.2.0 launch announcement
 
 ---
 
@@ -205,6 +198,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 10:05 | PM | **GitHub Packages configured.** Added publishConfig, .npmrc, updated README. Publish attempt blocked by missing `write:packages` scope on gh token. Main agent needs to run `gh auth refresh -h github.com -s write:packages` then publish. |
 | 2026-02-27 08:01 | PM | **D+13 check.** npm auth still ENEEDAUTH. Proposed GitHub Packages workaround as alternative. Repo clean, no issues/PRs. Escalating with concrete options for Remi. |
 | 2026-02-20 11:38 | PM | **D+6 check #9.** No change. npm auth sole blocker. Repo clean, no issues/PRs. |
 | 2026-02-20 10:53 | PM | **D+6 check #8.** No change. npm auth sole blocker. Repo clean, no issues/PRs. |

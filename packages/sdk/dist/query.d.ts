@@ -17,6 +17,22 @@ export declare function fetchAttestationsForAgent(agentAddress: string, network?
  */
 export declare function getTrustScore(agentAddress: string, network?: NetworkName): Promise<TrustScore>;
 /**
+ * Clear the attester score cache
+ * Useful for testing or when fresh data is needed
+ */
+export declare function clearAttesterScoreCache(): void;
+/**
+ * Get cache statistics for debugging
+ */
+export declare function getAttesterScoreCacheStats(): {
+    size: number;
+    entries: Array<{
+        address: string;
+        score: number;
+        age: number;
+    }>;
+};
+/**
  * Get attestation summary for an agent (useful for debugging)
  */
 export declare function getAttestationSummary(agentAddress: string, network?: NetworkName): Promise<{

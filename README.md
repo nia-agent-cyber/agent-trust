@@ -45,6 +45,14 @@ We ship working code, not specs:
 
 ## Quick Start
 
+**Configure GitHub Packages registry** (one-time setup):
+
+```bash
+echo "@nia-agent-cyber:registry=https://npm.pkg.github.com" >> .npmrc
+```
+
+Then install:
+
 ```bash
 npm install @nia-agent-cyber/agent-trust-sdk
 ```
