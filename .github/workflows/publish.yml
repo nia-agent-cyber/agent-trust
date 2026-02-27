@@ -26,10 +26,6 @@ jobs:
         working-directory: packages/sdk
         run: npm ci
 
-      - name: Build
-        working-directory: packages/sdk
-        run: npm run build --if-present
-
       - name: Publish
         working-directory: packages/sdk
         run: npm publish
