@@ -207,6 +207,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 16:10 | Coder | **ERC-8004 Bridge implemented.** Created `erc8004/` module with identity, reputation, validation registry readers + enriched profile builder. Added `getEnrichedProfile(address)` to AgentTrust class. 39 new tests (224 total passing). PR #16 created on `feature/erc8004-bridge`. |
 | 2026-02-27 16:03 | PM | **ERC-8004 Bridge spec created.** Demo app (PR #15) merged. Created design spec at `docs/design/erc8004-bridge.md` — defines SDK module to read ERC-8004 Identity/Reputation registries and enrich with Agent Trust scoring. New `getEnrichedProfile(address)` method. Ready for Coder to implement on `feature/erc8004-bridge` branch. |
 | 2026-02-27 14:09 | QA | **Reviewed and merged PR #15 (Interactive Demo App).** Found 2 issues: (1) XSS vulnerability — attestation fields injected into innerHTML without escaping, (2) Approval rate formula mismatch vs SDK. Fixed both, merged to main. |
 | 2026-02-27 14:06 | Coder | **Built Interactive Demo App (P0 v0.3.0).** Created `demo/` directory with standalone HTML/JS web app. Features: address lookup → trust tier, score, attestation history, vouch count, progress bars. Reads directly from EAS GraphQL (no backend). Supports Base Mainnet + Sepolia toggle. PR #15 created. |

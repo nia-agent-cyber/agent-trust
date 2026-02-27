@@ -39,17 +39,20 @@ import {
   TierInfo,
   TierProgress,
 } from './tier';
+import { buildEnrichedProfile, EnrichedAgentProfile, ERC8004Config } from './erc8004';
 
 export class AgentTrust {
   private eas: EAS;
   private network: NetworkName;
   private provider: any;
   private twitterApiKey?: string;
+  private erc8004Config?: ERC8004Config;
 
   constructor(config: AgentTrustConfig) {
     this.network = config.network;
     this.provider = config.provider;
     this.twitterApiKey = config.twitterApiKey;
+    this.erc8004Config = config.erc8004;
 
     const networkConfig = NETWORKS[this.network];
     const easAddress = config.easAddress || networkConfig.easAddress;
@@ -415,6 +418,37 @@ export class AgentTrust {
       throw new Error('Invalid address: must be a valid Ethereum address');
     }
     return queryGetTierProgress(address, this.network);
+  }
+
+  // ============ ERC-8004 Bridge Methods ============
+
+  /**
+   * Get an enriched agent profile combining ERC-8004 identity/reputation
+   * with Agent Trust tier and scoring data.
+   *
+   * @param address - Agent wallet address
+   * @returns EnrichedAgentProfile with combined assessment
+   */
+  async getEnrichedProfile(address: string): Promise<EnrichedAgentProfile> {
+    if (!ethers.isAddress(address)) {
+      throw new Error('Invalid address: must be a valid Ethereum address');
+    }
+
+    // Fetch Agent Trust data in parallel
+    const [tierInfo, trustScore] = await Promise.all([
+      this.getTier(address),
+      this.getScore(address),
+    ]);
+
+    return buildEnrichedProfile(
+      address,
+      this.provider,
+      this.network,
+      tierInfo,
+      trustScore,
+      trustScore.attestationCount,
+      this.erc8004Config,
+    );
   }
 
   // ============ Utility Methods ============

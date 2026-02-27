@@ -21,6 +21,9 @@ export * from './scoring';
 // Tier utilities
 export * from './tier';
 
+// ERC-8004 bridge
+export * from './erc8004';
+
 // Query utilities
 export { 
   getTrustScore, 
