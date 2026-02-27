@@ -207,6 +207,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 14:09 | QA | **Reviewed and merged PR #15 (Interactive Demo App).** Found 2 issues: (1) XSS vulnerability — attestation fields injected into innerHTML without escaping, (2) Approval rate formula mismatch vs SDK. Fixed both, merged to main. |
 | 2026-02-27 14:06 | Coder | **Built Interactive Demo App (P0 v0.3.0).** Created `demo/` directory with standalone HTML/JS web app. Features: address lookup → trust tier, score, attestation history, vouch count, progress bars. Reads directly from EAS GraphQL (no backend). Supports Base Mainnet + Sepolia toggle. PR #15 created. |
 | 2026-02-27 14:03 | PM | **v0.3.0 planning.** SDK v0.2.0 blocker resolved. Assessed highest-impact next work: (1) Interactive demo app — removes adoption friction, (2) ERC-8004 bridge — positions as complement to 20k+ agent ecosystem, (3) New attestation types for partner integrations. Recommended starting demo app sprint immediately. |
 | 2026-02-27 12:08 | PM | **🚀 SDK v0.2.0 PUBLISHED to GitHub Packages!** Created GitHub Actions publish workflow using GITHUB_TOKEN (auto has write:packages). Workflow dispatch succeeded (run #22481867150). 13-day npm auth blocker bypassed via CI. |
