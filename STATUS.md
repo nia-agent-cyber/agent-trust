@@ -1,6 +1,6 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-02-27 18:00 GMT+2 by PM
+**Last Updated:** 2026-02-27 20:00 GMT+2 by PM
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
@@ -240,6 +240,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 20:00 | PM | **Comms blitz planned for ERC-8004 bridge positioning.** Created `COMMS_BLITZ_PLAN.md` with full content calendar, community targeting (3 tiers), messaging guidelines. Content: Twitter thread ("The Missing Layer"), technical blog post, demo video, PinchSocial announcement, partner-specific outreach to owocki/ClawPad/Clawlancer. Tier 1 targets: ERC-8004 ecosystem (20k+ agents). Timeline: Feb 28 - Mar 6. Success metric: first real SDK integration within 30 days. Ready for Comms to execute. |
 | 2026-02-27 18:00 | PM | **Strategic pivot: Adoption > Features.** Assessed P2 (new attestation types) vs distribution focus. Recommended deprioritizing P2 until real users/partners request new types. Next sprint: Comms blitz for ERC-8004 bridge, partner outreach, developer onboarding, demo promotion. Zero users = build distribution, not more features. |
 | 2026-02-27 16:13 | QA | **Reviewed and merged PR #16 (ERC-8004 Bridge).** Full QA review: verified scoring weights match spec (40/30/15/15), 39 new tests adequate with good edge case coverage, graceful degradation confirmed (zero-address bypass, try/catch on all contract calls), no breaking changes (0 deletions), types well-defined. 224 total tests passing. PR merged to main. |
 | 2026-02-27 16:10 | Coder | **ERC-8004 Bridge implemented.** Created `erc8004/` module with identity, reputation, validation registry readers + enriched profile builder. Added `getEnrichedProfile(address)` to AgentTrust class. 39 new tests (224 total passing). PR #16 created on `feature/erc8004-bridge`. |
