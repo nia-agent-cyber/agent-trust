@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Trust Explorer</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #14141f;
+      --surface2: #1e1e2e;
+      --border: #2a2a3e;
+      --text: #e0e0ee;
+      --text-muted: #8888aa;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.3);
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --orange: #f97316;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    
+    header { text-align: center; margin-bottom: 2.5rem; }
+    header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+    header h1 span { color: var(--accent); }
+    header p { color: var(--text-muted); font-size: 0.95rem; }
+    
+    .search-box {
+      display: flex; gap: 0.5rem; margin-bottom: 2rem;
+    }
+    .search-box input {
+      flex: 1; padding: 0.75rem 1rem; border-radius: 0.5rem;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); font-size: 0.95rem; font-family: 'JetBrains Mono', monospace;
+      outline: none; transition: border-color 0.2s;
+    }
+    .search-box input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .search-box input::placeholder { color: var(--text-muted); font-family: inherit; }
+    .search-box button {
+      padding: 0.75rem 1.5rem; border-radius: 0.5rem;
+      background: var(--accent); color: white; border: none;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .search-box button:hover { opacity: 0.9; }
+    .search-box button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .network-toggle {
+      display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;
+    }
+    .network-toggle label {
+      padding: 0.4rem 1rem; border-radius: 0.4rem; cursor: pointer;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 0.85rem; color: var(--text-muted); transition: all 0.2s;
+    }
+    .network-toggle input { display: none; }
+    .network-toggle input:checked + label {
+      border-color: var(--accent); color: var(--text); background: var(--surface2);
+    }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem;
+    }
+    .card h2 { font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    /* Tier display */
+    .tier-display { text-align: center; padding: 1.5rem 0; }
+    .tier-emoji { font-size: 3rem; }
+    .tier-name { font-size: 1.6rem; font-weight: 700; margin: 0.3rem 0; }
+    .tier-desc { color: var(--text-muted); font-size: 0.9rem; }
+    .trust-score { margin-top: 0.75rem; }
+    .trust-score .score { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .trust-score .label { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Stats grid */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .stat { text-align: center; }
+    .stat .value { font-size: 1.5rem; font-weight: 700; }
+    .stat .label { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.2rem; }
+
+    /* Progress bars */
+    .progress-section { margin-top: 1rem; }
+    .progress-item { margin-bottom: 0.75rem; }
+    .progress-header { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.3rem; }
+    .progress-header .status { color: var(--text-muted); }
+    .progress-bar { height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+    .progress-fill.met { background: var(--green); }
+    .progress-fill.partial { background: var(--yellow); }
+    .progress-fill.low { background: var(--orange); }
+
+    /* Attestation list */
+    .attestation-list { max-height: 400px; overflow-y: auto; }
+    .attestation {
+      padding: 0.75rem; border-radius: 0.5rem; background: var(--surface2);
+      margin-bottom: 0.5rem; font-size: 0.85rem;
+    }
+    .attestation .type { font-weight: 600; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.4rem; }
+    .attestation .meta { color: var(--text-muted); font-size: 0.8rem; }
+    .attestation .meta a { color: var(--accent); text-decoration: none; }
+    .attestation .meta a:hover { text-decoration: underline; }
+    .badge { padding: 0.15rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600; }
+    .badge.verification { background: rgba(99,102,241,0.2); color: #818cf8; }
+    .badge.vouch { background: rgba(34,197,94,0.2); color: #4ade80; }
+    .badge.flag { background: rgba(239,68,68,0.2); color: #f87171; }
+    .badge.revoked { background: rgba(239,68,68,0.15); color: #f87171; text-decoration: line-through; }
+
+    .empty { text-align: center; color: var(--text-muted); padding: 2rem; }
+    .error { color: var(--red); text-align: center; padding: 1rem; }
+    .loading { text-align: center; color: var(--text-muted); padding: 2rem; }
+    .loading .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #results { display: none; }
+
+    .addr { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); word-break: break-all; }
+
+    footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🛡️ Agent <span>Trust</span> Explorer</h1>
+      <p>Look up any address on Base to see its trust tier, attestations, and reputation score</p>
+    </header>
+
+    <div class="network-toggle">
+      <input type="radio" name="network" id="net-base" value="base">
+      <label for="net-base">Base Mainnet</label>
+      <input type="radio" name="network" id="net-sepolia" value="baseSepolia" checked>
+      <label for="net-sepolia">Base Sepolia</label>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="addressInput" placeholder="0x... Enter a Base address" spellcheck="false">
+      <button id="lookupBtn" onclick="lookup()">Look Up</button>
+    </div>
+
+    <div id="loading" class="loading" style="display:none">
+      <div class="spinner"></div>
+      <p style="margin-top:0.5rem">Fetching attestations from EAS...</p>
+    </div>
+
+    <div id="error" class="error" style="display:none"></div>
+
+    <div id="results">
+      <div class="card">
+        <div class="tier-display">
+          <div class="tier-emoji" id="tierEmoji"></div>
+          <div class="tier-name" id="tierName"></div>
+          <div class="tier-desc" id="tierDesc"></div>
+          <div class="trust-score">
+            <div class="score" id="trustScore"></div>
+            <div class="label">Trust Score</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="value" id="statAttestations">0</div><div class="label">Attestations</div></div>
+          <div class="stat"><div class="value" id="statVouches">0</div><div class="label">Vouches</div></div>
+          <div class="stat"><div class="value" id="statVerifications">0</div><div class="label">Verifications</div></div>
+          <div class="stat"><div class="value" id="statFlags">0</div><div class="label">Flags</div></div>
+        </div>
+      </div>
+
+      <div class="card" id="progressCard">
+        <h2>📈 Progress to Next Tier</h2>
+        <div class="progress-section" id="progressBars"></div>
+      </div>
+
+      <div class="card">
+        <h2>📜 Attestation History</h2>
+        <div class="attestation-list" id="attestationList"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Powered by <a href="https://attest.org" target="_blank">EAS</a> on <a href="https://base.org" target="_blank">Base</a> · <a href="https://github.com/nia-agent-cyber/agent-trust" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+
+<script>
+// === Constants (mirrored from SDK) ===
+const GRAPHQL_ENDPOINTS = {
+  base: 'https://base.easscan.org/graphql',
+  baseSepolia: 'https://base-sepolia.easscan.org/graphql',
+};
+
+const EASSCAN_URLS = {
+  base: 'https://base.easscan.org',
+  baseSepolia: 'https://base-sepolia.easscan.org',
+};
+
+const SCHEMAS = {
+  verification: '0xee0eab330a75940a9d73eaec95d71b12fd5d0a0b4fe0a5c46304052db0ef2849',
+  vouch: '0x974ebae65dc7f066a2734b8a966f6bec08454426b401267460dcf6c949275e6c',
+  flag: '0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47',
+};
+
+const TIER_META = [
+  { name: 'New', emoji: '🆕', desc: 'New agent with no established reputation' },
+  { name: 'Contributor', emoji: '🔧', desc: 'Active participant with basic reputation' },
+  { name: 'Trusted', emoji: '⭐', desc: 'Established reputation with peer vouches' },
+  { name: 'Verified', emoji: '✅', desc: 'Highly trusted with strong community validation' },
+  { name: 'Expert', emoji: '👑', desc: 'Elite status with exceptional track record' },
+];
+
+const TIER_REQS = [
+  { minAttestations: 0, minVouches: 0, minApprovalRate: 0, minDaysActive: 0 },
+  { minAttestations: 3, minVouches: 0, minApprovalRate: 50, minDaysActive: 7 },
+  { minAttestations: 10, minVouches: 2, minApprovalRate: 70, minDaysActive: 30 },
+  { minAttestations: 25, minVouches: 5, minApprovalRate: 85, minDaysActive: 90 },
+  { minAttestations: 50, minVouches: 10, minApprovalRate: 95, minDaysActive: 180 },
+];
+
+const DECAY_GRACE_DAYS = 90;
+const DECAY_PERIOD_DAYS = 90;
+
+// === Helpers ===
+function getNetwork() {
+  return document.querySelector('input[name="network"]:checked').value;
+}
+
+function checksumAddress(addr) {
+  // Simple checksum — just return mixed-case for display, lowercase for query
+  return addr;
+}
+
+function shortAddr(addr) {
+  return addr.slice(0, 6) + '…' + addr.slice(-4);
+}
+
+function timeAgo(ts) {
+  const s = Math.floor(Date.now() / 1000 - ts);
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s / 60) + 'm ago';
+  if (s < 86400) return Math.floor(s / 3600) + 'h ago';
+  if (s < 2592000) return Math.floor(s / 86400) + 'd ago';
+  return new Date(ts * 1000).toLocaleDateString();
+}
+
+// === EAS GraphQL Query ===
+async function fetchAttestations(address, network) {
+  const endpoint = GRAPHQL_ENDPOINTS[network];
+  const addrLower = address.toLowerCase();
+  // Try checksummed too
+  const addrChecksum = addrLower; // We'll query both
+
+  const query = `
+    query GetAttestations($address: String!, $addressLower: String!) {
+      asRecipient: attestations(
+        where: {
+          OR: [
+            { recipient: { equals: $address } },
+            { recipient: { equals: $addressLower } }
+          ]
+        }
+        orderBy: { time: desc }
+        take: 100
+      ) {
+        id
+        attester
+        recipient
+        time
+        revoked
+        decodedDataJson
+        schemaId
+      }
+    }
+  `;
+
+  const resp = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query,
+      variables: { address, addressLower: addrLower },
+    }),
+  });
+
+  if (!resp.ok) throw new Error(`EAS API returned ${resp.status}`);
+  const data = await resp.json();
+  if (data.errors) throw new Error(data.errors[0].message);
+
+  return data.data?.asRecipient || [];
+}
+
+function categorize(attestations) {
+  const verifications = [], vouches = [], flags = [];
+  for (const att of attestations) {
+    const schemaLower = att.schemaId.toLowerCase();
+    let decoded = [];
+    try { decoded = JSON.parse(att.decodedDataJson); } catch {}
+    const dm = new Map(decoded.map(d => [d.name, d.value?.value]));
+
+    const base = { uid: att.id, attester: att.attester, time: att.time, revoked: att.revoked };
+
+    if (schemaLower === SCHEMAS.verification) {
+      verifications.push({ ...base, platform: dm.get('platform') || '', handle: dm.get('handle') || '' });
+    } else if (schemaLower === SCHEMAS.vouch) {
+      vouches.push({ ...base, trustLevel: Number(dm.get('trustLevel')) || 0, context: dm.get('context') || '' });
+    } else if (schemaLower === SCHEMAS.flag) {
+      flags.push({ ...base, severity: Number(dm.get('severity')) || 0, reason: dm.get('reason') || '' });
+    }
+  }
+  return { verifications, vouches, flags };
+}
+
+// === Tier Calculation (mirrors SDK) ===
+function calcTier(stats) {
+  let tier = 0;
+  for (let t = 4; t >= 0; t--) {
+    const r = TIER_REQS[t];
+    if (stats.totalAttestations >= r.minAttestations &&
+        stats.qualifiedVouches >= r.minVouches &&
+        stats.approvalRate >= r.minApprovalRate &&
+        stats.daysActive >= r.minDaysActive) {
+      tier = t;
+      break;
+    }
+  }
+  // Apply decay
+  if (tier > 0 && stats.lastPositiveTime) {
+    const daysSince = Math.floor((Date.now() / 1000 - stats.lastPositiveTime) / 86400);
+    if (daysSince > DECAY_GRACE_DAYS) {
+      const decay = Math.floor((daysSince - DECAY_GRACE_DAYS) / DECAY_PERIOD_DAYS);
+      tier = Math.max(0, tier - decay);
+    }
+  }
+  return tier;
+}
+
+function buildStats(verifications, vouches, flags) {
+  const total = verifications.length + vouches.length;
+  const flagCount = flags.length;
+  const approvalRate = total > 0 ? ((total - flagCount) / (total + flagCount)) * 100 : 0;
+
+  const allTimes = [...verifications, ...vouches, ...flags].map(a => a.time).filter(Boolean);
+  const positiveTimes = [...verifications, ...vouches].filter(a => !a.revoked).map(a => a.time);
+
+  const firstTime = allTimes.length ? Math.min(...allTimes) : null;
+  const lastPositiveTime = positiveTimes.length ? Math.max(...positiveTimes) : null;
+  const daysActive = firstTime ? Math.floor((Date.now() / 1000 - firstTime) / 86400) : 0;
+
+  // Qualified vouches: trust level >= 3 and not revoked
+  const qualifiedVouches = vouches.filter(v => v.trustLevel >= 3 && !v.revoked).length;
+
+  return { totalAttestations: total, qualifiedVouches, approvalRate: Math.max(0, approvalRate), daysActive, flags: flagCount, firstTime, lastPositiveTime };
+}
+
+// === Trust Score (simplified) ===
+function calcTrustScore(verifications, vouches, flags) {
+  let score = 50; // base
+  score += verifications.filter(v => !v.revoked).length * 8;
+  score += vouches.filter(v => !v.revoked).length * 5;
+  score += vouches.filter(v => !v.revoked && v.trustLevel >= 4).length * 3;
+  score -= flags.filter(f => !f.revoked).length * 15;
+  return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+// === Render ===
+function render(address, verifications, vouches, flags) {
+  const network = getNetwork();
+  const easscanBase = EASSCAN_URLS[network];
+  const stats = buildStats(verifications, vouches, flags);
+  const tier = calcTier(stats);
+  const meta = TIER_META[tier];
+  const score = calcTrustScore(verifications, vouches, flags);
+
+  document.getElementById('tierEmoji').textContent = meta.emoji;
+  document.getElementById('tierName').textContent = meta.name;
+  document.getElementById('tierDesc').textContent = meta.desc;
+  document.getElementById('trustScore').textContent = score + '/100';
+  document.getElementById('statAttestations').textContent = stats.totalAttestations + stats.flags;
+  document.getElementById('statVouches').textContent = vouches.length;
+  document.getElementById('statVerifications').textContent = verifications.length;
+  document.getElementById('statFlags').textContent = stats.flags;
+
+  // Progress to next tier
+  const progressCard = document.getElementById('progressCard');
+  const progressBars = document.getElementById('progressBars');
+  if (tier < 4) {
+    const nextReq = TIER_REQS[tier + 1];
+    progressCard.style.display = '';
+    progressBars.innerHTML = [
+      progressBar('Attestations', stats.totalAttestations, nextReq.minAttestations),
+      progressBar('Vouches', stats.qualifiedVouches, nextReq.minVouches),
+      progressBar('Approval Rate', Math.round(stats.approvalRate), nextReq.minApprovalRate, '%'),
+      progressBar('Days Active', stats.daysActive, nextReq.minDaysActive),
+    ].join('');
+  } else {
+    progressCard.style.display = 'none';
+  }
+
+  // Attestation history
+  const list = document.getElementById('attestationList');
+  const all = [
+    ...verifications.map(v => ({ ...v, _type: 'verification' })),
+    ...vouches.map(v => ({ ...v, _type: 'vouch' })),
+    ...flags.map(f => ({ ...f, _type: 'flag' })),
+  ].sort((a, b) => b.time - a.time);
+
+  if (all.length === 0) {
+    list.innerHTML = '<div class="empty">No attestations found for this address</div>';
+  } else {
+    list.innerHTML = all.map(a => {
+      const link = `${easscanBase}/attestation/view/${a.uid}`;
+      let detail = '';
+      if (a._type === 'verification') detail = `Platform: ${a.platform} · Handle: ${a.handle}`;
+      if (a._type === 'vouch') detail = `Trust Level: ${a.trustLevel}/5` + (a.context ? ` · "${a.context}"` : '');
+      if (a._type === 'flag') detail = `Severity: ${a.severity}/5 · ${a.reason}`;
+      const revokedBadge = a.revoked ? ' <span class="badge revoked">REVOKED</span>' : '';
+      return `<div class="attestation">
+        <div class="type"><span class="badge ${a._type}">${a._type}</span>${revokedBadge}</div>
+        <div>${detail}</div>
+        <div class="meta">From ${shortAddr(a.attester)} · ${timeAgo(a.time)} · <a href="${link}" target="_blank">View on EASScan ↗</a></div>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('results').style.display = '';
+}
+
+function progressBar(label, current, required, unit = '') {
+  const pct = required > 0 ? Math.min(100, (current / required) * 100) : 100;
+  const met = current >= required;
+  const cls = met ? 'met' : pct > 50 ? 'partial' : 'low';
+  return `<div class="progress-item">
+    <div class="progress-header"><span>${label}</span><span class="status">${current}${unit} / ${required}${unit}</span></div>
+    <div class="progress-bar"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div>
+  </div>`;
+}
+
+// === Main ===
+async function lookup() {
+  const input = document.getElementById('addressInput').value.trim();
+  if (!/^0x[a-fA-F0-9]{40}$/.test(input)) {
+    showError('Please enter a valid Ethereum address (0x...)');
+    return;
+  }
+
+  const btn = document.getElementById('lookupBtn');
+  btn.disabled = true;
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('error').style.display = 'none';
+  document.getElementById('loading').style.display = '';
+
+  try {
+    const network = getNetwork();
+    const raw = await fetchAttestations(input, network);
+    const { verifications, vouches, flags } = categorize(raw);
+    render(input, verifications, vouches, flags);
+    document.getElementById('loading').style.display = 'none';
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    showError('Error: ' + e.message);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function showError(msg) {
+  const el = document.getElementById('error');
+  el.textContent = msg;
+  el.style.display = '';
+}
+
+// Enter key triggers lookup
+document.getElementById('addressInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') lookup();
+});
+
+// Pre-fill with Nia's address for demo
+document.getElementById('addressInput').value = '0xC0D7CA6B3C1EF108696ced64F97729177F823189';
+</script>
+</body>
+</html>
