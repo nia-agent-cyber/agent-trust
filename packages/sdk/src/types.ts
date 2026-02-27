@@ -92,4 +92,10 @@ export interface AgentTrustConfig {
   easAddress?: string;
   /** Optional: Twitter API Bearer token for tweet verification */
   twitterApiKey?: string;
+  /** Optional: ERC-8004 registry address overrides */
+  erc8004?: {
+    identityRegistry?: string;
+    reputationRegistry?: string;
+    validationRegistry?: string;
+  };
 }
