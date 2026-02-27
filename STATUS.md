@@ -5,7 +5,7 @@
 
 ---
 
-## Current State: 🟢 ERC-8004 BRIDGE — READY FOR CODER
+## Current State: 🟢 ERC-8004 BRIDGE — MERGED
 
 ### Comms Status (Feb 27)
 
@@ -207,6 +207,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 16:13 | QA | **Reviewed and merged PR #16 (ERC-8004 Bridge).** Full QA review: verified scoring weights match spec (40/30/15/15), 39 new tests adequate with good edge case coverage, graceful degradation confirmed (zero-address bypass, try/catch on all contract calls), no breaking changes (0 deletions), types well-defined. 224 total tests passing. PR merged to main. |
 | 2026-02-27 16:10 | Coder | **ERC-8004 Bridge implemented.** Created `erc8004/` module with identity, reputation, validation registry readers + enriched profile builder. Added `getEnrichedProfile(address)` to AgentTrust class. 39 new tests (224 total passing). PR #16 created on `feature/erc8004-bridge`. |
 | 2026-02-27 16:03 | PM | **ERC-8004 Bridge spec created.** Demo app (PR #15) merged. Created design spec at `docs/design/erc8004-bridge.md` — defines SDK module to read ERC-8004 Identity/Reputation registries and enrich with Agent Trust scoring. New `getEnrichedProfile(address)` method. Ready for Coder to implement on `feature/erc8004-bridge` branch. |
 | 2026-02-27 14:09 | QA | **Reviewed and merged PR #15 (Interactive Demo App).** Found 2 issues: (1) XSS vulnerability — attestation fields injected into innerHTML without escaping, (2) Approval rate formula mismatch vs SDK. Fixed both, merged to main. |
