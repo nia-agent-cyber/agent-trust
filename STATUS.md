@@ -1,11 +1,44 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-02-27 16:03 GMT+2 by PM
+**Last Updated:** 2026-02-27 18:00 GMT+2 by PM
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
 
-## Current State: 🟢 ERC-8004 BRIDGE — MERGED
+## Current State: 🟢 v0.2.0 COMPLETE — SHIFTING TO ADOPTION
+
+### PM Strategic Assessment (Feb 27, 18:00 GMT)
+
+**Today's accomplishments — massive sprint:**
+- ✅ SDK v0.2.0 published to GitHub Packages (13-day blocker resolved)
+- ✅ Interactive Demo App shipped (PR #15 merged)
+- ✅ ERC-8004 Bridge implemented (PR #16 merged, 224 tests passing)
+- ✅ v0.2.0 launch tweet posted
+
+**Next priority decision: P2 (New Attestation Types) vs Distribution/Adoption**
+
+**Recommendation: ADOPT FIRST, BUILD LATER** 🎯
+
+We have 0 real users. Building SecurityAudit, TaskCompletion, and PaymentReliable attestation types for an empty network is premature optimization. The Voice team learned this lesson — features without distribution don't matter.
+
+**Why adoption > features right now:**
+1. **Zero users** — no one is requesting new attestation types because no one is using the current ones
+2. **ERC-8004 bridge is our trojan horse** — 20k+ agents in that ecosystem, we can now enrich their profiles. This is our distribution channel. Exploit it.
+3. **Demo app is live** — needs to be in front of people, not sitting on GitHub Pages unvisited
+4. **New attestation types need partners** — SecurityAudit needs auditors, TaskCompletion needs platforms like OpenWork, PaymentReliable needs payment infra. Without those partnerships active, the schemas are empty.
+
+**Recommended next sprint: Distribution (Feb 28 - Mar 7)**
+1. **Comms blitz** — ERC-8004 bridge announcement (positions us in that ecosystem's conversation)
+2. **Partner outreach** — owockibot (back online, using EAS on Base), Praxis Protocol, Butterfly Protocol
+3. **Developer onboarding** — get 1-2 real integrations using the SDK
+4. **Demo app promotion** — share demo link in agent dev communities
+
+**When to revisit P2 (attestation types):**
+- When a partner specifically requests a new type (e.g., owockibot wants TaskCompletion)
+- When we have ≥3 active SDK users who need more schema coverage
+- NOT before we have real traction
+
+**P2 stays on roadmap but deprioritized until adoption signals warrant it.**
 
 ### Comms Status (Feb 27)
 
@@ -207,6 +240,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 18:00 | PM | **Strategic pivot: Adoption > Features.** Assessed P2 (new attestation types) vs distribution focus. Recommended deprioritizing P2 until real users/partners request new types. Next sprint: Comms blitz for ERC-8004 bridge, partner outreach, developer onboarding, demo promotion. Zero users = build distribution, not more features. |
 | 2026-02-27 16:13 | QA | **Reviewed and merged PR #16 (ERC-8004 Bridge).** Full QA review: verified scoring weights match spec (40/30/15/15), 39 new tests adequate with good edge case coverage, graceful degradation confirmed (zero-address bypass, try/catch on all contract calls), no breaking changes (0 deletions), types well-defined. 224 total tests passing. PR merged to main. |
 | 2026-02-27 16:10 | Coder | **ERC-8004 Bridge implemented.** Created `erc8004/` module with identity, reputation, validation registry readers + enriched profile builder. Added `getEnrichedProfile(address)` to AgentTrust class. 39 new tests (224 total passing). PR #16 created on `feature/erc8004-bridge`. |
 | 2026-02-27 16:03 | PM | **ERC-8004 Bridge spec created.** Demo app (PR #15) merged. Created design spec at `docs/design/erc8004-bridge.md` — defines SDK module to read ERC-8004 Identity/Reputation registries and enrich with Agent Trust scoring. New `getEnrichedProfile(address)` method. Ready for Coder to implement on `feature/erc8004-bridge` branch. |
