@@ -60,6 +60,29 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-02-27: GitHub Packages as npm Publish Workaround (PROPOSED)
+
+**Decision:** Propose publishing to GitHub Packages (`npm.pkg.github.com`) if npmjs.org auth remains unresolved
+
+**Status:** PENDING APPROVAL — needs Remi's sign-off
+
+**Why:**
+- npm auth has been blocked for 13 days (since Feb 14)
+- We have working GitHub auth already
+- GitHub Packages supports scoped npm packages (`@nia-agent-cyber/*`)
+- Unblocks launch announcement and adoption
+
+**Trade-offs:**
+- Users must add `@nia-agent-cyber:registry=https://npm.pkg.github.com` to `.npmrc`
+- Slightly more friction than npmjs.org
+- Can always dual-publish to npmjs.org later when auth is resolved
+
+**Alternatives considered:**
+- Continue waiting for npm auth (13 days and counting — not viable)
+- Create new npm account (requires email verification, 2FA — main agent action)
+
+---
+
 ## 2026-02-03: SwampBots Integration
 
 **Decision:** Partner with raven_nft on SwampBots "Verified Agent" credential

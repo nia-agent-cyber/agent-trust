@@ -1,47 +1,39 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-02-20 11:38 GMT by Trust PM
+**Last Updated:** 2026-02-27 08:01 GMT by Trust PM
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
 
-## Current State: 🔴 DEPLOYMENT OVERDUE (D+6) — npm Publish Still Needed
+## Current State: 🔴 DEPLOYMENT OVERDUE (D+13) — npm Auth Blocker Unresolved
 
-### PM Assessment (Feb 17, 02:55 GMT)
+### PM Assessment (Feb 27, 08:01 GMT)
 
-**⚠️ FEB 14 DEPLOYMENT NOT COMPLETED — Deployment D+3**
+**⚠️ FEB 14 DEPLOYMENT NEVER COMPLETED — Now D+13**
 
-The scheduled Feb 14 deployment was **not executed**. SDK v0.2.0 is ready but **never published to npm**.
+SDK v0.2.0 has been ready since Feb 14 but remains unpublished. The npm auth blocker has persisted for **13 days** despite repeated escalation.
 
-**✅ Technical State (Verified Feb 15 13:30 GMT):**
-- **Tests:** All 185 tests passing (7 files, 13.37s runtime)
-- **Code:** All PRs merged (#1-14), no open issues, clean working tree
-- **Documentation:** Complete, including tier section in `docs/getting-started.md`
+**✅ Technical State (Verified Feb 27):**
+- **Code:** All PRs merged (#1-14), no open issues/PRs, clean working tree
+- **Documentation:** Complete
 - **Version:** SDK v0.2.0 in package.json
 - **Repository:** Clean state, up to date with origin/main
-- **Mainnet E2E:** ✅ VERIFIED — Tests pass against Base mainnet
 
-**📋 Deployment Checklist:**
-- ✅ Test suite verified stable (185 passing)
-- ✅ npm publish --dry-run verified (52.6 kB tarball, 56 files)
-- ✅ E2E mainnet verification complete
-- ✅ EAS mainnet endpoint responsive
-- ✅ Draft announcement ready (COMMS_PLAN.md)
-- ❌ **npm publish** — NOT DONE (requires npm login)
-- ❌ **Launch announcement** — Waiting on npm publish
+**🔐 BLOCKER: npm Authentication (D+13, UNCHANGED)**
+- `npm whoami` → ENEEDAUTH
+- No npm credentials in `pass` or `.npmrc`
+- **Action needed:** Main agent must run `npm adduser` (interactive TTY login) then `npm publish` in `packages/sdk/`
 
-**🔐 BLOCKER: npm Authentication (Same as Feb 14)**
-- Not logged in to npm registry
-- **Action needed:** Main agent run `npm adduser` then `npm publish` in `packages/sdk/`
+**🔄 WORKAROUND OPTION: GitHub Packages**
+- We have working GitHub auth (`gh auth status` ✓)
+- Could publish to GitHub npm registry (`npm.pkg.github.com`) instead of npmjs.org
+- Trade-off: users need to configure GitHub registry for `@nia-agent-cyber` scope
+- **Decision needed from Remi:** Switch to GitHub Packages, or provide npm credentials?
 
-**🆕 NEW: owockibot BACK ONLINE (Feb 14-15)**
-- Per BA scan: owockibot resumed operations, bounty platform active
-- **Outreach opportunity:** Comms should engage now that bot is operational
-
-**🎯 IMMEDIATE ACTIONS:**
-1. **Main agent:** Run `npm adduser` + `npm publish` in `packages/sdk/`
-2. **Comms:** Once published, post Trust Tiers v0.2.0 launch announcement
-3. **Comms:** Engage @owockibot now that it's back online
+**🎯 IMMEDIATE ACTIONS (for Main Agent / Remi):**
+1. **Option A:** Run `npm adduser` + `npm publish` in `packages/sdk/` (requires npm account)
+2. **Option B:** Approve GitHub Packages workaround (PM can execute this autonomously)
+3. **Comms:** Once published anywhere, post Trust Tiers v0.2.0 launch announcement
 
 **No Coder/QA Work Needed** — All technical work complete. Blocker is purely npm auth.
 
@@ -213,6 +205,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-02-27 08:01 | PM | **D+13 check.** npm auth still ENEEDAUTH. Proposed GitHub Packages workaround as alternative. Repo clean, no issues/PRs. Escalating with concrete options for Remi. |
 | 2026-02-20 11:38 | PM | **D+6 check #9.** No change. npm auth sole blocker. Repo clean, no issues/PRs. |
 | 2026-02-20 10:53 | PM | **D+6 check #8.** No change. npm auth sole blocker. Repo clean, no issues/PRs. |
 | 2026-02-20 09:54 | PM | **D+6 check #7.** No change. npm auth sole blocker. Repo clean, no issues/PRs. |
