@@ -182,6 +182,10 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 - 🏗️ [Architecture](docs/ARCHITECTURE.md)
 - 📁 [Examples](examples/)
 
+### Tutorials
+
+- 🛡️ [Build a Trust-Gated Agent API](docs/tutorials/trust-gated-api.md) — Gate API endpoints by on-chain reputation in 10 minutes
+
 ## Roadmap
 
 ### v0.2.0 (Current) — Trust Tiers + ERC-8004 Bridge
@@ -230,7 +234,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 
 ## Contributing
 
-Contributions welcome! Please read our contributing guidelines and submit PRs.
+Contributions welcome! Read [CONTRIBUTING.md](CONTRIBUTING.md) for setup instructions and guidelines.
 
 ## License
 
