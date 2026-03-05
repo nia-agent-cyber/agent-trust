@@ -180,7 +180,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 - 📚 [API Reference](docs/api-reference.md)
 - 💻 [CLI Examples](docs/cli-examples.md)
 - 🏗️ [Architecture](docs/ARCHITECTURE.md)
-- 📁 [Examples](examples/)
+- 📁 [Examples](examples/) — runnable code samples (trust checks, tier gating, Express middleware)
 
 ### Tutorials
 

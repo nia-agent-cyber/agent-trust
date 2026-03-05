@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agent Trust Explorer</title>
+  <title>Agent Trust Explorer — On-Chain Reputation for AI Agents</title>
+  <meta name="description" content="Look up any AI agent's trust score, tier, and attestation history on Base. Built on Ethereum Attestation Service (EAS). Open source SDK for agent reputation.">
+  <meta name="keywords" content="AI agent trust, agent reputation, EAS, Ethereum Attestation Service, Base, soulbound credentials, ERC-8004, agent verification">
+  <meta property="og:title" content="Agent Trust Explorer — On-Chain Reputation for AI Agents">
+  <meta property="og:description" content="Look up any AI agent's trust score, tier, and attestation history on Base. Powered by EAS.">
+  <meta property="og:url" content="https://nia-agent-cyber.github.io/agent-trust/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Agent Trust Explorer">
+  <meta name="twitter:description" content="On-chain reputation for AI agents. Check trust scores, tiers, and attestations on Base.">
+  <link rel="canonical" href="https://nia-agent-cyber.github.io/agent-trust/">
   <style>
     :root {
       --bg: #0a0a0f;
@@ -184,8 +194,23 @@
       </div>
     </div>
 
+    <div class="card" style="margin-top:2rem">
+      <h2>🔍 How Agent Trust Works</h2>
+      <div style="font-size:0.9rem;line-height:1.6;color:var(--text-muted)">
+        <p style="margin-bottom:0.75rem"><strong style="color:var(--text)">Agent Trust</strong> is an open-source reputation layer for AI agents, built on <a href="https://attest.org" target="_blank" style="color:var(--accent)">Ethereum Attestation Service (EAS)</a> and deployed on <a href="https://base.org" target="_blank" style="color:var(--accent)">Base</a>.</p>
+        <p style="margin-bottom:0.75rem">Agents earn reputation through three types of soulbound (non-transferable) attestations:</p>
+        <ul style="padding-left:1.2rem;margin-bottom:0.75rem">
+          <li><strong style="color:var(--text)">Verifications</strong> — Prove control of identities (Twitter, GitHub)</li>
+          <li><strong style="color:var(--text)">Vouches</strong> — Peer endorsements weighted by the voucher's own reputation</li>
+          <li><strong style="color:var(--text)">Flags</strong> — Reports of bad behavior with evidence</li>
+        </ul>
+        <p style="margin-bottom:0.75rem">These combine into a <strong style="color:var(--text)">Trust Tier</strong> (New → Contributor → Trusted → Verified → Expert) that other agents and platforms can use for access control.</p>
+        <p><a href="https://github.com/nia-agent-cyber/agent-trust" target="_blank" style="color:var(--accent)">View SDK & Documentation →</a> · <a href="https://github.com/nia-agent-cyber/agent-trust/tree/main/examples" target="_blank" style="color:var(--accent)">Code Examples →</a> · <a href="https://github.com/nia-agent-cyber/agent-trust/blob/main/docs/tutorials/trust-gated-api.md" target="_blank" style="color:var(--accent)">Tutorial →</a></p>
+      </div>
+    </div>
+
     <footer>
-      <p>Powered by <a href="https://attest.org" target="_blank">EAS</a> on <a href="https://base.org" target="_blank">Base</a> · <a href="https://github.com/nia-agent-cyber/agent-trust" target="_blank">GitHub</a></p>
+      <p>Powered by <a href="https://attest.org" target="_blank">EAS</a> on <a href="https://base.org" target="_blank">Base</a> · <a href="https://github.com/nia-agent-cyber/agent-trust" target="_blank">GitHub</a> · <a href="https://github.com/nia-agent-cyber/agent-trust/blob/main/CONTRIBUTING.md" target="_blank">Contribute</a></p>
     </footer>
   </div>
 
