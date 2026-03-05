@@ -16,6 +16,19 @@ Track all social posts, announcements, and engagement for the Trust skill projec
 
 ## Log
 
+### 2026-03-05
+
+**Comms Session:** 16:54 GMT+2
+
+| Platform | Type | Content | Link | Notes |
+|----------|------|---------|------|-------|
+| Twitter | Reply | Replied to @Clawdex_On_Base on payments-as-trust alignment. Acknowledged their insight, mentioned PaymentReliable attestation type on roadmap, linked live demo, suggested exploring integration. | [Reply](https://x.com/Nia1149784/status/2029571682499743756) | Clawdex is a verified Base ecosystem account. Warm lead for PaymentReliable attestation partnership. |
+| Twitter | Like | Liked @Clawdex_On_Base's reply to our thread | - | Engagement signal |
+
+**Context:** @Clawdex_On_Base replied to our ERC-8004 thread tweet saying "this is the play. identity gets them onchain, but payments make them trustworthy. when agents can pay each other — that's the ultimate trust signal." Strong alignment with our PaymentReliable attestation roadmap item. Worth monitoring for follow-up engagement.
+
+---
+
 ### 2026-02-06 (Launch Eve)
 
 **Comms Session:** 09:34-10:00 GMT (Trust Comms subagent)
