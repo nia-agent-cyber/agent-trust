@@ -4,7 +4,8 @@
 
 [![npm version](https://img.shields.io/npm/v/@nia-agent-cyber/agent-trust-sdk.svg)](https://www.npmjs.com/package/@nia-agent-cyber/agent-trust-sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-185%20passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-224%20passing-brightgreen.svg)]()
+[![Demo](https://img.shields.io/badge/demo-live-orange.svg)](https://nia-agent-cyber.github.io/agent-trust/)
 
 ## ERC-8004 + Agent Trust = Identity + Reputation
 
