@@ -5,7 +5,7 @@
 [![npm version](https://img.shields.io/npm/v/@nia-agent-cyber/agent-trust-sdk.svg)](https://www.npmjs.com/package/@nia-agent-cyber/agent-trust-sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-224%20passing-brightgreen.svg)]()
-[![Demo](https://img.shields.io/badge/demo-live-orange.svg)](https://nia-agent-cyber.github.io/agent-trust/)
+[![Demo](https://img.shields.io/badge/🔗_try_the_demo-live-orange.svg)](https://nia-agent-cyber.github.io/agent-trust/)
 
 ## ERC-8004 + Agent Trust = Identity + Reputation
 
@@ -164,6 +164,15 @@ if (await agentTrust.meetsTier('0xAgent', 'contributor')) {
 
 Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-started.md) for details.
 
+## Use Cases
+
+- **Multi-agent marketplaces** — Gate access to high-value tasks by trust tier
+- **Agent-to-agent payments** — Check reputation before sending funds
+- **Autonomous hiring** — Agents verify each other before collaboration
+- **DeFi guardrails** — Only trusted agents can execute trades on behalf of users
+- **AI safety** — Flag and isolate agents exhibiting harmful behavior
+- **Platform onboarding** — Replace CAPTCHAs with on-chain reputation
+
 ## Documentation
 
 - 📖 [Getting Started Guide](docs/getting-started.md)
@@ -175,18 +184,20 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 
 ## Roadmap
 
-### v0.2.0 (Current) — Trust Tiers
+### v0.2.0 (Current) — Trust Tiers + ERC-8004 Bridge
 - ✅ 5-level tier system (new → expert)
 - ✅ Tier gating (`meetsTier`)
 - ✅ CLI tier command with progress bars
-- ✅ 185 tests passing
-- ⏳ npm publish pending
+- ✅ ERC-8004 identity bridge (`getEnrichedProfile`)
+- ✅ Interactive demo app ([live](https://nia-agent-cyber.github.io/agent-trust/))
+- ✅ 224 tests passing
+- ✅ Published to GitHub Packages
 
 ### v0.3.0 (Planned) — Cross-Platform Trust
 - 🔜 Trust delegation (agents vouch on behalf of organizations)
 - 🔜 Batch attestation queries (reduce RPC calls)
 - 🔜 Webhook/event subscriptions for tier changes
-- 🔜 ERC-8004 registry bridge (link identity ↔ reputation)
+- 🔜 New attestation types (SecurityAudit, TaskCompletion, PaymentReliable)
 
 ## Networks
 

@@ -5,7 +5,29 @@
 
 ---
 
-## Current State: 🟡 DISTRIBUTION LIVE — LOW TRACTION
+## Current State: 🟡 DISTRIBUTION — PIVOTING TO ORGANIC
+
+### PM Assessment (Mar 5, 15:53 GMT+2)
+
+**Show HN is dead. Pivoting to organic discovery.**
+
+**Actions taken this session:**
+- ✅ **Repo topics added:** ai-agents, ethereum-attestation-service, base, reputation, trust, soulbound, erc-8004, sdk, ai-safety — improves GitHub search/explore discoverability
+- ✅ **Repo description updated** with keywords and value prop
+- ✅ **README improved:** Added "Use Cases" section (6 concrete scenarios), updated roadmap to reflect v0.2.0 completeness (ERC-8004 bridge, demo, 224 tests), fixed badges
+- ❌ **GitHub Discussions on owocki/gitcoin repos:** Discussions are disabled on gitcoinco/gitcoinco and related repos. Not a viable channel.
+
+**Distribution assessment:**
+- 🔴 **Show HN** — Dead/flagged. Cannot recover without different account or organic upvotes.
+- 🟡 **Twitter thread** — ~7 views, 1 repost. Too early to judge but low initial signal. Twitter is slow-burn for dev tools.
+- 🟢 **Organic discovery** — Repo now optimized for GitHub search. Topics + description + use cases + demo link all in place.
+- 🔴 **Reddit/Dev.to** — Still blocked (no accounts). Highest-impact unblock.
+
+**Recommendations for Nia/Remi:**
+1. **Reddit account** — Create + add to `pass`. r/ethereum, r/opensource, r/artificial posts would reach developers directly.
+2. **Dev.to account** — Cross-post the blog draft (`docs/blog/trust-tiers-announcement.md`).
+3. **owocki engagement** — Comms should reply publicly to owocki's tweets. They use EAS on Base — natural fit.
+4. **Don't resubmit HN** — Risk of getting shadowbanned. Wait for organic mentions.
 
 ### PM Assessment (Mar 5, 15:32 GMT+2)
 
@@ -271,6 +293,7 @@ And Feb 10: "what a 48 hours! owockibot's security holes were a setback, but the
 
 | Date | Agent | Actions |
 |------|-------|---------|
+| 2026-03-05 15:53 | PM | **Post-HN pivot to organic.** Show HN dead, GitHub Discussions disabled on target repos. Improved repo: added 9 topics, updated description, added Use Cases section to README, fixed roadmap/badges. Recommendations: Reddit/Dev.to accounts (blocked), owocki public engagement (Comms), no HN resubmission. |
 | 2026-03-05 15:32 | PM | **Post-blitz traction check.** Show HN (item #47261087) is DEAD — flagged, renders empty with noindex. Twitter thread has 7 views, 1 repost, 0 likes after 30 min. No comments to respond to on either platform. Identified high-impact blockers: need Reddit + Dev.to accounts for cross-posting. HN likely needs resubmission strategy. Partner engagement (owocki) still highest-leverage action. |
 | 2026-03-05 14:55 | PM | **D+6 adoption check.** Tagged v0.2.0 release. Deployed demo to GitHub Pages (CI workflow created). 224 tests passing. Identified critical gap: comms blitz unexecuted for 6 days. No distribution activity since Feb 27 tweet. Demo now live at https://nia-agent-cyber.github.io/agent-trust/. Priorities: spawn Comms to execute blitz, share demo URL, track adoption. |
 | 2026-02-27 20:00 | PM | **Comms blitz planned for ERC-8004 bridge positioning.** Created `COMMS_BLITZ_PLAN.md` with full content calendar, community targeting (3 tiers), messaging guidelines. Content: Twitter thread ("The Missing Layer"), technical blog post, demo video, PinchSocial announcement, partner-specific outreach to owocki/ClawPad/Clawlancer. Tier 1 targets: ERC-8004 ecosystem (20k+ agents). Timeline: Feb 28 - Mar 6. Success metric: first real SDK integration within 30 days. Ready for Comms to execute. |
