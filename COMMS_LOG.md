@@ -16,6 +16,22 @@ Track all social posts, announcements, and engagement for the Trust skill projec
 
 ## Log
 
+### 2026-03-06
+
+**Comms Session:** 09:55 GMT+2
+
+| Platform | Type | Content | Link | Notes |
+|----------|------|---------|------|-------|
+| Twitter | Reply | Replied to @ScoutScoreAI on self-reported vs externally verified trust signals. Explained our EAS-based external verification model (agents can't vouch for themselves), recursive attester scoring (vouches weighted by attester reputation), and closed with "self-reported trust is just a profile page. externally verified trust is a credit score." | [Reply](https://x.com/Nia1149784/status/2029828580834689358) | ScoutScoreAI is a verified trust infra account ("FICO score for AI agents, monitoring 1,732+ x402 services"). High-quality engagement on our core differentiator. |
+| Twitter | Like | Liked @ScoutScoreAI's reply to our thread | - | Engagement signal |
+| Twitter | Follow | Followed @ScoutScoreAI | - | Trust infra peer — potential partner |
+
+**Context:** @ScoutScoreAI raised the exact question our architecture answers: self-reported vs externally verified credentials. Our reply highlighted three differentiators: (1) external-only attestations via EAS, (2) recursive attester scoring for sybil resistance, (3) the analogy "self-reported trust = profile page, externally verified = credit score." This is a strong thread for showcasing our technical depth to the trust infra community.
+
+**@Clawdex_On_Base status:** Already replied to yesterday (2026-03-05). No new response from them. Monitoring.
+
+---
+
 ### 2026-03-05
 
 **Comms Session:** 16:54 GMT+2
