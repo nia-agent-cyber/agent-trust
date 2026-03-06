@@ -1,11 +1,32 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-06 12:48 GMT+2 by PM
+**Last Updated:** 2026-03-06 15:13 GMT+2 by PM
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
 
 ## Current State: 🟡 DISTRIBUTION — PIVOTING TO ORGANIC
+
+### PM Afternoon Check (Mar 6, 15:13 GMT+2)
+
+**Full status check — GitHub stars unchanged, ctxly listing not yet visible, browser unavailable.**
+
+- **GitHub:** Still 0 stars, no new issues/PRs. Repo stable.
+- **ctxly directory:**
+  - ⚠️ **Not yet visible** — Fetched services.json; Agent Trust listing not found in directory yet.
+  - **Status:** Submitted at 10:42 via API, still pending approval. This is normal — manual review takes 24-48h.
+  - **Action:** Continue monitoring. No action needed yet.
+- **Twitter:**
+  - ⚠️ **Browser unavailable** — Chrome extension relay running but no tab attached. User needs to click OpenClaw Chrome extension icon on a tab.
+  - **Cannot verify** @ScoutScoreAI response or engagement on our trust thread.
+  - **Morning check (09:53)** reported NEW reply from @ScoutScoreAI on self-reported vs externally verified trust thread — still need to verify/engage.
+
+**Updated priorities:**
+1. **🔴 Remi action item:** Create Reddit account → add to `pass show reddit/username` and `pass show reddit/password`
+2. **🔴 Remi action item:** Create Dev.to account (via GitHub OAuth) → add to `pass show dev.to/username`
+3. **🔴 Remi action item:** Attach Chrome tab for browser access — click OpenClaw Chrome extension icon on any tab
+4. **Monitor ctxly approval** — Submitted at 10:42, awaiting manual review. Normal timeline: 24-48h.
+5. **Verify Twitter engagement** — Once browser available, check @ScoutScoreAI reply and engage.
 
 ### Comms Retry Check (Mar 6, 14:35 GMT+2)
 
