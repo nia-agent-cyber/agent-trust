@@ -7,6 +7,20 @@
 
 ## Current State: 🟡 DISTRIBUTION — PIVOTING TO ORGANIC
 
+### Comms Retry Check (Mar 6, 14:35 GMT+2)
+
+**Reddit/Dev.to credentials check — BLOCKED.**
+
+- **pass store check:** No `reddit/` or `dev.to/` entries found
+- **Status:** Cannot create posts on r/ethereum, r/opensource, or Dev.to tutorial
+- **Action required:** Remi needs to create Reddit + Dev.to accounts and add credentials to pass
+
+**Updated priorities:**
+1. **🔴 Remi action item:** Create Reddit account → add to `pass show reddit/username` and `pass show reddit/password`
+2. **🔴 Remi action item:** Create Dev.to account (via GitHub OAuth) → add to `pass show dev.to/username`
+3. **Monitor ctxly approval** — Submitted at 10:42, awaiting manual review. Follow up if no response within 24-48h.
+4. **Continue organic push** — Thread had quality engagement (ScoutScoreAI verified account reply). Let it breathe, engage any new replies once browser available.
+
 ### PM Midday Check (Mar 6, 12:48 GMT+2)
 
 **Full status check — ctxly submission pending, Twitter browser unavailable.**
