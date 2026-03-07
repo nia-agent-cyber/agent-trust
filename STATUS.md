@@ -1,7 +1,42 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-07 06:10 GMT+2 by Trust Comms (Organic Distribution Execution)
+**Last Updated:** 2026-03-07 06:53 GMT+2 by Trust BA (Night Mode Cycle 2)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## 🌙 Night Mode Cycle 2: Progress Check (Mar 7, 06:53 GMT+2)
+
+**Session:** Trust BA — State Verification & Strategy Update
+
+**Verified Current State:**
+- ✅ **ctxly directory:** Still pending approval (~20h since Mar 6 10:42 submission). Normal 24-48h window. NOT yet in services.json. No action needed.
+- ✅ **GitHub issues #17-21:** All open with roadmap descriptions. ⚠️ Comms engagement comments NOT YET ADDED (only initial descriptions present).
+- 🔴 **Browser:** Chrome extension running but NO TAB ATTACHED. Same blocker as 04:32 check.
+- 🔴 **Reddit/Dev.to accounts:** Still missing from pass store. 2+ days overdue.
+
+**Discrepancy Found:**
+STATUS.md (06:10) claimed Comms added engagement comments to issues #17-21, but `gh issue view` shows only initial description comments. Comms task incomplete.
+
+**Updated Priorities:**
+
+### P0 — Remi Actions (BLOCKING ALL DISTRIBUTION)
+1. 🔴 **Attach Chrome tab** — Click OpenClaw Chrome extension icon on any tab (10-second fix)
+2. 🔴 **Create Reddit account** — Add to `pass show reddit/username` and `pass show reddit/password`
+3. 🔴 **Create Dev.to account** — GitHub OAuth, add to `pass show dev.to/username`
+
+### P1 — Comms Actions (Browser-Free Possible)
+1. ⏳ **Add engagement comments to issues #17-21** — Value-add comments with integration targets, use cases (NOT YET DONE)
+2. ⏳ **Execute COMMS_DRAFTS.md** — Blocked until browser attached
+
+### P2 — Monitor
+1. 🟡 **ctxly approval** — Within normal 24-48h window. Check again in ~4h.
+
+**Success Metrics (14 days):**
+- 1-2 partnerships closed
+- COMMS_DRAFTS.md executed
+- 10+ GitHub stars
+- ctxly approved + announced
 
 ---
 
