@@ -1,7 +1,61 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-07 11:23 GMT+2 by Trust BA (Cycle 2/6 — Strategic Next Steps)
+**Last Updated:** 2026-03-07 11:35 GMT+2 by Trust PM (Cycle 8 — Partnership Outreach Prep)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust PM Cycle 8: Execution Complete (Mar 7, 11:35 GMT+2)
+
+**Session:** Trust PM — Cycle 8 Execution (Subagent)
+
+**Accomplished:**
+- ✅ **Browser status verified** — Chrome extension NOT running (`running: false`). Tab attachment required.
+- ✅ **Pass store checked** — Reddit account: NOT FOUND. Dev.to account: NOT FOUND.
+- ✅ **ctxly.com status checked** — Still returning 404 on services.json (26+ hours since submission).
+- ✅ **Partnership outreach drafts created** — `PARTNERSHIP_OUTREACH.md` with owockibot + Clawdex engagement sequences.
+
+**Verified Current State:**
+- 🔴 **Browser:** Chrome extension relay running but no tab attached. `running: false`. Same blocker as Cycle 7.
+- 🔴 **Reddit account:** Not in pass store. 2+ days overdue.
+- 🔴 **Dev.to account:** Not in pass store. 2+ days overdue.
+- ⚠️ **ctxly.com:** services.json returning 404. Either site is down OR submission not approved yet. 26+ hours since Mar 6 10:42 submission.
+- ✅ **GitHub issues #17-21:** All open with engagement comments (verified Cycle 7).
+- ✅ **Tutorials:** 3 complete (trust-gated-api, langchain, elizaos).
+
+**Blockers (unchanged, 2+ days overdue):**
+1. 🔴 **Attach Chrome tab** — Click OpenClaw Chrome extension icon on any tab (10-second fix)
+2. 🔴 **Create Reddit account** — Add to `pass show reddit/username` and `pass show reddit/password`
+3. 🔴 **Create Dev.to account** — GitHub OAuth, add to `pass show dev.to/username`
+4. ⚠️ **ctxly.com unreachable** — Cannot verify approval status. Manual browser check needed.
+
+**New Deliverables:**
+- ✅ `PARTNERSHIP_OUTREACH.md` — Complete outreach sequences for:
+  - @owockibot (Gitcoin bounties, EAS on Base, $85+ paid)
+  - @Clawdex_On_Base (warm lead, payment-as-trust alignment)
+  - ctxly.com directory status monitoring
+
+**Priorities:**
+
+### P0 — Remi Actions (BLOCKING ALL DISTRIBUTION — 2+ DAYS OVERDUE)
+1. 🔴 **Attach Chrome tab** — Click OpenClaw Chrome extension icon on any tab
+2. 🔴 **Create Reddit account** — Add to pass store
+3. 🔴 **Create Dev.to account** — Add to pass store
+4. 🟡 **Manual ctxly check** — Visit ctxly.com in browser or check dashboard directly
+
+### P1 — Comms Actions (Ready to Execute When Browser Available)
+1. ⏳ **Execute PARTNERSHIP_OUTREACH.md** — owockibot + Clawdex engagement sequences
+2. ⏳ **Execute COMMS_DRAFTS.md** — Twitter thread, Reddit posts, Dev.to cross-post
+3. ⏳ **Monitor ctxly approval** — If approved, announce on Twitter
+
+### P2 — Monitor
+1. ⚠️ **ctxly approval** — 26+ hours in. Normal window 24-48h. Check again at 24h mark (10:42 Mar 7, already passed) and 48h mark (10:42 Mar 8).
+
+**Success Metrics (14 days):**
+- 1-2 partnerships closed (owockibot or Clawdex)
+- COMMS_DRAFTS.md + PARTNERSHIP_OUTREACH.md executed
+- 10+ GitHub stars
+- ctxly approved + announced
 
 ---
 
