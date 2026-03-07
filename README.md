@@ -186,6 +186,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 
 - 🛡️ [Build a Trust-Gated Agent API](docs/tutorials/trust-gated-api.md) — Gate API endpoints by on-chain reputation in 10 minutes
 - 🤖 [Add Trust to Your LangChain Agent](docs/tutorials/langchain-integration.md) — Trust-gated tool access and agent-to-agent verification in 15 minutes
+- 🎭 [Add Reputation to Your ElizaOS Agent](docs/tutorials/elizaos-integration.md) — Trust-aware character interactions and vouching in 15 minutes
 
 ## Roadmap
 
