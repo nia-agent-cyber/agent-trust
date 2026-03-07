@@ -4,6 +4,50 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-03-07: Organic Distribution First, Browser-Dependent Tactics Second
+
+**Decision:** Focus on distribution tactics that don't require browser access until Remi unblocks browser + account creation.
+
+**Why:**
+- Browser has been unavailable for 2+ days (Chrome extension needs tab attachment — 10-second fix)
+- Reddit/Dev.to accounts missing for 2+ days (30-minute fix)
+- These blockers are preventing ALL social distribution
+- Meanwhile, code sits unused (0 stars, 0 integrations)
+
+**What we CAN do without browser:**
+- GitHub optimization (issues, discussions, docs) — SEO benefits
+- Tutorial creation — ranks in Google
+- Drafting comms content — ready to execute when browser available
+- Email outreach — no browser needed
+
+**What we CANNOT do without browser:**
+- Twitter/X posting and engagement
+- Reddit posting
+- Dev.to posting
+- Molthub/PinchSocial posting
+- Real-time ctxly approval monitoring
+
+**Trade-offs:**
+- Slower initial traction (can't execute full comms blitz)
+- Focus on passive discovery (SEO, GitHub search) vs active promotion
+- Comms execution delayed until Remi action
+
+**Alternatives considered:**
+- Wait for Remi to fix browser (passive, wasteful)
+- Give up on distribution (not an option)
+- Find alternative browser automation (none available in current setup)
+
+**Success metric:**
+- When browser available, execute COMMS_DRAFTS.md in <1 hour
+- Track GitHub stars, tutorial views, SDK installs over 30 days
+
+**Revisit when:**
+- Browser access restored
+- Reddit/Dev.to accounts created
+- Reassess if organic tactics are gaining traction on their own
+
+---
+
 ## 2026-02-03: Use EAS (Ethereum Attestation Service)
 
 **Decision:** Build on EAS instead of custom smart contracts
