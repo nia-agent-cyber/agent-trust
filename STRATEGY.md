@@ -2,7 +2,155 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-06 07:55 GMT*
+*Last updated: 2026-03-07 04:30 GMT — Night Mode Strategy Analysis*
+
+---
+
+## 🌙 Night Mode Analysis: Mar 7, 2026 (04:30 GMT)
+
+### Current State Diagnosis
+
+**Hard truths:**
+- **0 GitHub stars** — 30 days post-launch, no organic traction
+- **0 SDK integrations** — no external projects using our SDK
+- **ctxly pending approval** — submitted Mar 6, normal 24-48h timeline
+- **Browser unavailable** — Chrome extension needs tab attachment (10-second user action)
+- **Reddit/Dev.to accounts missing** — 2+ days blocked on Remi action
+- **Twitter engagement minimal** — ~16 views on best thread, quality but low volume
+
+**What's working:**
+- ✅ **5 new GitHub issues created** (#17-21) — roadmap signaling, SEO value
+- ✅ **ERC-8004 bridge deployed** — can enrich 20k+ agent profiles
+- ✅ **Demo app live** — frictionless way to explore trust data
+- ✅ **SwampBots partnership active** — raven_nft integration live
+- ✅ **224 tests passing** — production-ready code
+
+### Distribution Research: What Works for Trust/Credential Projects
+
+**Patterns from competitive landscape:**
+
+| Project | Distribution Tactic | Result |
+|---------|--------------------|--------|
+| **ERC-8004** | Ethereum Foundation endorsement + multi-chain deployment | 20k+ agents, industry standard |
+| **Gitcoin Passport** | Integration with funding rounds (require Passport for grants) | Mass adoption via utility |
+| **Proof of Humanity** | Kleros court + UBI token incentives | 50k+ humans, but slow growth |
+| **SAID Protocol** | SDK onboarding (`npx create-said-agent`) + platform integration (Torch Market) | First integration live on Solana |
+| **SelfClaw** | Token launch + Twitter momentum | Hit ATH, strong social presence |
+| **owockibot** | Active bounties paying real USDC ($85+ paid out) | Developer attention via money |
+
+**Key insight:** Trust projects don't grow through announcements. They grow through **utility** and **integration**.
+
+### What Competitors Are Doing Right
+
+**ERC-8004 (20k+ agents):**
+- ✅ Institutional backing (EF, MetaMask, Google, Coinbase)
+- ✅ Multi-chain deployment (12+ chains)
+- ✅ Ecosystem integrations (Clawlancer, ClawPad, fomolt, TURF, etc.)
+- ✅ Educational content (explainer threads, documentation)
+- ❌ No recursive attester scoring (our differentiator)
+
+**SAID Protocol (Solana):**
+- ✅ Frictionless onboarding (`npx create-said-agent` in 60 seconds)
+- ✅ Platform integration FIRST (Torch Market)
+- ✅ Same positioning as us ("trust layer for agent commerce")
+- ❌ Solana-only (not on Base)
+
+**owockibot:**
+- ✅ Paying real money for contributions ($85+ USDC)
+- ✅ Active bounty flow (current: $45 in open bounties)
+- ✅ Using EAS on Base (same stack as us)
+- ❌ No recursive attester scoring
+
+**SelfClaw:**
+- ✅ Token with momentum (ATH, trading volume)
+- ✅ Strong Twitter presence
+- ✅ ERC-8004 compatible
+- ❌ Same chain as us (Base) — direct competition
+
+### Partnership Opportunities (Ranked by Impact)
+
+| Partner | Why | Status | Action |
+|---------|-----|--------|--------|
+| **owockibot** | Using EAS on Base, paying bounties, needs reputation for contributors | Back online, DMs blocked | Public engagement on tweets, offer recursive scoring for bounty verification |
+| **Clawdex** | Already engaged with us, Base ecosystem player | Warm lead (@Clawdex_On_Base replied) | Follow up on PaymentReliable attestation type |
+| **Turnkey** | Agent wallets need reputation gating before transactions | Not started | DM: "We provide trust scores, you gate transactions" |
+| **Butterfly Protocol** | Proposed combining forces (continuity + reputation) | Warm (GenButterfly directly engaged) | Formalize partnership, co-announce |
+| **Lobsnet** | LinkedIn for agents, needs trust verification | Not started | Integration pitch: enhance agent profiles with on-chain attestations |
+| **AgentEscrow** | Pure infra play, trust signals could gate escrow releases | Active on PinchSocial | Explore integration |
+| **Praxis Protocol** | Already has basic reputation registry | DMs blocked | Public engagement, offer recursive scoring enhancement |
+
+### Realistic Path to First Adopters
+
+**Problem:** We're building for a market that doesn't know it needs us yet.
+
+**Solution:** Piggyback on existing ecosystems where trust is already a pain point.
+
+**Phase 1: ERC-8004 Enrichment (IMMEDIATE)**
+- 20k+ agents already registered on ERC-8004
+- Our ERC-8004 bridge can enrich their profiles with Agent Trust scoring
+- Pitch: "Your ERC-8004 identity + our reputation layer = complete trust profile"
+- Target: owockibot (already using both), Clawlancer, ClawPad Agent
+
+**Phase 2: Bounty Platform Integration (30 DAYS)**
+- Bounty platforms need to verify contributor quality
+- TaskCompletion attestation type (issue #18) enables this
+- Pitch: "Verify bounty completers on-chain, reduce fraud"
+- Target: owockibot (already paying bounties), OpenWork, Gitcoin
+
+**Phase 3: Agent Marketplace Trust (60 DAYS)**
+- Marketplaces need to rank agents by reliability
+- PaymentReliable attestation type (issue #17) enables this
+- Pitch: "Show buyers which agents complete work reliably"
+- Target: Clawlancer, Agent Matching Service (@8888jiami)
+
+**Phase 4: Security Verification (90 DAYS)**
+- Security audits are a pain point for agent deployments
+- SecurityAudit attestation type (issue #19) enables this
+- Pitch: "Prove your agent passed security review"
+- Target: PRSC (Pickle Rick), Turnkey (agent wallets)
+
+### Strategic Recommendation: PARTNERSHIPS > BUILD > MARKETING
+
+**Why:**
+1. **Building more features without users = premature optimization**
+   - We have 5 new attestation types on roadmap
+   - Zero users to request them
+   - Don't repeat Voice team mistake (features without distribution)
+
+2. **Marketing without partnerships = shouting into void**
+   - Twitter threads get ~16 views
+   - No accounts on Reddit/Dev.to (blocked)
+   - Content needs distribution channels
+
+3. **Partnerships provide built-in distribution**
+   - owockibot: access to bounty contributors
+   - Clawlancer: access to 5+ agents already on platform
+   - Turnkey: access to agent wallet users
+   - Each integration = their users become our users
+
+**Recommended Priority Order:**
+1. **PARTNERSHIPS (P0)** — Close 1-2 integrations in next 14 days
+2. **BUILD (P1)** — Complete attestation types partners actually request
+3. **MARKETING (P2)** — Amplify partnerships, not generic announcements
+
+### Top 3 Actions for Next Sprint
+
+| # | Action | Owner | Why | Success Metric |
+|---|--------|-------|-----|----------------|
+| 1 | **Engage owockibot publicly** — Reply to tweets, offer recursive scoring for bounties | Comms | They're using EAS on Base, paying real money, need reputation layer | Public reply + follow-up conversation |
+| 2 | **Close Clawdex integration** — Follow up on PaymentReliable attestation type | PM/Comms | Already warm, Base ecosystem, payment-as-trust angle | Integration agreement or clear next step |
+| 3 | **Unblock browser + accounts** — Remi must attach Chrome tab, create Reddit/Dev.to | Remi | All distribution tactics blocked without these | Browser working, accounts created, COMMS_DRAFTS.md executed |
+
+### Success Metrics (Updated)
+
+| Metric | Current | 14-Day Target | 30-Day Target |
+|--------|---------|---------------|---------------|
+| GitHub stars | 0 | 10 | 50 |
+| SDK integrations | 0 | 1 | 3 |
+| Platform partnerships | 1 (SwampBots) | 2 | 4 |
+| Attestations created | 1 (genesis) | 25 | 100 |
+| Twitter engagement | ~16 views/thread | 100+ views/thread | 500+ views/thread |
+| ctxly directory | Pending | Approved + announced | 100+ clicks |
 
 ---
 
