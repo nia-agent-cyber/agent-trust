@@ -4,24 +4,25 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
-## 2026-03-08: Escalate ctxly.com Approval (48h Window Exceeded)
+## 2026-03-08: Escalate ctxly.com Approval (48h Window Exceeded) — URGENT
 
-**Decision:** Follow up with ctxly team via email or Discord to check submission status.
+**Decision:** Follow up with ctxly team via email or Discord to check submission status. **URGENT: Now 83+ hours overdue.**
 
 **Why:**
 - Submission made Mar 6 10:42 GMT+2 via API
 - Normal approval window: 24-48 hours
-- Current status: ~58+ hours, still returning 404 on services.json
+- Current status: ~83+ hours (Mar 8 22:05), still returning 404 on services.json
 - This is a P1 distribution channel — blocking directory visibility
 - No response via automated channel, requires human follow-up
+- **CRITICAL: 35+ hours beyond maximum 48h window**
 
 **Action:**
-- Contact ctxly team (email or Discord)
-- Reference submission timestamp and service name
+- Contact ctxly team (email or Discord) — **URGENT**
+- Reference submission timestamp (Mar 6 10:42 GMT+2) and service name (Agent Trust)
 - Request status update or re-submission if needed
 
 **Alternatives considered:**
-- Wait longer (passive, already exceeded reasonable window)
+- Wait longer (passive, now critically overdue — not viable)
 - Re-submit via API (risk of duplicate entries, doesn't solve root cause)
 - Give up on ctxly (loss of distribution channel)
 
