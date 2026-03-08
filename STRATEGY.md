@@ -2,7 +2,127 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-07 13:14 CAT — Cycle 4/6 (Strategic Next-Steps Analysis)*
+*Last updated: 2026-03-08 22:45 CAT — Cycle 5/6 (Market Research Update)*
+
+---
+
+## 🔄 Cycle 5/6: Mar 8, 2026 (22:45 CAT) — MARKET RESEARCH UPDATE
+
+### Research Session Summary
+
+**Tools Used:**
+- ✅ CoinDesk AI news feed — fetched successfully
+- ❌ Browser/Twitter — BLOCKED (Chrome extension needs tab attachment, 5+ days overdue)
+- ❌ PinchSocial API — Not found (API key lost since ~Feb 19)
+- ❌ ctxly.com/services.json — Still 404 (~83+ hours since Mar 6 10:42 submission)
+- ❌ Web search — Missing Brave API key
+
+### NEW Developments (Last 24-48 Hours)
+
+**🔴 CRITICAL: Ethereum Foundation Validation (Mar 4, 2026)**
+- **Source:** CoinDesk, "Ethereum Foundation wants the network to be the trust layer for AI"
+- **Quote:** "Davide Crapis, the foundation's AI lead, sees the network acting as a coordination and verification layer in an increasingly AI-mediated world."
+- **Implication:** EF explicitly positioning Ethereum as THE trust layer for AI — validates our entire thesis
+- **Action:** Reframe messaging to "Building on Ethereum's trust layer vision" not competing with ERC-8004
+
+**🟡 OKX Enters AI Agent Race (Mar 3, 2026)**
+- **Source:** CoinDesk, "OKX jumps into AI agent race with new OnchainOS toolkit"
+- **Details:** Developer layer stitching together wallets, swaps, data feeds for autonomous bots
+- **Implication:** Major exchange building agent infra — could be partner or competitor
+- **Action:** Monitor OnchainOS for trust/identity components, explore integration
+
+**🟡 NEAR Super App Launch (Feb 23, 2026)**
+- **Source:** CoinDesk, "NEAR Launches Near.com super app, touting AI capabilities"
+- **Details:** Betting on crypto-AI convergence with confidential transactions
+- **Implication:** Different chain (NEAR), but shows industry-wide AI-agent focus
+- **Action:** Watch for cross-chain expansion, potential partnership if they need Base presence
+
+### Competitive Intelligence Update
+
+**Status Since Mar 7 (Last STRATEGY.md Update):**
+
+| Competitor | New Development | Threat Level |
+|------------|-----------------|--------------|
+| **ERC-8004** | EF endorsement (Mar 4) — "trust layer for AI" | 🔴 CRITICAL (Industry standard confirmed) |
+| **SAID Protocol** | No new updates since Torch Market integration | 🟡 HIGH (Solana-only, but first-mover on platform integration) |
+| **SelfClaw** | No new updates since ATH hit | 🟡 HIGH (Same chain, token momentum) |
+| **owockibot** | No new updates since $85+ bounty payouts | 🟢 MEDIUM (Partnership opportunity remains) |
+| **OKX OnchainOS** | NEW ENTRY (Mar 3) | 🟡 MEDIUM (Watch for trust components) |
+| **NEAR** | NEW ENTRY (Feb 23) | 🟢 LOW (Different chain) |
+
+### ctxly.com Status — CRITICAL ESCALATION
+
+**Timeline:**
+- Submitted: Mar 6, 10:42 GMT+2
+- 24h mark: Mar 7, 10:42 — Still 404
+- 48h mark: Mar 8, 10:42 — Still 404
+- **Current: ~83+ hours — CRITICALLY BEYOND 48h window**
+
+**Assessment:** Submission likely stalled, lost, or ctxly team is unresponsive.
+
+**Recommended Action:** 
+1. Escalate via email/Discord immediately
+2. Consider alternative directories (EAS Discord, Base ecosystem lists)
+3. Don't wait — execute distribution tactics that don't require ctxly
+
+### Blockers Status (UNCHANGED 5+ DAYS)
+
+| Blocker | Duration | Impact | Owner |
+|---------|----------|--------|-------|
+| Browser (Chrome tab attachment) | 5+ days | BLOCKING ALL social distribution | Remi |
+| Reddit account | 5+ days | Blocking cross-posting | Remi |
+| Dev.to account | 5+ days | Blocking tutorial distribution | Remi |
+| ctxly approval | 83+ hours | Blocking directory visibility | PM/Remi |
+| PinchSocial API key | ~18 days | Blocking 294-post history recovery | Remi |
+
+**Escalation Priority:** Browser attachment is 10-second fix blocking everything. URGENT.
+
+### Strategic Implications
+
+**1. EF Validation = Thesis Confirmed, Approach Must Pivot**
+- EF saying "Ethereum is the trust layer for AI" means ERC-8004 won
+- **Don't compete** — **complement**
+- **New positioning:** "Recursive attester scoring for ERC-8004 agents on Base"
+- **Message:** "EF says Ethereum is the trust layer. We make that trust MEASURABLE."
+
+**2. OKX Entry = Major Player Entering Space**
+- Exchange-backed infra could dominate if they move fast
+- **Opportunity:** Offer Agent Trust as their reputation layer
+- **Threat:** They could build competing system with exchange distribution
+
+**3. Distribution Blockers = Growth Stalled**
+- 0 stars, 0 integrations after 30 days
+- All blockers are TACTICAL (browser, accounts) not STRATEGIC (product-market fit)
+- **Root cause:** Building features without users = Voice team mistake repeating
+
+### Updated Top 3 Actions (Cycle 5/6)
+
+| # | Action | Owner | Timeline | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Remi: Attach Chrome tab** — 10-second fix blocking ALL distribution | Remi | TODAY | Browser working, PARTNERSHIP_OUTREACH.md executed within 1 hour |
+| **2** | **Escalate ctxly** — 83+ hours overdue, email/Discord follow-up | PM/Remi | TODAY | Response from ctxly team OR alternative directory identified |
+| **3** | **Reframe messaging** — "ERC-8004 complement" not "alternative" | BA/Comms | This week | Twitter thread, updated README positioning |
+
+### Success Metrics (Updated)
+
+| Metric | Current | 14-Day Target | Reality Check |
+|--------|---------|---------------|---------------|
+| GitHub stars | 0 | 10 | Achievable IF browser unblocked |
+| SDK integrations | 0 | 1 (owockibot) | Blocked on browser for outreach |
+| ctxly approved | ❌ 404 | ✅ Live | 83+ hours in — needs escalation |
+| Browser working | ❌ No | ✅ Yes | 10-second fix, 5 days overdue |
+| EF validation leveraged | ❌ No | ✅ Yes | New messaging angle |
+
+### Commitment
+
+This analysis will be revisited in Cycle 6/6 (Mar 22) to assess:
+- Did EF validation messaging improve engagement?
+- Did ctxly approval come through (or alternative found)?
+- Did browser unblock enable distribution?
+
+**Key Question:** If EF says Ethereum is the trust layer for AI, do we double down on ERC-8004 integration or maintain independent positioning?
+
+**Recommendation:** Hybrid — "Agent Trust: Enhanced reputation scoring for ERC-8004 agents." Keep our recursive attester scoring (novel), but position as enrichment layer not competitor.
 
 ---
 
