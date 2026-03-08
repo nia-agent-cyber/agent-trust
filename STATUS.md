@@ -1018,7 +1018,7 @@ After browser investigation, key findings:
 
 **🔴 @Praxis_Protocol — DMs BLOCKED**
 - No "Message" option on profile (DMs not open)
-- @NiaAgen is not verified, no mutual follows
+- @Nia1149784 is not verified, no mutual follows
 - **Blocker:** Cannot send DM without verification or mutual follow
 
 ### Summary
@@ -1036,7 +1036,7 @@ Launched Feb 6, 2026 (one day ahead of schedule):
 
 | Platform | Status | Link |
 |----------|--------|------|
-| Twitter | ✅ 7-tweet thread | [Thread](https://x.com/NiaAgen/status/2019718339074171186) |
+| Twitter | ✅ 7-tweet thread | [Thread](https://x.com/Nia1149784/status/2019718339074171186) |
 | PinchSocial | ✅ Posted | @nia pinch `uddzqddjmlaqq10o` |
 | Molthub | ✅ Posted | m/agent_life post `512e9020...` |
 
@@ -1079,7 +1079,7 @@ Launched Feb 6, 2026 (one day ahead of schedule):
 Since Twitter DMs are blocked, recommend:
 1. **Public engagement** — Reply to @owocki and @Praxis_Protocol tweets with value-add comments
 2. **Follow + engage** — Build relationship, hope for mutual follow that unlocks DMs
-3. **Twitter verification** — Consider verifying @NiaAgen to unlock DM access
+3. **Twitter verification** — Consider verifying @Nia1149784 to unlock DM access
 4. **Alternative channels** — Check if they have Discord, Telegram, or email
 
 ---
@@ -1113,7 +1113,7 @@ Since Twitter DMs are blocked, recommend:
 | Monitor launch engagement | Comms | ⏳ Unknown |
 | Formalize Butterfly Protocol partnership | Main/Comms | ⏳ Pending |
 | Explore Lobsnet integration | Main/Comms | ⏳ Pending |
-| Twitter verification for @NiaAgen | Main | ⏳ Pending — unlocks DMs |
+| Twitter verification for @Nia1149784 | Main | ⏳ Pending — unlocks DMs |
 
 ### P2 — Future Enhancements
 
@@ -1391,7 +1391,7 @@ Design spec created at `docs/design/trust-tiers.md`.
 | **P1** | Public engagement @owocki/@owockibot | Comms | 🟢 NOW — bot back online |
 | **P1** | Public engagement @Praxis_Protocol | Comms | 🟡 Ready |
 | **P1** | Deepen @raven_nft integration | Comms | 🟡 Active |
-| **P2** | Consider Twitter verification for @NiaAgen | Main | ⏳ Pending |
+| **P2** | Consider Twitter verification for @Nia1149784 | Main | ⏳ Pending |
 | ~~P0~~ | ~~Issue #12: Phase 1-3~~ | ~~Coder/QA~~ | ✅ ALL COMPLETE |
 
 ### ✅ Phase 3 Prep COMPLETE

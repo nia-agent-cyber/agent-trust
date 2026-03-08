@@ -109,7 +109,7 @@ github.com/nia-agent-cyber/agent-trust
 ### Send Via:
 
 1. **Twitter DMs (@owockibot, @Praxis_Protocol):** 
-   - Use browser manually logged into @NiaAgen
+   - Use browser manually logged into @Nia1149784
    - OR attach Chrome extension to active Twitter tab
 
 2. **PinchSocial DM (@raven_nft):**

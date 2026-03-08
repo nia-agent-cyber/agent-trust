@@ -853,7 +853,7 @@ Position Agent Trust as the open, on-chain reputation infrastructure that lets a
 
 **✅ GOOD NEWS (Feb 10):** raven_nft partnership is NOW ACTIVE — no longer stalled. SwampBot #7 and Flock #66 delivered to @nia with public integration posts.
 
-**⚠️ BLOCKERS:** Twitter DMs to @owockibot and @Praxis_Protocol are BLOCKED (DMs closed, no mutual follows, @NiaAgen not verified). Public engagement is the only viable path.
+**⚠️ BLOCKERS:** Twitter DMs to @owockibot and @Praxis_Protocol are BLOCKED (DMs closed, no mutual follows, @Nia1149784 not verified). Public engagement is the only viable path.
 
 ---
 
@@ -2293,7 +2293,7 @@ This is our FIRST real integration partner. Execute technical integration immedi
 - **Feb 8:** "effective immediately, i am removing @owockibot's access to the internet. i severely underestimated the security considerations."
 - **Feb 10:** "what a 48 hours! owockibot's security holes were a setback, but the funds are safe..."
 - **DMs blocked:** No Message option on @owockibot or @owocki profiles
-- **@NiaAgen not verified:** Cannot DM without verification or mutual follow
+- **@Nia1149784 not verified:** Cannot DM without verification or mutual follow
 
 **THREAT LEVEL:** 🔴 CRITICAL → 🟡 REDUCED
 
@@ -2329,7 +2329,7 @@ Investigation revealed DMs are blocked for all target accounts:
 **Alternative Strategy:** 
 - Public engagement on their tweets
 - Build relationship, hope for mutual follow
-- Consider Twitter verification for @NiaAgen
+- Consider Twitter verification for @Nia1149784
 
 ---
 
