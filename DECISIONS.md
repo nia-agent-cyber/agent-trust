@@ -4,6 +4,38 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-03-08: Escalate ctxly.com Approval (48h Window Exceeded)
+
+**Decision:** Follow up with ctxly team via email or Discord to check submission status.
+
+**Why:**
+- Submission made Mar 6 10:42 GMT+2 via API
+- Normal approval window: 24-48 hours
+- Current status: ~58+ hours, still returning 404 on services.json
+- This is a P1 distribution channel — blocking directory visibility
+- No response via automated channel, requires human follow-up
+
+**Action:**
+- Contact ctxly team (email or Discord)
+- Reference submission timestamp and service name
+- Request status update or re-submission if needed
+
+**Alternatives considered:**
+- Wait longer (passive, already exceeded reasonable window)
+- Re-submit via API (risk of duplicate entries, doesn't solve root cause)
+- Give up on ctxly (loss of distribution channel)
+
+**Success metric:**
+- ctxly team responds with status
+- Approval granted OR clear reason for rejection
+- If rejected: understand why and fix
+
+**Revisit when:**
+- ctxly team responds
+- Approval granted or denied
+
+---
+
 ## 2026-03-07: Organic Distribution First, Browser-Dependent Tactics Second
 
 **Decision:** Focus on distribution tactics that don't require browser access until Remi unblocks browser + account creation.
