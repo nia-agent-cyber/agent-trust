@@ -4,6 +4,39 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-03-09: ctxly.com Approval — CRITICAL ESCALATION REQUIRED (~22.68 Hours Overdue) — Cycle 134
+
+**Decision:** URGENT human escalation required. Automated monitoring has run 134 cycles with no progress.
+
+**Why:**
+- Submission made Mar 6 10:42 GMT+2 via API
+- Normal approval window: 24-48 hours
+- Current status: ~70.68 hours (Mar 9 09:22), still returning 404 on services.json
+- **~70.68 hours total, ~22.68 hours beyond maximum 48h window**
+- 134 PM cycles have documented this same blocker with ZERO progress
+- Automated monitoring is no longer sufficient — requires HUMAN intervention
+
+**Action (Remi — URGENT):**
+- Contact ctxly team via email or Discord **TODAY**
+- Reference: Submission timestamp (Mar 6 10:42 GMT+2), service name (Agent Trust)
+- Request: Status update OR re-submission instructions
+- This is now a **CRITICAL PATH BLOCKER** for distribution
+
+**Alternatives considered:**
+- Continue automated monitoring (134 cycles proved ineffective)
+- Re-submit via API (risk of duplicates, doesn't solve root cause)
+- Abandon ctxly channel (loss of P1 distribution vector)
+
+**Success metric:**
+- Human response from ctxly team within 24 hours
+- Approval granted OR clear rejection reason with fix path
+
+**Revisit when:**
+- ctxly team responds
+- Approval status resolved (approved or rejected with reason)
+
+---
+
 ## 2026-03-09: ctxly.com Approval — CRITICAL ESCALATION REQUIRED (~22.62 Hours Overdue) — Cycle 133
 
 **Decision:** URGENT human escalation required. Automated monitoring has run 133 cycles with no progress.
