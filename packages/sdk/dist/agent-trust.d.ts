@@ -1,15 +1,17 @@
 /**
  * AgentTrust - Main SDK class
  */
-import { AgentTrustConfig, TrustScore, VerificationRequest, VerificationResult, VouchRequest, VouchResult, FlagRequest, FlagResult } from './types';
+import { AgentTrustConfig, TrustScore, VerificationRequest, VerificationResult, VouchRequest, VouchResult, FlagRequest, FlagResult, PaymentReliableRequest, PaymentReliableResult, PaymentReliableAttestation } from './types';
 import { TwitterChallenge, TwitterProof } from './verification/twitter';
 import { GitHubChallenge, GitHubProof } from './verification/github';
 import { TierInfo, TierProgress } from './tier';
+import { EnrichedAgentProfile } from './erc8004';
 export declare class AgentTrust {
     private eas;
     private network;
     private provider;
     private twitterApiKey?;
+    private erc8004Config?;
     constructor(config: AgentTrustConfig);
     /**
      * Get trust score for an agent
@@ -49,6 +51,19 @@ export declare class AgentTrust {
      * Flag a bad actor
      */
     flag(request: FlagRequest): Promise<FlagResult>;
+    /**
+     * Issue a PaymentReliable attestation for a subject agent.
+     *
+     * Validation + normalization are handled by encodePaymentReliableAttestation:
+     * - required fields
+     * - amount normalization to uint256-compatible integer
+     * - timestamp normalization to unix seconds
+     */
+    issuePaymentReliable(request: PaymentReliableRequest): Promise<PaymentReliableResult>;
+    /**
+     * Lookup PaymentReliable attestations for a subject agent.
+     */
+    getPaymentReliability(subjectAgent: string): Promise<PaymentReliableAttestation[]>;
     /**
      * Hash a proof string to bytes32
      */
@@ -96,6 +111,14 @@ export declare class AgentTrust {
      * @returns TierProgress showing requirements vs current stats (null if at max tier)
      */
     getTierProgress(address: string): Promise<TierProgress | null>;
+    /**
+     * Get an enriched agent profile combining ERC-8004 identity/reputation
+     * with Agent Trust tier and scoring data.
+     *
+     * @param address - Agent wallet address
+     * @returns EnrichedAgentProfile with combined assessment
+     */
+    getEnrichedProfile(address: string): Promise<EnrichedAgentProfile>;
     /**
      * Get network configuration
      */

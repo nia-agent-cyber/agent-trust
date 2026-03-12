@@ -43,6 +43,13 @@ export const SCHEMAS = {
     schema: 'address flagged, uint8 severity, string reason, bytes32 evidenceHash',
     revocable: true,
   },
+
+  // Payment Reliable: "address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef"
+  paymentReliable: {
+    uid: '0x0000000000000000000000000000000000000000000000000000000000000000', // TODO: register schema, update UID
+    schema: 'address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef',
+    revocable: true,
+  },
 } as const;
 
 export type NetworkName = keyof typeof NETWORKS;

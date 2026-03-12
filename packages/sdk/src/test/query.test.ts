@@ -8,6 +8,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   fetchAttestationsForAgent,
+  fetchPaymentReliableAttestationsForSubject,
+  parsePaymentReliableAttestation,
   getTrustScore,
   getAttestationSummary,
   clearAttesterScoreCache,
@@ -269,6 +271,73 @@ describe('Query Module', () => {
       expect(result.verifications).toEqual([]);
       expect(result.vouches).toEqual([]);
       expect(result.flags).toEqual([]);
+    });
+  });
+
+  // ============ PaymentReliable Query/Parse Tests ============
+
+  describe('PaymentReliable query helpers', () => {
+    it('parses payment reliable attestation data', () => {
+      const parsed = parsePaymentReliableAttestation({
+        id: 'pay-1',
+        attester: '0x' + 'd'.repeat(40),
+        recipient: testAddress,
+        time: 1700000000,
+        revoked: false,
+        schemaId: SCHEMAS.paymentReliable.uid,
+        decodedDataJson: JSON.stringify([
+          { name: 'subjectAgent', value: { value: testAddress } },
+          { name: 'outcome', value: { value: 2 } },
+          { name: 'amount', value: { value: '1000000' } },
+          { name: 'currency', value: { value: 'USDC' } },
+          { name: 'dueAt', value: { value: '1700000100' } },
+          { name: 'paidAt', value: { value: '1700000000' } },
+          { name: 'settlementRef', value: { value: 'inv-42' } }
+        ])
+      });
+
+      expect(parsed.subjectAgent).toBe(testAddress);
+      expect(parsed.outcome).toBe('paid_on_time');
+      expect(parsed.amount).toBe('1000000');
+      expect(parsed.currency).toBe('USDC');
+      expect(parsed.settlementRef).toBe('inv-42');
+    });
+
+    it('fetches payment reliable attestations for a subject', async () => {
+      const mockResponse = {
+        data: {
+          asRecipient: [
+            {
+              id: 'pay-2',
+              attester: '0x' + 'e'.repeat(40),
+              recipient: testAddress,
+              time: 1700000000,
+              revoked: false,
+              schemaId: SCHEMAS.paymentReliable.uid,
+              decodedDataJson: JSON.stringify([
+                { name: 'subjectAgent', value: { value: testAddress } },
+                { name: 'outcome', value: { value: 1 } },
+                { name: 'amount', value: { value: '2000000' } },
+                { name: 'currency', value: { value: 'USDC' } },
+                { name: 'dueAt', value: { value: '1700000000' } },
+                { name: 'paidAt', value: { value: '1700000300' } },
+                { name: 'settlementRef', value: { value: '' } }
+              ])
+            }
+          ]
+        }
+      };
+
+      vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+        json: () => Promise.resolve(mockResponse)
+      }));
+
+      const result = await fetchPaymentReliableAttestationsForSubject(testAddress, 'baseSepolia');
+
+      expect(result).toHaveLength(1);
+      expect(result[0].outcome).toBe('paid_late');
+      expect(result[0].currency).toBe('USDC');
+      expect(result[0].amount).toBe('2000000');
     });
   });
 

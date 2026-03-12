@@ -231,6 +231,66 @@ const constants_1 = require("../constants");
             (0, vitest_1.expect)(result.flags).toEqual([]);
         });
     });
+    // ============ PaymentReliable Query/Parse Tests ============
+    (0, vitest_1.describe)('PaymentReliable query helpers', () => {
+        (0, vitest_1.it)('parses payment reliable attestation data', () => {
+            const parsed = (0, query_1.parsePaymentReliableAttestation)({
+                id: 'pay-1',
+                attester: '0x' + 'd'.repeat(40),
+                recipient: testAddress,
+                time: 1700000000,
+                revoked: false,
+                schemaId: constants_1.SCHEMAS.paymentReliable.uid,
+                decodedDataJson: JSON.stringify([
+                    { name: 'subjectAgent', value: { value: testAddress } },
+                    { name: 'outcome', value: { value: 2 } },
+                    { name: 'amount', value: { value: '1000000' } },
+                    { name: 'currency', value: { value: 'USDC' } },
+                    { name: 'dueAt', value: { value: '1700000100' } },
+                    { name: 'paidAt', value: { value: '1700000000' } },
+                    { name: 'settlementRef', value: { value: 'inv-42' } }
+                ])
+            });
+            (0, vitest_1.expect)(parsed.subjectAgent).toBe(testAddress);
+            (0, vitest_1.expect)(parsed.outcome).toBe('paid_on_time');
+            (0, vitest_1.expect)(parsed.amount).toBe('1000000');
+            (0, vitest_1.expect)(parsed.currency).toBe('USDC');
+            (0, vitest_1.expect)(parsed.settlementRef).toBe('inv-42');
+        });
+        (0, vitest_1.it)('fetches payment reliable attestations for a subject', async () => {
+            const mockResponse = {
+                data: {
+                    asRecipient: [
+                        {
+                            id: 'pay-2',
+                            attester: '0x' + 'e'.repeat(40),
+                            recipient: testAddress,
+                            time: 1700000000,
+                            revoked: false,
+                            schemaId: constants_1.SCHEMAS.paymentReliable.uid,
+                            decodedDataJson: JSON.stringify([
+                                { name: 'subjectAgent', value: { value: testAddress } },
+                                { name: 'outcome', value: { value: 1 } },
+                                { name: 'amount', value: { value: '2000000' } },
+                                { name: 'currency', value: { value: 'USDC' } },
+                                { name: 'dueAt', value: { value: '1700000000' } },
+                                { name: 'paidAt', value: { value: '1700000300' } },
+                                { name: 'settlementRef', value: { value: '' } }
+                            ])
+                        }
+                    ]
+                }
+            };
+            vitest_1.vi.stubGlobal('fetch', vitest_1.vi.fn().mockResolvedValue({
+                json: () => Promise.resolve(mockResponse)
+            }));
+            const result = await (0, query_1.fetchPaymentReliableAttestationsForSubject)(testAddress, 'baseSepolia');
+            (0, vitest_1.expect)(result).toHaveLength(1);
+            (0, vitest_1.expect)(result[0].outcome).toBe('paid_late');
+            (0, vitest_1.expect)(result[0].currency).toBe('USDC');
+            (0, vitest_1.expect)(result[0].amount).toBe('2000000');
+        });
+    });
     // ============ Get Trust Score Tests ============
     (0, vitest_1.describe)('getTrustScore', () => {
         (0, vitest_1.it)('returns default score for address with no attestations', async () => {

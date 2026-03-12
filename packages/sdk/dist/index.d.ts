@@ -8,4 +8,6 @@ export { SCHEMAS, NETWORKS } from './constants';
 export * from './verification';
 export * from './scoring';
 export * from './tier';
-export { getTrustScore, getAttestationSummary, fetchAttestationsForAgent, clearAttesterScoreCache, getAttesterScoreCacheStats } from './query';
+export * from './erc8004';
+export { getTrustScore, getAttestationSummary, fetchAttestationsForAgent, fetchPaymentReliableAttestationsForSubject, parsePaymentReliableAttestation, clearAttesterScoreCache, getAttesterScoreCacheStats } from './query';
+export { normalizePaymentAmount, normalizeTimestampToSeconds, normalizePaymentReliableRequest, encodePaymentReliableAttestation, parsePaymentOutcome, } from './payment-reliable';

@@ -29,6 +29,17 @@ export {
   getTrustScore, 
   getAttestationSummary, 
   fetchAttestationsForAgent,
+  fetchPaymentReliableAttestationsForSubject,
+  parsePaymentReliableAttestation,
   clearAttesterScoreCache,
   getAttesterScoreCacheStats 
 } from './query';
+
+// PaymentReliable helpers
+export {
+  normalizePaymentAmount,
+  normalizeTimestampToSeconds,
+  normalizePaymentReliableRequest,
+  encodePaymentReliableAttestation,
+  parsePaymentOutcome,
+} from './payment-reliable';

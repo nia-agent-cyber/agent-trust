@@ -12,15 +12,19 @@ const github_1 = require("./verification/github");
 const trust_score_1 = require("./scoring/trust-score");
 const query_1 = require("./query");
 const tier_1 = require("./tier");
+const erc8004_1 = require("./erc8004");
+const payment_reliable_1 = require("./payment-reliable");
 class AgentTrust {
     eas;
     network;
     provider;
     twitterApiKey;
+    erc8004Config;
     constructor(config) {
         this.network = config.network;
         this.provider = config.provider;
         this.twitterApiKey = config.twitterApiKey;
+        this.erc8004Config = config.erc8004;
         const networkConfig = constants_1.NETWORKS[this.network];
         const easAddress = config.easAddress || networkConfig.easAddress;
         this.eas = new eas_sdk_1.EAS(easAddress);
@@ -101,7 +105,7 @@ class AgentTrust {
             return {
                 success: true,
                 attestationUid,
-                txHash: tx.tx.hash,
+                txHash: tx.tx?.hash || tx.hash,
             };
         }
         catch (error) {
@@ -139,7 +143,7 @@ class AgentTrust {
             return {
                 success: true,
                 attestationUid,
-                txHash: tx.tx.hash,
+                txHash: tx.tx?.hash || tx.hash,
             };
         }
         catch (error) {
@@ -177,7 +181,7 @@ class AgentTrust {
             return {
                 success: true,
                 attestationUid,
-                txHash: tx.tx.hash,
+                txHash: tx.tx?.hash || tx.hash,
             };
         }
         catch (error) {
@@ -186,6 +190,52 @@ class AgentTrust {
                 error: error.message,
             };
         }
+    }
+    /**
+     * Issue a PaymentReliable attestation for a subject agent.
+     *
+     * Validation + normalization are handled by encodePaymentReliableAttestation:
+     * - required fields
+     * - amount normalization to uint256-compatible integer
+     * - timestamp normalization to unix seconds
+     */
+    async issuePaymentReliable(request) {
+        try {
+            const encodedData = (0, payment_reliable_1.encodePaymentReliableAttestation)(request);
+            if (!constants_1.SCHEMAS.paymentReliable.uid || /^0x0{64}$/i.test(constants_1.SCHEMAS.paymentReliable.uid)) {
+                throw new Error('PaymentReliable schema UID not configured. Register schema and update SCHEMAS.paymentReliable.uid.');
+            }
+            const tx = await this.eas.attest({
+                schema: constants_1.SCHEMAS.paymentReliable.uid,
+                data: {
+                    recipient: request.subjectAgent,
+                    expirationTime: BigInt(0),
+                    revocable: true,
+                    data: encodedData,
+                },
+            });
+            const attestationUid = await tx.wait();
+            return {
+                success: true,
+                attestationUid,
+                txHash: tx.tx?.hash || tx.hash,
+            };
+        }
+        catch (error) {
+            return {
+                success: false,
+                error: error.message,
+            };
+        }
+    }
+    /**
+     * Lookup PaymentReliable attestations for a subject agent.
+     */
+    async getPaymentReliability(subjectAgent) {
+        if (!ethers_1.ethers.isAddress(subjectAgent)) {
+            throw new Error('Invalid subjectAgent: must be a valid Ethereum address');
+        }
+        return (0, query_1.fetchPaymentReliableAttestationsForSubject)(subjectAgent, this.network);
     }
     /**
      * Hash a proof string to bytes32
@@ -343,6 +393,25 @@ class AgentTrust {
             throw new Error('Invalid address: must be a valid Ethereum address');
         }
         return (0, tier_1.getTierProgress)(address, this.network);
+    }
+    // ============ ERC-8004 Bridge Methods ============
+    /**
+     * Get an enriched agent profile combining ERC-8004 identity/reputation
+     * with Agent Trust tier and scoring data.
+     *
+     * @param address - Agent wallet address
+     * @returns EnrichedAgentProfile with combined assessment
+     */
+    async getEnrichedProfile(address) {
+        if (!ethers_1.ethers.isAddress(address)) {
+            throw new Error('Invalid address: must be a valid Ethereum address');
+        }
+        // Fetch Agent Trust data in parallel
+        const [tierInfo, trustScore] = await Promise.all([
+            this.getTier(address),
+            this.getScore(address),
+        ]);
+        return (0, erc8004_1.buildEnrichedProfile)(address, this.provider, this.network, tierInfo, trustScore, trustScore.attestationCount, this.erc8004Config);
     }
     // ============ Utility Methods ============
     /**

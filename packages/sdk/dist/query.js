@@ -3,6 +3,8 @@
  * Query attestations from EAS GraphQL API
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.parsePaymentReliableAttestation = parsePaymentReliableAttestation;
+exports.fetchPaymentReliableAttestationsForSubject = fetchPaymentReliableAttestationsForSubject;
 exports.fetchAttestationsForAgent = fetchAttestationsForAgent;
 exports.getTrustScore = getTrustScore;
 exports.clearAttesterScoreCache = clearAttesterScoreCache;
@@ -11,11 +13,92 @@ exports.getAttestationSummary = getAttestationSummary;
 const ethers_1 = require("ethers");
 const constants_1 = require("./constants");
 const trust_score_1 = require("./scoring/trust-score");
+const payment_reliable_1 = require("./payment-reliable");
 // EAS GraphQL endpoints
 const GRAPHQL_ENDPOINTS = {
     base: 'https://base.easscan.org/graphql',
     baseSepolia: 'https://base-sepolia.easscan.org/graphql',
 };
+function parseDecodedDataMap(decodedDataJson) {
+    const decoded = JSON.parse(decodedDataJson);
+    return new Map(decoded.map((d) => [d.name, d.value?.value]));
+}
+/**
+ * Parse a single PaymentReliable EAS GraphQL attestation.
+ */
+function parsePaymentReliableAttestation(att) {
+    const dataMap = parseDecodedDataMap(att.decodedDataJson);
+    const outcomeCode = Number(dataMap.get('outcome'));
+    const dueAt = Number(dataMap.get('dueAt'));
+    const paidAt = Number(dataMap.get('paidAt'));
+    return {
+        uid: att.id,
+        attester: att.attester,
+        recipient: att.recipient,
+        subjectAgent: String(dataMap.get('subjectAgent') || att.recipient),
+        outcome: (0, payment_reliable_1.parsePaymentOutcome)(outcomeCode),
+        amount: String(dataMap.get('amount') || '0'),
+        currency: String(dataMap.get('currency') || ''),
+        dueAt: Number.isFinite(dueAt) ? dueAt : 0,
+        paidAt: Number.isFinite(paidAt) ? paidAt : 0,
+        settlementRef: String(dataMap.get('settlementRef') || ''),
+        time: att.time,
+        revoked: att.revoked,
+    };
+}
+/**
+ * Fetch PaymentReliable attestations where recipient/subject is the target agent.
+ */
+async function fetchPaymentReliableAttestationsForSubject(subjectAgent, network = 'baseSepolia') {
+    const endpoint = GRAPHQL_ENDPOINTS[network];
+    const query = `
+    query GetPaymentReliableAttestations($address: String!, $addressLower: String!, $schemaId: String!) {
+      asRecipient: attestations(
+        where: {
+          schemaId: { equals: $schemaId }
+          OR: [
+            { recipient: { equals: $address } },
+            { recipient: { equals: $addressLower } }
+          ]
+        }
+        orderBy: { time: desc }
+        take: 100
+      ) {
+        id
+        attester
+        recipient
+        time
+        revoked
+        decodedDataJson
+        schemaId
+      }
+    }
+  `;
+    const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            query,
+            variables: {
+                address: ethers_1.ethers.getAddress(subjectAgent),
+                addressLower: subjectAgent.toLowerCase(),
+                schemaId: constants_1.SCHEMAS.paymentReliable.uid,
+            },
+        }),
+    });
+    const data = await response.json();
+    const attestations = data?.data?.asRecipient || [];
+    const parsed = [];
+    for (const att of attestations) {
+        try {
+            parsed.push(parsePaymentReliableAttestation(att));
+        }
+        catch {
+            // Skip malformed PaymentReliable attestations
+        }
+    }
+    return parsed;
+}
 /**
  * Fetch all attestations for an agent
  */
@@ -71,8 +154,7 @@ async function fetchAttestationsForAgent(agentAddress, network = 'baseSepolia') 
             revoked: att.revoked,
         };
         try {
-            const decoded = JSON.parse(att.decodedDataJson);
-            const dataMap = new Map(decoded.map((d) => [d.name, d.value.value]));
+            const dataMap = parseDecodedDataMap(att.decodedDataJson);
             if (att.schemaId.toLowerCase() === constants_1.SCHEMAS.verification.uid.toLowerCase()) {
                 verifications.push({
                     ...base,

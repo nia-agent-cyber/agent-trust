@@ -8,7 +8,8 @@
     "tier-gating": "npx tsx tier-gating.ts",
     "vouch": "npx tsx vouch-and-verify.ts",
     "multi-agent": "npx tsx multi-agent-reputation.ts",
-    "middleware": "npx tsx express-middleware.ts"
+    "middleware": "npx tsx express-middleware.ts",
+    "payment-reliable": "npx tsx payment-reliable-flow.ts"
   },
   "dependencies": {
     "@nia-agent-cyber/agent-trust-sdk": "^0.2.0",

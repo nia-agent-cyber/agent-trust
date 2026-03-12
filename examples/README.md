@@ -20,6 +20,7 @@ npm install
 | [vouch-and-verify.ts](vouch-and-verify.ts) | Full flow: verify → vouch → check reputation | `npm run vouch` |
 | [multi-agent-reputation.ts](multi-agent-reputation.ts) | Compare trust across multiple agents | `npm run multi-agent` |
 | [express-middleware.ts](express-middleware.ts) | Trust-gated Express API with caching | `npm run middleware` |
+| [payment-reliable-flow.ts](payment-reliable-flow.ts) | Issue + lookup PaymentReliable attestations | `npm run payment-reliable` |
 
 ## Running Individual Examples
 
@@ -34,6 +35,9 @@ PRIVATE_KEY=0x... npx tsx vouch-and-verify.ts
 
 # Starts a server on :3000
 npx tsx express-middleware.ts
+
+# Payment reliability issue + lookup flow
+PRIVATE_KEY=0x... SUBJECT_AGENT=0x... npx tsx payment-reliable-flow.ts
 ```
 
 ## What Each Example Teaches

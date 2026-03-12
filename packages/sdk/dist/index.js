@@ -18,7 +18,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAttesterScoreCacheStats = exports.clearAttesterScoreCache = exports.fetchAttestationsForAgent = exports.getAttestationSummary = exports.getTrustScore = exports.NETWORKS = exports.SCHEMAS = exports.AgentTrust = void 0;
+exports.parsePaymentOutcome = exports.encodePaymentReliableAttestation = exports.normalizePaymentReliableRequest = exports.normalizeTimestampToSeconds = exports.normalizePaymentAmount = exports.getAttesterScoreCacheStats = exports.clearAttesterScoreCache = exports.parsePaymentReliableAttestation = exports.fetchPaymentReliableAttestationsForSubject = exports.fetchAttestationsForAgent = exports.getAttestationSummary = exports.getTrustScore = exports.NETWORKS = exports.SCHEMAS = exports.AgentTrust = void 0;
 // Main class
 var agent_trust_1 = require("./agent-trust");
 Object.defineProperty(exports, "AgentTrust", { enumerable: true, get: function () { return agent_trust_1.AgentTrust; } });
@@ -34,10 +34,21 @@ __exportStar(require("./verification"), exports);
 __exportStar(require("./scoring"), exports);
 // Tier utilities
 __exportStar(require("./tier"), exports);
+// ERC-8004 bridge
+__exportStar(require("./erc8004"), exports);
 // Query utilities
 var query_1 = require("./query");
 Object.defineProperty(exports, "getTrustScore", { enumerable: true, get: function () { return query_1.getTrustScore; } });
 Object.defineProperty(exports, "getAttestationSummary", { enumerable: true, get: function () { return query_1.getAttestationSummary; } });
 Object.defineProperty(exports, "fetchAttestationsForAgent", { enumerable: true, get: function () { return query_1.fetchAttestationsForAgent; } });
+Object.defineProperty(exports, "fetchPaymentReliableAttestationsForSubject", { enumerable: true, get: function () { return query_1.fetchPaymentReliableAttestationsForSubject; } });
+Object.defineProperty(exports, "parsePaymentReliableAttestation", { enumerable: true, get: function () { return query_1.parsePaymentReliableAttestation; } });
 Object.defineProperty(exports, "clearAttesterScoreCache", { enumerable: true, get: function () { return query_1.clearAttesterScoreCache; } });
 Object.defineProperty(exports, "getAttesterScoreCacheStats", { enumerable: true, get: function () { return query_1.getAttesterScoreCacheStats; } });
+// PaymentReliable helpers
+var payment_reliable_1 = require("./payment-reliable");
+Object.defineProperty(exports, "normalizePaymentAmount", { enumerable: true, get: function () { return payment_reliable_1.normalizePaymentAmount; } });
+Object.defineProperty(exports, "normalizeTimestampToSeconds", { enumerable: true, get: function () { return payment_reliable_1.normalizeTimestampToSeconds; } });
+Object.defineProperty(exports, "normalizePaymentReliableRequest", { enumerable: true, get: function () { return payment_reliable_1.normalizePaymentReliableRequest; } });
+Object.defineProperty(exports, "encodePaymentReliableAttestation", { enumerable: true, get: function () { return payment_reliable_1.encodePaymentReliableAttestation; } });
+Object.defineProperty(exports, "parsePaymentOutcome", { enumerable: true, get: function () { return payment_reliable_1.parsePaymentOutcome; } });
