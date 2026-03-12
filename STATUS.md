@@ -39,11 +39,12 @@
   - `docs/api-reference.md` with PaymentReliable API/query docs
 
 ### Test Results
-- `npm test` (repo root): ✅ passing
+- `npm run build` (packages/sdk): ✅ passing
+- `npm test -- --run` (packages/sdk): ✅ passing (232 tests)
 
 ### PR / Mergeability
-- PR: (opened by coder in this session) linked to #17
-- Mergeability check: to be confirmed in PR metadata (`gh pr view <num> --json mergeable`)
+- PR: https://github.com/nia-agent-cyber/agent-trust/pull/22 (linked to #17)
+- Mergeability check: ✅ `MERGEABLE` (`gh pr view 22 --json mergeable`)
 
 ### Blockers / Risks
 - `SCHEMAS.paymentReliable.uid` currently placeholder `0x00...00` pending schema registration; on-chain issuance requires real UID update.
