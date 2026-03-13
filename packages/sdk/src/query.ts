@@ -12,7 +12,8 @@ import {
   getDefaultTrustScore,
   ScoreInputs 
 } from './scoring/trust-score';
-import { TrustScore } from './types';
+import { PaymentReliableAttestation, TrustScore } from './types';
+import { parsePaymentOutcome } from './payment-reliable';
 
 // EAS GraphQL endpoints
 const GRAPHQL_ENDPOINTS: Record<NetworkName, string> = {
@@ -20,7 +21,7 @@ const GRAPHQL_ENDPOINTS: Record<NetworkName, string> = {
   baseSepolia: 'https://base-sepolia.easscan.org/graphql',
 };
 
-interface GraphQLAttestation {
+export interface GraphQLAttestation {
   id: string;
   attester: string;
   recipient: string;
@@ -28,6 +29,97 @@ interface GraphQLAttestation {
   revoked: boolean;
   decodedDataJson: string;
   schemaId: string;
+}
+
+function parseDecodedDataMap(decodedDataJson: string): Map<string, any> {
+  const decoded = JSON.parse(decodedDataJson);
+  return new Map(decoded.map((d: any) => [d.name, d.value?.value]));
+}
+
+/**
+ * Parse a single PaymentReliable EAS GraphQL attestation.
+ */
+export function parsePaymentReliableAttestation(att: GraphQLAttestation): PaymentReliableAttestation {
+  const dataMap = parseDecodedDataMap(att.decodedDataJson);
+
+  const outcomeCode = Number(dataMap.get('outcome'));
+  const dueAt = Number(dataMap.get('dueAt'));
+  const paidAt = Number(dataMap.get('paidAt'));
+
+  return {
+    uid: att.id,
+    attester: att.attester,
+    recipient: att.recipient,
+    subjectAgent: String(dataMap.get('subjectAgent') || att.recipient),
+    outcome: parsePaymentOutcome(outcomeCode),
+    amount: String(dataMap.get('amount') || '0'),
+    currency: String(dataMap.get('currency') || ''),
+    dueAt: Number.isFinite(dueAt) ? dueAt : 0,
+    paidAt: Number.isFinite(paidAt) ? paidAt : 0,
+    settlementRef: String(dataMap.get('settlementRef') || ''),
+    time: att.time,
+    revoked: att.revoked,
+  };
+}
+
+/**
+ * Fetch PaymentReliable attestations where recipient/subject is the target agent.
+ */
+export async function fetchPaymentReliableAttestationsForSubject(
+  subjectAgent: string,
+  network: NetworkName = 'baseSepolia'
+): Promise<PaymentReliableAttestation[]> {
+  const endpoint = GRAPHQL_ENDPOINTS[network];
+  const query = `
+    query GetPaymentReliableAttestations($address: String!, $addressLower: String!, $schemaId: String!) {
+      asRecipient: attestations(
+        where: {
+          schemaId: { equals: $schemaId }
+          OR: [
+            { recipient: { equals: $address } },
+            { recipient: { equals: $addressLower } }
+          ]
+        }
+        orderBy: { time: desc }
+        take: 100
+      ) {
+        id
+        attester
+        recipient
+        time
+        revoked
+        decodedDataJson
+        schemaId
+      }
+    }
+  `;
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query,
+      variables: {
+        address: ethers.getAddress(subjectAgent),
+        addressLower: subjectAgent.toLowerCase(),
+        schemaId: SCHEMAS.paymentReliable.uid,
+      },
+    }),
+  });
+
+  const data = await response.json();
+  const attestations: GraphQLAttestation[] = data?.data?.asRecipient || [];
+
+  const parsed: PaymentReliableAttestation[] = [];
+  for (const att of attestations) {
+    try {
+      parsed.push(parsePaymentReliableAttestation(att));
+    } catch {
+      // Skip malformed PaymentReliable attestations
+    }
+  }
+
+  return parsed;
 }
 
 /**
@@ -98,8 +190,7 @@ export async function fetchAttestationsForAgent(
     };
 
     try {
-      const decoded = JSON.parse(att.decodedDataJson);
-      const dataMap = new Map(decoded.map((d: any) => [d.name, d.value.value]));
+      const dataMap = parseDecodedDataMap(att.decodedDataJson);
 
       if (att.schemaId.toLowerCase() === SCHEMAS.verification.uid.toLowerCase()) {
         verifications.push({

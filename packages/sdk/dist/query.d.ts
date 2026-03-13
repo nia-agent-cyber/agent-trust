@@ -3,7 +3,24 @@
  */
 import { NetworkName } from './constants';
 import { VouchAttestation, FlagAttestation, VerificationAttestation } from './scoring/trust-score';
-import { TrustScore } from './types';
+import { PaymentReliableAttestation, TrustScore } from './types';
+export interface GraphQLAttestation {
+    id: string;
+    attester: string;
+    recipient: string;
+    time: number;
+    revoked: boolean;
+    decodedDataJson: string;
+    schemaId: string;
+}
+/**
+ * Parse a single PaymentReliable EAS GraphQL attestation.
+ */
+export declare function parsePaymentReliableAttestation(att: GraphQLAttestation): PaymentReliableAttestation;
+/**
+ * Fetch PaymentReliable attestations where recipient/subject is the target agent.
+ */
+export declare function fetchPaymentReliableAttestationsForSubject(subjectAgent: string, network?: NetworkName): Promise<PaymentReliableAttestation[]>;
 /**
  * Fetch all attestations for an agent
  */

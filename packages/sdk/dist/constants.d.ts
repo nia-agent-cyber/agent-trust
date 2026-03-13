@@ -37,5 +37,10 @@ export declare const SCHEMAS: {
         readonly schema: "address flagged, uint8 severity, string reason, bytes32 evidenceHash";
         readonly revocable: true;
     };
+    readonly paymentReliable: {
+        readonly uid: "0x0000000000000000000000000000000000000000000000000000000000000000";
+        readonly schema: "address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef";
+        readonly revocable: true;
+    };
 };
 export type NetworkName = keyof typeof NETWORKS;

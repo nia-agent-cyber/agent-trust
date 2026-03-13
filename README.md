@@ -20,7 +20,7 @@ But identity isn't trust. You need to know IF you should trust them.
 | **Data type** | Registry entries | Attestation graph |
 | **Infrastructure** | New ERC standard | EAS (battle-tested, 2.5M+ attestations) |
 
-**Agent Trust is the reputation enforcement layer.** We track verifications, vouches, and flags—soulbound credentials that build (or destroy) an agent's reputation over time.
+**Agent Trust is the reputation enforcement layer.** We track verifications, vouches, flags, and payment reliability—soulbound credentials that build (or destroy) an agent's reputation over time.
 
 > "Standards don't create autonomy. Enforcement does." — [@GoKiteAI](https://twitter.com/GoKiteAI)
 
@@ -31,6 +31,7 @@ As AI agents become autonomous actors in the economy, identity alone isn't enoug
 - **Verification**: Prove you control specific identities (Twitter, GitHub)
 - **Vouching**: Receive endorsements from other trusted agents (weighted by their reputation)
 - **Flagging**: Report bad actors with evidence
+- **Payment reliability**: Track on-time, late, and defaulted payments
 - **Soulbound**: Credentials are non-transferable—trust is earned, not bought
 - **Recursive Attester Scoring**: Novel approach to "who watches the watchers"
 
@@ -120,6 +121,24 @@ const result = await agentTrust.flag({
 });
 ```
 
+### 💸 Payment Reliability Attestations
+
+Record payment outcomes for agents in marketplaces, escrow, and bounty systems.
+
+```typescript
+const issue = await agentTrust.issuePaymentReliable({
+  subjectAgent: '0xCounterparty',
+  outcome: 'paid_on_time',
+  amount: '1500000', // base units
+  currency: 'USDC',
+  dueAt: 1710000000,
+  paidAt: 1709999000,
+  settlementRef: 'invoice-42'
+});
+
+const history = await agentTrust.getPaymentReliability('0xCounterparty');
+```
+
 ### 📊 Trust Score Algorithm
 
 Trust scores (0-100) are calculated from:
@@ -203,7 +222,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 - 🔜 Trust delegation (agents vouch on behalf of organizations)
 - 🔜 Batch attestation queries (reduce RPC calls)
 - 🔜 Webhook/event subscriptions for tier changes
-- 🔜 New attestation types (SecurityAudit, TaskCompletion, PaymentReliable)
+- 🔜 New attestation types (SecurityAudit, TaskCompletion)
 
 ## Networks
 
@@ -219,6 +238,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 | Verification | `0xee0eab330a75940a9d73eaec95d71b12fd5d0a0b4fe0a5c46304052db0ef2849` |
 | Vouch | `0x974ebae65dc7f066a2734b8a966f6bec08454426b401267460dcf6c949275e6c` |
 | Flag | `0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47` |
+| PaymentReliable | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
 
 ## Why EAS (Not a New Standard)?
 

@@ -180,6 +180,28 @@ const result = await agentTrust.flag({
 
 ---
 
+#### `issuePaymentReliable(request: PaymentReliableRequest): Promise<PaymentReliableResult>`
+
+Issue a PaymentReliable attestation for a subject agent.
+
+**Parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `request.subjectAgent` | `string` | Subject agent wallet address |
+| `request.outcome` | `'paid_on_time' \| 'paid_late' \| 'defaulted'` | Payment outcome |
+| `request.amount` | `string \| number \| bigint` | Amount in base units (normalized to uint256 integer) |
+| `request.currency` | `string` | Currency/token symbol |
+| `request.dueAt` | `string \| number \| Date` | Due timestamp |
+| `request.paidAt` | `string \| number \| Date` | Paid timestamp (required unless defaulted) |
+| `request.settlementRef` | `string` | Optional settlement reference |
+
+**Returns:** `PaymentReliableResult`
+
+#### `getPaymentReliability(subjectAgent: string): Promise<PaymentReliableAttestation[]>`
+
+Lookup parsed PaymentReliable attestations where the subject agent is recipient.
+
 #### `generateTwitterChallenge(agentId: string, handle: string): TwitterChallenge`
 
 Generate a Twitter verification challenge.
@@ -365,6 +387,9 @@ SCHEMAS.vouch.schema        // 'address vouchee, uint8 trustLevel, string contex
 
 SCHEMAS.flag.uid            // '0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47'
 SCHEMAS.flag.schema         // 'address flagged, uint8 severity, string reason, bytes32 evidenceHash'
+
+SCHEMAS.paymentReliable.uid    // '0x000...000' (placeholder until schema registration)
+SCHEMAS.paymentReliable.schema // 'address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef'
 ```
 
 ---
@@ -398,6 +423,14 @@ const score = await getTrustScore('0xAgentAddress', 'base');
 import { getAttestationSummary } from '@nia-agent-cyber/agent-trust-sdk';
 
 const summary = await getAttestationSummary('0xAgentAddress', 'base');
+```
+
+### fetchPaymentReliableAttestationsForSubject
+
+```typescript
+import { fetchPaymentReliableAttestationsForSubject } from '@nia-agent-cyber/agent-trust-sdk';
+
+const payments = await fetchPaymentReliableAttestationsForSubject('0xAgentAddress', 'base');
 ```
 
 ### clearAttesterScoreCache

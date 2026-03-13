@@ -14,6 +14,9 @@ import {
   VouchResult,
   FlagRequest,
   FlagResult,
+  PaymentReliableRequest,
+  PaymentReliableResult,
+  PaymentReliableAttestation,
 } from './types';
 import { 
   generateTwitterChallenge, 
@@ -31,7 +34,11 @@ import {
   GitHubProof,
 } from './verification/github';
 import { calculateTrustScore, getDefaultTrustScore, ScoreInputs } from './scoring/trust-score';
-import { getTrustScore, getAttestationSummary } from './query';
+import {
+  getTrustScore,
+  getAttestationSummary,
+  fetchPaymentReliableAttestationsForSubject,
+} from './query';
 import { 
   getTier as queryGetTier, 
   checkMeetsTier, 
@@ -40,6 +47,7 @@ import {
   TierProgress,
 } from './tier';
 import { buildEnrichedProfile, EnrichedAgentProfile, ERC8004Config } from './erc8004';
+import { encodePaymentReliableAttestation } from './payment-reliable';
 
 export class AgentTrust {
   private eas: EAS;
@@ -144,7 +152,7 @@ export class AgentTrust {
       return {
         success: true,
         attestationUid,
-        txHash: tx.tx.hash,
+        txHash: (tx as any).tx?.hash || (tx as any).hash,
       };
     } catch (error: any) {
       return {
@@ -186,7 +194,7 @@ export class AgentTrust {
       return {
         success: true,
         attestationUid,
-        txHash: tx.tx.hash,
+        txHash: (tx as any).tx?.hash || (tx as any).hash,
       };
     } catch (error: any) {
       return {
@@ -228,7 +236,7 @@ export class AgentTrust {
       return {
         success: true,
         attestationUid,
-        txHash: tx.tx.hash,
+        txHash: (tx as any).tx?.hash || (tx as any).hash,
       };
     } catch (error: any) {
       return {
@@ -236,6 +244,57 @@ export class AgentTrust {
         error: error.message,
       };
     }
+  }
+
+  /**
+   * Issue a PaymentReliable attestation for a subject agent.
+   *
+   * Validation + normalization are handled by encodePaymentReliableAttestation:
+   * - required fields
+   * - amount normalization to uint256-compatible integer
+   * - timestamp normalization to unix seconds
+   */
+  async issuePaymentReliable(request: PaymentReliableRequest): Promise<PaymentReliableResult> {
+    try {
+      const encodedData = encodePaymentReliableAttestation(request);
+
+      if (!SCHEMAS.paymentReliable.uid || /^0x0{64}$/i.test(SCHEMAS.paymentReliable.uid)) {
+        throw new Error('PaymentReliable schema UID not configured. Register schema and update SCHEMAS.paymentReliable.uid.');
+      }
+
+      const tx = await this.eas.attest({
+        schema: SCHEMAS.paymentReliable.uid,
+        data: {
+          recipient: request.subjectAgent,
+          expirationTime: BigInt(0),
+          revocable: true,
+          data: encodedData,
+        },
+      });
+
+      const attestationUid = await tx.wait();
+
+      return {
+        success: true,
+        attestationUid,
+        txHash: (tx as any).tx?.hash || (tx as any).hash,
+      };
+    } catch (error: any) {
+      return {
+        success: false,
+        error: error.message,
+      };
+    }
+  }
+
+  /**
+   * Lookup PaymentReliable attestations for a subject agent.
+   */
+  async getPaymentReliability(subjectAgent: string): Promise<PaymentReliableAttestation[]> {
+    if (!ethers.isAddress(subjectAgent)) {
+      throw new Error('Invalid subjectAgent: must be a valid Ethereum address');
+    }
+    return fetchPaymentReliableAttestationsForSubject(subjectAgent, this.network);
   }
 
   /**
