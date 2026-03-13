@@ -4,6 +4,44 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-03-13: PaymentReliable Merged, Schema Registration Next
+
+**Decision:** PR #22 merged to main. Proceed immediately with schema registration on Base Sepolia before next feature work.
+
+**Why:**
+- QA approved PR #22 as production-ready with MERGEABLE status
+- PaymentReliable implementation complete (SDK helpers, tests, examples, docs)
+- Schema UID is placeholder — blocking live usage
+- Feature is ready for testnet deployment
+
+**Immediate next steps:**
+1. Register PaymentReliable schema on Base Sepolia EAS
+2. Update `SCHEMAS.paymentReliable.uid` in constants.ts with real UID
+3. Rebuild SDK and smoke test live issuance
+4. Document schema UID in README
+5. Move to TaskCompletion (#18) as next roadmap item
+
+**Engineering unblocked:**
+- Distribution blockers (browser, Reddit, Dev.to, ctxly) do NOT block SDK work
+- Can proceed with roadmap items in parallel with distribution efforts
+- Focus on feature completeness over external marketing during this phase
+
+**Alternatives considered:**
+- Wait for distribution channels (delays SDK progress unnecessarily)
+- Skip schema registration and move to TaskCompletion (leaves PaymentReliable half-deployed)
+- Implement temporal trust decay #23 first (strategic feature, not urgent)
+
+**Success criteria:**
+- PaymentReliable schema UID updated within 48 hours
+- TaskCompletion implementation started within 7 days
+- 2+ roadmap items shipped by end of month
+
+**Revisit when:**
+- Schema registration complete
+- Live PaymentReliable issuance verified on testnet
+
+---
+
 ## 2026-03-09: ctxly.com Approval — CRITICAL ESCALATION REQUIRED (~24.58 Hours Overdue) — Cycle 157
 
 **Decision:** URGENT human escalation required. Automated monitoring has run 157 cycles with no progress.
