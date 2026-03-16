@@ -202,6 +202,64 @@ Issue a PaymentReliable attestation for a subject agent.
 
 Lookup parsed PaymentReliable attestations where the subject agent is recipient.
 
+---
+
+#### `issueTaskCompletion(request: TaskCompletionRequest): Promise<TaskCompletionResult>`
+
+Issue a TaskCompletion attestation for a subject agent.
+
+**Parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `request.subjectAgent` | `string` | Subject agent wallet address |
+| `request.outcome` | `'completed' \| 'failed' \| 'disputed'` | Task outcome |
+| `request.taskId` | `string` | Unique task/bounty identifier from the issuing platform |
+| `request.category` | `string` | Task category (e.g. `code`, `design`, `writing`, `review`, `other`) |
+| `request.completedAt` | `string \| number \| Date` | Completion timestamp |
+| `request.reward` | `string \| number \| bigint` | Reward in base units (default `0`) |
+| `request.rewardToken` | `string` | Token/currency symbol (e.g. `USDC`, `ETH`, `GTC`) |
+| `request.taskRef` | `string` | Optional external reference (bounty URL, PR link, IPFS CID) |
+
+**Returns:** `TaskCompletionResult`
+
+**Example:**
+
+```typescript
+const result = await agentTrust.issueTaskCompletion({
+  subjectAgent: '0xBountyHunter',
+  outcome: 'completed',
+  taskId: 'gitcoin-bounty-1234',
+  category: 'code',
+  completedAt: new Date(),
+  reward: '500000000',
+  rewardToken: 'USDC',
+  taskRef: 'https://gitcoin.co/bounty/1234',
+});
+```
+
+---
+
+#### `getTaskCompletions(subjectAgent: string): Promise<TaskCompletionAttestation[]>`
+
+Lookup parsed TaskCompletion attestations where the subject agent is recipient.
+
+**Parameters:**
+- `subjectAgent` - Agent wallet address (must be a valid Ethereum address)
+
+**Returns:** Array of `TaskCompletionAttestation`
+
+**Example:**
+
+```typescript
+const completions = await agentTrust.getTaskCompletions('0xBountyHunter');
+for (const att of completions) {
+  console.log(att.outcome, att.taskId, att.reward, att.rewardToken);
+}
+```
+
+---
+
 #### `generateTwitterChallenge(agentId: string, handle: string): TwitterChallenge`
 
 Generate a Twitter verification challenge.
@@ -431,6 +489,39 @@ const summary = await getAttestationSummary('0xAgentAddress', 'base');
 import { fetchPaymentReliableAttestationsForSubject } from '@nia-agent-cyber/agent-trust-sdk';
 
 const payments = await fetchPaymentReliableAttestationsForSubject('0xAgentAddress', 'base');
+```
+
+### fetchTaskCompletionAttestationsForSubject
+
+Fetch TaskCompletion attestations for a subject agent from EAS GraphQL.
+
+```typescript
+import { fetchTaskCompletionAttestationsForSubject } from '@nia-agent-cyber/agent-trust-sdk';
+
+const completions = await fetchTaskCompletionAttestationsForSubject('0xAgentAddress', 'base');
+```
+
+### parseTaskCompletionAttestation
+
+Parse a raw EAS GraphQL attestation object into a typed `TaskCompletionAttestation`.
+
+```typescript
+import { parseTaskCompletionAttestation } from '@nia-agent-cyber/agent-trust-sdk';
+
+const parsed = parseTaskCompletionAttestation(rawGraphQLAttestation);
+// { uid, attester, recipient, subjectAgent, outcome, taskId, category, completedAt, reward, rewardToken, taskRef, time, revoked }
+```
+
+### parseTaskOutcome
+
+Map a numeric outcome code to a `TaskOutcome` string. Throws on unknown codes.
+
+```typescript
+import { parseTaskOutcome } from '@nia-agent-cyber/agent-trust-sdk';
+
+parseTaskOutcome(0); // 'failed'
+parseTaskOutcome(1); // 'completed'
+parseTaskOutcome(2); // 'disputed'
 ```
 
 ### clearAttesterScoreCache

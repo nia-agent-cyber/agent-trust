@@ -139,6 +139,25 @@ const issue = await agentTrust.issuePaymentReliable({
 const history = await agentTrust.getPaymentReliability('0xCounterparty');
 ```
 
+### ✅ Task Completion Attestations
+
+Record verifiable proof that an agent completed a task or bounty (Gitcoin, ClawTasks, OpenWork, etc.).
+
+```typescript
+const result = await agentTrust.issueTaskCompletion({
+  subjectAgent: '0xBountyHunter',
+  outcome: 'completed',        // 'completed' | 'failed' | 'disputed'
+  taskId: 'gitcoin-bounty-1234',
+  category: 'code',            // open-ended string: code, design, writing, review, other…
+  completedAt: new Date(),
+  reward: '500000000',         // base units (e.g. 500 USDC at 6 decimals)
+  rewardToken: 'USDC',
+  taskRef: 'https://gitcoin.co/bounty/1234',
+});
+
+const completions = await agentTrust.getTaskCompletions('0xBountyHunter');
+```
+
 ### 📊 Trust Score Algorithm
 
 Trust scores (0-100) are calculated from:
@@ -222,7 +241,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 - 🔜 Trust delegation (agents vouch on behalf of organizations)
 - 🔜 Batch attestation queries (reduce RPC calls)
 - 🔜 Webhook/event subscriptions for tier changes
-- 🔜 New attestation types (SecurityAudit, TaskCompletion)
+- 🔜 New attestation types (SecurityAudit)
 
 ## Networks
 
@@ -239,6 +258,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 | Vouch | `0x974ebae65dc7f066a2734b8a966f6bec08454426b401267460dcf6c949275e6c` |
 | Flag | `0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47` |
 | PaymentReliable | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
+| TaskCompletion | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
 
 ## Why EAS (Not a New Standard)?
 

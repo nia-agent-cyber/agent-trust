@@ -1,7 +1,7 @@
 /**
  * AgentTrust - Main SDK class
  */
-import { AgentTrustConfig, TrustScore, VerificationRequest, VerificationResult, VouchRequest, VouchResult, FlagRequest, FlagResult, PaymentReliableRequest, PaymentReliableResult, PaymentReliableAttestation } from './types';
+import { AgentTrustConfig, TrustScore, VerificationRequest, VerificationResult, VouchRequest, VouchResult, FlagRequest, FlagResult, PaymentReliableRequest, PaymentReliableResult, PaymentReliableAttestation, TaskCompletionRequest, TaskCompletionResult, TaskCompletionAttestation } from './types';
 import { TwitterChallenge, TwitterProof } from './verification/twitter';
 import { GitHubChallenge, GitHubProof } from './verification/github';
 import { TierInfo, TierProgress } from './tier';
@@ -64,6 +64,19 @@ export declare class AgentTrust {
      * Lookup PaymentReliable attestations for a subject agent.
      */
     getPaymentReliability(subjectAgent: string): Promise<PaymentReliableAttestation[]>;
+    /**
+     * Issue a TaskCompletion attestation for a subject agent.
+     *
+     * Validation + normalization are handled by encodeTaskCompletionAttestation:
+     * - required fields (subjectAgent, taskId, category, outcome)
+     * - completedAt normalization to unix seconds
+     * - reward normalization to uint256-compatible integer
+     */
+    issueTaskCompletion(request: TaskCompletionRequest): Promise<TaskCompletionResult>;
+    /**
+     * Lookup TaskCompletion attestations for a subject agent.
+     */
+    getTaskCompletions(subjectAgent: string): Promise<TaskCompletionAttestation[]>;
     /**
      * Hash a proof string to bytes32
      */

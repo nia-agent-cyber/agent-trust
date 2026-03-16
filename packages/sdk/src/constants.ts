@@ -50,6 +50,13 @@ export const SCHEMAS = {
     schema: 'address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef',
     revocable: true,
   },
+
+  // Task Completion: "address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef"
+  taskCompletion: {
+    uid: '0x0000000000000000000000000000000000000000000000000000000000000000', // TODO: register schema, update UID
+    schema: 'address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef',
+    revocable: true,
+  },
 } as const;
 
 export type NetworkName = keyof typeof NETWORKS;

@@ -126,6 +126,61 @@ export interface PaymentReliableAttestation {
     time: number;
     revoked: boolean;
 }
+export type TaskOutcome = 'completed' | 'failed' | 'disputed';
+export interface TaskCompletionRequest {
+    /** Subject agent address to attest about */
+    subjectAgent: string;
+    /** Task outcome classification */
+    outcome: TaskOutcome;
+    /** Unique task/bounty identifier from the issuing platform */
+    taskId: string;
+    /** Task category (e.g. code, design, writing, review, other) */
+    category: string;
+    /** Completion timestamp (unix seconds/ms, Date, or ISO string) */
+    completedAt: string | number | Date;
+    /** Reward amount in base units (default 0) */
+    reward?: string | number | bigint;
+    /** Token/currency symbol (e.g. USDC, ETH, GTC) — empty string if no reward */
+    rewardToken?: string;
+    /** Optional external reference (bounty URL, PR link, IPFS CID) */
+    taskRef?: string;
+}
+export interface NormalizedTaskCompletion {
+    subjectAgent: string;
+    outcome: TaskOutcome;
+    outcomeCode: 0 | 1 | 2;
+    taskId: string;
+    category: string;
+    completedAt: bigint;
+    reward: bigint;
+    rewardToken: string;
+    taskRef: string;
+}
+export interface TaskCompletionResult {
+    /** Whether attestation succeeded */
+    success: boolean;
+    /** Attestation UID (if successful) */
+    attestationUid?: string;
+    /** Transaction hash */
+    txHash?: string;
+    /** Error message (if failed) */
+    error?: string;
+}
+export interface TaskCompletionAttestation {
+    uid: string;
+    attester: string;
+    recipient: string;
+    subjectAgent: string;
+    outcome: TaskOutcome;
+    taskId: string;
+    category: string;
+    completedAt: number;
+    reward: string;
+    rewardToken: string;
+    taskRef: string;
+    time: number;
+    revoked: boolean;
+}
 export interface AgentTrustConfig {
     /** Network to use */
     network: 'base' | 'baseSepolia';

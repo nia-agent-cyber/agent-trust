@@ -18,7 +18,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parsePaymentOutcome = exports.encodePaymentReliableAttestation = exports.normalizePaymentReliableRequest = exports.normalizeTimestampToSeconds = exports.normalizePaymentAmount = exports.getAttesterScoreCacheStats = exports.clearAttesterScoreCache = exports.parsePaymentReliableAttestation = exports.fetchPaymentReliableAttestationsForSubject = exports.fetchAttestationsForAgent = exports.getAttestationSummary = exports.getTrustScore = exports.NETWORKS = exports.SCHEMAS = exports.AgentTrust = void 0;
+exports.parseTaskOutcome = exports.encodeTaskCompletionAttestation = exports.normalizeTaskCompletionRequest = exports.parsePaymentOutcome = exports.encodePaymentReliableAttestation = exports.normalizePaymentReliableRequest = exports.normalizeTimestampToSeconds = exports.normalizePaymentAmount = exports.getAttesterScoreCacheStats = exports.clearAttesterScoreCache = exports.parseTaskCompletionAttestation = exports.fetchTaskCompletionAttestationsForSubject = exports.parsePaymentReliableAttestation = exports.fetchPaymentReliableAttestationsForSubject = exports.fetchAttestationsForAgent = exports.getAttestationSummary = exports.getTrustScore = exports.NETWORKS = exports.SCHEMAS = exports.AgentTrust = void 0;
 // Main class
 var agent_trust_1 = require("./agent-trust");
 Object.defineProperty(exports, "AgentTrust", { enumerable: true, get: function () { return agent_trust_1.AgentTrust; } });
@@ -43,6 +43,8 @@ Object.defineProperty(exports, "getAttestationSummary", { enumerable: true, get:
 Object.defineProperty(exports, "fetchAttestationsForAgent", { enumerable: true, get: function () { return query_1.fetchAttestationsForAgent; } });
 Object.defineProperty(exports, "fetchPaymentReliableAttestationsForSubject", { enumerable: true, get: function () { return query_1.fetchPaymentReliableAttestationsForSubject; } });
 Object.defineProperty(exports, "parsePaymentReliableAttestation", { enumerable: true, get: function () { return query_1.parsePaymentReliableAttestation; } });
+Object.defineProperty(exports, "fetchTaskCompletionAttestationsForSubject", { enumerable: true, get: function () { return query_1.fetchTaskCompletionAttestationsForSubject; } });
+Object.defineProperty(exports, "parseTaskCompletionAttestation", { enumerable: true, get: function () { return query_1.parseTaskCompletionAttestation; } });
 Object.defineProperty(exports, "clearAttesterScoreCache", { enumerable: true, get: function () { return query_1.clearAttesterScoreCache; } });
 Object.defineProperty(exports, "getAttesterScoreCacheStats", { enumerable: true, get: function () { return query_1.getAttesterScoreCacheStats; } });
 // PaymentReliable helpers
@@ -52,3 +54,8 @@ Object.defineProperty(exports, "normalizeTimestampToSeconds", { enumerable: true
 Object.defineProperty(exports, "normalizePaymentReliableRequest", { enumerable: true, get: function () { return payment_reliable_1.normalizePaymentReliableRequest; } });
 Object.defineProperty(exports, "encodePaymentReliableAttestation", { enumerable: true, get: function () { return payment_reliable_1.encodePaymentReliableAttestation; } });
 Object.defineProperty(exports, "parsePaymentOutcome", { enumerable: true, get: function () { return payment_reliable_1.parsePaymentOutcome; } });
+// TaskCompletion helpers
+var task_completion_1 = require("./task-completion");
+Object.defineProperty(exports, "normalizeTaskCompletionRequest", { enumerable: true, get: function () { return task_completion_1.normalizeTaskCompletionRequest; } });
+Object.defineProperty(exports, "encodeTaskCompletionAttestation", { enumerable: true, get: function () { return task_completion_1.encodeTaskCompletionAttestation; } });
+Object.defineProperty(exports, "parseTaskOutcome", { enumerable: true, get: function () { return task_completion_1.parseTaskOutcome; } });
