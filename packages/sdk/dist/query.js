@@ -5,6 +5,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parsePaymentReliableAttestation = parsePaymentReliableAttestation;
 exports.fetchPaymentReliableAttestationsForSubject = fetchPaymentReliableAttestationsForSubject;
+exports.parseTaskCompletionAttestation = parseTaskCompletionAttestation;
+exports.fetchTaskCompletionAttestationsForSubject = fetchTaskCompletionAttestationsForSubject;
 exports.fetchAttestationsForAgent = fetchAttestationsForAgent;
 exports.getTrustScore = getTrustScore;
 exports.clearAttesterScoreCache = clearAttesterScoreCache;
@@ -14,6 +16,7 @@ const ethers_1 = require("ethers");
 const constants_1 = require("./constants");
 const trust_score_1 = require("./scoring/trust-score");
 const payment_reliable_1 = require("./payment-reliable");
+const task_completion_1 = require("./task-completion");
 // EAS GraphQL endpoints
 const GRAPHQL_ENDPOINTS = {
     base: 'https://base.easscan.org/graphql',
@@ -95,6 +98,82 @@ async function fetchPaymentReliableAttestationsForSubject(subjectAgent, network 
         }
         catch {
             // Skip malformed PaymentReliable attestations
+        }
+    }
+    return parsed;
+}
+/**
+ * Parse a single TaskCompletion EAS GraphQL attestation.
+ */
+function parseTaskCompletionAttestation(att) {
+    const dataMap = parseDecodedDataMap(att.decodedDataJson);
+    const outcomeCode = Number(dataMap.get('outcome'));
+    const completedAt = Number(dataMap.get('completedAt'));
+    return {
+        uid: att.id,
+        attester: att.attester,
+        recipient: att.recipient,
+        subjectAgent: String(dataMap.get('subjectAgent') || att.recipient),
+        outcome: (0, task_completion_1.parseTaskOutcome)(outcomeCode),
+        taskId: String(dataMap.get('taskId') || ''),
+        category: String(dataMap.get('category') || ''),
+        completedAt: Number.isFinite(completedAt) ? completedAt : 0,
+        reward: String(dataMap.get('reward') || '0'),
+        rewardToken: String(dataMap.get('rewardToken') || ''),
+        taskRef: String(dataMap.get('taskRef') || ''),
+        time: att.time,
+        revoked: att.revoked,
+    };
+}
+/**
+ * Fetch TaskCompletion attestations where recipient/subject is the target agent.
+ */
+async function fetchTaskCompletionAttestationsForSubject(subjectAgent, network = 'baseSepolia') {
+    const endpoint = GRAPHQL_ENDPOINTS[network];
+    const query = `
+    query GetTaskCompletionAttestations($address: String!, $addressLower: String!, $schemaId: String!) {
+      asRecipient: attestations(
+        where: {
+          schemaId: { equals: $schemaId }
+          OR: [
+            { recipient: { equals: $address } },
+            { recipient: { equals: $addressLower } }
+          ]
+        }
+        orderBy: { time: desc }
+        take: 100
+      ) {
+        id
+        attester
+        recipient
+        time
+        revoked
+        decodedDataJson
+        schemaId
+      }
+    }
+  `;
+    const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            query,
+            variables: {
+                address: ethers_1.ethers.getAddress(subjectAgent),
+                addressLower: subjectAgent.toLowerCase(),
+                schemaId: constants_1.SCHEMAS.taskCompletion.uid,
+            },
+        }),
+    });
+    const data = await response.json();
+    const attestations = data?.data?.asRecipient || [];
+    const parsed = [];
+    for (const att of attestations) {
+        try {
+            parsed.push(parseTaskCompletionAttestation(att));
+        }
+        catch {
+            // Skip malformed TaskCompletion attestations
         }
     }
     return parsed;

@@ -14,6 +14,7 @@ const query_1 = require("./query");
 const tier_1 = require("./tier");
 const erc8004_1 = require("./erc8004");
 const payment_reliable_1 = require("./payment-reliable");
+const task_completion_1 = require("./task-completion");
 class AgentTrust {
     eas;
     network;
@@ -236,6 +237,52 @@ class AgentTrust {
             throw new Error('Invalid subjectAgent: must be a valid Ethereum address');
         }
         return (0, query_1.fetchPaymentReliableAttestationsForSubject)(subjectAgent, this.network);
+    }
+    /**
+     * Issue a TaskCompletion attestation for a subject agent.
+     *
+     * Validation + normalization are handled by encodeTaskCompletionAttestation:
+     * - required fields (subjectAgent, taskId, category, outcome)
+     * - completedAt normalization to unix seconds
+     * - reward normalization to uint256-compatible integer
+     */
+    async issueTaskCompletion(request) {
+        try {
+            const encodedData = (0, task_completion_1.encodeTaskCompletionAttestation)(request);
+            if (!constants_1.SCHEMAS.taskCompletion.uid || /^0x0{64}$/i.test(constants_1.SCHEMAS.taskCompletion.uid)) {
+                throw new Error('TaskCompletion schema UID not configured. Register schema and update SCHEMAS.taskCompletion.uid.');
+            }
+            const tx = await this.eas.attest({
+                schema: constants_1.SCHEMAS.taskCompletion.uid,
+                data: {
+                    recipient: request.subjectAgent,
+                    expirationTime: BigInt(0),
+                    revocable: true,
+                    data: encodedData,
+                },
+            });
+            const attestationUid = await tx.wait();
+            return {
+                success: true,
+                attestationUid,
+                txHash: tx.tx?.hash || tx.hash,
+            };
+        }
+        catch (error) {
+            return {
+                success: false,
+                error: error.message,
+            };
+        }
+    }
+    /**
+     * Lookup TaskCompletion attestations for a subject agent.
+     */
+    async getTaskCompletions(subjectAgent) {
+        if (!ethers_1.ethers.isAddress(subjectAgent)) {
+            throw new Error('Invalid subjectAgent: must be a valid Ethereum address');
+        }
+        return (0, query_1.fetchTaskCompletionAttestationsForSubject)(subjectAgent, this.network);
     }
     /**
      * Hash a proof string to bytes32

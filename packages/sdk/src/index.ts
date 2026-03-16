@@ -31,6 +31,8 @@ export {
   fetchAttestationsForAgent,
   fetchPaymentReliableAttestationsForSubject,
   parsePaymentReliableAttestation,
+  fetchTaskCompletionAttestationsForSubject,
+  parseTaskCompletionAttestation,
   clearAttesterScoreCache,
   getAttesterScoreCacheStats 
 } from './query';
@@ -43,3 +45,10 @@ export {
   encodePaymentReliableAttestation,
   parsePaymentOutcome,
 } from './payment-reliable';
+
+// TaskCompletion helpers
+export {
+  normalizeTaskCompletionRequest,
+  encodeTaskCompletionAttestation,
+  parseTaskOutcome,
+} from './task-completion';

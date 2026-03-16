@@ -9,5 +9,6 @@ export * from './verification';
 export * from './scoring';
 export * from './tier';
 export * from './erc8004';
-export { getTrustScore, getAttestationSummary, fetchAttestationsForAgent, fetchPaymentReliableAttestationsForSubject, parsePaymentReliableAttestation, clearAttesterScoreCache, getAttesterScoreCacheStats } from './query';
+export { getTrustScore, getAttestationSummary, fetchAttestationsForAgent, fetchPaymentReliableAttestationsForSubject, parsePaymentReliableAttestation, fetchTaskCompletionAttestationsForSubject, parseTaskCompletionAttestation, clearAttesterScoreCache, getAttesterScoreCacheStats } from './query';
 export { normalizePaymentAmount, normalizeTimestampToSeconds, normalizePaymentReliableRequest, encodePaymentReliableAttestation, parsePaymentOutcome, } from './payment-reliable';
+export { normalizeTaskCompletionRequest, encodeTaskCompletionAttestation, parseTaskOutcome, } from './task-completion';

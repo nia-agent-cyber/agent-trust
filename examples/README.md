@@ -21,6 +21,7 @@ npm install
 | [multi-agent-reputation.ts](multi-agent-reputation.ts) | Compare trust across multiple agents | `npm run multi-agent` |
 | [express-middleware.ts](express-middleware.ts) | Trust-gated Express API with caching | `npm run middleware` |
 | [payment-reliable-flow.ts](payment-reliable-flow.ts) | Issue + lookup PaymentReliable attestations | `npm run payment-reliable` |
+| [task-completion-flow.ts](task-completion-flow.ts) | Issue + lookup TaskCompletion attestations | `npm run task-completion` |
 
 ## Running Individual Examples
 
@@ -38,6 +39,9 @@ npx tsx express-middleware.ts
 
 # Payment reliability issue + lookup flow
 PRIVATE_KEY=0x... SUBJECT_AGENT=0x... npx tsx payment-reliable-flow.ts
+
+# Task completion issue + lookup flow
+PRIVATE_KEY=0x... SUBJECT_AGENT=0x... npx tsx task-completion-flow.ts
 ```
 
 ## What Each Example Teaches

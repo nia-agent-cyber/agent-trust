@@ -10,6 +10,8 @@ import {
   fetchAttestationsForAgent,
   fetchPaymentReliableAttestationsForSubject,
   parsePaymentReliableAttestation,
+  fetchTaskCompletionAttestationsForSubject,
+  parseTaskCompletionAttestation,
   getTrustScore,
   getAttestationSummary,
   clearAttesterScoreCache,
@@ -500,6 +502,189 @@ describe('Query Module', () => {
       expect(summary.flags[0].severity).toBe(2);
       expect(summary.flags[0].reason).toBe('Minor concern');
     });
+  });
+});
+
+// ============ TaskCompletion Query Tests ============
+
+describe('parseTaskCompletionAttestation', () => {
+  const AGENT = '0x' + 'b'.repeat(40);
+  const ATTESTER = '0x' + 'c'.repeat(40);
+
+  it('parses a completed attestation with all fields', () => {
+    const raw = {
+      id: '0xabc123',
+      attester: ATTESTER,
+      recipient: AGENT,
+      time: 1700000000,
+      revoked: false,
+      schemaId: '0x' + '0'.repeat(64),
+      decodedDataJson: JSON.stringify([
+        { name: 'subjectAgent', value: { value: AGENT } },
+        { name: 'outcome', value: { value: 1 } },
+        { name: 'taskId', value: { value: 'bounty-99' } },
+        { name: 'category', value: { value: 'code' } },
+        { name: 'completedAt', value: { value: 1700000000 } },
+        { name: 'reward', value: { value: '500' } },
+        { name: 'rewardToken', value: { value: 'USDC' } },
+        { name: 'taskRef', value: { value: 'https://gitcoin.co/bounty/99' } },
+      ]),
+    };
+
+    const parsed = parseTaskCompletionAttestation(raw);
+
+    expect(parsed.uid).toBe('0xabc123');
+    expect(parsed.attester).toBe(ATTESTER);
+    expect(parsed.recipient).toBe(AGENT);
+    expect(parsed.subjectAgent).toBe(AGENT);
+    expect(parsed.outcome).toBe('completed');
+    expect(parsed.taskId).toBe('bounty-99');
+    expect(parsed.category).toBe('code');
+    expect(parsed.completedAt).toBe(1700000000);
+    expect(parsed.reward).toBe('500');
+    expect(parsed.rewardToken).toBe('USDC');
+    expect(parsed.taskRef).toBe('https://gitcoin.co/bounty/99');
+    expect(parsed.time).toBe(1700000000);
+    expect(parsed.revoked).toBe(false);
+  });
+
+  it('parses a failed attestation (outcome code 0)', () => {
+    const raw = {
+      id: '0xdef456',
+      attester: ATTESTER,
+      recipient: AGENT,
+      time: 1700001000,
+      revoked: false,
+      schemaId: '0x' + '0'.repeat(64),
+      decodedDataJson: JSON.stringify([
+        { name: 'subjectAgent', value: { value: AGENT } },
+        { name: 'outcome', value: { value: 0 } },
+        { name: 'taskId', value: { value: 'task-fail' } },
+        { name: 'category', value: { value: 'design' } },
+        { name: 'completedAt', value: { value: 1700001000 } },
+        { name: 'reward', value: { value: '0' } },
+        { name: 'rewardToken', value: { value: '' } },
+        { name: 'taskRef', value: { value: '' } },
+      ]),
+    };
+
+    const parsed = parseTaskCompletionAttestation(raw);
+    expect(parsed.outcome).toBe('failed');
+    expect(parsed.reward).toBe('0');
+    expect(parsed.rewardToken).toBe('');
+  });
+
+  it('parses a disputed attestation (outcome code 2)', () => {
+    const raw = {
+      id: '0xghi789',
+      attester: ATTESTER,
+      recipient: AGENT,
+      time: 1700002000,
+      revoked: true,
+      schemaId: '0x' + '0'.repeat(64),
+      decodedDataJson: JSON.stringify([
+        { name: 'subjectAgent', value: { value: AGENT } },
+        { name: 'outcome', value: { value: 2 } },
+        { name: 'taskId', value: { value: 'task-dispute' } },
+        { name: 'category', value: { value: 'writing' } },
+        { name: 'completedAt', value: { value: 1700002000 } },
+        { name: 'reward', value: { value: '100' } },
+        { name: 'rewardToken', value: { value: 'GTC' } },
+        { name: 'taskRef', value: { value: '' } },
+      ]),
+    };
+
+    const parsed = parseTaskCompletionAttestation(raw);
+    expect(parsed.outcome).toBe('disputed');
+    expect(parsed.revoked).toBe(true);
+  });
+});
+
+describe('fetchTaskCompletionAttestationsForSubject', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('queries EAS with correct schema ID and returns parsed attestations', async () => {
+    const AGENT = '0x' + 'b'.repeat(40);
+    const ATTESTER = '0x' + 'c'.repeat(40);
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({
+        data: {
+          asRecipient: [
+            {
+              id: '0xtc001',
+              attester: ATTESTER,
+              recipient: AGENT,
+              time: 1700000000,
+              revoked: false,
+              schemaId: '0x' + '0'.repeat(64),
+              decodedDataJson: JSON.stringify([
+                { name: 'subjectAgent', value: { value: AGENT } },
+                { name: 'outcome', value: { value: 1 } },
+                { name: 'taskId', value: { value: 'task-fetched' } },
+                { name: 'category', value: { value: 'code' } },
+                { name: 'completedAt', value: { value: 1700000000 } },
+                { name: 'reward', value: { value: '250' } },
+                { name: 'rewardToken', value: { value: 'ETH' } },
+                { name: 'taskRef', value: { value: '' } },
+              ]),
+            },
+          ],
+        },
+      }),
+    }));
+
+    const results = await fetchTaskCompletionAttestationsForSubject(AGENT, 'baseSepolia');
+    expect(results).toHaveLength(1);
+    expect(results[0].taskId).toBe('task-fetched');
+    expect(results[0].outcome).toBe('completed');
+    expect(results[0].reward).toBe('250');
+  });
+
+  it('returns empty array when no attestations found', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ data: { asRecipient: [] } }),
+    }));
+
+    const results = await fetchTaskCompletionAttestationsForSubject('0x' + 'a'.repeat(40), 'baseSepolia');
+    expect(results).toEqual([]);
+  });
+
+  it('skips malformed attestations without throwing', async () => {
+    const AGENT = '0x' + 'b'.repeat(40);
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({
+        data: {
+          asRecipient: [
+            {
+              id: '0xbad',
+              attester: '0x' + 'c'.repeat(40),
+              recipient: AGENT,
+              time: 1700000000,
+              revoked: false,
+              schemaId: '0x' + '0'.repeat(64),
+              // outcome code 99 → parseTaskOutcome throws → should be skipped
+              decodedDataJson: JSON.stringify([
+                { name: 'subjectAgent', value: { value: AGENT } },
+                { name: 'outcome', value: { value: 99 } },
+                { name: 'taskId', value: { value: 'bad' } },
+                { name: 'category', value: { value: 'code' } },
+                { name: 'completedAt', value: { value: 1700000000 } },
+                { name: 'reward', value: { value: '0' } },
+                { name: 'rewardToken', value: { value: '' } },
+                { name: 'taskRef', value: { value: '' } },
+              ]),
+            },
+          ],
+        },
+      }),
+    }));
+
+    const results = await fetchTaskCompletionAttestationsForSubject(AGENT, 'baseSepolia');
+    expect(results).toEqual([]);
   });
 });
 

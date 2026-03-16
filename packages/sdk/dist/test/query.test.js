@@ -431,6 +431,171 @@ const constants_1 = require("../constants");
         });
     });
 });
+// ============ TaskCompletion Query Tests ============
+(0, vitest_1.describe)('parseTaskCompletionAttestation', () => {
+    const AGENT = '0x' + 'b'.repeat(40);
+    const ATTESTER = '0x' + 'c'.repeat(40);
+    (0, vitest_1.it)('parses a completed attestation with all fields', () => {
+        const raw = {
+            id: '0xabc123',
+            attester: ATTESTER,
+            recipient: AGENT,
+            time: 1700000000,
+            revoked: false,
+            schemaId: '0x' + '0'.repeat(64),
+            decodedDataJson: JSON.stringify([
+                { name: 'subjectAgent', value: { value: AGENT } },
+                { name: 'outcome', value: { value: 1 } },
+                { name: 'taskId', value: { value: 'bounty-99' } },
+                { name: 'category', value: { value: 'code' } },
+                { name: 'completedAt', value: { value: 1700000000 } },
+                { name: 'reward', value: { value: '500' } },
+                { name: 'rewardToken', value: { value: 'USDC' } },
+                { name: 'taskRef', value: { value: 'https://gitcoin.co/bounty/99' } },
+            ]),
+        };
+        const parsed = (0, query_1.parseTaskCompletionAttestation)(raw);
+        (0, vitest_1.expect)(parsed.uid).toBe('0xabc123');
+        (0, vitest_1.expect)(parsed.attester).toBe(ATTESTER);
+        (0, vitest_1.expect)(parsed.recipient).toBe(AGENT);
+        (0, vitest_1.expect)(parsed.subjectAgent).toBe(AGENT);
+        (0, vitest_1.expect)(parsed.outcome).toBe('completed');
+        (0, vitest_1.expect)(parsed.taskId).toBe('bounty-99');
+        (0, vitest_1.expect)(parsed.category).toBe('code');
+        (0, vitest_1.expect)(parsed.completedAt).toBe(1700000000);
+        (0, vitest_1.expect)(parsed.reward).toBe('500');
+        (0, vitest_1.expect)(parsed.rewardToken).toBe('USDC');
+        (0, vitest_1.expect)(parsed.taskRef).toBe('https://gitcoin.co/bounty/99');
+        (0, vitest_1.expect)(parsed.time).toBe(1700000000);
+        (0, vitest_1.expect)(parsed.revoked).toBe(false);
+    });
+    (0, vitest_1.it)('parses a failed attestation (outcome code 0)', () => {
+        const raw = {
+            id: '0xdef456',
+            attester: ATTESTER,
+            recipient: AGENT,
+            time: 1700001000,
+            revoked: false,
+            schemaId: '0x' + '0'.repeat(64),
+            decodedDataJson: JSON.stringify([
+                { name: 'subjectAgent', value: { value: AGENT } },
+                { name: 'outcome', value: { value: 0 } },
+                { name: 'taskId', value: { value: 'task-fail' } },
+                { name: 'category', value: { value: 'design' } },
+                { name: 'completedAt', value: { value: 1700001000 } },
+                { name: 'reward', value: { value: '0' } },
+                { name: 'rewardToken', value: { value: '' } },
+                { name: 'taskRef', value: { value: '' } },
+            ]),
+        };
+        const parsed = (0, query_1.parseTaskCompletionAttestation)(raw);
+        (0, vitest_1.expect)(parsed.outcome).toBe('failed');
+        (0, vitest_1.expect)(parsed.reward).toBe('0');
+        (0, vitest_1.expect)(parsed.rewardToken).toBe('');
+    });
+    (0, vitest_1.it)('parses a disputed attestation (outcome code 2)', () => {
+        const raw = {
+            id: '0xghi789',
+            attester: ATTESTER,
+            recipient: AGENT,
+            time: 1700002000,
+            revoked: true,
+            schemaId: '0x' + '0'.repeat(64),
+            decodedDataJson: JSON.stringify([
+                { name: 'subjectAgent', value: { value: AGENT } },
+                { name: 'outcome', value: { value: 2 } },
+                { name: 'taskId', value: { value: 'task-dispute' } },
+                { name: 'category', value: { value: 'writing' } },
+                { name: 'completedAt', value: { value: 1700002000 } },
+                { name: 'reward', value: { value: '100' } },
+                { name: 'rewardToken', value: { value: 'GTC' } },
+                { name: 'taskRef', value: { value: '' } },
+            ]),
+        };
+        const parsed = (0, query_1.parseTaskCompletionAttestation)(raw);
+        (0, vitest_1.expect)(parsed.outcome).toBe('disputed');
+        (0, vitest_1.expect)(parsed.revoked).toBe(true);
+    });
+});
+(0, vitest_1.describe)('fetchTaskCompletionAttestationsForSubject', () => {
+    (0, vitest_1.afterEach)(() => {
+        vitest_1.vi.unstubAllGlobals();
+    });
+    (0, vitest_1.it)('queries EAS with correct schema ID and returns parsed attestations', async () => {
+        const AGENT = '0x' + 'b'.repeat(40);
+        const ATTESTER = '0x' + 'c'.repeat(40);
+        vitest_1.vi.stubGlobal('fetch', vitest_1.vi.fn().mockResolvedValue({
+            json: () => Promise.resolve({
+                data: {
+                    asRecipient: [
+                        {
+                            id: '0xtc001',
+                            attester: ATTESTER,
+                            recipient: AGENT,
+                            time: 1700000000,
+                            revoked: false,
+                            schemaId: '0x' + '0'.repeat(64),
+                            decodedDataJson: JSON.stringify([
+                                { name: 'subjectAgent', value: { value: AGENT } },
+                                { name: 'outcome', value: { value: 1 } },
+                                { name: 'taskId', value: { value: 'task-fetched' } },
+                                { name: 'category', value: { value: 'code' } },
+                                { name: 'completedAt', value: { value: 1700000000 } },
+                                { name: 'reward', value: { value: '250' } },
+                                { name: 'rewardToken', value: { value: 'ETH' } },
+                                { name: 'taskRef', value: { value: '' } },
+                            ]),
+                        },
+                    ],
+                },
+            }),
+        }));
+        const results = await (0, query_1.fetchTaskCompletionAttestationsForSubject)(AGENT, 'baseSepolia');
+        (0, vitest_1.expect)(results).toHaveLength(1);
+        (0, vitest_1.expect)(results[0].taskId).toBe('task-fetched');
+        (0, vitest_1.expect)(results[0].outcome).toBe('completed');
+        (0, vitest_1.expect)(results[0].reward).toBe('250');
+    });
+    (0, vitest_1.it)('returns empty array when no attestations found', async () => {
+        vitest_1.vi.stubGlobal('fetch', vitest_1.vi.fn().mockResolvedValue({
+            json: () => Promise.resolve({ data: { asRecipient: [] } }),
+        }));
+        const results = await (0, query_1.fetchTaskCompletionAttestationsForSubject)('0x' + 'a'.repeat(40), 'baseSepolia');
+        (0, vitest_1.expect)(results).toEqual([]);
+    });
+    (0, vitest_1.it)('skips malformed attestations without throwing', async () => {
+        const AGENT = '0x' + 'b'.repeat(40);
+        vitest_1.vi.stubGlobal('fetch', vitest_1.vi.fn().mockResolvedValue({
+            json: () => Promise.resolve({
+                data: {
+                    asRecipient: [
+                        {
+                            id: '0xbad',
+                            attester: '0x' + 'c'.repeat(40),
+                            recipient: AGENT,
+                            time: 1700000000,
+                            revoked: false,
+                            schemaId: '0x' + '0'.repeat(64),
+                            // outcome code 99 → parseTaskOutcome throws → should be skipped
+                            decodedDataJson: JSON.stringify([
+                                { name: 'subjectAgent', value: { value: AGENT } },
+                                { name: 'outcome', value: { value: 99 } },
+                                { name: 'taskId', value: { value: 'bad' } },
+                                { name: 'category', value: { value: 'code' } },
+                                { name: 'completedAt', value: { value: 1700000000 } },
+                                { name: 'reward', value: { value: '0' } },
+                                { name: 'rewardToken', value: { value: '' } },
+                                { name: 'taskRef', value: { value: '' } },
+                            ]),
+                        },
+                    ],
+                },
+            }),
+        }));
+        const results = await (0, query_1.fetchTaskCompletionAttestationsForSubject)(AGENT, 'baseSepolia');
+        (0, vitest_1.expect)(results).toEqual([]);
+    });
+});
 // ============ Network Selection Tests ============
 (0, vitest_1.describe)('Network Configuration', () => {
     (0, vitest_1.afterEach)(() => {
