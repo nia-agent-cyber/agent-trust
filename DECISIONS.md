@@ -4,6 +4,46 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-03-16: TaskCompletion Schema Design + Parallel Work Decision
+
+**Decision:** Proceed with TaskCompletion (#18) implementation in parallel while PaymentReliable schema registration is blocked on Remi.
+
+**Schema chosen:**
+```
+address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef
+```
+
+**Why this schema:**
+- `outcome` as uint8 enum (failed/completed/disputed) mirrors PaymentReliable's `outcome` pattern — consistent across attestation types
+- `taskId` is a plain string (not bytes32) — task IDs from external platforms (Gitcoin, ClawTasks) are variable-length strings; hashing loses readability
+- `category` is open-ended string, not a fixed enum — avoids schema churn as new task types emerge
+- `reward` + `rewardToken` are optional (0 + empty string defaults) — covers both paid and unpaid tasks
+- `taskRef` is optional external reference — covers bounty URLs, PR links, IPFS CIDs
+- `completedAt` instead of `dueAt/paidAt` — task completion is a single event, not a deadline comparison
+
+**Outcome codes:**
+- `0 = failed` — not completed or rejected
+- `1 = completed` — successful completion (most common, sort-friendly middle value would conflict with PaymentReliable pattern; chose alphabetical-friendly 0/1/2)
+- `2 = disputed` — contested; revocable so can be resolved
+
+**Reuse decision:**
+- `normalizeTimestampToSeconds()` and `normalizePaymentAmount()` from `payment-reliable.ts` reused directly
+- If these functions are used by 3+ attestation types, extract to `utils.ts` (Coder's call)
+
+**Alternatives considered:**
+- Wait for PaymentReliable schema registration before starting #18 (unnecessary delay — implementations are independent)
+- Start SecurityAudit (#19) instead (TaskCompletion has higher partner signal — Gitcoin/owocki)
+- Fixed category enum (risks schema upgrade churn; open string is more flexible)
+- `bytes32 taskId` (hash loses human-readable IDs from external platforms)
+
+**Full spec:** `docs/TASK_COMPLETION_PLAN.md`
+
+**Revisit when:**
+- Partner integration (Gitcoin, ClawTasks) suggests schema changes needed
+- `disputed` outcome handling warrants dedicated resolution flow
+
+---
+
 ## 2026-03-16: PaymentReliable Schema Registration Script Ready
 
 **Decision:** Schema registration script created; execution requires Remi action (private key + testnet ETH).

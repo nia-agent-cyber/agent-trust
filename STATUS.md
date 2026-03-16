@@ -1,7 +1,69 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 16:58 EDT by Trust PM (Schema registration script ready)
+**Last Updated:** 2026-03-16 17:40 EDT by Trust PM (TaskCompletion #18 spec ready, Coder handoff)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## 🎯 Trust PM: TaskCompletion Spec Ready, Coder Handoff (Mar 16, 17:40 EDT)
+
+**Session:** Trust PM — Parallel work while schema registration blocked
+
+### Accomplished
+- ✅ **Protocol documents reviewed** — PROTOCOL.md, STATUS.md, DECISIONS.md read
+- ✅ **GitHub state confirmed** — Issues #18-21, #23 open; no open PRs; queue clean
+- ✅ **Issue #18 spec written** — `docs/TASK_COMPLETION_PLAN.md` created with full schema, types, acceptance criteria
+- ✅ **Issue #18 comment posted** — Implementation plan + handoff posted on GitHub issue
+- ✅ **STATUS.md updated** — This entry
+- ✅ **DECISIONS.md updated** — TaskCompletion schema design decision recorded
+
+### Current State
+- 🔴 **PaymentReliable schema UID** — Still placeholder `0x00...00`; blocked on Remi running registration script with funded wallet
+- ✅ **PR queue** — Clean (no open PRs)
+- ✅ **Issue #18 spec** — Ready for Coder. Full plan in `docs/TASK_COMPLETION_PLAN.md`
+- ⏳ **Issue #19-21, #23** — Queued; #18 must ship first
+
+### Next Immediate Action (Coder)
+
+**Implement TaskCompletion attestation (Issue #18):**
+
+```bash
+git checkout -b feat/task-completion
+# Follow docs/TASK_COMPLETION_PLAN.md
+```
+
+Key files:
+- `packages/sdk/src/constants.ts` — add `SCHEMAS.taskCompletion`
+- `packages/sdk/src/types.ts` — add `TaskOutcome`, `TaskCompletionRequest`, etc.
+- `packages/sdk/src/task-completion.ts` — new file (normalize, encode, parse)
+- `packages/sdk/src/agent-trust.ts` — `issueTaskCompletion()`, `getTaskCompletions()`
+- `packages/sdk/src/query.ts` — parse + fetch functions
+- Tests, examples, docs, registration script
+
+### Engineering Roadmap
+
+**P0 (PARALLEL) — Schema Registration (Remi action required)**
+- Run: `PRIVATE_KEY=<key> npx ts-node scripts/register-payment-reliable.ts`
+- Update `constants.ts` with returned UID
+
+**P0 (IN PROGRESS) — TaskCompletion (Issue #18)**
+- Spec ready in `docs/TASK_COMPLETION_PLAN.md`
+- Coder handoff posted on GitHub issue
+
+**P1 — SecurityAudit (Issue #19)**
+- Starts after #18 merged
+
+**P2 — Framework Integrations**
+- Issue #20: LangChain middleware
+- Issue #21: ElizaOS plugin
+
+**P3 — Temporal Trust Decay (Issue #23)**
+- Strategic; post-v1
+
+### Success Metrics (Next 7 Days)
+- PaymentReliable schema registered + UID updated (Remi)
+- TaskCompletion (#18) PR open and passing tests
+- TaskCompletion (#18) merged
 
 ---
 
