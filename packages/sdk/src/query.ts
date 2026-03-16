@@ -12,9 +12,10 @@ import {
   getDefaultTrustScore,
   ScoreInputs 
 } from './scoring/trust-score';
-import { PaymentReliableAttestation, TaskCompletionAttestation, TrustScore } from './types';
+import { PaymentReliableAttestation, TaskCompletionAttestation, SecurityAuditAttestation, TrustScore } from './types';
 import { parsePaymentOutcome } from './payment-reliable';
 import { parseTaskOutcome } from './task-completion';
+import { parseAuditSeverity } from './security-audit';
 
 // EAS GraphQL endpoints
 const GRAPHQL_ENDPOINTS: Record<NetworkName, string> = {
@@ -203,6 +204,92 @@ export async function fetchTaskCompletionAttestationsForSubject(
       parsed.push(parseTaskCompletionAttestation(att));
     } catch {
       // Skip malformed TaskCompletion attestations
+    }
+  }
+
+  return parsed;
+}
+
+/**
+ * Parse a single SecurityAudit EAS GraphQL attestation.
+ */
+export function parseSecurityAuditAttestation(att: GraphQLAttestation): SecurityAuditAttestation {
+  const dataMap = parseDecodedDataMap(att.decodedDataJson);
+
+  const severityCode = Number(dataMap.get('severity'));
+  const timestamp = Number(dataMap.get('timestamp'));
+  const passed = Boolean(dataMap.get('passed'));
+
+  return {
+    uid: att.id,
+    attester: att.attester,
+    recipient: att.recipient,
+    auditor: String(dataMap.get('auditor') || att.attester),
+    subject: String(dataMap.get('subject') || att.recipient),
+    auditType: String(dataMap.get('auditType') || ''),
+    severity: parseAuditSeverity(severityCode),
+    passed,
+    reportUri: String(dataMap.get('reportUri') || ''),
+    timestamp: Number.isFinite(timestamp) ? timestamp : 0,
+    time: att.time,
+    revoked: att.revoked,
+  };
+}
+
+/**
+ * Fetch SecurityAudit attestations where recipient/subject is the target address.
+ */
+export async function fetchSecurityAuditAttestationsForSubject(
+  subjectAddress: string,
+  network: NetworkName = 'baseSepolia'
+): Promise<SecurityAuditAttestation[]> {
+  const endpoint = GRAPHQL_ENDPOINTS[network];
+  const query = `
+    query GetSecurityAuditAttestations($address: String!, $addressLower: String!, $schemaId: String!) {
+      asRecipient: attestations(
+        where: {
+          schemaId: { equals: $schemaId }
+          OR: [
+            { recipient: { equals: $address } },
+            { recipient: { equals: $addressLower } }
+          ]
+        }
+        orderBy: { time: desc }
+        take: 100
+      ) {
+        id
+        attester
+        recipient
+        time
+        revoked
+        decodedDataJson
+        schemaId
+      }
+    }
+  `;
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query,
+      variables: {
+        address: ethers.getAddress(subjectAddress),
+        addressLower: subjectAddress.toLowerCase(),
+        schemaId: SCHEMAS.securityAudit.uid,
+      },
+    }),
+  });
+
+  const data = await response.json();
+  const attestations: GraphQLAttestation[] = data?.data?.asRecipient || [];
+
+  const parsed: SecurityAuditAttestation[] = [];
+  for (const att of attestations) {
+    try {
+      parsed.push(parseSecurityAuditAttestation(att));
+    } catch {
+      // Skip malformed SecurityAudit attestations
     }
   }
 

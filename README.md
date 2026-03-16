@@ -158,6 +158,24 @@ const result = await agentTrust.issueTaskCompletion({
 const completions = await agentTrust.getTaskCompletions('0xBountyHunter');
 ```
 
+### 🔒 Security Audit Attestations
+
+Record on-chain proof of security audits performed against agent code, contracts, or dependencies.
+
+```typescript
+const audit = await agentTrust.issueSecurityAudit({
+  auditor: '0xAuditorAddress',           // address of the auditor
+  subject: '0xSubjectAddress',           // address being audited
+  auditType: 'smart-contract',           // 'smart-contract' | 'dependency-scan' | 'penetration-test' | 'code-review' | 'fuzzing'
+  severity: 'high',                      // 'none' | 'low' | 'medium' | 'high' | 'critical' (or number 0-4)
+  passed: false,                         // whether the subject passed the audit
+  reportUri: 'ipfs://QmAuditReport',     // optional: IPFS CID, URL, or other URI
+  timestamp: new Date(),                 // optional: defaults to now
+});
+
+const audits = await agentTrust.getSecurityAudits('0xSubjectAddress');
+```
+
 ### 📊 Trust Score Algorithm
 
 Trust scores (0-100) are calculated from:
@@ -241,7 +259,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 - 🔜 Trust delegation (agents vouch on behalf of organizations)
 - 🔜 Batch attestation queries (reduce RPC calls)
 - 🔜 Webhook/event subscriptions for tier changes
-- 🔜 New attestation types (SecurityAudit)
+- 🔜 New attestation types (Reputation, Capability)
 
 ## Networks
 
@@ -259,6 +277,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 | Flag | `0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47` |
 | PaymentReliable | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
 | TaskCompletion | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
+| SecurityAudit | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
 
 ## Why EAS (Not a New Standard)?
 

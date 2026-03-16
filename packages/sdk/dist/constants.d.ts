@@ -47,5 +47,10 @@ export declare const SCHEMAS: {
         readonly schema: "address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef";
         readonly revocable: true;
     };
+    readonly securityAudit: {
+        readonly uid: "0x0000000000000000000000000000000000000000000000000000000000000000";
+        readonly schema: "address auditor, address subject, string auditType, uint8 severity, bool passed, string reportUri, uint64 timestamp";
+        readonly revocable: true;
+    };
 };
 export type NetworkName = keyof typeof NETWORKS;
