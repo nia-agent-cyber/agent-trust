@@ -4,6 +4,44 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-03-16: PaymentReliable Schema Registration Script Ready
+
+**Decision:** Schema registration script created; execution requires Remi action (private key + testnet ETH).
+
+**Why:**
+- PaymentReliable implementation complete in PR #22 (merged Mar 13)
+- Schema UID is placeholder `0x00...00` in constants.ts — blocking live usage
+- Schema registration requires private key with Base Sepolia ETH
+- Created dedicated script: `packages/sdk/scripts/register-payment-reliable.ts`
+- Script validates balance, registers schema, outputs UID for constants.ts update
+
+**Registration requirements:**
+- Private key with Base Sepolia ETH
+- Run: `PRIVATE_KEY=<key> npx ts-node scripts/register-payment-reliable.ts`
+- Update constants.ts with returned UID
+- Rebuild SDK and run tests
+
+**Next after registration:**
+- Issue #18 (TaskCompletion attestation) — highest roadmap priority
+- Follow same pattern: schema → SDK → tests → examples → docs
+
+**Alternatives considered:**
+- Skip schema registration and move to TaskCompletion (leaves PaymentReliable half-deployed)
+- Register multiple schemas at once (increases risk, harder to debug)
+- Use existing register-schemas.ts script (designed for initial batch, not single additions)
+
+**Success criteria:**
+- PaymentReliable schema UID registered on Base Sepolia
+- Constants.ts updated with real UID
+- Tests pass with live schema
+- TaskCompletion implementation started within 7 days
+
+**Revisit when:**
+- Schema registration complete
+- Live PaymentReliable issuance verified on testnet
+
+---
+
 ## 2026-03-13: PaymentReliable Merged, Schema Registration Next
 
 **Decision:** PR #22 merged to main. Proceed immediately with schema registration on Base Sepolia before next feature work.

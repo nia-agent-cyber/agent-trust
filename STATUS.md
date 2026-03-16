@@ -1,7 +1,70 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-13 14:42 EDT by Trust PM (PR #22 merged, schema registration next)
+**Last Updated:** 2026-03-16 16:58 EDT by Trust PM (Schema registration script ready)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## 🚀 Trust PM: PaymentReliable Schema Registration Ready (Mar 16, 16:58 EDT)
+
+**Session:** Trust PM — Schema Registration Preparation
+
+### Accomplished
+- ✅ **Protocol documents reviewed** — PROTOCOL.md, STATUS.md, DECISIONS.md read
+- ✅ **GitHub state verified** — PR #22 merged, issues #18-21, #23 open
+- ✅ **Schema registration script created** — `packages/sdk/scripts/register-payment-reliable.ts`
+- ✅ **Confirmed blocker** — PaymentReliable schema UID is placeholder `0x00...00` in constants.ts
+- ✅ **STATUS.md updated** — This entry
+
+### Current State
+- ✅ **PR #22 merged** — PaymentReliable implementation complete (SDK, tests, examples, docs)
+- 🔴 **Schema UID placeholder** — Blocking live PaymentReliable usage on testnet
+- ✅ **Registration script ready** — Located at `packages/sdk/scripts/register-payment-reliable.ts`
+- ✅ **Next priority clear** — Issue #18 (TaskCompletion) after schema registration
+
+### Next Immediate Action (Remi)
+
+**Register PaymentReliable schema on Base Sepolia:**
+
+```bash
+cd /Users/nia/repos/agent-trust/packages/sdk
+PRIVATE_KEY=<your-private-key> npx ts-node scripts/register-payment-reliable.ts
+```
+
+**Requirements:**
+- Private key with Base Sepolia ETH (get from https://www.coinbase.com/faucets/base-ethereum-goerli-faucet)
+- Script will output the schema UID
+
+**After registration:**
+1. Update `packages/sdk/src/constants.ts` with the returned UID (replace `0x00...00`)
+2. Rebuild SDK: `npm run build`
+3. Run tests: `npm test`
+4. Commit and push changes
+5. Post completion update to Trust team Telegram
+
+### Engineering Roadmap (Post-Registration)
+
+**P0 — TaskCompletion Attestation (Issue #18)**
+- Highest priority for bounty platform integrations
+- Follow PaymentReliable pattern: schema → SDK → tests → examples → docs
+
+**P1 — SecurityAudit Attestation (Issue #19)**
+- Enables agent security review tracking
+- Complements existing trust credentials
+
+**P2 — Framework Integrations**
+- Issue #20: LangChain middleware
+- Issue #21: ElizaOS plugin
+- Broadens SDK adoption across agent frameworks
+
+**P3 — Temporal Trust Decay (Issue #23)**
+- Strategic feature for longitudinal trust monitoring
+- Not urgent for initial adoption
+
+### Success Metrics (Next 7 Days)
+- PaymentReliable schema registered + UID updated in constants.ts
+- TaskCompletion (#18) implementation started
+- 1-2 partnership conversations engaged
 
 ---
 
