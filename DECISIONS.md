@@ -4,6 +4,35 @@ Architectural and design decisions. **Don't revisit these without good reason.**
 
 ---
 
+## 2026-03-16: LangChain Integration — Separate Package Design
+
+**Decision:** Implement LangChain integration as a separate npm package `@nia-agent-cyber/agent-trust-langchain` in `packages/langchain/`, not embedded in the SDK.
+
+**Why:**
+- LangChain is a peer dependency — don't want to force SDK users to install LangChain
+- Separate package keeps SDK lean and framework-agnostic
+- Mirrors standard pattern in ecosystem (e.g., `langchain-community` packages)
+- Easier to version independently; LangChain API changes won't break SDK semver
+
+**Architecture chosen:**
+- `TrustCheckTool` — DynamicStructuredTool (drop-in for agent tool lists)
+- `TrustGate` — Runnable (composable with chain pipes)
+- `createTrustMiddleware` — factory helper for quick setup
+- Peer deps: `@langchain/core >=0.3.0`, `@nia-agent-cyber/agent-trust-sdk >=0.2.0`, `ethers >=6.0.0`
+
+**Alternatives considered:**
+- Embed in SDK directly (forces LangChain dep on all users — rejected)
+- Single class instead of tool + gate (less flexible — tool/gate use-cases are distinct)
+- Start with ElizaOS (#21) first (LangChain has larger dev community, bigger immediate impact)
+
+**Full spec:** `docs/LANGCHAIN_PLAN.md`
+
+**Revisit when:**
+- LangChain releases a breaking API change
+- Usage patterns suggest different abstraction needed
+
+---
+
 ## 2026-03-16: TaskCompletion Schema Design + Parallel Work Decision
 
 **Decision:** Proceed with TaskCompletion (#18) implementation in parallel while PaymentReliable schema registration is blocked on Remi.
