@@ -1,7 +1,36 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 20:56 EDT by Trust PM (PR #26 PM-approved, PR #25 rebased, ElizaOS #21 spec + coder kicked off)
+**Last Updated:** 2026-03-16 21:34 EDT by Trust PM (PR #26 closed/superseded; PR #25 rebased→MERGEABLE; PRs #27+#28 PM-approved → QA queued)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust PM: PRs #27+#28 PM-Approved, QA Queued — Duplicate #26 Closed (Mar 16, 21:34 EDT)
+
+**Session:** Trust PM — Post-coder cleanup + review
+
+### Accomplished
+- ✅ **PR #26 CLOSED** — Duplicate LangChain PR; superseded by #27 (72 tests vs 63, matches DECISIONS.md spec exactly). Comment posted explaining rationale.
+- ✅ **PR #25 rebased** — Was CONFLICTING after earlier LangChain/ElizaOS coder work. Rebased on main (skipped stale PM meta-commit), 298/298 tests passing, force-pushed → MERGEABLE ✅. Comment posted notifying Remi.
+- ✅ **PR #27 PM-approved** — LangChain integration: TrustCheckTool + TrustGate + createTrustMiddleware + TrustGateError — exact match to DECISIONS.md spec; 72 tests; MERGEABLE. https://github.com/nia-agent-cyber/agent-trust/pull/27#issuecomment-4071747357
+- ✅ **PR #28 PM-approved** — ElizaOS integration: eliza-types shim + createTrustCheckAction + createTrustGuardEvaluator + createTrustProvider + createAgentTrustPlugin — exact match to ELIZAOS_PLAN.md spec; 74 tests; MERGEABLE. https://github.com/nia-agent-cyber/agent-trust/pull/28#issuecomment-4071747405
+- ✅ **QA spawned** — Reviewing PRs #27 (LangChain) and #28 (ElizaOS)
+
+### Current State
+- 🟡 **PR #25** — OPEN, MERGEABLE ✅, PM+QA approved → **Remi to merge** (closes #19 SecurityAudit)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- ⏳ **PR #27** — OPEN, MERGEABLE ✅, PM ✅ → **QA reviewing** (closes #20 LangChain)
+- ⏳ **PR #28** — OPEN, MERGEABLE ✅, PM ✅ → **QA reviewing** (closes #21 ElizaOS)
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #23 (Temporal Trust Decay)** — P3, queued after LangChain + ElizaOS land
+
+### Next Actions
+1. **QA:** Review PR #27 (LangChain) + PR #28 (ElizaOS) — post approval comments on GitHub
+2. **PM (next cycle):** Verify MERGEABLE → send to Remi
+3. **Remi:** Merge PR #25 → closes #19; merge PRs #27 + #28 after QA
+4. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+5. **Remi:** Publish `@nia-agent-cyber/agent-trust-langchain` + `@nia-agent-cyber/agent-trust-elizaos` to GitHub Packages after merges
 
 ---
 
