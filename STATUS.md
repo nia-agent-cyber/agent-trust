@@ -1,7 +1,32 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 20:06 EDT by Trust PM (PR #25 conflict fixed, LangChain coder spawned)
+**Last Updated:** 2026-03-16 20:06 EDT by Trust PM (PR #25 fixed, LangChain coder blocked on rate limits)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust PM: PR #25 Conflict Fixed (Mar 16, 20:06 EDT)
+
+**Session:** Trust PM — Cycle forward
+
+### Accomplished
+- ✅ **PR #25 conflict resolved** — feat/security-audit had STATUS.md conflict with main; fixed via clean cherry-pick + force-push
+- ✅ **PR #25 MERGEABLE** — Verified MERGEABLE after force-push; all 298 tests pass; QA+PM approvals valid
+- ✅ **PR #25 comment posted** — Notified Remi of force-push + MERGEABLE status
+- ⚠️ **LangChain coder spawn FAILED** — API rate limits; coder could not be launched
+
+### Current State
+- 🟡 **PR #25** — OPEN, MERGEABLE, PM+QA approved → **Remi to merge** (closes #19)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder `0x00...00`; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #20 (LangChain)** — Ready to implement; spec in `docs/LANGCHAIN_PLAN.md`; coder spawn blocked by rate limits
+- ⏳ **Issue #21 (ElizaOS)** — Queued after #20
+
+### Next Actions
+1. **Remi:** Merge PR #25 → closes #19
+2. **Remi:** Register all 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+3. **PM (next cycle):** Spawn Coder for Issue #20 (LangChain) once rate limits clear
 
 ---
 
