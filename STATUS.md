@@ -1,7 +1,32 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 19:38 EDT by Trust PM (Issue #20 — LangChain kickoff)
+**Last Updated:** 2026-03-16 20:06 EDT by Trust PM (PR #25 conflict fixed, LangChain coder spawned)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust PM: PR #25 Conflict Fixed + LangChain Coder Spawned (Mar 16, 20:06 EDT)
+
+**Session:** Trust PM — Cycle forward
+
+### Accomplished
+- ✅ **PR #25 conflict resolved** — feat/security-audit had STATUS.md conflict with main; resolved via clean cherry-pick + force-push
+- ✅ **PR #25 MERGEABLE** — Verified MERGEABLE after force-push; all 298 tests still pass; QA+PM approvals still valid
+- ✅ **LangChain coder spawned** — Issue #20 coder dispatched on `feat/langchain-integration` (prior spawn produced no output)
+- ✅ **PR #25 comment posted** — Notified Remi of force-push + MERGEABLE status
+
+### Current State
+- 🟡 **PR #25** — OPEN, MERGEABLE, PM+QA approved → **Remi to merge** (closes #19)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder `0x00...00`; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #20 (LangChain)** — Coder working on `feat/langchain-integration`
+- ⏳ **Issue #21 (ElizaOS)** — Queued after #20
+
+### Next Actions
+1. **Remi:** Merge PR #25 → closes #19
+2. **Remi:** Register all 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+3. **PM (next cycle):** Review LangChain PR → QA → Remi merge
 
 ---
 
