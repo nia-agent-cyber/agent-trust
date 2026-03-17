@@ -10,6 +10,7 @@ Complete API documentation for the Agent Trust SDK.
 - [Query Functions](#query-functions)
 - [Verification Functions](#verification-functions)
 - [Scoring Functions](#scoring-functions)
+- [LangChain Integration Package](#langchain-integration-package)
 
 ---
 
@@ -789,3 +790,182 @@ interface AgentStats {
 | 2 | Trusted | ⭐ | 10 | 2 | 70% | 30 |
 | 3 | Verified | ✅ | 25 | 5 | 85% | 90 |
 | 4 | Expert | 👑 | 50 | 10 | 95% | 180 |
+
+---
+
+## LangChain Integration Package
+
+Package: `@nia-agent-cyber/agent-trust-langchain`
+
+A lightweight LangChain integration for adding trust-tier gating to LangChain agents and chains.
+No LLM dependencies — just `@langchain/core` + the Agent Trust SDK.
+
+```bash
+npm install @nia-agent-cyber/agent-trust-langchain @langchain/core
+```
+
+Tier order: `unverified < bronze < silver < gold < platinum`
+
+---
+
+### `TIER_ORDER`
+
+```typescript
+const TIER_ORDER = ['unverified', 'bronze', 'silver', 'gold', 'platinum'] as const;
+type TierName = 'unverified' | 'bronze' | 'silver' | 'gold' | 'platinum';
+```
+
+---
+
+### `TrustCheckTool`
+
+LangChain `StructuredTool` that checks an agent's trust tier. Add it to your agent's tool list.
+
+```typescript
+class TrustCheckTool extends StructuredTool {
+  constructor(agentTrust: AgentTrustLike)
+  name: 'trust_check'
+  description: string
+  schema: ZodObject<{
+    agentAddress: string      // required: address to check
+    minTier?: TierName        // optional: defaults to 'bronze'
+  }>
+  _call(input: TrustCheckInput): Promise<string>  // returns JSON TrustCheckResult
+}
+```
+
+**Parameters:**
+- `agentTrust` — An `AgentTrust` instance (or any object implementing `AgentTrustLike`)
+
+**Returns:** JSON string with `TrustCheckResult`:
+```typescript
+interface TrustCheckResult {
+  address: string;    // checked address
+  tier: TierName;     // actual tier (unverified | bronze | silver | gold | platinum)
+  score: number;      // trust score 0–100
+  passed: boolean;    // true if actual tier >= minTier
+  reason: string;     // human-readable explanation
+}
+```
+
+**Example:**
+```typescript
+const tool = new TrustCheckTool(agentTrust);
+const raw = await tool._call({ agentAddress: '0x...', minTier: 'silver' });
+const result = JSON.parse(raw); // TrustCheckResult
+```
+
+---
+
+### `TrustGuard`
+
+Utility class for imperative trust checks. Throws `TrustCheckFailedError` on failure.
+
+```typescript
+class TrustGuard {
+  constructor(agentTrust: AgentTrustLike)
+  check(agentAddress: string, options?: TrustGuardOptions): Promise<TrustCheckResult>
+  static check(
+    agentTrust: AgentTrustLike,
+    agentAddress: string,
+    options?: TrustGuardOptions
+  ): Promise<TrustCheckResult>
+}
+
+interface TrustGuardOptions {
+  minTier?: TierName;    // defaults to 'bronze'
+  rpcUrl?: string;
+  network?: string;
+}
+```
+
+**Example:**
+```typescript
+const guard = new TrustGuard(agentTrust);
+try {
+  const result = await guard.check('0x...', { minTier: 'gold' });
+  // result.passed === true, result.tier, result.score
+} catch (err) {
+  if (err instanceof TrustCheckFailedError) { /* ... */ }
+}
+```
+
+---
+
+### `RunnableTrustGate`
+
+LangChain `Runnable` that gates chain execution on trust tier. Extend a chain with `.pipe()`.
+
+```typescript
+class RunnableTrustGate<TInput> extends RunnableLambda<TInput, TInput> {
+  constructor(options: TrustGateOptions)
+  getAgentAddress(): string
+  getMinTier(): TierName
+}
+
+interface TrustGateOptions {
+  agentAddress: string;         // address to check
+  minTier?: TierName;           // defaults to 'bronze'
+  agentTrust: AgentTrustLike;   // AgentTrust instance
+}
+```
+
+**Behaviour:**
+- **Pass:** input is returned unchanged; chain continues
+- **Fail:** throws `TrustCheckFailedError`; chain halts
+
+**Example:**
+```typescript
+const gate = new RunnableTrustGate({
+  agentAddress: '0xCounterparty...',
+  minTier: 'silver',
+  agentTrust,
+});
+const chain = gate.pipe(myNextStep);
+await chain.invoke(myInput); // throws TrustCheckFailedError if below silver
+```
+
+---
+
+### `TrustCheckFailedError`
+
+Error thrown by `TrustGuard` and `RunnableTrustGate` when trust check fails.
+
+```typescript
+class TrustCheckFailedError extends Error {
+  address: string;         // the agent address that failed the check
+  tier: TierName;          // the actual tier of the agent
+  requiredTier: TierName;  // the minimum tier that was required
+  name: 'TrustCheckFailedError'
+  message: string          // "Trust check failed for 0x...: tier 'bronze' does not meet minimum 'gold'"
+}
+```
+
+---
+
+### `AgentTrustLike`
+
+Minimal interface that `AgentTrust` and test mocks must implement:
+
+```typescript
+interface AgentTrustLike {
+  getScore(agentId: string): Promise<{ score: number }>;
+  getTier(address: string): Promise<{ tier: number; name: string }>;
+}
+```
+
+---
+
+### Tier Mapping
+
+| TierName | SDK Numeric | SDK Name |
+|----------|-------------|----------|
+| unverified | 0 | New |
+| bronze | 1 | Contributor |
+| silver | 2 | Trusted |
+| gold | 3 | Verified |
+| platinum | 4 | Expert |
+
+---
+
+📖 Full tutorial: [docs/langchain-integration.md](./langchain-integration.md)

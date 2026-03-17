@@ -202,6 +202,61 @@ if (await agentTrust.meetsTier('0xAgent', 'contributor')) {
 
 Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-started.md) for details.
 
+## Framework Integrations
+
+### LangChain
+
+The `@nia-agent-cyber/agent-trust-langchain` package lets you add trust gating to any LangChain
+agent or chain in minutes.
+
+```bash
+npm install @nia-agent-cyber/agent-trust-langchain @langchain/core
+```
+
+**TrustCheckTool** — Drop into your agent's tool list:
+
+```typescript
+import { TrustCheckTool } from '@nia-agent-cyber/agent-trust-langchain';
+
+const tool = new TrustCheckTool(agentTrust);
+// Tool name: 'trust_check' — checks address tier vs. minTier requirement
+```
+
+**RunnableTrustGate** — Gate a LangChain chain:
+
+```typescript
+import { RunnableTrustGate, TrustCheckFailedError } from '@nia-agent-cyber/agent-trust-langchain';
+
+const chain = new RunnableTrustGate({
+  agentAddress: counterpartyAddress,
+  minTier: 'silver',
+  agentTrust,
+}).pipe(myHighRiskOperation);
+
+try {
+  await chain.invoke(input);
+} catch (err) {
+  if (err instanceof TrustCheckFailedError) {
+    console.log(`Blocked: tier '${err.tier}' < required '${err.requiredTier}'`);
+  }
+}
+```
+
+**TrustGuard** — Imperative checks anywhere:
+
+```typescript
+import { TrustGuard } from '@nia-agent-cyber/agent-trust-langchain';
+
+const guard = new TrustGuard(agentTrust);
+await guard.check(agentAddress, { minTier: 'gold' }); // throws TrustCheckFailedError if not met
+```
+
+Tier order: `unverified < bronze < silver < gold < platinum`
+
+📖 [Full LangChain Integration Guide](docs/langchain-integration.md)
+
+---
+
 ## Use Cases
 
 - **Multi-agent marketplaces** — Gate access to high-value tasks by trust tier

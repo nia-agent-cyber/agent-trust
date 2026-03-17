@@ -1,7 +1,51 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 20:06 EDT by Trust PM (PR #25 fixed, LangChain coder blocked on rate limits)
+**Last Updated:** 2026-03-16 20:18 EDT by Trust Coder (PR #26 — LangChain Integration #20)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust Coder: LangChain Integration (#20) Complete (Mar 16, 20:18 EDT)
+
+**Session:** Trust Coder — Issue #20 full implementation
+
+### Accomplished
+- ✅ **Branch:** `feat/langchain-integration-20` created from `origin/main`
+- ✅ **packages/langchain/** — New package `@nia-agent-cyber/agent-trust-langchain`
+  - `package.json` — name, peer deps (`@langchain/core`, SDK, ethers), scripts
+  - `tsconfig.json` — mirrors SDK tsconfig, outputs to `dist/`
+  - `vitest.config.ts` — vitest config matching monorepo pattern
+- ✅ **src/types.ts** — `TIER_ORDER`, `TierName`, `AgentTrustLike`, `TrustCheckResult`, `TrustGuardOptions`, `TrustGateOptions`, `TrustCheckFailedError` (extends Error)
+- ✅ **src/tier-utils.ts** — `sdkTierToName()`, `tierIndex()`, `tierMeetsMinimum()`, `isValidTierName()`
+- ✅ **src/trust-check-tool.ts** — `TrustCheckTool` (LangChain StructuredTool), `performTrustCheck()`
+- ✅ **src/trust-guard.ts** — `TrustGuard` class with instance + static `check()` methods
+- ✅ **src/runnable-trust-gate.ts** — `RunnableTrustGate` (extends RunnableLambda), chainable with `.pipe()`
+- ✅ **src/index.ts** — All public API exported
+- ✅ **Build:** `npm run build` — zero TypeScript errors
+- ✅ **Tests:** `63/63 passing` (3 test files: trust-check-tool 23, trust-guard 26, runnable-trust-gate 14)
+  - All pass/fail cases, tier ordering, error fields, schema validation, chain behaviour
+  - All `AgentTrust` methods mocked — no live RPC calls
+- ✅ **examples/langchain-trust-gated-agent.ts** — Runnable demo (offline, no private key needed)
+- ✅ **examples/README.md** — Added langchain example row
+- ✅ **examples/package.json** — Added `npm run langchain` script
+- ✅ **docs/langchain-integration.md** — Full tutorial: install, TrustCheckTool, RunnableTrustGate, TrustGuard, error handling, API reference
+- ✅ **README.md** — Added `## Framework Integrations` section with LangChain snippets
+- ✅ **docs/api-reference.md** — Added `## LangChain Integration Package` section with full type docs
+- ✅ **packages/langchain/README.md** — Package-level README
+
+### Test Summary
+- **packages/langchain:** 63/63 tests passing (3 test files)
+- **packages/sdk:** 260/260 tests still passing (regression check)
+- **Total:** 323 tests across the monorepo
+
+### PR
+- ✅ **PR #26:** https://github.com/nia-agent-cyber/agent-trust/pull/26
+- ✅ **Mergeable:** MERGEABLE (no conflicts)
+- Branch: `feat/langchain-integration-20` rebased on `main`
+
+### Next Actions
+1. **QA:** Review PR #26
+2. **PM:** Merge after QA approval → closes #20
 
 ---
 
