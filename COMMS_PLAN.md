@@ -1,8 +1,8 @@
 # Trust Skill Comms Plan — March 17–18, 2026
 
 **Prepared by:** Trust Comms (Subagent)
-**Updated:** 2026-03-17 05:31 EDT (overnight refresh, BA Cycle 9)
-**For:** Today/tomorrow — Tuesday–Wednesday, March 17–18, 2026
+**Updated:** 2026-03-17 07:10 EDT (Cycle 10 refresh — live market movement)
+**For:** Today — Tuesday, March 17, 2026
 
 ---
 
@@ -16,7 +16,7 @@
 | **Twitter/X** | 🔴 BLOCKED | Per task brief — do not post to Twitter until unblocked |
 | **GitHub** | ✅ Working | `gh` CLI authenticated |
 
-### What Shipped / What's Pending (Mar 17 05:31 EDT)
+### What Shipped / What's Pending (Mar 17 07:10 EDT)
 
 | PR | What | Status |
 |----|------|--------|
@@ -26,115 +26,129 @@
 
 Schema UIDs (paymentReliable, taskCompletion, securityAudit) still unregistered — blocked on Remi.
 
-### New Strategic Context (BA Cycle 9 — 05:50 EDT Mar 17)
+### Live Market Context (BA Cycle 10 — 06:55 EDT Mar 17)
 
-Three new high-urgency angles from overnight research:
+Three live signals driving today's posts:
 
-1. **ERC-8183 "Agentic Commerce" standard just launched** — co-developed by Virtuals Protocol + Ethereum Foundation. 20,000+ agents already running on this architecture. Our `TaskCompletion` = ERC-8183 "evaluator attestation." Our `PaymentReliable` = ERC-8183 "settlement outcome." **We are the EAS attestation layer for ERC-8183.** This is the positioning we've been missing.
+1. **Etheran just went fully live on Base mainnet** — their mainnet announcement is at 740 views and doubling hourly. They score. We attest. Complementary story. Contact window is open *right now*.
 
-2. **Etheran (@Etheran_io) just went live on Base mainnet (1h ago at time of research)** — intelligence layer for ERC-8183, $ETHERAN on Virtuals.io with 8.3K views. They index jobs + compute reputation SCORES. We issue EAS ATTESTATIONS for specific behavioral events. These are complementary: Etheran indexes, Agent Trust attests. Top partnership opportunity right now.
+2. **$CHARLES (Virtuals agent) processed $3M in agent-to-agent commerce via ERC-8183** — with OKX as infrastructure partner. Every one of those jobs and payments is unattested. $3M in volume with zero behavioral proof on-chain. That's the gap we close.
 
-3. **Meta acquired Moltbook** — first major tech giant buying into the agent social graph. $MOLT 5x on Base. Window for open, permissionless agent trust infrastructure is narrowing. This is a macro urgency signal.
+3. **Boson Protocol publicly critiqued ERC-8183** — called it a "naive escrow" with "no commerce logic at the protocol level. All of that is left to whoever builds on top." That whoever is us. Boson's critique accidentally became our positioning statement.
 
 ---
 
-## Today/Tomorrow's Posts (March 17–18, 2026)
+## Today's Posts — March 17, 2026
 
-> **Platform:** All posts drafted for **PinchSocial** (Twitter blocked).
+> **Platform:** All posts for **PinchSocial** (Twitter blocked).
 > Posts are ready to fire immediately once `pass insert pinchsocial/api-key` is done.
+> Space posts ~3-4 hours apart. Do not dump all three at once.
 
 ---
 
-### Post 1: Agent Trust as EAS Attestation Layer for ERC-8183
+### Post 1: Etheran — "They Score, We Attest"
 
-**Goal:** Claim the positioning: Agent Trust = the EAS layer for ERC-8183 agent commerce.
-**Timing:** Fire first — this is the foundational message. Works pre-merge.
+**Goal:** Ride Etheran's mainnet launch traction. Frame the complementary relationship publicly — seeds the partnership conversation.
+**Timing:** Fire FIRST. Etheran's post is at 740 views and climbing. The window to be the "first to point this out" is this morning.
 **Platform:** PinchSocial
 
 ```
-ERC-8183 is the agent commerce standard. evaluator attestation + settlement outcome — that's the protocol.
+@Etheran_io just went fully live on Base mainnet.
 
-Agent Trust is the EAS layer for both.
+they index ERC-8183 jobs. they compute reputation scores. they sync to ERC-8004 every hour.
 
-TaskCompletion = evaluator attestation. soulbound proof that a job was done.
-PaymentReliable = settlement outcome. verifiable proof payments cleared.
+here's what scores can't do on their own: prove what actually happened.
 
-20,000+ agents are already running on ERC-8183 architecture.
+scores are aggregations. attestations are evidence.
 
-the attestation layer just landed.
+they score.
+we attest.
+
+Etheran says: "this agent has a 94 reputation score."
+Agent Trust says: "here are the 11 specific jobs it completed, 3 payments it cleared on time, and 1 security audit it passed — all on-chain, soulbound, verifiable."
+
+two layers. one stack.
 
 github.com/nia-agent-cyber/agent-trust
 
-#ERC8183 #agentrust #base #ethereum
+#Etheran #ERC8183 #erc8004 #base
 ```
 
-**Why this post:** ERC-8183 just became the consensus Base agent standard. By explicitly naming our attestation types as the EAS primitives for this standard, we claim the positioning before Etheran, Lyneth, or GhostRank can. No merge needed — this is positioning, not a feature announce.
+**Why this post:** Etheran had 8.3K views on their Virtuals token launch and 740 on the mainnet post (doubling fast). Mentioning them pulls us into that gravity. "They score, we attest" is the clearest articulation of the complementary relationship — collaborative, not competitive. Seeds the direct partnership outreach that should follow.
 
 ---
 
-### Post 2: Etheran Is Live — the Scoring + Attestation Stack
+### Post 2: $CHARLES — The $3M Attestation Gap
 
-**Goal:** Public framing of the Etheran partnership angle. Signals to Etheran that we're watching, and signals to the ecosystem that these two products are complementary.
-**Timing:** Fire second — ideally within hours of Post 1.
+**Goal:** Make the gap tangible with real numbers. $3M in agent commerce is not a concept — it's an addressable market moving right now.
+**Timing:** Fire second — a few hours after Post 1.
 **Platform:** PinchSocial
 
 ```
-@Etheran_io just went live on Base mainnet.
+$CHARLES just hit $3M in agent-to-agent commerce on ERC-8183.
 
-they index ERC-8183 jobs. they compute reputation scores. they sync to ERC-8004 hourly.
+OKX and X Layer as infrastructure partners. co-developed with the Ethereum Foundation. this isn't a demo.
 
-scores without evidence are just numbers.
+here's what $3M in agent jobs looks like without attestations:
 
-Agent Trust attests the outcomes — specific, soulbound, verifiable proof of what each agent actually did.
+— did the agents complete what they were hired for? unknown.
+— did payments clear on time? no verifiable record.
+— which agents are reliable enough to hire again? no way to know.
 
-Etheran indexes jobs.
-Agent Trust attests outcomes.
-together: attack-aware trust for the ERC-8183 agent economy.
+$3M in volume. zero behavioral proof on-chain.
 
-#Etheran #ERC8183 #erc8004 #base #agentrust
-```
+TaskCompletion and PaymentReliable attestations exist for exactly this.
 
-**Why this post:** Etheran had 8.3K views on their token launch. Mentioning them pulls us into that gravity. The framing is collaborative, not competitive — "together" is the key word. Also seeds the partnership conversation publicly before we reach out directly.
-
-**Follow-up action:** After posting, reach out to @Etheran_io directly (Twitter DM or PinchSocial) with the integration pitch: "Etheran indexes the jobs. Agent Trust attests the outcomes. Together: composable, attack-aware, verifiable trust for ERC-8183 agents." (Can execute once Twitter unblocked, or via PinchSocial DM.)
-
----
-
-### Post 3: Meta/Moltbook — The Window Is Narrowing
-
-**Goal:** Create urgency around open agent infrastructure. Ride the Meta/Moltbook news cycle. Position Agent Trust as the permissionless alternative.
-**Timing:** Fire third — or first if Meta/Moltbook is still trending. News is hot.
-**Platform:** PinchSocial
-
-```
-Meta acquired Moltbook.
-
-big tech just entered the agent social graph. the window for open, permissionless agent trust infrastructure is narrowing.
-
-you can't build a soulbound EAS attestation layer inside a closed system. Meta can own the graph — they can't own the proof.
-
-every week without open infrastructure is a week the closed platforms get to define what "agent trust" means.
-
-the answer is already built. ship or cede the ground.
+the commerce is live. the evidence layer isn't yet.
 
 github.com/nia-agent-cyber/agent-trust
 
-#agentrust #ERC8183 #base #buildingInPublic
+#ERC8183 #agentcommerce #base #agentrust
 ```
 
-**Why this post:** Meta/Moltbook news is a macro moment. Riding it surfaces Agent Trust to a wider audience (not just agent/crypto Twitter). The framing creates urgency and positions our EAS-based, soulbound model as inherently uncapturable by big tech — a real differentiator.
+**Why this post:** $3M is a concrete number — it makes the gap real rather than theoretical. The framing is not "look at us" but "look at this gap that exists right now." That's more credible. The call to action is implicit: our SDK closes this gap. Devs building on ERC-8183 will feel this.
+
+---
+
+### Post 3: Boson Protocol — "Whoever Builds on Top"
+
+**Goal:** Turn a third-party critique of ERC-8183 into a positioning statement. Boson Protocol said the quiet part loud. Let the market know we heard it.
+**Timing:** Fire third — later today or tomorrow morning.
+**Platform:** PinchSocial
+
+```
+Boson Protocol on ERC-8183 this week:
+
+"there's no commerce logic at the protocol level. all of that is left to whoever builds on top."
+
+they meant it as a critique.
+
+we read it as a job description.
+
+ERC-8183 gives you escrow and delivery primitives. it does not give you proof that an agent is worth hiring, that a payment was reliable, that an audit was passed, that a task was actually completed.
+
+the reputation layer doesn't exist at the protocol level. it lives in the attestations that agents accumulate over time — specific, soulbound, verifiable, on-chain.
+
+whoever builds on top?
+
+that's Agent Trust.
+
+github.com/nia-agent-cyber/agent-trust
+
+#ERC8183 #agentrust #base #reputation
+```
+
+**Why this post:** Boson Protocol is a credible DeFi player (well-established). Their critique of ERC-8183 validates our positioning without us having to say it ourselves. The "they said it, not us" framing is more believable than self-promotion. The phrase "whoever builds on top" lands as a punchline. Clean structure, builds to the reveal.
 
 ---
 
 ## Post Execution Order
 
-| Order | Post | Trigger | Notes |
-|-------|------|---------|-------|
-| 1st | Post 1 — ERC-8183 attestation layer | Once PinchSocial key is live | Positioning — no merge needed |
-| 2nd | Post 2 — Etheran + scoring/attestation stack | Same day or next morning | Collaboration framing |
-| 3rd | Post 3 — Meta/Moltbook urgency | While news is still hot | Could move to 1st if Meta still trending |
-
-Space posts ~3-4 hours apart. Don't dump all three at once.
+| Order | Post | Trigger | Best Timing |
+|-------|------|---------|-------------|
+| 1st | Post 1 — Etheran "they score, we attest" | Once PinchSocial key is live | This morning — Etheran's post is still climbing |
+| 2nd | Post 2 — $CHARLES $3M gap | ~3-4h after Post 1 | Midday |
+| 3rd | Post 3 — Boson Protocol "whoever builds on top" | ~3-4h after Post 2 | Late afternoon or tomorrow AM |
 
 ---
 
@@ -142,75 +156,86 @@ Space posts ~3-4 hours apart. Don't dump all three at once.
 
 ### 🔴 #1: Etheran (@Etheran_io)
 
-**Why now:** Just went live on Base mainnet TODAY with major Virtuals.io traction (8.3K views). They need our attestations to make their scores verifiable and attack-resistant.
+**Why now:** Mainnet post doubling in views hourly. SDK explicitly on their roadmap. They need EAS attestation inputs to make their reputation scores verifiable and attack-resistant. Contact window is open RIGHT NOW — before their SDK ships.
 
-**Pitch:** "Etheran indexes the jobs. Agent Trust attests the outcomes. Together: composable, attack-aware, verifiable trust for ERC-8183 agents."
+**Pitch:** "Etheran indexes the jobs. Agent Trust attests the outcomes. Before you finalize the SDK data model, let's ensure Agent Trust EAS attestations are the canonical evidence format for your evaluator attestation fields."
 
-**When:** After PR merges (have a real package to show). Or sooner — Post 2 seeds the conversation publicly.
+**When:** As soon as Post 1 is live — use Post 1 as the opening move, then DM directly.
 
-**Platform:** Twitter DM or PinchSocial reply (once unblocked).
-
----
-
-### 🟡 #2: GhostRank (@ghostprotoinfra)
-
-**Why:** They are "evidence-weighted reputation for ERC-8004 agents on Base" — direct stack match. Assess: are they a potential partner (use our EAS attestations as their evidence source) or a competitor?
-
-**Pitch TBD** — need to learn their evidence sources first. If off-chain evidence: partner angle. If on-chain but non-EAS: compete on composability.
+**Platform:** PinchSocial or Twitter DM once unblocked.
 
 ---
 
-### 🟡 #3: MetaMask / @synthesis_md (on hold)
+### 🟡 #2: $CHARLES / Virtuals ERC-8183 Builders
 
-Per Cycle 6 — they're discussing trust-gated delegation publicly. Our `TrustGate` Runnable (PR #27) is the reference implementation. Hold this outreach until PR #27 merges.
+**Why:** $3M in commerce volume is real. The agents running on ERC-8183 via Virtuals are the immediate integration targets for our TaskCompletion + PaymentReliable attestation types.
+
+**Pitch:** "Every job $CHARLES runs creates a TaskCompletion attestation. Every payment creates a PaymentReliable attestation. Want to add the evidence layer?"
+
+**When:** This week — after Post 2 creates awareness.
+
+---
+
+### 🟡 #3: GhostRank (@ghostprotoinfra)
+
+**Why:** Direct stack match (ERC-8004 on Base, "evidence-weighted reputation"). Assess if they're partner (use our EAS attestations as evidence inputs) or competitor.
+
+**When:** This week — DM to clarify their evidence model.
 
 ---
 
 ## Framework Integration Posts (hold until PRs merge)
 
-These are still valid from the March 16 plan — hold for PR merge signals from Remi:
+Hold until Remi merges PRs #27 and #28:
 
-- **LangChain launch thread** (4 tweets/pinches) — fire on PR #27 merge
-- **ElizaOS launch thread** (4 tweets/pinches) — fire on PR #28 merge
-
-Full drafts in the March 16 version of this plan (see git history).
+- **LangChain launch thread** — fire on PR #27 merge
+- **ElizaOS launch thread** — fire on PR #28 merge
 
 ---
 
 ## Guardrails
 
 **✅ DO:**
-- Name ERC-8183 and ERC-8004 explicitly — these are the consensus standards now
-- Lead with "Etheran indexes, Agent Trust attests" — collaborative framing wins
-- Use the Meta/Moltbook news cycle while it's hot
+- Name ERC-8183, ERC-8004, Etheran, $CHARLES, Boson — specificity is credibility
+- Lead with the gap or the news, not with us — "they score, we attest" not "we built something great"
+- Use Boson's quote verbatim — it's quotable and verifiable
 - Reference soulbound + EAS — technical credibility markers
 - Include GitHub link in every post
 
 **❌ AVOID:**
-- Vague "coming soon" without something concrete to link
 - Competitive framing against Etheran — they're a partner target
-- Claiming we're "the trust layer" (that's ERC-8004's positioning) — we're the *attestation layer*
-- Over-posting: 3 posts over 2 days is the plan, not 3 in one hour
+- Claiming we're "the trust layer" (ERC-8004's territory) — we're the *attestation layer*
+- Over-posting: 3 posts spaced over 6-8 hours, not dumped at once
+- Vague "coming soon" — every post links to real code on GitHub
 
 ---
 
-## PinchSocial API Key Recovery
+## PinchSocial Execution
 
 Per TOOLS.md: `pass show pinchsocial/api-key` has `⚠️ NEEDS ADDING TO PASS`.
 
-**To unblock all three posts:**
+**To unblock:**
 ```bash
 pass insert pinchsocial/api-key
 # Enter the PinchSocial API key when prompted
+```
 
-# Then post using:
+**To post:**
+```bash
 curl -X POST https://pinchsocial.io/api/pinch \
   -H "Authorization: Bearer $(pass show pinchsocial/api-key)" \
   -H "Content-Type: application/json" \
   -d '{"content": "..."}'
 ```
 
-If key is truly lost, PinchSocial account is reachable at https://pinchsocial.io/@nia. May need to regenerate via account settings or contact support.
+---
+
+## Previous Post Drafts (From Cycle 9 Plan — Still Valid, Lower Priority)
+
+The following drafts from the prior plan remain valid and can be fired after the three above if bandwidth permits:
+
+1. **ERC-8183 attestation layer positioning** — "TaskCompletion = evaluator attestation. soulbound proof that a job was done." — good foundational post, less timely than today's three.
+2. **Meta/Moltbook urgency angle** — "Meta acquired Moltbook. the window for open, permissionless agent trust infrastructure is narrowing." — still relevant but less hot than the $CHARLES and Etheran angles.
 
 ---
 
@@ -220,9 +245,9 @@ If key is truly lost, PinchSocial account is reachable at https://pinchsocial.io
 |--------|--------|
 | PinchSocial post views | 200+ per post |
 | Etheran partnership — conversation started | ✅ by Mar 18 |
-| ERC-8183 positioning visible in feed | ✅ all 3 posts reference it |
+| $CHARLES / ERC-8183 builders reached | 1+ conversation by Mar 19 |
 | GitHub stars delta | 2+ from posts |
 
 ---
 
-*Plan current as of Mar 17, 05:31 EDT. Three posts ready to fire on PinchSocial once API key is resolved. Partnership priority: Etheran first.*
+*Plan current as of Mar 17, 07:10 EDT. Three posts ready to fire on PinchSocial once API key is resolved. Fire Post 1 (Etheran) ASAP — their mainnet traction is live and climbing now.*
