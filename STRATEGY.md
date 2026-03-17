@@ -2,7 +2,127 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-17 01:20 EDT — Cycle 7 (Night Research Update)*
+*Last updated: 2026-03-17 04:37 EDT — Cycle 8 (Night Research Update)*
+
+---
+
+## 🌙 Cycle 8: Mar 17, 2026 (04:37 EDT) — MARKET RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; no new stories since Cycle 7 (Anthropic weapons expert still newest at 00:08 UTC Mar 17)
+- ✅ Twitter/X (read-only via Chrome browser relay, existing tabs) — searched "agent trust blockchain", "soulbound AI reputation agent", "ERC-8004 agent trust", @LynethLabs profile, @t54ai profile
+- ✅ ctxly.com/services.json — **STILL 404** (12+ days; fully abandoned per Cycle 6 decision)
+- ❌ Reuters — Cloudflare-blocked (empty response)
+- ❌ PinchSocial API — key missing; public endpoints return empty results
+- ❌ Brave web search — API key not configured
+
+### ⚠️ NEW DEVELOPMENTS SINCE 01:20 EDT MAR 17 (Cycle 7)
+
+#### 🔴 CRITICAL NEW: GhostRank / Ghost Protocol — Evidence-Weighted Reputation on Base (Mar 16)
+- **Handle**: @ghostprotoinfra
+- **Quote**: "GhostRank is our evidence-weighted reputation layer for autonomous agents. We index the open ERC-8004 registries on @base and upgrade agents from raw registry visibility into measured trust when evidence..."
+- **Stack**: ERC-8004 on Base — EXACT SAME STACK AS US
+- **Differentiator framing**: "evidence-weighted" scoring — conceptually adjacent to our "recursive attester scoring"
+- **Threat level: 🔴 HIGH** — First previously-untracked competitor operating on the same chain (Base), same protocol (ERC-8004), same scoring philosophy (evidence-weighted trust > raw registry visibility). They framed the value prop almost identically to us.
+- **Key distinction**: Their "evidence" source is unclear from public posts. Ours is explicitly EAS attestations with recursive attester weighting — on-chain, composable, verifiable. Stronger trust model.
+- **Action**: Monitor closely. If they're just doing UI scoring we can differentiate on composability and EAS integration. Contact @ghostprotoinfra to assess partnership vs. compete.
+- **Source**: @ghostprotoinfra ERC-8004 search results (Mar 16)
+
+#### 🔴 HIGH: t54 Labs — ClawCredit Product Now Live with 30k+ Agents (Mar 12–15)
+- **Not covered in Cycle 7** — Missed from prior sessions
+- **ClawCredit**: "30,000+ agents have signed up to receive their own credit lines. $11,000+ in credit issued for x402 services across XRPL, Solana, and Base."
+- **Crossmint integration**: ClawCredit now supports lobster.cash wallets by @crossmint — agents can verify wallet ownership, receive instant $5 credit, spend on any x402 service
+- **James Chie hire** (Mar 13): Former Ripple APAC Business Development & Product Partnerships → Financial Institutions Advisor at t54. Confirms deep enterprise finance trajectory.
+- **Strategic pivot implication**: t54 is no longer just an "identity/trust" play — they are building a CREDIT LAYER for agents. Trust → Identity → Credit → Spend is their stack. This is a distinct vertical from our attestation-based reputation model.
+- **Traction**: 30k agents >> our 0. Seed post: 1.2M views, 401 reposts, 1.3k likes.
+- **Reassessment**: t54 is diverging from our lane. Their focus is enterprise financial infrastructure + credit rails. Our focus is composable, on-chain reputation attestations. Less head-to-head than Cycle 7 assumed — but their network effect is massive.
+- **Source**: @t54ai profile, Mar 12–15
+
+#### 🟡 NEW: NIST/NCCoE Agent Identity — US Government Standards Work (Mar 9)
+- **Handle**: @ArgusForge
+- **Quote**: "Double NIST submission day: CAISI RFI + NCCoE Agent Identity. 295 blockchain proofs. Part of the record now."
+- **Implication**: The **National Cybersecurity Center of Excellence (NCCoE)** has an active Agent Identity workstream. CAISI = Cybersecurity for AI Systems Infrastructure. US government is formalizing agent identity standards. 295 blockchain proofs submitted to government record.
+- **Strategic implication**: Government-driven standardization is a lagging but powerful validator. If NCCoE recommends EAS-based attestation patterns (which our architecture aligns to), we get regulatory tailwind. Watch NCCoE publications.
+- **Action**: Track NCCoE Agent Identity publications. Consider contributing to public comment periods. This is a slow burn but could give us institutional credibility above Lyneth/t54 in compliance-sensitive markets.
+- **Source**: @ArgusForge (Mar 9), 40 views, 1 repost
+
+#### 🟡 NEW: AgentFolioHQ — Soulbound NFT Avatars + On-Chain Reputation (Feb 23)
+- **Handle**: @0xbrainKID, project @AgentFolioHQ
+- **Quote**: "an AI agent with $50K and no identity verification — this is why we built AgentFolioHQ — soulbound NFT avatars + on-chain reputation. agents should prove who they are before moving money."
+- **Stack**: Unknown chain (likely Solana or Base based on context)
+- **Threat level: 🟡 MEDIUM** — Another soulbound + on-chain reputation entrant. Framing is very similar to ours. Low engagement (16 views) suggests early stage.
+- **Action**: Monitor; reach out if they're on Base.
+
+#### 🟡 NEW: Synthara AI / AgentID on X1 — Pre-ERC-8004 Soulbound Identity (Mar 5)
+- **Handle**: @AgentIDX1
+- **Quote**: "The Ethereum Foundation just announced ERC-8004 -- we shipped AgentID on X1 over a month ago. Burn AGI > soulbound NFT identity > cryptographic verification > on-chain reputation. Live."
+- **Insight**: They launched BEFORE the EF's ERC-8004 announcement — first-mover on soulbound agent identity on their chain (X1). Monitoring for Base expansion.
+- **Threat level: 🟡 LOW-MEDIUM** — Different chain (X1), low engagement (105 views), but the "burn to earn soulbound identity" model is interesting.
+
+### Updated Competitive Landscape (Cycle 8 additions)
+
+| Competitor | Chain | Status | Threat Level |
+|------------|-------|--------|--------------|
+| **GhostRank** (@ghostprotoinfra) | Base (ERC-8004) | 🆕 NEW — "evidence-weighted reputation layer" for ERC-8004 agents on Base | 🔴 HIGH (exact stack match, evidence scoring) |
+| **t54 Labs** | Multi-chain (XRPL+Solana+Base) | ClawCredit LIVE: 30k agents, $11k credit, Crossmint integration, ex-Ripple advisor | 🔴 HIGH (but diverging to credit rails vs. our attestation layer) |
+| **Lyneth Labs** | ERC-8004 (multi) | Trust Beta live, 19,749 agents, "attack-aware" trust, x402 payments | 🔴 HIGH (direct competitor) |
+| **AgentFolioHQ** | Unknown | 🆕 NEW — soulbound NFT + on-chain reputation | 🟡 MEDIUM |
+| **Synthara AI** | X1 | 🆕 NEW — pre-ERC-8004 soulbound identity, live | 🟡 LOW-MEDIUM |
+| **ClawTrust** | Base + SKALE | Multi-chain live (9 contracts, zero gas) | 🟡 MEDIUM |
+| **OriginDAO** | Solana + ERC-8004 bridge | 120+ agents with trust scores, cross-chain | 🟡 MEDIUM |
+
+### Strategic Implications (Cycle 8)
+
+**1. GhostRank is the most alarming new entrant**
+- They are literally building "evidence-weighted reputation for ERC-8004 agents on Base" — same stack, same concept, same chain
+- We have the SDK infrastructure advantage (PR #25/#27/#28 merged = composable attestation types), but GhostRank could catch up if we don't announce and position
+- **Critical gap**: We don't know their evidence sources. If it's just on-chain transaction history (not EAS attestations), our composable attestation model is MORE trustworthy and verifiable — make this the differentiation
+- **Action**: PM should assess immediately. Comms needs to get the "evidence-weighted vs. EAS-attested" messaging out ASAP post-merge
+
+**2. t54 Labs is now Credit Infrastructure, Not Just Trust Identity**
+- Revised threat assessment: t54 is building credit rails (credit score → credit line → x402 spend). We are building reputation attestations.
+- These are complements, not competitors. An agent could have t54 credit AND Agent Trust attestations.
+- **Opportunity**: Pitch t54 on integrating Agent Trust attestations as an input to their ClawCredit scoring. Their 30k agents need reputation signals — we can provide structured EAS attestations.
+- **Partnership angle**: "t54 evaluates creditworthiness, Agent Trust provides the behavioral track record that feeds into it."
+
+**3. NIST/NCCoE = Slow-burn regulatory tailwind**
+- US government is formalizing agent identity/trust standards. This legitimizes the entire space.
+- NCCoE Agent Identity standard, when finalized, could reference EAS-based attestation patterns
+- Our EAS-on-Base architecture is well-positioned if government standards favor open, composable attestation over closed identity systems
+
+**4. The ERC-8004 + Base combination is now crowded**
+- Lyneth (live product), GhostRank (new entrant), ClawTrust (multi-chain) all operate here
+- We need to publish our SDK packages (post PR merge) and announce LOUDLY to claim our position before GhostRank gains more traction
+
+### Schema UID Timing — Still Critical
+
+**Status (unchanged, still blocked on Remi):**
+- 🔴 `paymentReliable` UID — placeholder, needs Remi private key + `scripts/register-payment-reliable.ts`
+- 🔴 `taskCompletion` UID — placeholder, needs Remi private key + `scripts/register-task-completion.ts`
+- 🔴 `securityAudit` UID — placeholder, needs Remi private key + `scripts/register-security-audit.ts` (after PR #25 merge)
+
+**Why timing is now URGENT:**
+- GhostRank is building on ERC-8004/Base with "evidence-weighted" scoring — but without our structured attestation types (paymentReliable, taskCompletion, securityAudit), our evidence model isn't live on-chain
+- Lyneth Labs explicitly says their model is gameable — our registered schemas + EAS attestations are the concrete answer to "how do you make trust un-gameable"
+- Every week of delay = more time for GhostRank/Lyneth to lock in ecosystem integrations
+
+### Updated Top 3 Actions (Cycle 8)
+
+| # | Action | Owner | Timeline | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Merge PRs #25, #27, #28 + Register 3 Schema UIDs** — GhostRank launched on our stack this week. Clock is running. | Remi | THIS WEEK | 3 PRs merged; 3 schemas registered; packages published |
+| **2** | **Research + Engage @ghostprotoinfra** — New direct competitor on Base+ERC-8004. Assess: are they a partner (use our attestations as their "evidence") or compete? | PM/BA | This week | Understand their tech; open conversation OR sharpen differentiation messaging |
+| **3** | **Pitch t54 Labs as integration partner for ClawCredit** — They have 30k agents needing reputation signals. Our EAS attestations (paymentReliable, taskCompletion) are exactly the behavioral track record ClawCredit scoring needs. | PM/Comms | After PR merges | Conversation started with @t54ai team |
+
+### Cycle 8 Summary
+
+**4 new findings, 1 critical:**
+- 🔴 GhostRank (NEW — evidence-weighted ERC-8004 reputation on Base, direct stack match)
+- 🟠 t54 ClawCredit (MISSED from Cycle 7 — 30k agents, credit rails, Crossmint, now multi-chain; diverging from our lane → partnership opportunity)
+- 🟡 NIST/NCCoE Agent Identity (US gov standards work underway — slow-burn validator)
+- 🟡 AgentFolioHQ + Synthara AI (2 new soulbound/reputation entrants, early stage)
+
+**Recommended stance**: The ERC-8004/Base reputation layer is now a contested category. Our advantage is composable, structured EAS attestation types (not just scores). We need to ship, register schemas, and announce before GhostRank captures our positioning.
 
 ---
 
