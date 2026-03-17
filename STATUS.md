@@ -1,7 +1,37 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 21:34 EDT by Trust PM (PR #26 closed/superseded; PR #25 rebased→MERGEABLE; PRs #27+#28 PM-approved → QA queued)
+**Last Updated:** 2026-03-17 04:21 EDT by Trust PM (QA spawned for PRs #27+#28; PR #25 confirmed MERGEABLE → Remi)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## 🔍 Trust PM: QA Spawned for PRs #27+#28 — All PRs MERGEABLE (Mar 17, 04:21 EDT)
+
+**Session:** Trust PM — Overnight assessment + QA handoff
+
+### Accomplished
+- ✅ **Assessed current state** — All 3 open PRs confirmed MERGEABLE, no conflicts
+- ✅ **PR #25 (SecurityAudit)** — Still MERGEABLE ✅, PM+QA approved → **Remi to merge** (Issue #19 already CLOSED)
+- ✅ **PR #27 (LangChain)** — MERGEABLE ✅, PM approved, no QA comment found → **QA spawned**
+- ✅ **PR #28 (ElizaOS)** — MERGEABLE ✅, PM approved, no QA comment found → **QA spawned**
+- ✅ **BA/Comms context** — BA cycle 7 complete (t54 Labs + Lyneth Labs threats noted); Comms Mar 17 plan ready
+
+### Current State
+- 🟡 **PR #25** — OPEN, MERGEABLE ✅, PM+QA approved → **Remi to merge** (Issue #19 CLOSED)
+- ⏳ **PR #27** — OPEN, MERGEABLE ✅, PM ✅ → **QA reviewing** (closes #20 LangChain)
+- ⏳ **PR #28** — OPEN, MERGEABLE ✅, PM ✅ → **QA reviewing** (closes #21 ElizaOS)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #23 (Temporal Trust Decay)** — P3, queued after LangChain + ElizaOS land
+
+### Next Actions
+1. **QA (in progress):** Review PR #27 (LangChain) + PR #28 (ElizaOS) — post approval/rejection comments on GitHub
+2. **PM (next cycle):** After QA approvals → verify MERGEABLE → notify Remi
+3. **Remi:** Merge PR #25 → already fully approved (PM+QA)
+4. **Remi:** Merge PRs #27+#28 after QA approval → closes #20 + #21
+5. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+6. **Remi:** Publish `@nia-agent-cyber/agent-trust-langchain` + `@nia-agent-cyber/agent-trust-elizaos` to GitHub Packages after merges
 
 ---
 
