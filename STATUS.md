@@ -1,7 +1,53 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-17 04:21 EDT by Trust PM (QA spawned for PRs #27+#28; PR #25 confirmed MERGEABLE → Remi)
+**Last Updated:** 2026-03-17 04:30 EDT by Trust QA (PRs #27+#28 APPROVED)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust QA: PRs #27 (LangChain) + #28 (ElizaOS) APPROVED (Mar 17, 04:30 EDT)
+
+**Session:** Trust QA — Full build, test, and code review for PRs #27 + #28
+
+### Verdict Summary
+
+| PR | Branch | Verdict | Build | Tests | Mergeable |
+|----|--------|---------|-------|-------|-----------|
+| #27 | feat/langchain-integration | ✅ **APPROVED** | ✅ clean | ✅ 72/72 | ✅ MERGEABLE+CLEAN |
+| #28 | feat/elizaos-integration-21 | ✅ **APPROVED** | ✅ clean | ✅ 74/74 | ✅ MERGEABLE+CLEAN |
+| SDK regression | — | ✅ no regression | — | ✅ 260/260 | — |
+
+### PR #27 — LangChain Integration (Closes #20)
+- **Build:** `npm run build` ✅ zero TypeScript errors
+- **Tests:** `npm test` ✅ 72/72 passing (25 tool + 47 gate)
+- **SDK regression:** 260/260 passing ✅
+- **Mergeable:** MERGEABLE + CLEAN ✅
+- **Code quality:** Architecture exactly matches DECISIONS.md spec — `TrustCheckTool` (DynamicStructuredTool), `TrustGate` (Runnable + pipe), `createTrustMiddleware` factory, `TrustGateError`. Peer deps correct. `AgentTrustLike` interface ensures no hard SDK dep at runtime. Dynamic `require()` for LangChain decoupling. Full test coverage.
+- **QA comment:** https://github.com/nia-agent-cyber/agent-trust/pull/27#issuecomment-4073200893
+
+### PR #28 — ElizaOS Integration (Closes #21)
+- **Build:** `npm run build` ✅ zero TypeScript errors
+- **Tests:** `npm test` ✅ 74/74 passing (action: 21, evaluator: 20, provider: 13, plugin: 20) — exceeds ≥55 target
+- **SDK regression:** 260/260 passing ✅
+- **Mergeable:** MERGEABLE + CLEAN ✅
+- **Code quality:** Matches ELIZAOS_PLAN.md spec — `createTrustCheckAction`, `createTrustGuardEvaluator`, `createTrustProvider`, `createAgentTrustPlugin`. Excellent `eliza-types.ts` shim avoids hard `@elizaos/core` dep at build time. TierName correctly uses SDK names (contributor/trusted/verified/expert). 469-line tutorial doc + package README. All mocked (zero live RPC in tests).
+- **QA comment:** https://github.com/nia-agent-cyber/agent-trust/pull/28#issuecomment-4073202742
+
+### Current State After QA
+- ✅ **PR #25** — OPEN, MERGEABLE, PM+QA approved → **Remi to merge** (closes #19 SecurityAudit)
+- ✅ **PR #27** — OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** (closes #20 LangChain)
+- ✅ **PR #28** — OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** (closes #21 ElizaOS)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #23 (Temporal Trust Decay)** — P3, queued after LangChain + ElizaOS land
+
+### Next Actions
+1. **Remi:** Merge PR #27 → closes #20; publish `@nia-agent-cyber/agent-trust-langchain` to GitHub Packages
+2. **Remi:** Merge PR #28 → closes #21; publish `@nia-agent-cyber/agent-trust-elizaos` to GitHub Packages
+3. **Remi:** Merge PR #25 → closes #19
+4. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+5. **PM (next cycle):** After all 3 merges → spawn BA for strategic next-steps analysis
 
 ---
 
