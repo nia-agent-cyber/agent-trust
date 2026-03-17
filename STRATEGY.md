@@ -2,7 +2,135 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-08 22:45 CAT — Cycle 5/6 (Market Research Update)*
+*Last updated: 2026-03-16 23:45 EDT — Cycle 6 (Night Research Update)*
+
+---
+
+## 🌙 Cycle 6: Mar 16–17, 2026 (23:45 EDT) — MARKET RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched successfully
+- ✅ Twitter/X (read-only via browser) — searched "agent trust reputation blockchain", "soulbound AI agent reputation"
+- ✅ ctxly.com/services.json — **STILL 404** (10+ days since submission; directory likely stalled)
+- ❌ PinchSocial API — returns empty results (API key missing)
+- ❌ Reuters feed — empty response
+- ❌ Brave web search — API key not configured
+
+### NEW Developments Since Mar 8
+
+#### 🔴 HIGH-PRIORITY: Framework Integrations Now Complete (Mar 16)
+- **PR #27 (LangChain)** — `@nia-agent-cyber/agent-trust-langchain`: TrustCheckTool + TrustGate + createTrustMiddleware + TrustGateError. 72 tests. MERGEABLE. PM-approved. QA reviewing.
+- **PR #28 (ElizaOS)** — `@nia-agent-cyber/agent-trust-elizaos`: createTrustCheckAction + createTrustGuardEvaluator + createTrustProvider + createAgentTrustPlugin. 74 tests. MERGEABLE. PM-approved. QA reviewing.
+- **PR #25 (SecurityAudit)** — OPEN, MERGEABLE, PM+QA approved → Remi to merge.
+- **Impact**: LangChain has the largest developer community in AI agent tooling. ElizaOS is the dominant open-source agent framework. These two integrations are our biggest distribution unlock to date.
+
+#### 🟡 NEW COMPETITOR: TrustAgent on Base (@yungmaster001, Mar 15)
+- An AI agent that autonomously validates other AI agents, reads identity, analyzes reputation, writes trust verdicts to blockchain on Base
+- Hackathon project (solo, built with Claude); live at trust-agent-app.vercel.app
+- **Threat level: LOW** — hackathon prototype, not a production project
+- **Key signal**: The hackathon track was titled **"AGENT THAT TRUST"** — validates our market is now mainstream enough to be a hackathon theme
+
+#### 🟡 MetaMask Exploring Agent Delegation + Trust (Mar 15)
+- Discussion with @MetaMaskDev and @synthesis_md: "combine scoped delegation with on-chain trust validation — before an agent gets delegated to, another agent checks its identity and reputation"
+- **Implication**: MetaMask is thinking about trust checks as a prerequisite for delegation. Our `TrustGate` Runnable (PR #27) implements exactly this pattern. **Pitch opportunity**: contact @MetaMaskDev to demonstrate TrustGate as reference implementation.
+
+#### 🟡 $VOUCH / @trustnoagent (Mar 17, 10h ago)
+- Moving reputation scores on-chain on Solana. "Not my database. Not my server. The blockchain."
+- Devnet first, then mainnet. Very early stage. 3 likes, 104 views.
+- **Threat level: LOW** — Solana, early devnet, low traction
+
+#### 🟡 Helixa.xyz — ERC-8004 + Human Cred Hybrid (Feb 26, NEW to our tracking)
+- "Onchain Identity for AI Agents" — blends ERC-8004 agent data with human credentialing inputs (Ethos Network, Talent Protocol, Coinbase EAS)
+- On Base. Quote: "Bridging the agent/human identity & credibility is the future we are building for."
+- **Threat level: MEDIUM** — same chain (Base), actively building, hybrid agent+human cred is distinct from our pure agent-to-agent model
+- **Partnership angle**: Our recursive attester scoring could enrich their cred scores. Complement not compete.
+
+#### 🟡 MX-8004 on MultiversX (Feb 13, missed in previous cycles)
+- ERC-8004 standard now live on MultiversX: soulbound agent identities + on-chain job validation + reputation anchored in real work. 1.4K views, 105 likes.
+- ERC-8004 is now confirmed on 12+ chains + MultiversX
+- **Implication**: ERC-8004 is definitively the identity standard. Our positioning as "the reputation enrichment layer on top of ERC-8004 on Base" is correct.
+
+#### 🟢 Pilot Protocol (@pilotprotocol_, Mar 13)
+- "Polo score" — behavior-based reputation for AI agents without blockchain/tokens. Network overlay stack with built-in trust model (virtual addresses, encrypted tunnels).
+- **Threat level: LOW** — off-chain reputation only, different product (networking layer). Not on-chain = can't be our competitor for EAS-based trust.
+
+#### 🟢 Machine Credit Protocol (@StoneyRoal_rst, Mar 6)
+- 4-layer trust model: Agent Identity → Behavior Ledger → Peer Evaluation → Reputation Graph
+- Academic/conceptual; low engagement (20 views). Not a product threat.
+
+#### 🟢 BBC Signal: "Race to Establish an AI-Free Logo" (Mar 16)
+- Growing consumer demand to distinguish AI-generated from human-made content
+- **Strategic implication**: AI provenance is becoming a mainstream concern. Our attestation infrastructure (SecurityAudit, TaskCompletion, etc.) is directly applicable to AI output provenance — potential new product axis.
+
+#### 🟢 BBC Signal: Anthropic Hiring Weapons Safety Expert (Mar 17)
+- AI companies investing heavily in misuse prevention and safety accountability
+- **Strategic implication**: Enterprise trust/accountability infrastructure has real demand. Our SecurityAudit attestation type (PR #25) directly addresses this.
+
+#### 🟢 SAID Protocol Momentum Accelerating (Mar 1)
+- First verified creative AI agent on Solana (xona_agent). 5.5K views, 77 likes.
+- SAID now has multiple platform integrations (Torch Market, xona_agent, others)
+- **Threat level: HIGH (Solana only)** — Still Solana-only, but building fast. Watch for Base expansion.
+
+### Updated Competitive Landscape
+
+| Competitor | Chain | Status Since Mar 8 | Threat Level |
+|------------|-------|---------------------|--------------|
+| **ERC-8004** | 12+ chains + MultiversX | Industry standard. EF endorsement confirmed. | 🔴 CRITICAL (complement, not compete) |
+| **SAID Protocol** | Solana | Multiple integrations live (Torch Market, xona_agent). 5.5K view posts. | 🔴 HIGH (Solana, but building fast) |
+| **SelfClaw** | Base | Token still active. Same chain. | 🔴 HIGH (direct competitor) |
+| **Helixa.xyz** | Base | NEW to tracking. ERC-8004 + human cred hybrid. | 🟡 MEDIUM (partner or compete) |
+| **owockibot** | Base | Still active. $85+ bounties paid. | 🟢 PARTNER (opportunity) |
+| **Pilot Protocol** | Off-chain | Behavior-based "Polo score." No blockchain. | 🟢 LOW (different approach) |
+| **$VOUCH** | Solana | Very early devnet. | 🟢 LOW (early stage) |
+| **TrustAgent** | Base | Hackathon prototype only. | 🟢 LOW (not a product) |
+
+### ctxly.com Status — ABANDONED
+
+- **Submitted:** Mar 6, 10:42 GMT+2 — **11+ days with no approval**
+- **Assessment:** Directory submission is stalled. ctxly likely has manual review that is backed up, unresponsive, or the submission was lost.
+- **Decision:** Deprioritize ctxly. Focus on alternative directories: EAS Discord registry, Base ecosystem lists, LangChain Hub (now relevant with PR #27), ElizaOS plugin registry (now relevant with PR #28).
+
+### Strategic Implications (Updated)
+
+**1. Framework Integrations = Distribution Unlock**
+- LangChain integration (PR #27) immediately reaches LangChain's massive dev community
+- ElizaOS integration (PR #28) reaches the leading open-source agent framework
+- **Action**: After merge, announce on LangChain Discord, ElizaOS GitHub discussions, and relevant Twitter threads. Comms needs to prepare announcement drafts.
+
+**2. MetaMask TrustGate Opportunity**
+- MetaMask is publicly discussing agent delegation + trust checks
+- Our `TrustGate` Runnable (PR #27) is the reference implementation they're describing
+- **Action**: PM/Comms should engage @MetaMaskDev + @synthesis_md after PR #27 merges. Show them TrustGate.
+
+**3. Helixa.xyz Partnership Signal**
+- Helixa is on Base, blending ERC-8004 + human cred. They already have cred score infra.
+- Our recursive attester scoring enriches what they're building
+- **Action**: Explore partnership — offer our attestation types as input signals for their cred scores
+
+**4. AI Provenance as New Axis**
+- BBC "AI-free logo" movement + Grammarly backlash + Meta fake video concerns = AI provenance is mainstream
+- Our SecurityAudit + TaskCompletion attestations prove what an agent did (not just who it is)
+- **Action**: Draft positioning for "AI agent output provenance" — new messaging angle post PR #25 merge
+
+### Top 3 Actions (Cycle 6)
+
+| # | Action | Owner | Timeline | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Merge PRs #25, #27, #28** — Remi merge; QA approve #27+#28 first | Remi + QA | This week | 3 PRs merged; packages published to GitHub Packages |
+| **2** | **Comms: LangChain + ElizaOS launch announcement** — Draft & post after merges | Comms | After merge | 200+ views per post; engagement from LangChain/ElizaOS communities |
+| **3** | **PM: Engage @MetaMaskDev about TrustGate** — Show them PR #27 TrustGate pattern | PM/Comms | After PR #27 merge | MetaMask acknowledgment or technical discussion started |
+
+### Success Metrics (Updated Mar 16)
+
+| Metric | Current | 14-Day Target | Notes |
+|--------|---------|---------------|-------|
+| GitHub stars | 0 | 10 | Blocked on distribution until PRs merge + announce |
+| SDK integrations (external) | 0 | 1 | LangChain integration is best bet for first organic user |
+| PRs merged | 0/3 | 3/3 | #25, #27, #28 all MERGEABLE and awaiting Remi |
+| Schema UIDs registered | 0/3 | 3/3 | paymentReliable + taskCompletion + securityAudit (all need Remi) |
+| Framework announcements | 0 | 2 | LangChain + ElizaOS launch posts |
+| MetaMask engagement | ❌ | ✅ Conversation started | TrustGate alignment opportunity |
+| ctxly approved | ❌ | ❌ Deprioritized | 11+ days — move to alternative directories |
 
 ---
 
