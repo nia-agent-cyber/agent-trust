@@ -1,356 +1,228 @@
-# Trust Skill Comms Plan — March 17, 2026
+# Trust Skill Comms Plan — March 17–18, 2026
 
 **Prepared by:** Trust Comms (Subagent)
-**Date:** 2026-03-16 23:55 EDT
-**For:** Tomorrow — Tuesday, March 17, 2026
+**Updated:** 2026-03-17 05:31 EDT (overnight refresh, BA Cycle 9)
+**For:** Today/tomorrow — Tuesday–Wednesday, March 17–18, 2026
 
 ---
 
 ## Context
 
-### Current State (Mar 16, 23:55 EDT)
+### Platform Status
 
-**PRs awaiting Remi merge:**
-- ⏳ **PR #25** — SecurityAudit attestation. MERGEABLE. PM+QA approved.
-- ⏳ **PR #27** — LangChain integration (`@nia-agent-cyber/agent-trust-langchain`). MERGEABLE. PM approved. QA reviewing.
-- ⏳ **PR #28** — ElizaOS integration (`@nia-agent-cyber/agent-trust-elizaos`). MERGEABLE. PM approved. QA reviewing.
+| Platform | Status | Notes |
+|----------|--------|-------|
+| **PinchSocial** | 🔴 API key missing — `pass show pinchsocial/api-key` returns nothing | Remi: `pass insert pinchsocial/api-key` to unblock. Posts below are drafted + ready to fire. |
+| **Twitter/X** | 🔴 BLOCKED | Per task brief — do not post to Twitter until unblocked |
+| **GitHub** | ✅ Working | `gh` CLI authenticated |
 
-**Platform status:**
-- ✅ **Twitter/X** — Working via openclaw browser profile (confirmed live posts Mar 12)
-- 🔴 **PinchSocial** — API key missing. `pass show pinchsocial/api-key` returns nothing. `~/.config/pinchsocial/credentials.json` missing. BLOCKED.
-- ✅ **GitHub** — `gh` CLI authenticated
+### What Shipped / What's Pending (Mar 17 05:31 EDT)
 
-**Strategic context (from BA Cycle 6, Mar 16 23:45 EDT):**
-- LangChain + ElizaOS integrations = **biggest distribution unlock to date**
-- MetaMask publicly discussing agent delegation + trust — our `TrustGate` (PR #27) is the exact pattern they described
-- Helixa.xyz (Base, ERC-8004 + human cred hybrid) = partnership angle
-- SAID Protocol accelerating on Solana — don't cede cross-framework narrative
-- AI provenance (BBC "AI-free logo" signal) = new positioning axis for SecurityAudit
+| PR | What | Status |
+|----|------|--------|
+| PR #25 | SecurityAudit attestation | ⏳ Awaiting Remi merge |
+| PR #27 | LangChain integration (`agent-trust-langchain`) | ⏳ Awaiting Remi merge — QA ✅ |
+| PR #28 | ElizaOS integration (`agent-trust-elizaos`) | ⏳ Awaiting Remi merge — QA ✅ |
 
-**Last posts (Mar 12):**
-- PaymentReliable distribution post (Twitter ✅)
-- @Clawdex_On_Base reply (Twitter ✅)
-- @owockibot reply (Twitter ✅)
-- @ScoutScoreAI reply (Twitter ✅)
+Schema UIDs (paymentReliable, taskCompletion, securityAudit) still unregistered — blocked on Remi.
 
----
+### New Strategic Context (BA Cycle 9 — 05:50 EDT Mar 17)
 
-## Tomorrow's Posts (March 17, 2026)
+Three new high-urgency angles from overnight research:
 
-### 🚨 TIMING NOTE
+1. **ERC-8183 "Agentic Commerce" standard just launched** — co-developed by Virtuals Protocol + Ethereum Foundation. 20,000+ agents already running on this architecture. Our `TaskCompletion` = ERC-8183 "evaluator attestation." Our `PaymentReliable` = ERC-8183 "settlement outcome." **We are the EAS attestation layer for ERC-8183.** This is the positioning we've been missing.
 
-PRs #27 + #28 are awaiting QA final approval + Remi merge. Post timing strategy:
+2. **Etheran (@Etheran_io) just went live on Base mainnet (1h ago at time of research)** — intelligence layer for ERC-8183, $ETHERAN on Virtuals.io with 8.3K views. They index jobs + compute reputation SCORES. We issue EAS ATTESTATIONS for specific behavioral events. These are complementary: Etheran indexes, Agent Trust attests. Top partnership opportunity right now.
 
-| Phase | Trigger | Posts |
-|-------|---------|-------|
-| **Pre-merge** (morning) | Now / early AM | Post 1 — teaser/build hype |
-| **On PR #27 merge** | When Remi merges | Post 2 — LangChain launch |
-| **On PR #28 merge** | When Remi merges | Post 3 — ElizaOS launch |
-| **Any time** | Parallel | Partnership outreach (MetaMask, Helixa) |
+3. **Meta acquired Moltbook** — first major tech giant buying into the agent social graph. $MOLT 5x on Base. Window for open, permissionless agent trust infrastructure is narrowing. This is a macro urgency signal.
 
 ---
 
-### Post 1: 🧵 Pre-Merge Teaser — "Framework integrations incoming"
+## Today/Tomorrow's Posts (March 17–18, 2026)
 
-**Goal:** Build anticipation before merges land. Signal to developer community.
-**Timing:** Morning (fire regardless of merge status)
-**Platform:** Twitter/X (primary)
+> **Platform:** All posts drafted for **PinchSocial** (Twitter blocked).
+> Posts are ready to fire immediately once `pass insert pinchsocial/api-key` is done.
 
-#### Twitter Thread (3 tweets)
+---
 
-**Tweet 1/3:**
+### Post 1: Agent Trust as EAS Attestation Layer for ERC-8183
+
+**Goal:** Claim the positioning: Agent Trust = the EAS layer for ERC-8183 agent commerce.
+**Timing:** Fire first — this is the foundational message. Works pre-merge.
+**Platform:** PinchSocial
+
 ```
-Something big dropping this week for the agent developer ecosystem. 🔐
+ERC-8183 is the agent commerce standard. evaluator attestation + settlement outcome — that's the protocol.
 
-Two framework integrations in final review — one for the largest agent dev community, one for the leading open-source agent framework.
+Agent Trust is the EAS layer for both.
 
-Built on Agent Trust. Soulbound reputation gating for your AI pipelines.
+TaskCompletion = evaluator attestation. soulbound proof that a job was done.
+PaymentReliable = settlement outcome. verifiable proof payments cleared.
 
-🧵
-```
+20,000+ agents are already running on ERC-8183 architecture.
 
-**Tweet 2/3:**
-```
-What does reputation-gated AI actually look like in practice?
-
-Before an agent calls a tool, delegate a task, or route a request — it checks on-chain trust first.
-
-No trust score? Blocked.
-Below threshold? Blocked.
-Untrusted attester? Weighted down.
-
-All via EAS on @base. All open source.
-```
-
-**Tweet 3/3:**
-```
-The frameworks are where developers live. That's where trust needs to live too.
-
-Announcement dropping soon.
+the attestation layer just landed.
 
 github.com/nia-agent-cyber/agent-trust
 
-#agentrust #base #ethereum #AI
+#ERC8183 #agentrust #base #ethereum
 ```
+
+**Why this post:** ERC-8183 just became the consensus Base agent standard. By explicitly naming our attestation types as the EAS primitives for this standard, we claim the positioning before Etheran, Lyneth, or GhostRank can. No merge needed — this is positioning, not a feature announce.
 
 ---
 
-### Post 2: 🚀 LangChain Integration Launch — `@nia-agent-cyber/agent-trust-langchain`
+### Post 2: Etheran Is Live — the Scoring + Attestation Stack
 
-**Goal:** Announce the LangChain package to the developer community. LangChain has the largest AI agent dev following.
-**Timing:** Fire IMMEDIATELY when PR #27 merges
-**Platform:** Twitter/X (primary)
+**Goal:** Public framing of the Etheran partnership angle. Signals to Etheran that we're watching, and signals to the ecosystem that these two products are complementary.
+**Timing:** Fire second — ideally within hours of Post 1.
+**Platform:** PinchSocial
 
-#### Twitter Thread (4 tweets)
-
-**Tweet 1/4 (Hook):**
 ```
-🔐 Agent Trust × LangChain is LIVE.
+@Etheran_io just went live on Base mainnet.
 
-Reputation-gated AI pipelines, built on EAS on @base.
+they index ERC-8183 jobs. they compute reputation scores. they sync to ERC-8004 hourly.
 
-@nia-agent-cyber/agent-trust-langchain — now available on GitHub Packages.
+scores without evidence are just numbers.
 
-Thread 🧵
-```
+Agent Trust attests the outcomes — specific, soulbound, verifiable proof of what each agent actually did.
 
-**Tweet 2/4 (What it does):**
-```
-What shipped:
+Etheran indexes jobs.
+Agent Trust attests outcomes.
+together: attack-aware trust for the ERC-8183 agent economy.
 
-• TrustCheckTool — drop-in LangChain tool that checks agent trust before any action
-• TrustGate — a Runnable that blocks execution below a trust threshold
-• createTrustMiddleware — middleware for trust-gating entire agent chains
-• TrustGateError — typed error for downstream error handling
-
-72 tests. TypeScript. Fully open source.
+#Etheran #ERC8183 #erc8004 #base #agentrust
 ```
 
-**Tweet 3/4 (Why it matters):**
-```
-Before your agent calls a tool, delegates a task, or routes a request — it now checks on-chain trust first.
+**Why this post:** Etheran had 8.3K views on their token launch. Mentioning them pulls us into that gravity. The framing is collaborative, not competitive — "together" is the key word. Also seeds the partnership conversation publicly before we reach out directly.
 
-Identity (ERC-8004) tells you WHO the agent is.
-Agent Trust tells you IF you should work with them.
+**Follow-up action:** After posting, reach out to @Etheran_io directly (Twitter DM or PinchSocial) with the integration pitch: "Etheran indexes the jobs. Agent Trust attests the outcomes. Together: composable, attack-aware, verifiable trust for ERC-8183 agents." (Can execute once Twitter unblocked, or via PinchSocial DM.)
 
-Now your LangChain pipeline can enforce that boundary. Automatically.
-```
+---
 
-**Tweet 4/4 (CTA):**
+### Post 3: Meta/Moltbook — The Window Is Narrowing
+
+**Goal:** Create urgency around open agent infrastructure. Ride the Meta/Moltbook news cycle. Position Agent Trust as the permissionless alternative.
+**Timing:** Fire third — or first if Meta/Moltbook is still trending. News is hot.
+**Platform:** PinchSocial
+
 ```
-Install:
-echo "@nia-agent-cyber:registry=https://npm.pkg.github.com" >> .npmrc
-npm install @nia-agent-cyber/agent-trust-langchain
+Meta acquired Moltbook.
+
+big tech just entered the agent social graph. the window for open, permissionless agent trust infrastructure is narrowing.
+
+you can't build a soulbound EAS attestation layer inside a closed system. Meta can own the graph — they can't own the proof.
+
+every week without open infrastructure is a week the closed platforms get to define what "agent trust" means.
+
+the answer is already built. ship or cede the ground.
 
 github.com/nia-agent-cyber/agent-trust
 
-#langchain #agentrust #base #AI #buildingInPublic
+#agentrust #ERC8183 #base #buildingInPublic
 ```
+
+**Why this post:** Meta/Moltbook news is a macro moment. Riding it surfaces Agent Trust to a wider audience (not just agent/crypto Twitter). The framing creates urgency and positions our EAS-based, soulbound model as inherently uncapturable by big tech — a real differentiator.
 
 ---
 
-### Post 3: 🚀 ElizaOS Integration Launch — `@nia-agent-cyber/agent-trust-elizaos`
+## Post Execution Order
 
-**Goal:** Announce the ElizaOS plugin to the agent framework community. ElizaOS is the dominant open-source agent framework.
-**Timing:** Fire IMMEDIATELY when PR #28 merges (can be same day as Post 2 or next morning)
-**Platform:** Twitter/X (primary)
+| Order | Post | Trigger | Notes |
+|-------|------|---------|-------|
+| 1st | Post 1 — ERC-8183 attestation layer | Once PinchSocial key is live | Positioning — no merge needed |
+| 2nd | Post 2 — Etheran + scoring/attestation stack | Same day or next morning | Collaboration framing |
+| 3rd | Post 3 — Meta/Moltbook urgency | While news is still hot | Could move to 1st if Meta still trending |
 
-#### Twitter Thread (4 tweets)
-
-**Tweet 1/4 (Hook):**
-```
-🔐 Agent Trust × ElizaOS is LIVE.
-
-Soulbound reputation enforcement for the leading open-source agent framework.
-
-@nia-agent-cyber/agent-trust-elizaos — now on GitHub Packages.
-
-Thread 🧵
-```
-
-**Tweet 2/4 (What it does):**
-```
-What shipped:
-
-• createTrustCheckAction — ElizaOS action that checks trust before execution
-• createTrustGuardEvaluator — evaluator that scores trust at runtime
-• createTrustProvider — ElizaOS provider injecting trust context into agents
-• createAgentTrustPlugin — one-liner plugin: drop into any ElizaOS character config
-
-74 tests. TypeScript. Fully open source.
-```
-
-**Tweet 3/4 (Why it matters):**
-```
-ElizaOS is where a huge portion of the agent ecosystem is building.
-
-Your character config can now declare:
-"Only interact with agents that meet trust threshold X."
-"Evaluate partner agents at runtime."
-"Gate actions by on-chain reputation."
-
-All verified on-chain. None of it staked or gamed.
-```
-
-**Tweet 4/4 (CTA):**
-```
-Install:
-echo "@nia-agent-cyber:registry=https://npm.pkg.github.com" >> .npmrc
-npm install @nia-agent-cyber/agent-trust-elizaos
-
-github.com/nia-agent-cyber/agent-trust
-
-#elizaos #agentrust #base #AI #buildingInPublic
-```
+Space posts ~3-4 hours apart. Don't dump all three at once.
 
 ---
 
-## Partnership Outreach (March 17, 2026)
+## Partnership Outreach — Priority Queue
 
-### 🎯 Priority 1: MetaMask — TrustGate Engagement
+### 🔴 #1: Etheran (@Etheran_io)
 
-**Why now:** On Mar 15, @MetaMaskDev and @synthesis_md publicly discussed "combine scoped delegation with on-chain trust validation — before an agent gets delegated to, another agent checks its identity and reputation." Our `TrustGate` Runnable (PR #27) implements **exactly this pattern**.
+**Why now:** Just went live on Base mainnet TODAY with major Virtuals.io traction (8.3K views). They need our attestations to make their scores verifiable and attack-resistant.
 
-**Strategy:** Public reply to their trust/delegation thread, demonstrating TrustGate as reference implementation. Don't pitch — show.
+**Pitch:** "Etheran indexes the jobs. Agent Trust attests the outcomes. Together: composable, attack-aware, verifiable trust for ERC-8183 agents."
 
-**Target accounts:** `@MetaMaskDev`, `@synthesis_md`
+**When:** After PR merges (have a real package to show). Or sooner — Post 2 seeds the conversation publicly.
 
-**Timing:** After PR #27 merges (so we have a real package to point to)
-
-**Reply Draft (to their recent delegation/trust thread):**
-```
-@MetaMaskDev @synthesis_md We built exactly this pattern as part of our LangChain integration.
-
-TrustGate: a Runnable that checks on-chain EAS reputation before an agent gets delegated to.
-
-Before delegation → trust threshold check → block or allow.
-
-All open source, Base mainnet. Would love your thoughts.
-github.com/nia-agent-cyber/agent-trust
-```
-
-**If no recent thread to reply to — standalone tweet:**
-```
-.@MetaMaskDev is thinking about trust checks as a prerequisite for agent delegation.
-
-We shipped it.
-
-TrustGate: checks on-chain EAS reputation BEFORE delegation fires.
-
-@nia-agent-cyber/agent-trust-langchain — now in final review.
-
-Tagging for awareness: @MetaMaskDev @synthesis_md
-
-github.com/nia-agent-cyber/agent-trust
-```
+**Platform:** Twitter DM or PinchSocial reply (once unblocked).
 
 ---
 
-### 🎯 Priority 2: Helixa.xyz — Partnership DM / Reply
+### 🟡 #2: GhostRank (@ghostprotoinfra)
 
-**Why:** Helixa.xyz is on Base, blending ERC-8004 + human credentialing inputs (Ethos Network, Talent Protocol, Coinbase EAS). Their quote: "Bridging the agent/human identity & credibility is the future we are building for." Our attestation types (SecurityAudit, TaskCompletion, PaymentReliable) are exactly the kind of on-chain agent behavior signals that would enrich their cred scores.
+**Why:** They are "evidence-weighted reputation for ERC-8004 agents on Base" — direct stack match. Assess: are they a potential partner (use our EAS attestations as their evidence source) or a competitor?
 
-**Strategy:** Complement framing — "our behavioral attestations as input signals for your cred scores."
-
-**Target:** `@helixaxyz` (check their handle) or `@helixa_xyz`
-
-**Reply/DM Draft:**
-```
-@helixaxyz Your hybrid agent+human credentialing approach on Base is exactly the right direction.
-
-We're building the behavioral attestation layer: TaskCompletion, PaymentReliable, SecurityAudit — all soulbound, all on EAS on Base.
-
-Our attestations = verified behavior signal. Could feed directly into your cred scores.
-
-Complement not compete. Want to explore?
-
-github.com/nia-agent-cyber/agent-trust
-```
-
-**Action:** Find their recent tweets and reply to one. Also look for their GitHub or Discord.
+**Pitch TBD** — need to learn their evidence sources first. If off-chain evidence: partner angle. If on-chain but non-EAS: compete on composability.
 
 ---
 
-### 🟡 Watch: SAID Protocol
+### 🟡 #3: MetaMask / @synthesis_md (on hold)
 
-**Why:** SAID is accelerating (multiple platform integrations, 5.5K view posts). They're Solana-only but building fast. We should stay visible in cross-framework / cross-chain trust conversations before they expand to Base.
-
-**Action:** Monitor their posts. If they post anything about cross-chain expansion or Base — engage immediately.
-
-**Prepped reply (hold for right moment):**
-```
-@saidinfra Great momentum on Solana. Agent trust infrastructure is becoming the baseline.
-
-We're doing the same on Base — soulbound attestations via EAS, LangChain + ElizaOS integrations landing this week.
-
-Different chains, same thesis. Agent economies need verifiable reputation.
-```
+Per Cycle 6 — they're discussing trust-gated delegation publicly. Our `TrustGate` Runnable (PR #27) is the reference implementation. Hold this outreach until PR #27 merges.
 
 ---
 
-## Execution Order for March 17
+## Framework Integration Posts (hold until PRs merge)
 
-| Time | Action | Platform | Contingency |
-|------|--------|----------|-------------|
-| AM (early) | Post 1 — Pre-merge teaser | Twitter | Always fire |
-| On PR #27 merge | Post 2 — LangChain launch thread | Twitter | Hold if not merged |
-| On PR #28 merge | Post 3 — ElizaOS launch thread | Twitter | Hold if not merged; fire next AM |
-| After PR #27 | MetaMask outreach reply | Twitter | Find their thread or standalone tweet |
-| Any time | Helixa.xyz reply/DM | Twitter | Find recent tweet to reply to |
-| Ongoing | Monitor SAID Protocol, SelfClaw, ERC-8004 | Twitter | Engage if relevant |
+These are still valid from the March 16 plan — hold for PR merge signals from Remi:
+
+- **LangChain launch thread** (4 tweets/pinches) — fire on PR #27 merge
+- **ElizaOS launch thread** (4 tweets/pinches) — fire on PR #28 merge
+
+Full drafts in the March 16 version of this plan (see git history).
 
 ---
 
-## Content Guardrails
+## Guardrails
 
 **✅ DO:**
-- Lead with what's shipped — code, tests, package names
-- Use concrete install commands (developers respect this)
-- Reference EAS on Base — our technical credibility marker
-- Complement ERC-8004 — "identity + reputation = complete"
-- Tag partners/targets in outreach tweets
-- Keep threads ≤4 tweets for engagement
+- Name ERC-8183 and ERC-8004 explicitly — these are the consensus standards now
+- Lead with "Etheran indexes, Agent Trust attests" — collaborative framing wins
+- Use the Meta/Moltbook news cycle while it's hot
+- Reference soulbound + EAS — technical credibility markers
+- Include GitHub link in every post
 
 **❌ AVOID:**
-- Vague "coming soon" without substance
-- "Trust layer for the agent economy" — ERC-8004 owns this phrase
-- Posting before PR merges (no package to point to)
-- Competing framing with ERC-8004
+- Vague "coming soon" without something concrete to link
+- Competitive framing against Etheran — they're a partner target
+- Claiming we're "the trust layer" (that's ERC-8004's positioning) — we're the *attestation layer*
+- Over-posting: 3 posts over 2 days is the plan, not 3 in one hour
 
 ---
 
-## Platform Status Reminder
+## PinchSocial API Key Recovery
 
-| Platform | Status | Action |
-|----------|--------|--------|
-| **Twitter/X** | ✅ WORKING — use openclaw browser | Execute all posts |
-| **PinchSocial** | 🔴 BLOCKED — API key missing | Remi: `pass insert pinchsocial/api-key` |
-| **GitHub** | ✅ Working | Tag issues in posts |
-| **LangChain Hub** | ⏳ Explore after PR #27 merge | Potential new distribution channel |
-| **ElizaOS plugin registry** | ⏳ Explore after PR #28 merge | Potential new distribution channel |
+Per TOOLS.md: `pass show pinchsocial/api-key` has `⚠️ NEEDS ADDING TO PASS`.
+
+**To unblock all three posts:**
+```bash
+pass insert pinchsocial/api-key
+# Enter the PinchSocial API key when prompted
+
+# Then post using:
+curl -X POST https://pinchsocial.io/api/pinch \
+  -H "Authorization: Bearer $(pass show pinchsocial/api-key)" \
+  -H "Content-Type: application/json" \
+  -d '{"content": "..."}'
+```
+
+If key is truly lost, PinchSocial account is reachable at https://pinchsocial.io/@nia. May need to regenerate via account settings or contact support.
 
 ---
 
 ## Metrics to Track
 
-| Metric | Current | Target (Mar 17) |
-|--------|---------|-----------------|
-| Twitter impressions (launch posts) | — | 200+ per post |
-| MetaMask engagement | ❌ Not started | ✅ Reply sent |
-| Helixa.xyz engagement | ❌ Not started | ✅ Reply/DM sent |
-| LangChain community mention | ❌ None | ✅ 1+ organic mention |
-| GitHub stars | 0 | 3+ (realistic post-announcement) |
+| Metric | Target |
+|--------|--------|
+| PinchSocial post views | 200+ per post |
+| Etheran partnership — conversation started | ✅ by Mar 18 |
+| ERC-8183 positioning visible in feed | ✅ all 3 posts reference it |
+| GitHub stars delta | 2+ from posts |
 
 ---
 
-## Notes
-
-- **Merge-gated posts are the priority.** Post 2 + 3 are the big ones. Post 1 fires regardless.
-- **MetaMask is the highest-signal outreach.** They're publicly discussing exactly what we built.
-- **Helixa.xyz is the most natural partnership fit.** Same chain, complementary not competing.
-- **Don't over-post.** Two post 2+3 in the same day is fine; space them 3-4 hours apart.
-- **LangChain Discord + ElizaOS GitHub Discussions** — worth posting there on merge day too (browser-based, no API needed).
-
----
-
-*Comms plan for Mar 17. Three posts + two partnership sequences. Execute on merge signals from Remi.*
+*Plan current as of Mar 17, 05:31 EDT. Three posts ready to fire on PinchSocial once API key is resolved. Partnership priority: Etheran first.*
