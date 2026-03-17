@@ -1,7 +1,51 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-17 04:30 EDT by Trust QA (PRs #27+#28 APPROVED)
+**Last Updated:** 2026-03-17 08:15 EDT by Trust PM (Etheran partnership prep + PR mergeability check)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust PM: Etheran Partnership Prep + PR Check (Mar 17, 08:15 EDT)
+
+**Session:** Trust PM — Etheran outreach preparation + PR mergeability verification
+
+### Accomplished
+- ✅ **PRs #25, #27, #28 re-verified MERGEABLE** — All three confirmed `MERGEABLE + CLEAN` as of 08:15 EDT. No drift since QA approval at 04:30 EDT.
+- ✅ **Etheran DM drafted** — Partnership outreach DM added to `COMMS_PLAN.md` (§ "Etheran DM — Ready to Send"). 2-sentence pitch referencing their ERC-8183 "evaluator attestation" primitive + our TaskCompletion/PaymentReliable attestations as the evidence layer their reputation engine needs. Ready to fire after Post 1 goes up.
+- ✅ **Data model alignment analysis** — Full schema compatibility analysis added to `COMMS_PLAN.md` (§ "Data Model Alignment"). See details below.
+- ✅ **ERC-8183 spec reviewed** — Fetched and analyzed the full ERC-8183 draft. Confirmed our schema field mappings and identified 4 gaps to resolve with Etheran.
+
+### Data Model Alignment Summary (ERC-8183 ↔ Agent Trust)
+
+**What already maps cleanly:**
+- `provider` → `subjectAgent` (1:1)
+- `budget` → `amount`/`reward` (1:1)
+- `expiredAt` → `dueAt` (equivalent)
+- Completed/Rejected/Expired → `outcome` 1/0/0
+- `jobId` → `taskId` (string encoding: `"erc8183:<chainId>:<contract>:<jobId>"`)
+- block.timestamp at complete() → `completedAt`/`paidAt`
+
+**4 gaps to propose to Etheran:**
+1. **Add `address evaluator` field to TaskCompletion** — so their indexer can verify attestation is from the designated ERC-8183 evaluator
+2. **Standardize `taskId` URI format** — `"erc8183:<chainId>:<contractAddress>:<jobId>"` for Etheran's indexer to cross-reference
+3. **`reason` ↔ EAS UID bridge** — evaluator sets `complete(jobId, reason=bytes32(uint(easAttestationUID)))` to create on-chain link from ERC-8183 job → EAS attestation
+4. **IACPHook integration** — implement hook that auto-issues EAS attestation on `afterAction(complete)` (longer-term)
+
+### PR Status (as of 08:15 EDT)
+
+| PR | Title | Mergeable | Status |
+|----|-------|-----------|--------|
+| #25 | SecurityAudit attestation | ✅ MERGEABLE+CLEAN | PM+QA approved → Remi to merge |
+| #27 | LangChain integration | ✅ MERGEABLE+CLEAN | PM+QA approved → Remi to merge |
+| #28 | ElizaOS integration | ✅ MERGEABLE+CLEAN | PM+QA approved → Remi to merge |
+
+### Next Actions
+1. **Comms:** Fire Post 1 (Etheran "they score, we attest") on PinchSocial once API key is live
+2. **Comms:** Send Etheran DM (from `COMMS_PLAN.md`) after Post 1 is up
+3. **Remi:** Merge PRs #25, #27, #28 — all MERGEABLE, no action needed from team
+4. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit) — urgent given Etheran's mainnet is live
+5. **PM (next cycle, post-DM response):** If Etheran responds, prepare schema PR for `evaluator` field addition to TaskCompletion + `taskId` URI format documentation
+6. **PM (next cycle):** After all 3 merges + BA analysis → spawn BA for strategic next-steps
 
 ---
 

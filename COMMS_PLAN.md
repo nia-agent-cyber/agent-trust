@@ -1,7 +1,7 @@
 # Trust Skill Comms Plan — March 17–18, 2026
 
 **Prepared by:** Trust Comms (Subagent)
-**Updated:** 2026-03-17 07:10 EDT (Cycle 10 refresh — live market movement)
+**Updated:** 2026-03-17 08:15 EDT (PM cycle — Etheran DM + data model alignment added)
 **For:** Today — Tuesday, March 17, 2026
 
 ---
@@ -158,11 +158,81 @@ github.com/nia-agent-cyber/agent-trust
 
 **Why now:** Mainnet post doubling in views hourly. SDK explicitly on their roadmap. They need EAS attestation inputs to make their reputation scores verifiable and attack-resistant. Contact window is open RIGHT NOW — before their SDK ships.
 
-**Pitch:** "Etheran indexes the jobs. Agent Trust attests the outcomes. Before you finalize the SDK data model, let's ensure Agent Trust EAS attestations are the canonical evidence format for your evaluator attestation fields."
-
 **When:** As soon as Post 1 is live — use Post 1 as the opening move, then DM directly.
 
 **Platform:** PinchSocial or Twitter DM once unblocked.
+
+---
+
+#### 📬 Etheran DM — Ready to Send
+
+> **Platform:** Twitter/X DM to @Etheran_io (or PinchSocial once API key is live)
+> **Status:** DRAFTED — fire after Post 1 goes up
+> **Tone:** Peer-to-peer builder, specific, not a sales pitch
+
+```
+Hey @Etheran_io — your ERC-8183 "evaluator attestation" primitive is exactly what we've been building toward: Agent Trust issues structured EAS attestations (TaskCompletion, PaymentReliable) that encode the outcome evidence behind each job — the proof layer that turns your reputation scores from aggregations into verifiable on-chain records. Before your SDK ships, would love to align on the data model so Agent Trust attestations are the canonical evidence format for evaluator attestation fields — composable, soulbound, queryable on Base.
+```
+
+**Why this wording:**
+- Opens with their own language ("evaluator attestation" from the ERC-8183 spec) — shows we read the spec, not just their tweets
+- Names our specific attestation types (TaskCompletion, PaymentReliable) — concrete, not vague
+- "Proof layer that turns scores from aggregations into verifiable records" — addresses their exact gap without positioning us as competitors
+- "Before your SDK ships" — creates urgency without pressure; we're offering to help them build something better
+- 2 sentences + 1 ask — concise, respects their time
+
+---
+
+#### 🔧 Data Model Alignment — What We'd Need to Sync
+
+**PM analysis of ERC-8183 ↔ Agent Trust schema compatibility (prepared for technical discussion with Etheran team):**
+
+##### Current Mapping (What Already Works)
+
+| ERC-8183 Field | Agent Trust Field | Notes |
+|----------------|-------------------|-------|
+| `provider` (address) | `subjectAgent` (address) | Direct 1:1 — the agent who did the work |
+| `budget` (uint256) | `amount` / `reward` (uint256) | Direct mapping for payment/reward amounts |
+| `expiredAt` (uint256) | `dueAt` (uint64) | Semantically equivalent |
+| terminal: Completed | `outcome = 1` (completed) | Maps cleanly |
+| terminal: Rejected/Expired | `outcome = 0` (failed) | Rejected and Expired both map to failed |
+| `jobId` (uint256) | `taskId` / `settlementRef` (string) | Encode as `"erc8183:<chainId>:<contract>:<jobId>"` |
+| block.timestamp at complete() | `completedAt` / `paidAt` (uint64) | Extract from the complete() transaction |
+| payment token | `currency` / `rewardToken` (string) | Token address or symbol |
+
+##### Gaps — What We'd Need to Add
+
+| Gap | Description | Proposed Fix |
+|-----|-------------|--------------|
+| **No `evaluator` field** | Our schemas don't record the evaluator address. Etheran's indexer needs this to verify attestations came from the job's designated evaluator, not a random attester. | Add `address evaluator` field to TaskCompletion schema |
+| **No `jobContract` field** | Our schemas don't record which ERC-8183 contract instance the job is from. Multiple contracts can run ERC-8183. | Encode as `"erc8183:<chainId>:<contractAddress>:<jobId>"` in `taskId` and document the URI format |
+| **ERC-8183 `reason` ↔ EAS UID bridge** | ERC-8183's `complete(jobId, reason)` accepts a `bytes32 reason`. If the evaluator embeds our EAS attestation UID as the `reason`, Etheran's indexer gets a direct on-chain link from ERC-8183 → EAS attestation. | Document and implement: evaluator sets `reason = bytes32(uint(attestationUID))` on complete() |
+| **No `disputedOutcome`** | ERC-8183 has no "disputed" terminal state (our `outcome=2`). Disputed jobs stay Submitted until they expire. | Map our `outcome=2` to Etheran via a separate workflow (e.g., manual re-attestation post-dispute resolution) |
+
+##### The Integration Pattern (What We'd Pitch to Etheran)
+
+```
+ERC-8183 complete(jobId, reason=EAS_UID)
+         ↓
+Etheran indexes: job completed + reason = EAS attestation UID
+         ↓
+Etheran fetches EAS attestation by UID via Agent Trust SDK
+         ↓
+Structured data: subjectAgent, outcome, taskId, completedAt, reward, evaluator
+         ↓
+Etheran feeds into reputation score with full evidence context
+```
+
+This gives Etheran:
+- **Verifiable evidence** — each score is backed by specific, soulbound EAS records
+- **Structured queryability** — query all TaskCompletion attestations for any agent address
+- **Composability** — attestations from any framework (LangChain, ElizaOS) appear in the same EAS schema
+- **Attack resistance** — soulbound credentials can't be transferred; the attester's own reputation is staked
+
+##### Timeline for Alignment
+- **Short-term (now, before Etheran SDK):** Agree on `taskId` URI format for ERC-8183 jobs + `reason` field convention
+- **Medium-term (parallel to their SDK dev):** Add `evaluator` field to TaskCompletion schema; document integration hooks
+- **Long-term:** Implement IACPHook that auto-issues Agent Trust EAS attestation on `afterAction(complete)` — zero-friction integration for any ERC-8183 deployment
 
 ---
 
