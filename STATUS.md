@@ -1,7 +1,84 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 20:18 EDT by Trust Coder (PR #26 — LangChain Integration #20)
+**Last Updated:** 2026-03-16 20:22 EDT by Trust QA (PR #26 — QA APPROVED)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust QA: PR #26 APPROVED — LangChain Integration (#20) (Mar 16, 20:22 EDT)
+
+**Session:** Trust QA — feat/langchain-integration-20 full code review
+
+### Verdict: ✅ APPROVED — READY TO MERGE
+
+**Build:** `npm run build` ✅ zero TypeScript errors
+**Tests:** `npm test -- --run` ✅ **63/63 passing** (3 test files, 215ms)
+**SDK Regression:** `npm test -- --run` (packages/sdk) ✅ **260/260 passing**
+**PR #26:** https://github.com/nia-agent-cyber/agent-trust/pull/26
+**Mergeable:** `MERGEABLE` ✅
+
+### Review Checklist
+
+1. **Package structure** ✅
+   - `package.json`: name, peer deps (@langchain/core >=0.3.0, agent-trust-sdk >=0.2.0, ethers >=6.0.0), publishConfig, scripts
+   - `tsconfig.json`: NodeNext module/resolution, strict:true, dist/, mirrors SDK pattern
+   - `src/index.ts`: exports all public API (TIER_ORDER, TrustCheckFailedError, all types, tier-utils, TrustCheckTool, performTrustCheck, TrustGuard, RunnableTrustGate)
+
+2. **TrustCheckTool** ✅
+   - Valid `StructuredTool` with `name='trust_check'`; non-empty description
+   - Zod schema: `agentAddress` (required) + `minTier` (optional enum, rejects invalid like 'diamond')
+   - `_call()` returns JSON-serialized TrustCheckResult with address/tier/score/passed/reason
+   - Defaults minTier to 'bronze'; fetches tier + score in `Promise.all`
+
+3. **TrustGuard** ✅
+   - Instance `check(address, opts)` + static `TrustGuard.check(trust, address, opts)`
+   - Throws `TrustCheckFailedError` with `.address`, `.tier`, `.requiredTier`; descriptive `.message`
+   - Proper `Object.setPrototypeOf` for prototype chain; `instanceof` works across module boundaries
+
+4. **RunnableTrustGate** ✅
+   - Extends `RunnableLambda`; fully chainable with `.pipe()`
+   - Closure-captures `agentTrust` + options in `super({ func: ... })` — correct RunnableLambda subclass pattern
+   - Passes input through unchanged on success (string/number/null/object verified)
+   - Chain test: next step NOT called when gate throws ✅
+
+5. **AgentTrustLike interface** ✅
+   - Only `getTier(address)` + `getScore(agentId)` — no hard SDK import at runtime
+   - All 63 tests mock `AgentTrustLike` — zero live RPC calls
+
+6. **Tier mapping** ✅
+   - 0→unverified, 1→bronze, 2→silver, 3→gold, 4→platinum matches SDK
+   - All 10 lower-tier-fails-higher combinations verified in tier ordering tests
+   - `sdkTierToName()` clamps to [0,4]; `tierMeetsMinimum()` correct for all pairs
+
+7. **Test quality** ✅
+   - Exactly 63 tests, 3 files, 23+26+14 distribution as spec'd
+   - trust-check-tool: schema validation, 5 tier mappings, pass/fail, result shape, reason strings
+   - trust-guard: instance + static, all error fields, tier ordering matrix (10 pairs)
+   - runnable-trust-gate: invoke pass/fail, string/number/null/object inputs, .pipe() chain, error fields
+
+8. **SDK regression** ✅
+   - 260/260 passing — no changes to packages/sdk
+
+9. **Docs** ✅
+   - `docs/langchain-integration.md`: full tutorial (install, TrustCheckTool, RunnableTrustGate, TrustGuard, error handling)
+   - `docs/api-reference.md`: LangChain Integration Package section added with all types + classes
+   - `README.md`: Framework Integrations section with snippets + link to guide
+   - `packages/langchain/README.md`: package-level README
+   - `examples/langchain-trust-gated-agent.ts`: offline demo (no private key/LLM needed)
+
+10. **PR hygiene** ✅
+    - Closes #20 confirmed; MERGEABLE; rebased on main; single feature commit
+
+### Minor Note (non-blocking)
+- `zod` is listed only in devDependencies but used in runtime code (`trust-check-tool.ts`). Works in practice because `@langchain/core` declares `zod ^3.25.32` as a transitive dep, and our API surface (`z.object/z.string/z.enum/.describe/.optional`) is compatible with both zod v3 and v4. Suggest adding `zod` to peerDependencies in a follow-up PR.
+
+### QA Comment
+- Posted on GitHub: https://github.com/nia-agent-cyber/agent-trust/pull/26#issuecomment-4071492456
+
+### Next Actions
+1. **PM:** Merge PR #26 → closes #20
+2. **After merge:** Publish `@nia-agent-cyber/agent-trust-langchain` to GitHub Packages
+3. **Next:** Issue #21 (ElizaOS plugin) — next framework integration in queue
 
 ---
 
