@@ -789,3 +789,105 @@ interface AgentStats {
 | 2 | Trusted | ⭐ | 10 | 2 | 70% | 30 |
 | 3 | Verified | ✅ | 25 | 5 | 85% | 90 |
 | 4 | Expert | 👑 | 50 | 10 | 95% | 180 |
+
+
+---
+
+## LangChain Integration Package
+
+Package: `@nia-agent-cyber/agent-trust-langchain`
+
+### TrustCheckTool
+
+```typescript
+import { TrustCheckTool } from '@nia-agent-cyber/agent-trust-langchain';
+
+const tool = new TrustCheckTool({ agentTrust, requiredTier: 'contributor' });
+```
+
+**Config:**
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `agentTrust` | `AgentTrustLike` | AgentTrust instance |
+| `requiredTier?` | `TierName` | Default minimum tier |
+| `name?` | `string` | Tool name (default: `agent_trust_check`) |
+| `description?` | `string` | Tool description |
+
+**Methods:**
+- `_run(input: TrustCheckToolInput): Promise<TrustCheckOutput>` — structured result
+- `invoke(input): Promise<string>` — JSON-serialized result
+- `toLangChainTool(): DynamicStructuredTool` — native LangChain tool
+
+**Output shape:**
+```typescript
+interface TrustCheckOutput {
+  address: string;
+  tier: { level: number; name: TierName; score: number };
+  meets: boolean;
+  requiredTier?: TierName;
+  error?: string;
+}
+```
+
+### TrustGate
+
+```typescript
+import { TrustGate, TrustGateError } from '@nia-agent-cyber/agent-trust-langchain';
+
+const gate = new TrustGate({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'counterpartyAddress',
+  onBlocked: (state) => ({ ...state, blocked: true }),
+});
+```
+
+**Config:**
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `agentTrust` | `AgentTrustLike` | AgentTrust instance |
+| `requiredTier` | `TierName` | Minimum tier required |
+| `addressKey?` | `string` | State key for address (default: `'address'`) |
+| `onBlocked?` | `(state) => state` | Fallback instead of throwing |
+
+**Methods:**
+- `invoke(state): Promise<Record<string, unknown>>` — passes or blocks
+- `pipe(next): ComposedChain` — compose with next step
+- `toLangChainRunnable(): RunnableLambda` — native LangChain Runnable
+
+### TrustGateError
+
+Thrown when TrustGate blocks and no `onBlocked` is provided.
+
+```typescript
+error.address       // blocked address
+error.tier          // actual tier name
+error.requiredTier  // required tier name
+error.message       // human-readable description
+```
+
+### createTrustMiddleware
+
+```typescript
+import { createTrustMiddleware } from '@nia-agent-cyber/agent-trust-langchain';
+
+const { tool, gate } = createTrustMiddleware({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'walletAddress',
+});
+```
+
+Returns `{ tool: TrustCheckTool, gate: TrustGate }`.
+
+### Tier Names (LangChain package)
+
+| Level | Name |
+|-------|------|
+| 0 | `unverified` |
+| 1 | `contributor` |
+| 2 | `trusted` |
+| 3 | `verified` |
+| 4 | `expert` |
