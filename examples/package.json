@@ -10,7 +10,9 @@
     "multi-agent": "npx tsx multi-agent-reputation.ts",
     "middleware": "npx tsx express-middleware.ts",
     "payment-reliable": "npx tsx payment-reliable-flow.ts",
-    "task-completion": "npx tsx task-completion-flow.ts"
+    "task-completion": "npx tsx task-completion-flow.ts",
+    "langchain": "npx tsx langchain-trust-gate.ts",
+    "elizaos": "npx tsx elizaos-trust-plugin.ts"
   },
   "dependencies": {
     "@nia-agent-cyber/agent-trust-sdk": "^0.2.0",

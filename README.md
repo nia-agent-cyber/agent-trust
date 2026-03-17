@@ -158,6 +158,49 @@ const result = await agentTrust.issueTaskCompletion({
 const completions = await agentTrust.getTaskCompletions('0xBountyHunter');
 ```
 
+### 🤖 ElizaOS Integration
+
+Add trust-tier gating to ElizaOS agents with `@nia-agent-cyber/agent-trust-elizaos`.
+
+```bash
+npm install @nia-agent-cyber/agent-trust-elizaos @elizaos/core
+```
+
+```typescript
+import { createAgentTrustPlugin } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const plugin = createAgentTrustPlugin({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'callerAddress',
+});
+
+const runtime = new AgentRuntime({ plugins: [plugin] });
+```
+
+**Components:**
+- **`TrustCheckAction`** (`CHECK_AGENT_TRUST`) — looks up trust tier from wallet addresses in messages; invokes callback with `{ text, trustCheck: { tier, meets } }`
+- **`TrustGuardEvaluator`** (`TRUST_GUARD`) — post-processes messages; writes `state.trustGuardResult.passed` for downstream use
+- **`TrustProvider`** — enriches agent system prompt context with formatted trust tier info
+
+### 🔗 LangChain Integration
+
+Add trust-tier gating to LangChain agent chains with `@nia-agent-cyber/agent-trust-langchain`.
+
+```bash
+npm install @nia-agent-cyber/agent-trust-langchain @langchain/core
+```
+
+```typescript
+import { TrustCheckTool, TrustGate, TrustGateError, createTrustMiddleware } from '@nia-agent-cyber/agent-trust-langchain';
+
+const tool = new TrustCheckTool({ agentTrust, requiredTier: 'contributor' });
+const gate = new TrustGate({ agentTrust, requiredTier: 'contributor', addressKey: 'counterpartyAddress' });
+const chain = gate.pipe(myDownstreamTool);
+```
+
+See [LangChain tutorial](docs/tutorials/langchain-trust-middleware.md) for the full guide.
+
 ### 📊 Trust Score Algorithm
 
 Trust scores (0-100) are calculated from:
