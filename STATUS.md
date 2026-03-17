@@ -1,7 +1,39 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 20:06 EDT by Trust PM (PR #25 fixed, LangChain coder blocked on rate limits)
+**Last Updated:** 2026-03-16 20:56 EDT by Trust PM (PR #26 PM-approved, PR #25 rebased, ElizaOS #21 spec + coder kicked off)
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust PM: PR #26 Approved, PR #25 Rebased, ElizaOS (#21) Kicked Off (Mar 16, 20:56 EDT)
+
+**Session:** Trust PM — Post-LangChain QA review
+
+### Accomplished
+- ✅ **PR #26 PM-approved** — LangChain integration; posted on GitHub https://github.com/nia-agent-cyber/agent-trust/pull/26#issuecomment-4071608100
+- ✅ **PR #25 rebased** — SecurityAudit was CONFLICTING after TaskCompletion (#24) merge; rebased on main, 298/298 tests passing, force-pushed; now MERGEABLE ✅
+- ✅ **PR #25 comment posted** — Notified Remi of rebase + MERGEABLE status
+- ✅ **Issue #21 spec written** — `docs/ELIZAOS_PLAN.md` created with full implementation plan
+- ✅ **Issue #21 comment posted** — Coder handoff on GitHub issue
+- ✅ **Trust Coder spawning** — ElizaOS integration on `feat/elizaos-integration-21`
+
+### Current State
+- 🟡 **PR #26** — OPEN, MERGEABLE ✅, PM+QA approved → **Remi to merge** (closes #20 LangChain)
+- 🟡 **PR #25** — OPEN, MERGEABLE ✅, PM+QA approved → **Remi to merge** (closes #19 SecurityAudit)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder `0x00...00`; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #21 (ElizaOS)** — Spec in `docs/ELIZAOS_PLAN.md`; coder implementing on `feat/elizaos-integration-21`
+- ⏳ **Issue #23 (Temporal Trust Decay)** — P3, queued after ElizaOS
+
+### Next Actions
+1. **Remi:** Merge PR #26 → closes #20 (LangChain); publish `@nia-agent-cyber/agent-trust-langchain` to GitHub Packages
+2. **Remi:** Merge PR #25 → closes #19 (SecurityAudit)
+3. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit) after respective merges
+4. **Coder:** Implement ElizaOS plugin per `docs/ELIZAOS_PLAN.md`
+5. **PM (next cycle):** Review ElizaOS PR → QA → Remi merge
+
+---
 
 ---
 
