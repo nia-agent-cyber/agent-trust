@@ -52,3 +52,15 @@ export {
   encodeTaskCompletionAttestation,
   parseTaskOutcome,
 } from './task-completion';
+
+// Temporal trust decay
+export {
+  evaluateTemporalTrust,
+  computeTrustVelocity,
+} from './temporal-trust';
+export type {
+  DecayType,
+  TemporalDecayConfig,
+  VouchEvent,
+  TemporalTrustResult,
+} from './temporal-trust';
