@@ -2,7 +2,221 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-17 06:55 EDT — Cycle 10 (Night Research Update)*
+*Last updated: 2026-03-24 02:54 EDT — Cycle 12 (Night Research Update)*
+
+---
+
+## 🌙 Cycle 12: Mar 24, 2026 (02:54 EDT) — MARKET RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; no AI trust/reputation headlines (top stories: US router ban, AI content moderation on TikTok)
+- ✅ GitHub Issues/PRs — `gh issue list` + `gh pr list` + `gh pr view 29` — major new development (see below)
+- ✅ ERC-8183 spec — fetched from eips.ethereum.org; confirmed key language
+- ✅ t54.ai — fetched live site for updated product positioning
+- ✅ etheran.io — fetched; confirmed live ("On-chain Intelligence for ERC-8183")
+- ✅ explorer.lyneth.ai — fetched; confirmed live ("ERC-8004 Agent Explorer")
+- ✅ ctxly.com/services.json — still 404 (fully abandoned as of Cycle 6 decision)
+- ❌ Reuters — domain not resolving (DNS failure)
+- ❌ Brave web search — API key not configured
+- ❌ PinchSocial — key missing
+
+### 🔴 CRITICAL NEW: nanookclaw Submitted PR #29 — First External Contributor (Mar 20–21)
+
+This is the most strategically significant development since the project started.
+
+#### What happened
+- **Mar 19**: `nanookclaw` (external, no project affiliation) commented on Issue #23 with **real pilot data** from a 28-day study on 30 agents:
+  - Safe λ range for daily decay: **0.01–0.03** (λ>0.05 creates false low-trust signals as decay outpaces re-attestation cadence)
+  - **Trust velocity** as an additive signal: 15 vouches in 48h = Sybil farming pattern; same 15 vouches over 45 days = healthy trajectory
+  - Velocity threshold: **>5/day over 7-day window** is the clearest Sybil separation point (confirmed across 28-day pilot)
+  - Offered to review the PR when it lands
+- **Mar 20**: nanookclaw **opened PR #29** implementing the full feature themselves — from their fork (`nanookclaw:feat/temporal-trust-decay`)
+  - **739 additions, 0 deletions**
+  - `evaluateTemporalTrust(rawScore, lastAttestationTime, vouches, config)`: three decay types (exponential, linear, step), configurable grace period (default 30d), score floor
+  - `computeTrustVelocity(vouches, windowDays)`: net weighted vouches/day over rolling window — the Sybil farming signal
+  - **32 tests, 292 total passing** across all test files
+  - No schema changes — pure read-time, fully backward-compatible
+- **Mar 21**: nanookclaw **self-reviewed PR #29** with detailed design notes:
+  - Validated λ=0.02 default, 30-day grace period, injectable `nowMs` for deterministic tests
+  - One design concern on `stepDecayMultiplier`: the multiplier value is score-dependent (since it's `(rawScore - totalPenalty) / rawScore`), which may surprise operators inspecting it for debugging. Not a bug — a transparency note.
+  - Confirmed Sybil threshold (>5/day, 7-day window) matches their 28-day pilot data exactly
+- **Current status**: PR #29 is **MERGEABLE + CLEAN** with no team reviews yet
+
+#### Strategic significance
+
+1. **First external contributor** — nanookclaw engaged, shipped, and reviewed unprompted. This is the first external proof that the project is compelling enough to contribute to.
+2. **They have real pilot data** — This isn't theoretical. They ran a 28-day study on 30 agents with measurable outcomes. Our velocity threshold isn't invented; it's empirically validated by an external party.
+3. **Trust velocity is a real differentiator** — No competitor (Lyneth, GhostRank, t54) publicly claims velocity-based Sybil detection. This is now a defensible, empirically-grounded differentiator.
+4. **Community momentum signal** — The engagement arc (comment → implementation → self-review in <72 hours) suggests nanookclaw is highly invested. They should be nurtured as a long-term contributor.
+
+#### Recommended actions
+- **PM (URGENT)**: Review PR #29. The one design concern (stepDecayMultiplier transparency) should be addressed — either via code change or documentation. Then QA + merge.
+- **Comms (after merge)**: Welcome nanookclaw publicly. Credit their pilot data in the announcement. This is a credibility multiplier: "Velocity threshold validated by external 28-day pilot."
+- **PM**: Invite nanookclaw to become a recognized contributor (add to CONTRIBUTORS.md or equivalent).
+
+### 🔴 CRITICAL: 7-Day PR Merge Stall (Mar 17 → Mar 24)
+
+**Status as of Mar 24, 02:54 EDT:**
+
+| PR | Feature | Status | Days Open |
+|----|---------|--------|-----------|
+| #25 | SecurityAudit attestation | OPEN, MERGEABLE+CLEAN, PM+QA approved | 8 days |
+| #27 | LangChain integration | OPEN, MERGEABLE+CLEAN, PM+QA approved | 8 days |
+| #28 | ElizaOS integration | OPEN, MERGEABLE+CLEAN, PM+QA approved | 8 days |
+| #29 | Temporal trust decay (nanookclaw) | OPEN, MERGEABLE+CLEAN, external contributor | 4 days |
+
+**Issues #20 (LangChain), #21 (ElizaOS), #23 (Temporal decay)** — all still OPEN. Zero merges since Mar 17.
+
+**Schema UIDs**: All 3 still placeholder (paymentReliable, taskCompletion, securityAudit) — blocked on Remi.
+
+This is the longest execution stall since the project started. Meanwhile:
+- Etheran has been live on Base mainnet for 7 days and is building its open API ecosystem
+- ERC-8183 commerce volume is growing (last data: $3M from $CHARLES)
+- nanookclaw's PR risks going stale if untouched
+
+### 🟡 t54 Labs: Product Fully Revealed (Mar 24)
+
+Fetched t54.ai live. Full product stack now clear:
+
+1. **Identity & Verification** — developer KYB, model provenance, human–agent binding, intent attestation
+2. **Risk & Fraud via "Trustline"** — real-time transaction evaluation using agent-native signals (identity, code audit, mandates, behavioral patterns, device context). Challenge flows for anomaly detection.
+3. **Platform** — unified rails, real-time monitoring, secure execution across blockchain rails
+4. **x402 Secure** — keyless (agents don't manage private keys), credit building via usage, auditability via "agent reasoning trace and code snapshot"
+
+**Updated competitive assessment**: t54 is now clearly **enterprise financial infrastructure**, not attestation-layer tooling. They're targeting businesses that want to delegate to agents safely with compliance + auditability. Key distinction:
+- t54: closed system, enterprise-grade, compliance-first, credit-rail-driven
+- Agent Trust: open-source, composable, permissionless EAS attestations — anyone can build on them
+
+**Differentiation opportunity**: t54's auditability via "reasoning traces" is the enterprise answer; our EAS attestations are the **open-source, composable answer** that any developer can query, build on, and verify without t54's platform dependency. These are targeting different buyer segments.
+
+**Partnership angle**: t54 could use our attestation types as behavioral input signals for Trustline's risk scoring. Pitch: "Agent Trust provides the structured on-chain track record; Trustline evaluates the risk in real-time."
+
+### 🟡 ERC-8183 Spec: Key Attestation Language Confirmed
+
+Fetched the live spec from eips.ethereum.org. Key confirmed text:
+
+> "Optional attestation reason (e.g. hash) on complete/reject enables audit and composition with reputation (e.g. **ERC-8004**)."
+
+This is the spec explicitly calling out ERC-8004 as the reputation composition target. Our positioning ("EAS attestations for ERC-8183 outcomes, composable with ERC-8004 reputation") is **spec-aligned**, not just opportunistic. The standard's authors anticipated exactly the layer we're building.
+
+**Implication**: When pitching to Etheran or any ERC-8183 builder, cite the spec itself: "The ERC-8183 spec explicitly references ERC-8004 reputation composition via attestation reason hashes. Agent Trust is that layer."
+
+### 🟡 Competitive Landscape: Status Unchanged Since Cycle 11
+
+- **Etheran** (@Etheran_io): etheran.io confirmed live. Day-1 infra (open API, /skill.md, evaluator registry) still the primary integration target. No new observable moves since Mar 17.
+- **Lyneth Labs**: explorer.lyneth.ai confirmed live. Status unchanged from Cycle 11 (422 followers, modest momentum).
+- **GhostRank**: No new observable moves since Cycle 8.
+- **t54**: See above — diverging to enterprise financial rails (full product detail now clear).
+
+### 🟢 BBC Tech: No Relevant Agent Trust Stories (Mar 24)
+
+- "US bans new foreign-made consumer internet routers" — geopolitical hardware risk
+- "AI videos of sexualised black women removed from TikTok" — AI content accountability signal; reinforces demand for AI provenance infrastructure (adjacent to our SecurityAudit attestation angle)
+
+No direct agent trust, reputation, soulbound credentials, or ERC-8004/ERC-8183 coverage in mainstream tech press yet. This is an opportunity: when the first mainstream piece lands, we should be positioned to comment/be cited.
+
+### Updated Top 3 Actions (Cycle 12)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Review + merge PR #29** (nanookclaw temporal trust decay) — address stepDecayMultiplier transparency note. Then QA + merge. Don't let the first external contributor's PR go cold. | PM → QA → Remi | CRITICAL | PR #29 merged; nanookclaw acknowledged |
+| **2** | **Remi: Merge PRs #25, #27, #28 + register 3 schema UIDs** — 8 days overdue. Etheran's open API is live. Every day without live schemas is a missed integration window. | Remi | CRITICAL | 3 PRs merged, 3 UIDs on-chain, packages published |
+| **3** | **Comms: Craft "trust velocity" differentiation messaging** — nanookclaw's pilot data gives us a concrete, empirically-validated claim no competitor has: velocity-based Sybil detection with real parameters (>5/day, 7-day window, 28-day validation). | Comms | HIGH (after PR #29 merge) | Messaging drafted; "velocity" framing added to README + social posts |
+
+### Cycle 12 Summary
+
+**Key findings (since Mar 17, 2026):**
+- 🔴 **PR #29 by nanookclaw** — First external contributor. Temporal trust decay + velocity implemented with real pilot data. MERGEABLE+CLEAN. Waiting for team review. **Act immediately.**
+- 🔴 **7-day PR stall** — PRs #25/#27/#28 still open. No Remi merges. No schema UIDs. Execution bottleneck persists.
+- 🟡 **t54 product fully revealed** — Enterprise financial rails (Trustline, x402 Secure, credit building). Diverging further from our open EAS attestation model. Partnership > compete.
+- 🟡 **ERC-8183 spec explicitly references ERC-8004 composition** — Confirms our positioning is spec-aligned.
+- 🟡 **Trust velocity** is now an empirically-validated differentiator — use it in messaging.
+- 🟢 **Etheran/Lyneth**: No new moves observed. Competitive landscape stable.
+- 🟢 **BBC/Reuters**: No mainstream agent trust coverage. The window to be "first cited source" is still open.
+- ❌ **ctxly**: Still 404. Still abandoned.
+
+**Recommended stance**: The nanookclaw PR is the highest-priority item in the entire project. Welcoming external contributors is how open-source projects build momentum. Act on PR #29 before anything else.
+
+---
+
+## 🌙 Cycle 11: Mar 17, 2026 (23:46 EDT) — MARKET RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ Twitter/X via OpenClaw browser (read-only): @Etheran_io, @t54ai, @LynethLabs, "$CHARLES ERC-8183" latest search
+- ⚠️ ERC-8183 Notion community list link loaded but content not machine-readable via fetch
+- ❌ Brave web search API not configured
+
+### ⚠️ GENUINELY NEW DEVELOPMENTS SINCE 06:55 EDT MAR 17 (Cycle 10)
+
+#### 🟠 Etheran: Day-1 Mainnet Buildout Became Concrete (Not Just Hype)
+- **Profile growth**: 282 → **297 followers**, 15 → **19 posts** since Cycle 10.
+- **Pinned $ETHERAN launch post**: now **9,385 views** (up from ~8.4K in Cycle 10).
+- **NEW post (~14h ago): "day 1 recap"** with specific shipping claims:
+  - ERC-8183 job indexer live
+  - provider track records
+  - evaluator registry
+  - on-chain reputation computation
+  - **open API (no auth)**
+  - **/skill.md** for native agent discovery/calling
+  - Base mainnet expansion
+- **NEW post (~8h ago): submitted Etheran to official ERC-8183 community project list** and invited builders to submit projects.
+- **Interpretation**: Etheran shifted from launch marketing to **ecosystem coordination + developer surface area** (open API + /skill.md + project list presence).
+
+#### 🟡 ERC-8183 Ecosystem Signal: Early Governance/Forming Layer Is Emerging
+- Etheran publicly pushing the **official ERC-8183 community project list** is a new coordination signal.
+- This implies ecosystem standards may be influenced now by early participants (data formats, indexable outputs, evaluator evidence).
+- **Strategic relevance**: If Agent Trust is absent during this phase, Etheran/others may normalize evaluator evidence formats without EAS-first schema alignment.
+
+#### 🟡 $CHARLES: No New Fundamental Move, But Narrative Is Spreading
+- No new primary $CHARLES announcement found beyond the Cycle 10 aixbt post.
+- But that post’s engagement increased materially (views ~685 → **1,635**, likes 9 → **11**).
+- **Interpretation**: still a valid market signal ($3M ERC-8183 commerce claim), but no new technical/integration artifact yet.
+
+#### 🟠 t54 Labs: New Move = Hiring Push After Seed Narrative
+- t54 now at **185 posts** (up from 180) and **10.6K followers** (up from 10.5K).
+- **NEW cluster (~11h ago)**: hiring campaign for **DevRel/BD** and **AI Researcher** roles.
+  - Main hiring post: ~16.2K views, 287 likes.
+- **Interpretation**: t54 is shifting from announcement mode to **team-scaling execution mode**, especially on GTM/DevRel.
+- Competitive implication: they are staffing distribution while we are still blocked on schema registration + publish timing.
+
+#### ✅ Lyneth Labs: No New Major Posts, Beta Engagement Still Modest
+- Follower count remains **422** (unchanged from Cycle 9/10).
+- No materially new product announcement beyond Mar 16 Trust Beta thread.
+- Engagement on recent posts remains relatively low (double-/low triple-digit views on most thread items).
+- **Interpretation**: Lyneth remains a real product competitor, but immediate momentum appears flatter than Etheran/t54 today.
+
+### Strategic Implications (Cycle 11)
+
+**1. Etheran has entered "integration surface" phase — not just launch phase**
+- Open API + /skill.md + project-list coordination means the partner window is now about **technical alignment**, not just social outreach.
+- We should pitch concrete mapping: TaskCompletion/PaymentReliable/SecurityAudit as evaluator evidence objects Etheran can ingest.
+
+**2. ERC-8183 standards gravity is forming in public channels now**
+- The project list call is likely where early ecosystem defaults get set.
+- If we engage now, we can shape evidence conventions toward EAS UID-linked attestations.
+
+**3. t54 is scaling human capital while category attention is hot**
+- Their DevRel/BD hiring suggests faster distribution pressure in coming weeks.
+- Our best defense is shipping + schema registration + clear integration story with Etheran.
+
+### Updated Top 3 Actions (Cycle 11)
+
+| # | Action | Owner | Timeline | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Finalize live readiness: merge/register/publish** (PRs #25/#27/#28 + 3 schema UIDs). | Remi | Immediate (24h) | All 3 schema UIDs on-chain + packages published |
+| **2** | **Send technical Etheran integration note** anchored on their Day-1 stack (open API + /skill.md + evaluator registry) with explicit EAS field mapping. | PM/Comms | Immediate (24h) | Etheran acknowledges mapping or requests follow-up call/thread |
+| **3** | **Draft ERC-8183 evidence-format proposal** (short public spec note): taskId URI + evaluator identity + EAS UID linkage. | PM/BA | This week | Shareable doc posted and referenced in outreach |
+
+### Cycle 11 Summary
+
+**Net-new findings:**
+- 🟠 Etheran added 4 posts, +15 followers, and moved into concrete Day-1 infra disclosure (open API, /skill.md, evaluator registry)
+- 🟡 Etheran submitted to ERC-8183 community project list (early ecosystem coordination signal)
+- 🟡 $CHARLES: no new primary development; prior signal is propagating (engagement up)
+- 🟠 t54 launched active hiring push (DevRel/BD + AI Researcher), indicating execution scaling
+- ✅ Lyneth: no new major move; momentum appears steady but not accelerating tonight
+
+**Recommended stance**: This is an **execution window**, not a research window. Etheran is now exposing integration surfaces publicly. We should respond with concrete schema mappings immediately, while locking our own schema registration so we can provide live, verifiable evidence primitives.
 
 ---
 
