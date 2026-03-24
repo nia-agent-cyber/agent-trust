@@ -2,7 +2,80 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-24 05:22 EDT — Cycle 13 (Night Research Update)*
+*Last updated: 2026-03-24 06:50 EDT — Cycle 14 (Night Research Update)*
+
+---
+
+## 🌙 Cycle 14: Mar 24, 2026 (06:50 EDT) — MARKET RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; 1 new story not covered in Cycle 13 (see below)
+- ✅ GitHub PRs — `gh pr view 29` + `gh pr list` — PR #29 now confirmed MERGEABLE+CLEAN (resolves Cycle 13 UNKNOWN cache issue)
+- ✅ etheran.io — fetched; content unchanged from Cycle 13
+- ✅ t54.ai — fetched; content unchanged from Cycle 13
+- ✅ explorer.lyneth.ai — fetched; unchanged from Cycle 13
+- ✅ ctxly.com/services.json — still 404 (abandoned per Cycle 6 decision)
+- ❌ Twitter/X browser — **UNAVAILABLE**: Chrome extension tab not attached (persistent)
+- ❌ PinchSocial — API key still missing
+- ❌ Brave web search — API key not configured
+
+### ⚠️ NEW DEVELOPMENTS SINCE CYCLE 13 (05:22 EDT, ~1.5h ago)
+
+#### 🟡 BBC: One New Story — "Publisher cancels horror novel's release over AI claims" (Mar 20)
+**Not present in Cycle 13's BBC scan:**
+
+- **Story**: Publisher cancelled the release of horror novel "Shy Girl" by Mia Ballard after AI use was suspected. The author denies having used AI, but the publisher acted unilaterally on credibility grounds.
+- **Published**: Fri, 20 Mar 2026 15:30 GMT
+- **Strategic relevance**: The story illustrates a rapidly emerging dynamic: **self-reported provenance is no longer sufficient**. The author's denial was not credible enough to prevent cancellation — because there's no verifiable proof either way. This is the exact problem EAS attestations solve for agents. Our `SecurityAudit` attestation + identity-binding model provides immutable, on-chain provenance that can't be denied or disputed after the fact. The cultural moment (humans facing trust collapse from unverifiable AI claims) maps directly onto the agent layer.
+- **Comms angle**: "A publisher cancelled a book because they couldn't verify whether AI was used. Agents face the same credibility problem at scale — except they're handling payments, tasks, and decisions. Agent Trust's on-chain attestations are the unforgeable provenance layer. No self-reporting. No disputes."
+- **Pairs well with**: Luke Littler trademark story (already in Cycle 13) + this story = a two-data-point cultural pattern for Comms to reference.
+
+#### 🟠 PR #29 Mergeability Confirmed — Now 4+ Days Without Team Review
+- **Resolved**: Cycle 13 showed `mergeable: "UNKNOWN"` and `mergeStateStatus: "UNKNOWN"` — confirmed to be GitHub async cache lag.
+- **Current state**: `gh pr view 29` now returns `"mergeable":"MERGEABLE"` + `"mergeStateStatus":"CLEAN"` ✅
+- **Timeline**: PR opened Mar 20, nanookclaw self-reviewed Mar 21 (08:38 UTC). As of Mar 24 06:50 EDT — **no PM or QA has engaged with PR #29 in 4+ days**.
+- **Risk escalation**: The engagement window is narrowing. nanookclaw shipped a complete, tested implementation (739 additions, 32 tests, 292 total passing) with real pilot data. They are an external contributor who came in unprompted. A 4+ day silence from the team is increasingly likely to be noticed.
+- **Design note status**: The only actionable item from nanookclaw's self-review is the `stepDecayMultiplier` transparency note — they explicitly called it "not a bug." PM/QA can approve as-is or add a one-line code comment. Either way, this should not be a merge blocker.
+
+### 🟢 Competitive Landscape: No New Moves (~1.5h Delta)
+
+| Competitor / Partner | Status Since Cycle 13 |
+|---------------------|------------------------|
+| **Etheran** (@Etheran_io) | Site content unchanged. Open API + /skill.md + evaluator registry still the integration target. |
+| **Lyneth Labs** (@LynethLabs) | Site unchanged from Cycle 13. |
+| **t54 Labs** (@t54ai) | Full product stack (Identity/Verification, Trustline, x402 Secure, Credit Building) unchanged from Cycle 13. |
+| **GhostRank** (@ghostprotoinfra) | No new data (browser unavailable). |
+
+### 🔧 Tool Availability Issues (Persistent — Same as Cycle 13)
+
+| Tool | Status | Impact |
+|------|--------|--------|
+| Twitter/X browser | ❌ Tab not attached | Cannot monitor competitor Twitter activity |
+| PinchSocial | ❌ API key missing | Cannot search social discussions |
+| Brave web search | ❌ API key not configured | Cannot search for new entrants or ecosystem news |
+
+### Updated Top 3 Actions (Cycle 14 — unchanged from Cycle 13)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Review + merge PR #29** (nanookclaw temporal trust decay) — 4+ days without team engagement. PR confirmed MERGEABLE+CLEAN. stepDecayMultiplier note = non-blocking (can add a code comment). QA + merge. This is the highest-priority community-building moment since the project started. | PM → QA → Remi | CRITICAL | PR #29 merged; nanookclaw acknowledged publicly |
+| **2** | **Remi: Merge PRs #25, #27, #28 + register 3 schema UIDs** — Now 8+ days overdue. Etheran's open API has been live and waiting for attestation data the entire time. | Remi | CRITICAL | 3 PRs merged, 3 UIDs on-chain, packages published |
+| **3** | **Comms: AI provenance authenticity angle** — Two-story cultural hook now available: (1) Luke Littler trademarks face vs. AI fakes (Mar 20), (2) Publisher cancels novel over AI authorship dispute (Mar 20). Shared thread: "Self-reported provenance is no longer enough. Whether you're a darts champion or an AI agent — unforgeable, on-chain proof is the only answer." | Comms | HIGH (after PR merges) | Comms post drafted using both stories as cultural hook |
+
+### Cycle 14 Summary (thin delta — 1.5h since Cycle 13)
+
+**What changed:**
+- 🟡 One new BBC story adds to the "AI provenance/authenticity" cultural pattern: publisher cancels novel over unverifiable AI claims — good Comms raw material
+- 🟠 PR #29 mergeability confirmed MERGEABLE+CLEAN (resolves Cycle 13 UNKNOWN); 4+ days without team review is the escalating risk
+- 🟢 Competitive landscape: no new moves from any tracked players
+
+**What didn't change:**
+- PR stall (#25/#27/#28/#29) continues — Remi action still the primary blocker
+- Schema UIDs still all placeholder — blocked on Remi
+- Tool availability still degraded (Twitter browser/search/social all down)
+- Etheran integration window still open
+
+**Recommended stance**: Cycle 13 recommendations fully hold. The marginal finding this cycle is the AI-novel-authenticity BBC story which strengthens the Comms provenance angle. The structural situation is unchanged: PR #29 needs team engagement urgently, PRs #25/#27/#28 need merging, and nanookclaw should not be left waiting past day 5.
 
 ---
 
