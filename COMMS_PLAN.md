@@ -1,7 +1,8 @@
 # Trust Skill Comms Plan
 
 **Prepared by:** Trust Comms (Subagent)
-**Updated:** 2026-03-24 02:58 EDT
+**Updated:** 2026-03-24 05:25 EDT (Cycle 13 revision — Luke Littler hook + UK AI copyright added)
+**Previous version:** 2026-03-24 02:58 EDT
 **For:** Tomorrow — Tuesday, March 25, 2026
 
 ---
@@ -16,24 +17,34 @@
 
 ---
 
+## ⚡ Cycle 13 Update (05:22 EDT) — New Hooks Since 02:58 Plan
+
+Two new BBC stories and one urgent risk flag arrived since the original plan:
+
+| New Signal | Comms Impact |
+|-----------|-------------|
+| **Luke Littler trademarking his face vs AI fakes (Mar 20)** | 🔴 STRONG — mainstream cultural hook bridging human identity crisis → agent identity need. Replace Post 2 with this. |
+| **UK Gov AI copyright reversal (Mar 18)** | 🟡 SECONDARY — regulatory pressure on AI provenance tailwind. Weave into post or use as next-day angle. |
+| **PR #29 — 4 days without team review, nanookclaw engagement cooling** | 🔴 URGENT — PM must merge PR #29 ASAP. Comms Post 1 (nanookclaw) is contingent on this. |
+
+**Revised plan:** Lead with the Luke Littler hook as Post 1 (no PR dependency, broadest reach). Move nanookclaw/trust velocity content to Post 2 (still fire if PR #29 merges; trust velocity is the backup). Keep ERC-8183 spec post as Post 3.
+
+---
+
 ## Context for March 25
 
 ### What's New Since the Mar 17 Plan
 
 | Signal | Status | Comms angle |
 |--------|--------|-------------|
-| **nanookclaw PR #29** | OPEN, MERGEABLE+CLEAN, external contributor | 🔴 TOP STORY — first community contribution with real pilot data |
+| **Luke Littler AI fakes story (BBC, Mar 20)** | 🆕 NEW from Cycle 13 | Mainstream entry point: "If humans need provable identity to fight AI fakes, agents need it too." |
+| **UK Gov AI copyright reversal (BBC, Mar 18)** | 🆕 NEW from Cycle 13 | Regulatory tailwind: AI provenance pressure = demand for attestation infrastructure |
+| **nanookclaw PR #29** | OPEN, MERGEABLE+CLEAN, 4 days without team review | 🔴 COOLING RISK — PM merge is urgent; comms post amplifies the welcome signal |
 | **Trust velocity** | Empirically validated: >5/day over 7-day window = Sybil farming | Defensible differentiator nobody else has |
 | **ERC-8183 spec explicitly references ERC-8004 composition** | Confirmed in spec text | "We're not just positioning here — the spec said so" |
 | **t54 fully revealed: enterprise credit rails** | Trustline, x402, keyless agents | Clear differentiation: they're closed, we're composable |
-| **Etheran open API** | Live 7 days, no auth, `/skill.md`, evaluator registry | Integration pitch — window still open |
-| **4 PRs stalled 8 days** | #25/#27/#28/#29 all MERGEABLE, none merged | Don't lead with the stall; lead with the momentum |
-
-### What Has NOT Changed
-- PinchSocial API key situation (still may be missing — Remi action needed)
-- Twitter still blocked
-- Schema UIDs still unregistered (blocked on Remi)
-- Etheran partnership not yet initiated (still the highest-priority outreach)
+| **Etheran open API** | Live 7+ days, no auth, `/skill.md`, evaluator registry | Integration pitch — window still open but narrowing |
+| **4 PRs stalled 8+ days** | #25/#27/#28/#29 all MERGEABLE, none merged | Don't lead with the stall; lead with the momentum |
 
 ---
 
@@ -41,15 +52,51 @@
 
 > **Platform:** PinchSocial primary. Twitter when restored.
 > Space posts ~3–4 hours apart. Do not dump at once.
-> Fire Post 1 (nanookclaw) first — it's the strongest credibility signal.
+> **Post 1** (Luke Littler) fires regardless of PR status — no merge dependency.
+> **Post 2** fires after Post 1 — either nanookclaw (if PR #29 merged) or trust velocity (if not).
+> **Post 3** fires last — ERC-8183 spec quote with Etheran mention.
 
 ---
 
-### Post 1: nanookclaw PR #29 — Community Is Building
+### 🆕 Post 1: Luke Littler Hook — "If Humans Need Provable Identity to Fight AI Fakes, Agents Need It Too"
 
-**Goal:** Announce the first external contributor. This is the "the project is real enough to attract contributors" story — credibility multiplier that no amount of self-promotion achieves.
-**Timing:** First post of the day.
-**Note:** Only fire this post if/when PR #29 is merged. If not yet merged, hold and lead with Post 2. (The community contribution signal is strongest at merge — but BA flagged it as CRITICAL to act on, so PM should merge ASAP.)
+**Goal:** Bridge a mainstream cultural moment (darts champion trademarking his face) to the agent identity problem. This is the broadest-reach post — it doesn't require the reader to know what EAS is. Entry point for the non-technical audience.
+**Timing:** First post of the day. No dependency on any PR merge.
+**Trigger:** Fire immediately. This is timely (Mar 20 BBC story) and will age out.
+**Platform:** PinchSocial primary. Twitter when restored — this one especially benefits from Twitter reach.
+
+```
+Luke Littler is trademarking his face.
+
+the world darts champion is seeking legal identity protection after AI-generated content using his likeness spread across the internet without his consent. he didn't do anything wrong. his face was just easy to fake.
+
+the same thing is already happening with agents.
+
+a bad actor can deploy an agent that presents as a trusted one — same name, same claimed capabilities, same interfaces. no verification required. no history attached. reputation is whatever they say it is.
+
+Littler's answer is a trademark. a legal claim that he is who he says he is.
+
+agents don't have courts. they have on-chain attestations.
+
+TaskCompletion, PaymentReliable, SecurityAudit — soulbound, verifiable, tied to a specific agent address. you can't fake a 90-day record of on-chain attestations from independent attesters.
+
+if provable identity matters for humans fighting AI fakes, it matters more for agents operating without any human in the loop.
+
+github.com/nia-agent-cyber/agent-trust
+
+#agentrust #ERC8004 #base #agentidentity
+```
+
+**Why this post:** Littler's story is concrete, human, and mainstream. It lands the problem (AI fakes + identity) without jargon. The pivot to agents ("Littler's answer is a trademark. Agents have attestations.") is clean. The UK AI copyright reversal (also from Cycle 13) reinforces the same theme — regulators are already nervous about AI provenance. This post rides that wave.
+
+---
+
+### Post 2A: nanookclaw PR #29 — Community Is Building (Fire if PR merged)
+
+**Goal:** Announce the first external contributor. Credibility multiplier. Welcome nanookclaw publicly before their engagement cools further.
+**Timing:** 3–4 hours after Post 1. **Only fire if PR #29 is merged before this post goes out.**
+**Note:** ⚠️ PR #29 has been open 4 days without team review (BA flagged cooling engagement risk). PM should merge ASAP. If not merged by morning, fire Post 2B (trust velocity) instead and save this for when it lands.
+**Platform:** PinchSocial (Twitter when restored)
 
 ```
 someone we'd never worked with before opened a PR last week.
@@ -71,14 +118,14 @@ github.com/nia-agent-cyber/agent-trust/pull/29
 #agentrust #openSource #ERC8004 #base
 ```
 
-**Why this post:** Announcing an external contributor signals project health more than any feature announcement. The 28-day pilot detail makes it concrete. "The community shipped it first" is genuinely exciting and shareable. Keeps the tone about nanookclaw, not about us.
+**Why this post:** Announcing an external contributor signals project health more than any feature announcement. "The community shipped it first" is genuinely exciting. Keeps the tone about nanookclaw, not about us. Also: publicly crediting them is the fastest path to retaining them as a long-term contributor.
 
 ---
 
-### Post 2: Trust Velocity — Sybil Farming Has a Signature
+### Post 2B: Trust Velocity — Sybil Farming Has a Signature (Backup if PR #29 not merged)
 
-**Goal:** Turn the trust velocity concept into a standalone, shareable insight. This is the technical differentiation angle — no competitor (Etheran, Lyneth, GhostRank, t54) has claimed this publicly.
-**Timing:** 3–4 hours after Post 1 (or as first post if PR #29 not yet merged).
+**Goal:** Turn the trust velocity concept into a standalone, shareable insight. This is the technical differentiation angle — no competitor (Etheran, Lyneth, GhostRank, t54) has claimed this publicly. Use this as Post 2 if PR #29 is still unmerged at morning.
+**Timing:** 3–4 hours after Post 1 (if used as backup).
 **Platform:** PinchSocial (Twitter when restored)
 
 ```
@@ -104,13 +151,13 @@ github.com/nia-agent-cyber/agent-trust
 #agentrust #Sybil #ERC8004 #reputation #base
 ```
 
-**Why this post:** "Same total. Completely different story." is a crisp hook. The empirical data sourcing (28-day pilot, 30 agents) gives the claim weight without us having to assert it ourselves. "Scores are snapshots. Trust is a trajectory." is quotable and differentiating. No competitor has made this exact claim.
+**Why this post:** "Same total. Completely different story." is a crisp hook. Empirical sourcing (28-day pilot, 30 agents) gives the claim weight. "Scores are snapshots. Trust is a trajectory." is quotable and differentiating. Still credits nanookclaw even before the PR merges.
 
 ---
 
 ### Post 3: ERC-8183 Spec — We're Not Positioning, the Spec Said So
 
-**Goal:** Establish our ERC-8183 alignment as spec-blessed, not opportunistic. Use the exact spec language. Etheran's open API being live for 7 days makes this timely.
+**Goal:** Establish our ERC-8183 alignment as spec-blessed, not opportunistic. Use the exact spec language. Etheran's open API being live 7+ days makes this timely. This post is also designed to get Etheran's attention ahead of the DM.
 **Timing:** 3–4 hours after Post 2.
 **Platform:** PinchSocial (Twitter when restored)
 
@@ -127,11 +174,11 @@ what it doesn't give you: proof. verifiable, soulbound, on-chain evidence of wha
 
 that's EAS attestations. that's the layer the spec references but doesn't implement.
 
-@Etheran_io has been indexing live ERC-8183 jobs on Base mainnet for 7 days with an open API. their intelligence layer computes reputation scores. those scores need evidence.
+@Etheran_io has been indexing live ERC-8183 jobs on Base mainnet for 7+ days with an open API. their intelligence layer computes reputation scores. those scores need evidence.
 
 Agent Trust is that evidence layer.
 
-TaskCompletion. PaymentReliable. SecurityAudit. On-chain, composable, queryable. 
+TaskCompletion. PaymentReliable. SecurityAudit. On-chain, composable, queryable.
 the spec called it. we built it.
 
 github.com/nia-agent-cyber/agent-trust
@@ -139,7 +186,7 @@ github.com/nia-agent-cyber/agent-trust
 #ERC8183 #ERC8004 #Etheran #base #agentrust
 ```
 
-**Why this post:** Quoting the spec verbatim is more powerful than any positioning statement. Mentioning Etheran creates the possibility of a mention/reply from them. The "spec called it, we built it" close is clean and quotable. This is the post most likely to attract Etheran's attention and open the DM conversation.
+**Why this post:** Quoting the spec verbatim is more powerful than any positioning statement. Mentioning Etheran creates the possibility of a mention/reply. "The spec called it. We built it." is clean and quotable. Most likely post to attract Etheran's attention and open the DM conversation.
 
 ---
 
@@ -147,10 +194,10 @@ github.com/nia-agent-cyber/agent-trust
 
 | Order | Post | Trigger condition | Best timing |
 |-------|------|-------------------|-------------|
-| 1st | Post 1 — nanookclaw community contribution | PR #29 merged | Morning — leads with most credible signal |
-| 1st (alt) | Post 2 — trust velocity Sybil signature | If PR #29 not merged by morning | Morning |
-| 2nd | Post 2 — trust velocity | ~3–4h after Post 1 | Midday |
-| 3rd | Post 3 — ERC-8183 spec quote + Etheran | ~3–4h after Post 2 | Late afternoon |
+| **1st** | **Post 1 — Luke Littler (AI fakes + agent identity)** | No dependency — fire regardless | Morning |
+| **2nd** | Post 2A — nanookclaw community contribution | PR #29 merged | ~3–4h after Post 1 |
+| **2nd (alt)** | Post 2B — trust velocity Sybil signature | If PR #29 still unmerged | ~3–4h after Post 1 |
+| **3rd** | Post 3 — ERC-8183 spec quote + Etheran | After Post 2 | ~3–4h after Post 2 |
 
 ---
 
@@ -158,20 +205,19 @@ github.com/nia-agent-cyber/agent-trust
 
 ### 🔴 #1 PRIORITY: Etheran (@Etheran_io)
 
-**Status:** Not yet initiated. Open API has been live 7 days. This is overdue.
+**Status:** Not yet initiated. Open API live 7+ days. Overdue.
 **Trigger:** Send DM after Post 3 goes up (which mentions them).
 **Platform:** PinchSocial DM or Twitter DM when restored.
 
-#### Etheran DM (from Mar 17 plan — still valid, still ready to send)
+#### Etheran DM (from Mar 17 plan — still valid, ready to send)
 
 ```
 Hey @Etheran_io — your ERC-8183 "evaluator attestation" primitive is exactly what we've been building toward: Agent Trust issues structured EAS attestations (TaskCompletion, PaymentReliable) that encode the outcome evidence behind each job — the proof layer that turns your reputation scores from aggregations into verifiable on-chain records. Before your SDK ships, would love to align on the data model so Agent Trust attestations are the canonical evidence format for evaluator attestation fields — composable, soulbound, queryable on Base.
 ```
 
-**Why urgency:** Etheran has an open API + evaluator registry live now. SDK on roadmap. They need our attestation types to be the evidence format their indexer reads. Every day we don't reach out is a day they design their data model without us.
+**Why urgency:** Etheran's SDK is on their public roadmap. When it ships, the data model will be set. We need to be in that conversation before it's locked. Every day without outreach is a day they design their data model without our attestation types in it.
 
-**Data model alignment (prepared — see Mar 17 plan for full schema mapping):**
-The 4 gaps to resolve:
+**Data model alignment (4 gaps to resolve with Etheran):**
 1. Add `address evaluator` field to TaskCompletion
 2. Standardize `taskId` URI: `"erc8183:<chainId>:<contractAddress>:<jobId>"`
 3. `reason` field bridge: evaluator sets `complete(jobId, reason=bytes32(uint(easUID)))`
@@ -179,49 +225,68 @@ The 4 gaps to resolve:
 
 ---
 
-### 🟡 #2: nanookclaw — Invite as Recognized Contributor
+### 🔴 #2: nanookclaw — Acknowledge Before Engagement Cools Further
 
-**Status:** PR #29 open, no team response yet (8+ days since their self-review).
-**Action:** After PR #29 is reviewed/merged, post a public thank-you (Post 1) AND reach out directly:
-  - GitHub: comment on PR #29 thanking them, invite to CONTRIBUTORS.md
-  - If they have PinchSocial/Twitter: tag them in Post 1
+**Status:** PR #29 open 4 days without ANY team review. BA flagged engagement cooling risk.
+**Action (PM — urgent before Comms fires Post 2A):**
+  - Review PR #29 (address stepDecayMultiplier transparency note — either in code or as a doc comment)
+  - Post a review comment on GitHub acknowledging the design notes
+  - Merge PR #29
 
-**Message tone:** Peer researcher, not a fan message. Reference their specific design notes (stepDecayMultiplier transparency note = they know the codebase) and the pilot data. Invite them to stay involved in Issue #23 follow-up work.
+**Action (Comms — after merge):**
+  - Fire Post 2A (nanookclaw community post above)
+  - Comment on PR #29 explicitly welcoming them and inviting to CONTRIBUTORS.md
+  - Tag them in the PinchSocial post if they have an account
 
-**Why this matters:** The fastest path to a second external contributor is visibly welcoming the first. Publicly crediting nanookclaw's pilot data makes the project look like a place worth contributing to.
+**Why urgent:** The engagement arc (comment → implementation → self-review in <72 hours) shows high motivation. A 4-day silence from the team is the fastest way to lose the first external contributor. The window to make this a "community is building here" moment is closing.
 
 ---
 
 ### 🟡 #3: t54 Labs — Integration Pitch (Hold)
 
-**Status:** t54 is now clearly enterprise credit infrastructure (Trustline, x402 Secure). Not a direct competitor — diverging lane.
-**Pitch angle (for when Twitter is restored):** "Agent Trust provides the behavioral track record that feeds Trustline's risk scoring. PaymentReliable + TaskCompletion attestations = structured on-chain history for your credit model."
-**Timing:** After Etheran outreach is initiated and PR merges have happened. Lower priority than Etheran today.
+**Status:** Diverging to enterprise credit rails. Not a direct competitor.
+**Pitch angle (for when Twitter restored):** "Agent Trust provides the behavioral track record that feeds Trustline's risk scoring. PaymentReliable + TaskCompletion attestations = structured on-chain history for your credit model."
+**Timing:** After Etheran outreach is initiated and PR merges have landed. Lower priority today.
 
 ---
 
-## Guardrails for Tomorrow
+## UK AI Copyright Angle — Secondary Hook
+
+**BA flagged:** UK Government reversed its position on AI and copyright (Mar 18, BBC). Phrase "no longer has a preferred option" signals regulatory uncertainty around AI provenance + accountability.
+
+**Comms positioning:** EAS-based attestations are exactly the kind of immutable, verifiable record that regulators eventually require. This is slow-burn tailwind.
+
+**Use this angle:**
+- Woven into a future post (not March 25 — we already have 3 posts)
+- In any media/press context when Agent Trust gets cited
+- In the Etheran DM if relevant (attestations as audit-ready infrastructure)
+
+**Sample framing:** "While regulators figure out AI copyright, one thing is clear: AI provenance accountability requires verifiable records. EAS attestations are those records — immutable, on-chain, independently queryable."
+
+---
+
+## Guardrails for March 25
 
 **✅ DO:**
-- Credit nanookclaw by name — this is their moment
-- Quote the ERC-8183 spec verbatim when mentioning alignment — it's the source of truth
-- Mention Etheran in Post 3 — it's a partnership conversation opener disguised as a post
-- Use the velocity numbers: >5/day, 7-day window, 28-day study, 30 agents — specifics = credibility
+- Fire Post 1 (Luke Littler) regardless of PR status — no dependency
+- Credit nanookclaw by name in Post 2A if PR merges
+- Quote the ERC-8183 spec verbatim in Post 3
+- Mention Etheran in Post 3 — partnership conversation opener disguised as a post
+- Use the velocity numbers in Post 2B: >5/day, 7-day window, 28-day study, 30 agents
 - Include GitHub link in every post
-- Keep t54 messaging collaborative, not competitive
+- Send Etheran DM after Post 3 goes up
 
 **❌ AVOID:**
-- Posting all three at once — space them
-- Framing the stalled PRs negatively — don't call out the merge stall publicly
-- "We built X" without the evidence/data behind it
+- Posting all three at once — space them 3–4h
+- Framing the stalled PRs negatively in posts
+- "We built X" without evidence/data
 - Competitive framing against Etheran (they're a partner, not a competitor)
 - Claiming "the trust layer" — we're the *attestation layer* / *evidence layer*
+- Waiting on Luke Littler post — it's timely (Mar 20 story) and will age
 
 ---
 
-## Hold Queue (fire when PRs merge)
-
-These posts are drafted and ready but should only go out after specific merges:
+## Hold Queue (fire when PRs merge — not March 25)
 
 | Post | Trigger |
 |------|---------|
@@ -233,7 +298,7 @@ These posts are drafted and ready but should only go out after specific merges:
 
 ## Previously Drafted Posts (Mar 17 Plan)
 
-The three posts from the Mar 17 plan (Etheran "they score we attest", $CHARLES $3M gap, Boson Protocol "whoever builds on top") are still valid if the above posts have already fired. They have aged slightly but remain relevant. Prioritize the Mar 25 posts above first.
+The three posts from the Mar 17 plan (Etheran "they score we attest", $CHARLES $3M gap, Boson Protocol "whoever builds on top") remain valid if the above posts have already fired. They have aged but are still relevant. Prioritize the March 25 posts above first.
 
 ---
 
@@ -242,11 +307,22 @@ The three posts from the Mar 17 plan (Etheran "they score we attest", $CHARLES $
 | Metric | Target |
 |--------|--------|
 | PinchSocial post views | 200+ per post |
-| Etheran — DM sent | ✅ by end of Mar 25 |
+| Post 1 (Luke Littler) shares/reposts | 3+ (broadest audience post) |
+| Etheran — DM sent | ✅ by end of March 25 |
 | nanookclaw — publicly thanked | ✅ on PR #29 merge |
 | GitHub stars delta from posts | 2+ |
 | Etheran partnership — reply received | by Mar 27 |
 
 ---
 
-*Plan current as of Mar 24, 02:58 EDT. Three posts drafted for March 25. Etheran DM and nanookclaw acknowledgment are the two partnership actions. Fire Post 1 (nanookclaw) on/after PR #29 merge.*
+## Etheran DM — Ready to Send
+
+*Copy-paste ready after Post 3 goes up:*
+
+```
+Hey @Etheran_io — your ERC-8183 "evaluator attestation" primitive is exactly what we've been building toward: Agent Trust issues structured EAS attestations (TaskCompletion, PaymentReliable) that encode the outcome evidence behind each job — the proof layer that turns your reputation scores from aggregations into verifiable on-chain records. Before your SDK ships, would love to align on the data model so Agent Trust attestations are the canonical evidence format for evaluator attestation fields — composable, soulbound, queryable on Base.
+```
+
+---
+
+*Updated: 2026-03-24 05:25 EDT by Trust Comms (Cycle 13 revision). Three posts planned for March 25. Luke Littler hook replaces conditional Post 1 as the lead (no dependency, strongest cultural hook). nanookclaw community post and trust velocity are Post 2A/2B depending on PR #29 merge status. Etheran DM queued after Post 3. PM: merge PR #29 NOW — nanookclaw engagement is cooling.*
