@@ -2,7 +2,80 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-24 06:50 EDT — Cycle 14 (Night Research Update)*
+*Last updated: 2026-03-24 07:40 EDT — Cycle 15 (Night Research Update)*
+
+---
+
+## 🌙 Cycle 15: Mar 24, 2026 (07:40 EDT) — MARKET RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; **no new stories** since Cycle 14 (06:50 EDT, ~50 min ago). Same 5 items as last cycle.
+- ✅ GitHub PRs — `gh pr view 29` re-checked; still MERGEABLE+CLEAN; 0 team reviews; PR #29 now **~4 days 23h** old (approaching 5 full days without team engagement)
+- ✅ etheran.io — fetched; still "On-chain Intelligence for ERC-8183" — content unchanged
+- ✅ t54.ai — fetched; content unchanged from Cycle 14 (same product stack copy)
+- ✅ ctxly.com/services.json — still 404 (abandoned per Cycle 6 decision)
+- ❌ Twitter/X browser — Chrome extension tab not attached (`running: false`), unavailable
+- ❌ PinchSocial — API key still missing from pass store
+- ❌ Brave web search — API key not configured
+
+### ⚠️ DELTA SINCE CYCLE 14 (~50 min gap)
+
+This is a thin-delta cycle. No new market developments in the ~50 minutes since Cycle 14. All monitored sources are stable.
+
+**One timing update on PR #29:**
+
+| Item | Cycle 14 | Cycle 15 | Change |
+|------|----------|----------|--------|
+| PR #29 age without team review | "4+ days" | **~4 days 23h** | Approaching 5 full days |
+| BBC new stories | 1 (publisher novel, noted) | 0 | No change |
+| Etheran site | Unchanged | Unchanged | — |
+| t54 site | Unchanged | Unchanged | — |
+| Schema UIDs | All placeholder | All placeholder | No progress |
+
+#### 🟠 PR #29 — Approaching 5 Days Without Team Review (Escalating)
+
+- **Opened**: 2026-03-20T08:47:59Z by nanookclaw
+- **Self-reviewed**: 2026-03-21T08:38:45Z (nanookclaw — COMMENTED)
+- **Team reviews**: 0 (no PM or QA has posted on this PR)
+- **Current time**: 2026-03-24T07:40 EDT ≈ **4 days 22h 52m** since PR opened
+- **Mergeability**: MERGEABLE+CLEAN ✅ (confirmed by full `gh pr view` JSON — not just gh pr list cache)
+- **Implementation quality**: 739 additions, 32 tests, 292 total passing, backward-compatible (pure read-time, no schema changes), λ=0.02 default, 30-day grace, injectable nowMs, pilot-validated Sybil threshold
+- **Only open note**: `stepDecayMultiplier` transparency (explicitly non-blocking per nanookclaw's own review)
+- **Community risk**: nanookclaw is the first external contributor. Day 5 of silence is the threshold where external contributors typically disengage. This is the most critical community moment the project has had.
+
+### 🟢 Competitive Landscape: No New Moves (~50 min delta)
+
+All competitors stable from Cycle 14. No new posts, product announcements, or ecosystem signals detected from Etheran, t54, Lyneth, or GhostRank in this window.
+
+### 🔧 Tool Availability (Unchanged — Persistent)
+
+| Tool | Status | Cycles Unavailable |
+|------|--------|--------------------|
+| Twitter/X browser | ❌ Tab not attached | 4+ cycles |
+| PinchSocial | ❌ API key missing | All cycles |
+| Brave web search | ❌ API key not configured | All cycles |
+
+### Updated Top 3 Actions (Cycle 15 — UNCHANGED from Cycle 14)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Review + merge PR #29** — Approaching 5 days without team engagement. nanookclaw shipped a complete, tested, pilot-validated implementation. The `stepDecayMultiplier` note is non-blocking. PM + QA + Remi — act now. | PM → QA → Remi | **🔴 CRITICAL** | PR #29 merged; nanookclaw publicly acknowledged |
+| **2** | **Remi: Merge PRs #25, #27, #28 + register 3 schema UIDs** — 8+ days overdue. Etheran's open API is live. Every day without live schemas is a missed integration window. | Remi | **🔴 CRITICAL** | 3 PRs merged, 3 UIDs on-chain, packages published |
+| **3** | **Comms: AI provenance authenticity angle** — Two-story cultural hook still available: (1) Luke Littler trademarks face vs. AI fakes (Mar 20), (2) Publisher cancels novel over unverifiable AI authorship (Mar 20). Combined thread: "Self-reported provenance is no longer enough — whether you're a darts champion or an AI agent." | Comms | **HIGH** (after PR merges) | Comms post drafted using both stories as cultural hook |
+
+### Cycle 15 Summary (quiet cycle — ~50 min since Cycle 14)
+
+**What changed:**
+- 🟠 PR #29 is now approaching 5 full days without team engagement — community-risk threshold is here
+
+**What didn't change:**
+- BBC feed: no new stories in this window
+- Competitive landscape: all stable
+- PR stall (#25/#27/#28/#29): Remi action still primary blocker
+- Schema UIDs: all placeholder, blocked on Remi
+- Tool availability: all three external research tools still down
+
+**Recommended stance**: Cycle 14 recommendations fully hold. Nothing structurally changed in 50 minutes. The only escalation is PR #29 timing — act before day 5 becomes day 6. Merge first, research more later.
 
 ---
 
