@@ -2,7 +2,86 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-24 02:54 EDT — Cycle 12 (Night Research Update)*
+*Last updated: 2026-03-24 05:22 EDT — Cycle 13 (Night Research Update)*
+
+---
+
+## 🌙 Cycle 13: Mar 24, 2026 (05:22 EDT) — MARKET RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; 2 new relevant stories since Cycle 12 (see below)
+- ✅ GitHub PRs — `gh pr view 29` — confirmed MERGEABLE+CLEAN (Cycle 12 was correct; earlier UNKNOWN was GitHub async cache)
+- ✅ etheran.io — fetched; confirmed live, no new content changes since Cycle 12
+- ✅ t54.ai — fetched; confirmed live, content unchanged from Cycle 12
+- ✅ explorer.lyneth.ai — fetched; confirmed live ("ERC-8004 Agent Explorer"), content unchanged
+- ✅ ctxly.com/services.json — still 404 (fully abandoned per Cycle 6 decision)
+- ❌ Twitter/X browser — **UNAVAILABLE**: Chrome extension tab not attached (no tab connected)
+- ❌ PinchSocial — API key still missing
+- ❌ Brave web search — API key not configured
+- ❌ Reuters — DNS failure (unchanged from prior cycles)
+
+### ⚠️ NEW DEVELOPMENTS SINCE CYCLE 12 (02:54 EDT, ~2.5h ago)
+
+#### 🟡 BBC: Two New AI Identity/Provenance Stories (Mar 18–20)
+**Not present in Cycle 12's BBC scan:**
+
+1. **"Luke Littler applies to trademark his face to combat AI fakes" (Mar 20)**
+   - The world darts champion is seeking legal trademark protection for his face after AI-generated content spread across social platforms using his likeness without consent.
+   - **Strategic relevance**: Mainstream media coverage of the human identity + AI impersonation problem. The same dynamic applies to agents: unverified agents can impersonate trusted ones. Our `SecurityAudit` attestation + identity binding model is the agent-layer answer to this provenance problem. This story could be used in comms: "If famous humans need provable identity to fight AI fakes, agents need it too."
+
+2. **"Government backtracks on AI and copyright after outcry from major artists" (Mar 18)**
+   - UK government reversed position on AI/copyright, citing pressure from creators. The phrase "no longer has a preferred option" signals regulatory uncertainty around AI provenance and accountability.
+   - **Strategic relevance**: Regulatory pressure on AI provenance is intensifying. EAS-based attestations (our model) provide exactly the kind of immutable, verifiable record that regulators and auditors eventually require. This is slow-burn tailwind for the attestation layer.
+
+#### 🟠 PR #29 Confirmed MERGEABLE+CLEAN — 3+ Days Without Team Review
+- Full `gh pr view 29` with `--json reviews,mergeable,mergeStateStatus` confirms:
+  - `mergeable: "MERGEABLE"`, `mergeStateStatus: "CLEAN"` ✅
+  - Only review: nanookclaw's self-review (COMMENTED, Mar 21 08:38 UTC)
+  - **No team reviews posted since PR opened Mar 20** — now 4 days without a PM or QA engagement
+- nanookclaw's review notes one actionable design concern (stepDecayMultiplier transparency) but explicitly states it's "a transparency/debuggability note rather than a bug." Tests pass correctly either way.
+- **Risk**: If this PR goes unreviewed for another week, the first external contributor may lose engagement. This is a community-building moment, not just a code merge.
+
+### 🟢 Competitive Landscape: No New Moves (2.5h Delta)
+
+| Competitor / Partner | Status Change Since Cycle 12 |
+|---------------------|------------------------------|
+| **Etheran** (@Etheran_io) | No new content on site. Open API + /skill.md + evaluator registry still the integration target. |
+| **Lyneth Labs** (@LynethLabs) | No new content on site. Status unchanged. |
+| **t54 Labs** (@t54ai) | No new content on site. Full product stack unchanged from Cycle 12. |
+| **GhostRank** (@ghostprotoinfra) | No new data (browser unavailable for Twitter). |
+
+### 🔧 Tool Availability Issues (Persistent)
+
+| Tool | Status | Impact |
+|------|--------|--------|
+| Twitter/X browser | ❌ Tab not attached | Cannot monitor @Etheran_io, @t54ai, @LynethLabs, @ghostprotoinfra in real-time |
+| PinchSocial | ❌ API key missing | Cannot search or read social discussions |
+| Brave web search | ❌ API key not configured | Cannot search for new entrants, news, or ecosystem developments |
+
+**⚠️ These three tools have been unavailable for multiple BA cycles.** The research coverage is degraded. Remi should: (1) attach Chrome tab, (2) configure Brave API key, (3) configure PinchSocial API key. Without these, BA can only monitor sites directly (limited signal).
+
+### Updated Top 3 Actions (Cycle 13 — unchanged from Cycle 12)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Review + merge PR #29** (nanookclaw temporal trust decay) — 4 days without team review now. Address stepDecayMultiplier note (either code or doc). QA + merge. Don't lose the first external contributor. | PM → QA → Remi | CRITICAL | PR #29 merged; nanookclaw acknowledged publicly |
+| **2** | **Remi: Merge PRs #25, #27, #28 + register 3 schema UIDs** — 8+ days overdue. Etheran's open API is live and waiting for our attestation data. | Remi | CRITICAL | 3 PRs merged, 3 UIDs on-chain, packages published |
+| **3** | **Comms: AI identity provenance angle** — Use "Luke Littler trademarks face vs AI fakes" as an entry point: "If humans need provable identity to fight AI fakes, agents need it too — our SecurityAudit + attestation layer is the agent-native answer." Timely hook for social posts. | Comms | HIGH (after PR merges) | Comms post drafted using Littler story as cultural hook |
+
+### Cycle 13 Summary (thin delta — 2.5h since Cycle 12)
+
+**What changed:**
+- 🟡 Two new BBC stories provide fresh cultural/regulatory hooks for comms (AI fakes trademark, UK AI copyright reversal)
+- 🟠 PR #29 confirmed MERGEABLE+CLEAN — but 4 days without team review is now the critical risk
+- 🟢 Competitive landscape: no new moves from Etheran, t54, Lyneth, GhostRank in last 2.5h
+
+**What didn't change:**
+- PR stall (#25/#27/#28/#29) continues — Remi action still the blocker
+- Schema UIDs still all placeholder — blocked on Remi
+- Tool availability still degraded (browser/search/social all down)
+- Etheran integration window still open but narrowing
+
+**Recommended stance**: Cycle 12 recommendations still hold. The marginal finding this cycle is the BBC AI identity provenance stories — useful for Comms timing. The structural situation is unchanged: PRs need merging, schemas need registering, and nanookclaw needs to be acknowledged before their engagement cools.
 
 ---
 
