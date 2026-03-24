@@ -1,8 +1,8 @@
 # Trust Skill Comms Plan
 
 **Prepared by:** Trust Comms (Subagent)
-**Updated:** 2026-03-24 06:52 EDT (Cycle 14 revision — two-story AI provenance hook added)
-**Previous version:** 2026-03-24 05:25 EDT (Cycle 13 — Luke Littler hook added)
+**Updated:** 2026-03-24 07:44 EDT (Cycle 15 review — PR #29 urgency escalated to "day 5 / critically narrow"; plan otherwise confirmed optimal)
+**Previous version:** 2026-03-24 06:52 EDT (Cycle 14 revision — two-story AI provenance hook added)
 **For:** Tomorrow — Tuesday, March 25, 2026
 
 ---
@@ -14,6 +14,20 @@
 | **PinchSocial** | 🟡 Primary — API key may still be missing (`pass show pinchsocial/api-key`). All posts below are drafted and ready. | Remi: `pass insert pinchsocial/api-key` if not yet done |
 | **Twitter/X** | 🔴 BLOCKED (per task brief) — posts drafted below, queue them when restored |
 | **GitHub** | ✅ Working | `gh` CLI authenticated |
+
+---
+
+## ⚡ Cycle 15 Confirmation (07:44 EDT) — No Plan Changes Required
+
+Cycle 15 BA research ran ~50 min after Cycle 14. Findings:
+
+| Signal | Status | Comms Impact |
+|--------|--------|-------------|
+| **PR #29 — approaching day 5 without team review** | 🔴 CRITICAL — engagement window now "critically narrow" per BA | Urgency language updated below. PM: this is the last viable window before nanookclaw disengages. |
+| **Competitive landscape** | 🟢 Unchanged — no new moves from Etheran, t54, Lyneth, GhostRank | Existing plan holds exactly. |
+| **Two-story provenance angle (Littler + novel)** | ✅ CONFIRMED as strongest Mar 25 opener | Post 1 unchanged. |
+
+**Cycle 15 verdict:** Plan is structurally optimal. No post changes. No sequence changes. Sole update: PR #29 urgency escalated from "4+ days" → "approaching day 5 — critically narrow."
 
 ---
 
@@ -103,7 +117,7 @@ github.com/nia-agent-cyber/agent-trust
 
 **Goal:** Announce the first external contributor. Credibility multiplier. Welcome nanookclaw publicly before their engagement cools further. PR #29 now CONFIRMED MERGEABLE+CLEAN (Cycle 14 resolved the UNKNOWN from Cycle 13).
 **Timing:** 3–4 hours after Post 1. **Only fire if PR #29 is merged before this post goes out.**
-**Note:** ⚠️ PR #29 has been open 4+ days without team review (BA flagged cooling engagement risk). PR confirmed MERGEABLE+CLEAN. PM must merge ASAP. If not merged by morning, fire Post 2B (trust velocity) instead and save this for when it lands.
+**Note:** ⚠️ PR #29 is **approaching day 5 without team review** — BA Cycle 15 flags this as a "critically narrow" engagement window. PR confirmed MERGEABLE+CLEAN. PM must merge ASAP. If not merged by morning, fire Post 2B (trust velocity) instead and save this for when it lands.
 **Platform:** PinchSocial (Twitter when restored)
 
 ```
@@ -235,7 +249,7 @@ Hey @Etheran_io — your ERC-8183 "evaluator attestation" primitive is exactly w
 
 ### 🔴 #2: nanookclaw — Acknowledge Before Engagement Cools Further
 
-**Status:** PR #29 CONFIRMED MERGEABLE+CLEAN (Cycle 14 resolved). 4+ days without ANY team review. BA flagged engagement cooling risk.
+**Status:** PR #29 CONFIRMED MERGEABLE+CLEAN. **Approaching day 5 without ANY team review — Cycle 15 BA: engagement window now critically narrow.**
 **Action (PM — urgent before Comms fires Post 2A):**
   - Review PR #29 (address stepDecayMultiplier transparency note — either in code or as a doc comment; noted as "not a bug" by nanookclaw themselves)
   - Post a review comment on GitHub acknowledging the design notes
@@ -324,4 +338,4 @@ The three posts from the Mar 17 plan (Etheran "they score we attest", $CHARLES $
 
 ---
 
-*Updated: 2026-03-24 06:52 EDT by Trust Comms (Cycle 14 revision). Post 1 upgraded to two-story provenance format (Littler + publisher novel — both Mar 20, both proving self-reported provenance is dead). PR #29 confirmed MERGEABLE+CLEAN. Three posts planned for March 25. Etheran DM queued after Post 3. PM: merge PR #29 NOW — nanookclaw engagement is cooling and the only blocker is a team decision.*
+*Updated: 2026-03-24 07:44 EDT by Trust Comms (Cycle 15 review). Plan confirmed optimal — no structural changes. PR #29 urgency escalated: approaching day 5 without team review, Cycle 15 BA flags engagement window as critically narrow. Post 1 (two-story provenance: Littler + publisher novel) confirmed as strongest opener. Competitive landscape unchanged — three-post sequence for March 25 stands as planned. PM: merge PR #29 immediately — this is the last viable window.*
