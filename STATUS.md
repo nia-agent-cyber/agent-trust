@@ -1,9 +1,89 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-17 08:15 EDT by Trust PM (Etheran partnership prep + PR mergeability check)
+**Last Updated:** 2026-03-27 15:27 GMT+2 by Trust PM (Cycle 155)
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
+
+## ✅ Trust PM: Cycle 155 — PR #29 External Contribution Reviewed + PRs #25/#27/#28 Still Pending Remi (Mar 27, 15:27 GMT+2)
+
+**Session:** Trust PM — Cycle 155
+
+### Accomplished
+- ✅ **Protocol documents reviewed** — PROTOCOL.md, STATUS.md, DECISIONS.md read
+- ✅ **ctxly.com checked** — **STILL 404**. Now ~504 hours (~21 days) since Mar 6 10:42 submission. FAR beyond 48h window.
+- ✅ **Browser status verified** — Chrome extension not running (gateway device signature error). Tab still not attached.
+- ✅ **Pass store verified** — Reddit/Dev.to: NOT FOUND in pass store. Unchanged.
+- ✅ **GitHub issues checked** — Issues #20 (LangChain), #21 (ElizaOS), #23 (Temporal Decay) OPEN. Issues #17, #18, #19 CLOSED.
+- ✅ **PR #29 discovered** — NEW external contribution from @nanookclaw. Temporal trust decay (closes #23). Opened 2026-03-20. MERGEABLE+CLEAN.
+- ✅ **PR #29 PM-reviewed + approved** — High-quality implementation. 32 tests, 292 total passing. Pure read-time, no schema changes. Posted PM approval on GitHub.
+- ✅ **STATUS.md updated** — This entry
+- ✅ **Committed + pushed**
+
+### Current State (as of Mar 27, 15:27 GMT+2)
+
+**PRs:**
+| PR | Title | Status |
+|----|-------|--------|
+| #29 | Temporal Trust Decay (closes #23) | 🟡 OPEN, MERGEABLE+CLEAN, **PM ✅** → QA needed |
+| #28 | ElizaOS integration (closes #21) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #27 | LangChain integration (closes #20) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #25 | SecurityAudit attestation (closes #19) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+
+**Distribution Blockers (UNCHANGED — 21 days overdue):**
+- 🔴 **ctxly.com** — STILL 404. ~504h since submission. ~456h beyond 48h window. Critical.
+- 🔴 **Browser tab** — Chrome extension not running. Tab not attached. 5+ days overdue.
+- 🔴 **Reddit account** — NOT in pass store. 5+ days overdue.
+- 🔴 **Dev.to account** — NOT in pass store. 5+ days overdue.
+
+**Schema UIDs:**
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder; register after #25 merges
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+
+### Next Actions
+
+1. **PM (this cycle):** Spawn QA for PR #29 (Temporal Trust Decay)
+2. **Remi (URGENT):** Merge PRs #25 → #27 → #28 (all MERGEABLE, 8+ days waiting)
+3. **Remi (URGENT):** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+4. **Remi (CRITICAL):** Contact ctxly team — 21 days since submission, no response. Human escalation required.
+5. **Remi:** Attach Chrome browser tab — click OpenClaw extension icon
+6. **Remi:** Add Reddit + Dev.to credentials to pass store
+
+### Notable: External Contributor @nanookclaw
+
+@nanookclaw submitted PR #29 independently (no explicit coder spawn for this). Quality is high:
+- Correct λ range (0.01–0.03) and 5/day Sybil threshold from issue discussion
+- Three decay types matching existing tier-constants.ts step pattern
+- Null attestation time handled gracefully
+- 32 tests including Sybil farming signal test
+- Pure read-time, fully backward-compatible
+
+This is exactly what Issue #23 asked for. PM-approved; QA should verify build + tests locally.
+
+---
+
+## ✅ Trust PM: State Reassessment + Next Action Drive (Mar 19, 17:19 EDT)
+
+**Session:** Trust PM — repo reassessment, PR readiness validation, and cycle-forward planning
+
+### Accomplished
+- ✅ **Protocol docs re-read** — `PROTOCOL.md`, `STATUS.md`, `DECISIONS.md` reviewed before actioning.
+- ✅ **Live GitHub state verified** — Open PRs remain #25 (SecurityAudit), #27 (LangChain), #28 (ElizaOS); open issues are #20, #21, #23.
+- ✅ **Mergeability re-checked now** — PRs #25/#27/#28 all still `MERGEABLE` and non-draft.
+- ✅ **Execution risk identified** — local `main` working tree is dirty (`STRATEGY.md` modified + untracked `docs/TEMPORAL_TRUST_DECAY_PLAN.md`, `packages/elizaos/`), so do not perform PM git operations from this checkout until owner of local changes confirms intent.
+
+### Current State (as of Mar 19, 17:19 EDT)
+- 🟡 **PR #25** — OPEN, `MERGEABLE`, previously PM+QA approved → ready for Remi merge.
+- 🟡 **PR #27** — OPEN, `MERGEABLE`, previously PM+QA approved → ready for Remi merge.
+- 🟡 **PR #28** — OPEN, `MERGEABLE`, previously PM+QA approved → ready for Remi merge.
+- 🔴 **Schema UID registration still pending on Remi** — `paymentReliable`, `taskCompletion`, and `securityAudit` UIDs need registration/update.
+- ⏳ **Issue #23 (Temporal Trust Decay)** — remains open; should be next coding cycle after PR #25/#27/#28 are merged and publish steps complete.
+
+### Next Action Driven (immediate)
+1. **Remi:** Merge PRs in order **#25 → #27 → #28** (all currently clean/mergeable).
+2. **Remi:** Register/update all 3 schema UIDs in `packages/sdk/src/constants.ts` (paymentReliable/taskCompletion/securityAudit).
+3. **PM next cycle:** Once merges land, trigger coder on **Issue #23** with scoped MVP (decay function + query API + tests), then QA review.
 
 ## ✅ Trust PM: Etheran Partnership Prep + PR Check (Mar 17, 08:15 EDT)
 
