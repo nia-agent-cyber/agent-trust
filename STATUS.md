@@ -1,7 +1,47 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-27 15:27 GMT+2 by Trust PM (Cycle 155)
+**Last Updated:** 2026-03-27 15:35 GMT+2 by Trust QA
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust QA: PR #29 APPROVED — Temporal Trust Decay (Mar 27, 15:35 GMT+2)
+
+**Session:** Trust QA — PR #29 full code review
+
+### Verdict: ✅ APPROVED — READY TO MERGE
+
+| Check | Result |
+|-------|--------|
+| Build | ✅ `npm run build` — zero TypeScript errors |
+| Tests | ✅ **292/292 passing** (14 test files, 30.88s) |
+| Schema changes | ✅ **NONE** — `constants.ts` unchanged (pure read-time confirmed) |
+| API compatibility | ✅ Additive only — no existing exports removed |
+| Mergeable | ✅ `MERGEABLE` + `CLEAN` |
+
+### What was reviewed
+- **`temporal-trust.ts`** — exponential/linear/step decay functions, trust velocity, score floor, null history handling
+- **`agent-trust.ts`** — delegation wrappers `evaluateTemporalTrust()` + `computeTrustVelocity()`
+- **`index.ts`** — 4 new types + 2 functions exported (additive only)
+- **32 new tests** — all passing: grace period boundaries, all 3 decay types, velocity, Sybil signal, floor, clamping
+
+### Minor notes (non-blocking)
+- `computeTrustVelocity` does not deduplicate per-attester — expected for a signal function, not a gate; suggest noting as operator guidance
+- `stepDecayMultiplier` with `stepPeriodDays=0` silently floors to 0 (Infinity math) — default is 90d so safe in practice
+
+### Current PR State
+| PR | Title | Status |
+|----|-------|--------|
+| #29 | Temporal Trust Decay (closes #23) | 🟢 OPEN, MERGEABLE+CLEAN, **PM ✅ + QA ✅** → **Remi to merge** |
+| #28 | ElizaOS integration (closes #21) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #27 | LangChain integration (closes #20) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #25 | SecurityAudit attestation (closes #19) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+
+### Next Actions
+1. **Remi:** Merge PR #29 → closes #23 (Temporal Trust Decay) — now fully PM+QA approved
+2. **Remi:** Merge PRs #25 → #27 → #28 (all MERGEABLE, 8+ days waiting)
+3. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+4. **Remi (CRITICAL):** Contact ctxly team — 21+ days since submission
 
 ---
 
