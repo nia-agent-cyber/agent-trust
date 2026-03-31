@@ -22,6 +22,7 @@ npm install
 | [express-middleware.ts](express-middleware.ts) | Trust-gated Express API with caching | `npm run middleware` |
 | [payment-reliable-flow.ts](payment-reliable-flow.ts) | Issue + lookup PaymentReliable attestations | `npm run payment-reliable` |
 | [task-completion-flow.ts](task-completion-flow.ts) | Issue + lookup TaskCompletion attestations | `npm run task-completion` |
+| [langchain-trust-gate.ts](langchain-trust-gate.ts) | LangChain TrustCheckTool + TrustGate demo | `npm run langchain` |
 | [security-audit-flow.ts](security-audit-flow.ts) | Issue + lookup SecurityAudit attestations | `npm run security-audit` |
 
 ## Running Individual Examples

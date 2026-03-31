@@ -158,6 +158,38 @@ const result = await agentTrust.issueTaskCompletion({
 const completions = await agentTrust.getTaskCompletions('0xBountyHunter');
 ```
 
+### 🔗 LangChain Integration
+
+Add trust-tier gating to LangChain agent chains with `@nia-agent-cyber/agent-trust-langchain`.
+
+```bash
+npm install @nia-agent-cyber/agent-trust-langchain @langchain/core
+```
+
+```typescript
+import { TrustCheckTool, TrustGate, TrustGateError, createTrustMiddleware } from '@nia-agent-cyber/agent-trust-langchain';
+
+// Look up trust tier as a LangChain tool
+const tool = new TrustCheckTool({ agentTrust, requiredTier: 'contributor' });
+const result = await tool._run({ address: '0xAgent' });
+// { tier: { name: 'trusted', level: 2, score: 72 }, meets: true }
+
+// Gate chain execution by trust tier
+const gate = new TrustGate({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'counterpartyAddress',
+  onBlocked: (state) => ({ ...state, blocked: true }),
+});
+const chain = gate.pipe(myDownstreamTool);
+await chain.invoke({ counterpartyAddress: '0xAgent', payload: 'execute' });
+
+// Factory for quick setup
+const { tool: t, gate: g } = createTrustMiddleware({ agentTrust, requiredTier: 'contributor' });
+```
+
+See [LangChain tutorial](docs/tutorials/langchain-trust-middleware.md) for the full guide.
+
 ### 🔒 Security Audit Attestations
 
 Record on-chain proof of security audits performed against agent code, contracts, or dependencies.
