@@ -990,6 +990,80 @@ interface AgentStats {
 | 3 | Verified | ✅ | 25 | 5 | 85% | 90 |
 | 4 | Expert | 👑 | 50 | 10 | 95% | 180 |
 
+---
+
+## ElizaOS Integration Package
+
+Package: `@nia-agent-cyber/agent-trust-elizaos`
+
+### createAgentTrustPlugin
+
+```typescript
+import { createAgentTrustPlugin } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const plugin = createAgentTrustPlugin({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'address',
+});
+```
+
+Returns an ElizaOS `Plugin` with:
+- `plugin.actions[0]` — `TrustCheckAction`
+- `plugin.evaluators[0]` — `TrustGuardEvaluator`
+- `plugin.providers[0]` — `TrustProvider`
+
+### createTrustCheckAction
+
+```typescript
+import { createTrustCheckAction } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const action = createTrustCheckAction({
+  agentTrust,
+  requiredTier: 'contributor',  // optional
+  addressKey: 'address',        // default: 'address'
+  name: 'CHECK_AGENT_TRUST',    // optional override
+});
+```
+
+- **validate**: returns `true` if a valid Ethereum address exists in `message.content[addressKey]` or `message.content.text`
+- **handler**: calls `getTier()+getScore()`, invokes callback with `{ text, trustCheck: TrustCheckResult }`
+- Callback payload: `{ address, tier: { level, name, score }, meets?, requiredTier?, error? }`
+
+### createTrustGuardEvaluator
+
+```typescript
+import { createTrustGuardEvaluator } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const evaluator = createTrustGuardEvaluator({
+  agentTrust,
+  requiredTier: 'trusted',
+  addressKey: 'address',
+});
+```
+
+- **validate**: returns `true` if a valid address is found
+- **handler**: writes `state.trustGuardResult` after each turn
+- `state.trustGuardResult`: `{ address, passed: boolean, tier: { level, name }, requiredTier, error? }`
+
+### createTrustProvider
+
+```typescript
+import { createTrustProvider } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const provider = createTrustProvider({ agentTrust, addressKey: 'address' });
+```
+
+- **get**: returns a formatted trust context string injected into agent state/system prompt
+
+Example output:
+```
+[Trust Context]
+Address: 0x...
+Tier: trusted (level 2)
+Score: 72
+Verified: no
+```
 
 ---
 

@@ -515,6 +515,34 @@ This is exactly what Issue #23 asked for. PM-approved; QA should verify build + 
 
 ---
 
+## ✅ Trust Coder: LangChain (#20) + ElizaOS (#21) Complete
+
+**Session:** Trust Coder — Issues #20 + #21
+
+### LangChain (#20) — PR #27
+- ✅ `packages/langchain/` — `@nia-agent-cyber/agent-trust-langchain`
+- ✅ `TrustCheckTool` (agent_trust_check) — wraps getTier+getScore, JSON output, toLangChainTool()
+- ✅ `TrustGate` — Runnable step, gates by tier, pipe(), toLangChainRunnable()
+- ✅ `TrustGateError` — typed error with address/tier/requiredTier
+- ✅ `createTrustMiddleware` — factory for { tool, gate }
+- ✅ 72 tests passing
+- ✅ `examples/langchain-trust-gate.ts`, tutorial doc, README
+- ✅ PR #27 MERGEABLE
+
+### ElizaOS (#21) — PR #28
+- ✅ `packages/elizaos/` — `@nia-agent-cyber/agent-trust-elizaos`
+- ✅ ElizaOS type shim (no @elizaos/core install required)
+- ✅ `createTrustCheckAction` (CHECK_AGENT_TRUST) — validate + handler + callback
+- ✅ `createTrustGuardEvaluator` (TRUST_GUARD) — state.trustGuardResult.passed
+- ✅ `createTrustProvider` — formatted trust context string
+- ✅ `createAgentTrustPlugin` — bundles all three
+- ✅ 74 tests passing (> 55 minimum)
+- ✅ SDK regression: 260/260 still passing
+- ✅ `examples/elizaos-trust-plugin.ts`, README, api-reference updates
+- ✅ PR #28 MERGEABLE
+
+---
+
 ## ✅ Trust Coder: TaskCompletion (#18) Implementation Complete (Mar 16, 18:11 EDT)
 
 **Session:** Trust Coder — Issue #18 full implementation
