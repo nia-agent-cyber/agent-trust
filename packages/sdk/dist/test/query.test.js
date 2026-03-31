@@ -596,6 +596,167 @@ const constants_1 = require("../constants");
         (0, vitest_1.expect)(results).toEqual([]);
     });
 });
+// ============ SecurityAudit Query Tests ============
+(0, vitest_1.describe)('parseSecurityAuditAttestation', () => {
+    const AUDITOR = '0x' + 'a'.repeat(40);
+    const SUBJECT = '0x' + 'b'.repeat(40);
+    const ATTESTER = '0x' + 'c'.repeat(40);
+    (0, vitest_1.it)('parses a passing critical audit with all fields', () => {
+        const raw = {
+            id: '0xaudit001',
+            attester: ATTESTER,
+            recipient: SUBJECT,
+            time: 1700000000,
+            revoked: false,
+            schemaId: '0x' + '0'.repeat(64),
+            decodedDataJson: JSON.stringify([
+                { name: 'auditor', value: { value: AUDITOR } },
+                { name: 'subject', value: { value: SUBJECT } },
+                { name: 'auditType', value: { value: 'smart-contract' } },
+                { name: 'severity', value: { value: 4 } },
+                { name: 'passed', value: { value: false } },
+                { name: 'reportUri', value: { value: 'ipfs://QmReport' } },
+                { name: 'timestamp', value: { value: 1700000000 } },
+            ]),
+        };
+        const parsed = (0, query_1.parseSecurityAuditAttestation)(raw);
+        (0, vitest_1.expect)(parsed.uid).toBe('0xaudit001');
+        (0, vitest_1.expect)(parsed.attester).toBe(ATTESTER);
+        (0, vitest_1.expect)(parsed.recipient).toBe(SUBJECT);
+        (0, vitest_1.expect)(parsed.auditor).toBe(AUDITOR);
+        (0, vitest_1.expect)(parsed.subject).toBe(SUBJECT);
+        (0, vitest_1.expect)(parsed.auditType).toBe('smart-contract');
+        (0, vitest_1.expect)(parsed.severity).toBe('critical');
+        (0, vitest_1.expect)(parsed.passed).toBe(false);
+        (0, vitest_1.expect)(parsed.reportUri).toBe('ipfs://QmReport');
+        (0, vitest_1.expect)(parsed.timestamp).toBe(1700000000);
+        (0, vitest_1.expect)(parsed.time).toBe(1700000000);
+        (0, vitest_1.expect)(parsed.revoked).toBe(false);
+    });
+    (0, vitest_1.it)('parses a passing audit (none severity)', () => {
+        const raw = {
+            id: '0xaudit002',
+            attester: ATTESTER,
+            recipient: SUBJECT,
+            time: 1700001000,
+            revoked: false,
+            schemaId: '0x' + '0'.repeat(64),
+            decodedDataJson: JSON.stringify([
+                { name: 'auditor', value: { value: AUDITOR } },
+                { name: 'subject', value: { value: SUBJECT } },
+                { name: 'auditType', value: { value: 'dependency-scan' } },
+                { name: 'severity', value: { value: 0 } },
+                { name: 'passed', value: { value: true } },
+                { name: 'reportUri', value: { value: '' } },
+                { name: 'timestamp', value: { value: 1700001000 } },
+            ]),
+        };
+        const parsed = (0, query_1.parseSecurityAuditAttestation)(raw);
+        (0, vitest_1.expect)(parsed.severity).toBe('none');
+        (0, vitest_1.expect)(parsed.passed).toBe(true);
+        (0, vitest_1.expect)(parsed.reportUri).toBe('');
+    });
+    (0, vitest_1.it)('parses a revoked audit', () => {
+        const raw = {
+            id: '0xaudit003',
+            attester: ATTESTER,
+            recipient: SUBJECT,
+            time: 1700002000,
+            revoked: true,
+            schemaId: '0x' + '0'.repeat(64),
+            decodedDataJson: JSON.stringify([
+                { name: 'auditor', value: { value: AUDITOR } },
+                { name: 'subject', value: { value: SUBJECT } },
+                { name: 'auditType', value: { value: 'code-review' } },
+                { name: 'severity', value: { value: 1 } },
+                { name: 'passed', value: { value: true } },
+                { name: 'reportUri', value: { value: 'https://report.example.com' } },
+                { name: 'timestamp', value: { value: 1700002000 } },
+            ]),
+        };
+        const parsed = (0, query_1.parseSecurityAuditAttestation)(raw);
+        (0, vitest_1.expect)(parsed.severity).toBe('low');
+        (0, vitest_1.expect)(parsed.revoked).toBe(true);
+    });
+});
+(0, vitest_1.describe)('fetchSecurityAuditAttestationsForSubject', () => {
+    (0, vitest_1.afterEach)(() => {
+        vitest_1.vi.unstubAllGlobals();
+    });
+    (0, vitest_1.it)('queries EAS with correct schema ID and returns parsed attestations', async () => {
+        const AUDITOR = '0x' + 'a'.repeat(40);
+        const SUBJECT = '0x' + 'b'.repeat(40);
+        const ATTESTER = '0x' + 'c'.repeat(40);
+        vitest_1.vi.stubGlobal('fetch', vitest_1.vi.fn().mockResolvedValue({
+            json: () => Promise.resolve({
+                data: {
+                    asRecipient: [
+                        {
+                            id: '0xsa001',
+                            attester: ATTESTER,
+                            recipient: SUBJECT,
+                            time: 1700000000,
+                            revoked: false,
+                            schemaId: '0x' + '0'.repeat(64),
+                            decodedDataJson: JSON.stringify([
+                                { name: 'auditor', value: { value: AUDITOR } },
+                                { name: 'subject', value: { value: SUBJECT } },
+                                { name: 'auditType', value: { value: 'penetration-test' } },
+                                { name: 'severity', value: { value: 3 } },
+                                { name: 'passed', value: { value: false } },
+                                { name: 'reportUri', value: { value: 'https://pentest.example.com' } },
+                                { name: 'timestamp', value: { value: 1700000000 } },
+                            ]),
+                        },
+                    ],
+                },
+            }),
+        }));
+        const results = await (0, query_1.fetchSecurityAuditAttestationsForSubject)(SUBJECT, 'baseSepolia');
+        (0, vitest_1.expect)(results).toHaveLength(1);
+        (0, vitest_1.expect)(results[0].auditType).toBe('penetration-test');
+        (0, vitest_1.expect)(results[0].severity).toBe('high');
+        (0, vitest_1.expect)(results[0].passed).toBe(false);
+    });
+    (0, vitest_1.it)('returns empty array when no attestations found', async () => {
+        vitest_1.vi.stubGlobal('fetch', vitest_1.vi.fn().mockResolvedValue({
+            json: () => Promise.resolve({ data: { asRecipient: [] } }),
+        }));
+        const results = await (0, query_1.fetchSecurityAuditAttestationsForSubject)('0x' + 'a'.repeat(40), 'baseSepolia');
+        (0, vitest_1.expect)(results).toEqual([]);
+    });
+    (0, vitest_1.it)('skips malformed attestations without throwing', async () => {
+        const SUBJECT = '0x' + 'b'.repeat(40);
+        vitest_1.vi.stubGlobal('fetch', vitest_1.vi.fn().mockResolvedValue({
+            json: () => Promise.resolve({
+                data: {
+                    asRecipient: [
+                        {
+                            id: '0xbadaudit',
+                            attester: '0x' + 'c'.repeat(40),
+                            recipient: SUBJECT,
+                            time: 1700000000,
+                            revoked: false,
+                            schemaId: '0x' + '0'.repeat(64),
+                            // severity code 99 → parseAuditSeverity throws → should be skipped
+                            decodedDataJson: JSON.stringify([
+                                { name: 'auditor', value: { value: '0x' + 'a'.repeat(40) } },
+                                { name: 'subject', value: { value: SUBJECT } },
+                                { name: 'auditType', value: { value: 'fuzzing' } },
+                                { name: 'severity', value: { value: 99 } },
+                                { name: 'passed', value: { value: true } },
+                                { name: 'reportUri', value: { value: '' } },
+                                { name: 'timestamp', value: { value: 1700000000 } },
+                            ]),
+                        },
+                    ],
+                },
+            }),
+        }));
+        const results = await (0, query_1.fetchSecurityAuditAttestationsForSubject)(SUBJECT, 'baseSepolia');
+        (0, vitest_1.expect)(results).toEqual([]);
+    });
+});
 // ============ Network Selection Tests ============
 (0, vitest_1.describe)('Network Configuration', () => {
     (0, vitest_1.afterEach)(() => {

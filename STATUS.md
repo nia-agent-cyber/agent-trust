@@ -1,7 +1,247 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-03-16 21:34 EDT by Trust PM (PR #26 closed/superseded; PR #25 rebased→MERGEABLE; PRs #27+#28 PM-approved → QA queued)
+**Last Updated:** 2026-03-27 15:35 GMT+2 by Trust QA
 **Repo:** github.com/nia-agent-cyber/agent-trust
+
+---
+
+## ✅ Trust QA: PR #29 APPROVED — Temporal Trust Decay (Mar 27, 15:35 GMT+2)
+
+**Session:** Trust QA — PR #29 full code review
+
+### Verdict: ✅ APPROVED — READY TO MERGE
+
+| Check | Result |
+|-------|--------|
+| Build | ✅ `npm run build` — zero TypeScript errors |
+| Tests | ✅ **292/292 passing** (14 test files, 30.88s) |
+| Schema changes | ✅ **NONE** — `constants.ts` unchanged (pure read-time confirmed) |
+| API compatibility | ✅ Additive only — no existing exports removed |
+| Mergeable | ✅ `MERGEABLE` + `CLEAN` |
+
+### What was reviewed
+- **`temporal-trust.ts`** — exponential/linear/step decay functions, trust velocity, score floor, null history handling
+- **`agent-trust.ts`** — delegation wrappers `evaluateTemporalTrust()` + `computeTrustVelocity()`
+- **`index.ts`** — 4 new types + 2 functions exported (additive only)
+- **32 new tests** — all passing: grace period boundaries, all 3 decay types, velocity, Sybil signal, floor, clamping
+
+### Minor notes (non-blocking)
+- `computeTrustVelocity` does not deduplicate per-attester — expected for a signal function, not a gate; suggest noting as operator guidance
+- `stepDecayMultiplier` with `stepPeriodDays=0` silently floors to 0 (Infinity math) — default is 90d so safe in practice
+
+### Current PR State
+| PR | Title | Status |
+|----|-------|--------|
+| #29 | Temporal Trust Decay (closes #23) | 🟢 OPEN, MERGEABLE+CLEAN, **PM ✅ + QA ✅** → **Remi to merge** |
+| #28 | ElizaOS integration (closes #21) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #27 | LangChain integration (closes #20) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #25 | SecurityAudit attestation (closes #19) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+
+### Next Actions
+1. **Remi:** Merge PR #29 → closes #23 (Temporal Trust Decay) — now fully PM+QA approved
+2. **Remi:** Merge PRs #25 → #27 → #28 (all MERGEABLE, 8+ days waiting)
+3. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+4. **Remi (CRITICAL):** Contact ctxly team — 21+ days since submission
+
+---
+
+## ✅ Trust PM: Cycle 155 — PR #29 External Contribution Reviewed + PRs #25/#27/#28 Still Pending Remi (Mar 27, 15:27 GMT+2)
+
+**Session:** Trust PM — Cycle 155
+
+### Accomplished
+- ✅ **Protocol documents reviewed** — PROTOCOL.md, STATUS.md, DECISIONS.md read
+- ✅ **ctxly.com checked** — **STILL 404**. Now ~504 hours (~21 days) since Mar 6 10:42 submission. FAR beyond 48h window.
+- ✅ **Browser status verified** — Chrome extension not running (gateway device signature error). Tab still not attached.
+- ✅ **Pass store verified** — Reddit/Dev.to: NOT FOUND in pass store. Unchanged.
+- ✅ **GitHub issues checked** — Issues #20 (LangChain), #21 (ElizaOS), #23 (Temporal Decay) OPEN. Issues #17, #18, #19 CLOSED.
+- ✅ **PR #29 discovered** — NEW external contribution from @nanookclaw. Temporal trust decay (closes #23). Opened 2026-03-20. MERGEABLE+CLEAN.
+- ✅ **PR #29 PM-reviewed + approved** — High-quality implementation. 32 tests, 292 total passing. Pure read-time, no schema changes. Posted PM approval on GitHub.
+- ✅ **STATUS.md updated** — This entry
+- ✅ **Committed + pushed**
+
+### Current State (as of Mar 27, 15:27 GMT+2)
+
+**PRs:**
+| PR | Title | Status |
+|----|-------|--------|
+| #29 | Temporal Trust Decay (closes #23) | 🟡 OPEN, MERGEABLE+CLEAN, **PM ✅** → QA needed |
+| #28 | ElizaOS integration (closes #21) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #27 | LangChain integration (closes #20) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+| #25 | SecurityAudit attestation (closes #19) | 🟡 OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** |
+
+**Distribution Blockers (UNCHANGED — 21 days overdue):**
+- 🔴 **ctxly.com** — STILL 404. ~504h since submission. ~456h beyond 48h window. Critical.
+- 🔴 **Browser tab** — Chrome extension not running. Tab not attached. 5+ days overdue.
+- 🔴 **Reddit account** — NOT in pass store. 5+ days overdue.
+- 🔴 **Dev.to account** — NOT in pass store. 5+ days overdue.
+
+**Schema UIDs:**
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder; register after #25 merges
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+
+### Next Actions
+
+1. **PM (this cycle):** Spawn QA for PR #29 (Temporal Trust Decay)
+2. **Remi (URGENT):** Merge PRs #25 → #27 → #28 (all MERGEABLE, 8+ days waiting)
+3. **Remi (URGENT):** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+4. **Remi (CRITICAL):** Contact ctxly team — 21 days since submission, no response. Human escalation required.
+5. **Remi:** Attach Chrome browser tab — click OpenClaw extension icon
+6. **Remi:** Add Reddit + Dev.to credentials to pass store
+
+### Notable: External Contributor @nanookclaw
+
+@nanookclaw submitted PR #29 independently (no explicit coder spawn for this). Quality is high:
+- Correct λ range (0.01–0.03) and 5/day Sybil threshold from issue discussion
+- Three decay types matching existing tier-constants.ts step pattern
+- Null attestation time handled gracefully
+- 32 tests including Sybil farming signal test
+- Pure read-time, fully backward-compatible
+
+This is exactly what Issue #23 asked for. PM-approved; QA should verify build + tests locally.
+
+---
+
+## ✅ Trust PM: State Reassessment + Next Action Drive (Mar 19, 17:19 EDT)
+
+**Session:** Trust PM — repo reassessment, PR readiness validation, and cycle-forward planning
+
+### Accomplished
+- ✅ **Protocol docs re-read** — `PROTOCOL.md`, `STATUS.md`, `DECISIONS.md` reviewed before actioning.
+- ✅ **Live GitHub state verified** — Open PRs remain #25 (SecurityAudit), #27 (LangChain), #28 (ElizaOS); open issues are #20, #21, #23.
+- ✅ **Mergeability re-checked now** — PRs #25/#27/#28 all still `MERGEABLE` and non-draft.
+- ✅ **Execution risk identified** — local `main` working tree is dirty (`STRATEGY.md` modified + untracked `docs/TEMPORAL_TRUST_DECAY_PLAN.md`, `packages/elizaos/`), so do not perform PM git operations from this checkout until owner of local changes confirms intent.
+
+### Current State (as of Mar 19, 17:19 EDT)
+- 🟡 **PR #25** — OPEN, `MERGEABLE`, previously PM+QA approved → ready for Remi merge.
+- 🟡 **PR #27** — OPEN, `MERGEABLE`, previously PM+QA approved → ready for Remi merge.
+- 🟡 **PR #28** — OPEN, `MERGEABLE`, previously PM+QA approved → ready for Remi merge.
+- 🔴 **Schema UID registration still pending on Remi** — `paymentReliable`, `taskCompletion`, and `securityAudit` UIDs need registration/update.
+- ⏳ **Issue #23 (Temporal Trust Decay)** — remains open; should be next coding cycle after PR #25/#27/#28 are merged and publish steps complete.
+
+### Next Action Driven (immediate)
+1. **Remi:** Merge PRs in order **#25 → #27 → #28** (all currently clean/mergeable).
+2. **Remi:** Register/update all 3 schema UIDs in `packages/sdk/src/constants.ts` (paymentReliable/taskCompletion/securityAudit).
+3. **PM next cycle:** Once merges land, trigger coder on **Issue #23** with scoped MVP (decay function + query API + tests), then QA review.
+
+## ✅ Trust PM: Etheran Partnership Prep + PR Check (Mar 17, 08:15 EDT)
+
+**Session:** Trust PM — Etheran outreach preparation + PR mergeability verification
+
+### Accomplished
+- ✅ **PRs #25, #27, #28 re-verified MERGEABLE** — All three confirmed `MERGEABLE + CLEAN` as of 08:15 EDT. No drift since QA approval at 04:30 EDT.
+- ✅ **Etheran DM drafted** — Partnership outreach DM added to `COMMS_PLAN.md` (§ "Etheran DM — Ready to Send"). 2-sentence pitch referencing their ERC-8183 "evaluator attestation" primitive + our TaskCompletion/PaymentReliable attestations as the evidence layer their reputation engine needs. Ready to fire after Post 1 goes up.
+- ✅ **Data model alignment analysis** — Full schema compatibility analysis added to `COMMS_PLAN.md` (§ "Data Model Alignment"). See details below.
+- ✅ **ERC-8183 spec reviewed** — Fetched and analyzed the full ERC-8183 draft. Confirmed our schema field mappings and identified 4 gaps to resolve with Etheran.
+
+### Data Model Alignment Summary (ERC-8183 ↔ Agent Trust)
+
+**What already maps cleanly:**
+- `provider` → `subjectAgent` (1:1)
+- `budget` → `amount`/`reward` (1:1)
+- `expiredAt` → `dueAt` (equivalent)
+- Completed/Rejected/Expired → `outcome` 1/0/0
+- `jobId` → `taskId` (string encoding: `"erc8183:<chainId>:<contract>:<jobId>"`)
+- block.timestamp at complete() → `completedAt`/`paidAt`
+
+**4 gaps to propose to Etheran:**
+1. **Add `address evaluator` field to TaskCompletion** — so their indexer can verify attestation is from the designated ERC-8183 evaluator
+2. **Standardize `taskId` URI format** — `"erc8183:<chainId>:<contractAddress>:<jobId>"` for Etheran's indexer to cross-reference
+3. **`reason` ↔ EAS UID bridge** — evaluator sets `complete(jobId, reason=bytes32(uint(easAttestationUID)))` to create on-chain link from ERC-8183 job → EAS attestation
+4. **IACPHook integration** — implement hook that auto-issues EAS attestation on `afterAction(complete)` (longer-term)
+
+### PR Status (as of 08:15 EDT)
+
+| PR | Title | Mergeable | Status |
+|----|-------|-----------|--------|
+| #25 | SecurityAudit attestation | ✅ MERGEABLE+CLEAN | PM+QA approved → Remi to merge |
+| #27 | LangChain integration | ✅ MERGEABLE+CLEAN | PM+QA approved → Remi to merge |
+| #28 | ElizaOS integration | ✅ MERGEABLE+CLEAN | PM+QA approved → Remi to merge |
+
+### Next Actions
+1. **Comms:** Fire Post 1 (Etheran "they score, we attest") on PinchSocial once API key is live
+2. **Comms:** Send Etheran DM (from `COMMS_PLAN.md`) after Post 1 is up
+3. **Remi:** Merge PRs #25, #27, #28 — all MERGEABLE, no action needed from team
+4. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit) — urgent given Etheran's mainnet is live
+5. **PM (next cycle, post-DM response):** If Etheran responds, prepare schema PR for `evaluator` field addition to TaskCompletion + `taskId` URI format documentation
+6. **PM (next cycle):** After all 3 merges + BA analysis → spawn BA for strategic next-steps
+
+---
+
+## ✅ Trust QA: PRs #27 (LangChain) + #28 (ElizaOS) APPROVED (Mar 17, 04:30 EDT)
+
+**Session:** Trust QA — Full build, test, and code review for PRs #27 + #28
+
+### Verdict Summary
+
+| PR | Branch | Verdict | Build | Tests | Mergeable |
+|----|--------|---------|-------|-------|-----------|
+| #27 | feat/langchain-integration | ✅ **APPROVED** | ✅ clean | ✅ 72/72 | ✅ MERGEABLE+CLEAN |
+| #28 | feat/elizaos-integration-21 | ✅ **APPROVED** | ✅ clean | ✅ 74/74 | ✅ MERGEABLE+CLEAN |
+| SDK regression | — | ✅ no regression | — | ✅ 260/260 | — |
+
+### PR #27 — LangChain Integration (Closes #20)
+- **Build:** `npm run build` ✅ zero TypeScript errors
+- **Tests:** `npm test` ✅ 72/72 passing (25 tool + 47 gate)
+- **SDK regression:** 260/260 passing ✅
+- **Mergeable:** MERGEABLE + CLEAN ✅
+- **Code quality:** Architecture exactly matches DECISIONS.md spec — `TrustCheckTool` (DynamicStructuredTool), `TrustGate` (Runnable + pipe), `createTrustMiddleware` factory, `TrustGateError`. Peer deps correct. `AgentTrustLike` interface ensures no hard SDK dep at runtime. Dynamic `require()` for LangChain decoupling. Full test coverage.
+- **QA comment:** https://github.com/nia-agent-cyber/agent-trust/pull/27#issuecomment-4073200893
+
+### PR #28 — ElizaOS Integration (Closes #21)
+- **Build:** `npm run build` ✅ zero TypeScript errors
+- **Tests:** `npm test` ✅ 74/74 passing (action: 21, evaluator: 20, provider: 13, plugin: 20) — exceeds ≥55 target
+- **SDK regression:** 260/260 passing ✅
+- **Mergeable:** MERGEABLE + CLEAN ✅
+- **Code quality:** Matches ELIZAOS_PLAN.md spec — `createTrustCheckAction`, `createTrustGuardEvaluator`, `createTrustProvider`, `createAgentTrustPlugin`. Excellent `eliza-types.ts` shim avoids hard `@elizaos/core` dep at build time. TierName correctly uses SDK names (contributor/trusted/verified/expert). 469-line tutorial doc + package README. All mocked (zero live RPC in tests).
+- **QA comment:** https://github.com/nia-agent-cyber/agent-trust/pull/28#issuecomment-4073202742
+
+### Current State After QA
+- ✅ **PR #25** — OPEN, MERGEABLE, PM+QA approved → **Remi to merge** (closes #19 SecurityAudit)
+- ✅ **PR #27** — OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** (closes #20 LangChain)
+- ✅ **PR #28** — OPEN, MERGEABLE, PM+QA ✅ → **Remi to merge** (closes #21 ElizaOS)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #23 (Temporal Trust Decay)** — P3, queued after LangChain + ElizaOS land
+
+### Next Actions
+1. **Remi:** Merge PR #27 → closes #20; publish `@nia-agent-cyber/agent-trust-langchain` to GitHub Packages
+2. **Remi:** Merge PR #28 → closes #21; publish `@nia-agent-cyber/agent-trust-elizaos` to GitHub Packages
+3. **Remi:** Merge PR #25 → closes #19
+4. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+5. **PM (next cycle):** After all 3 merges → spawn BA for strategic next-steps analysis
+
+---
+
+## 🔍 Trust PM: QA Spawned for PRs #27+#28 — All PRs MERGEABLE (Mar 17, 04:21 EDT)
+
+**Session:** Trust PM — Overnight assessment + QA handoff
+
+### Accomplished
+- ✅ **Assessed current state** — All 3 open PRs confirmed MERGEABLE, no conflicts
+- ✅ **PR #25 (SecurityAudit)** — Still MERGEABLE ✅, PM+QA approved → **Remi to merge** (Issue #19 already CLOSED)
+- ✅ **PR #27 (LangChain)** — MERGEABLE ✅, PM approved, no QA comment found → **QA spawned**
+- ✅ **PR #28 (ElizaOS)** — MERGEABLE ✅, PM approved, no QA comment found → **QA spawned**
+- ✅ **BA/Comms context** — BA cycle 7 complete (t54 Labs + Lyneth Labs threats noted); Comms Mar 17 plan ready
+
+### Current State
+- 🟡 **PR #25** — OPEN, MERGEABLE ✅, PM+QA approved → **Remi to merge** (Issue #19 CLOSED)
+- ⏳ **PR #27** — OPEN, MERGEABLE ✅, PM ✅ → **QA reviewing** (closes #20 LangChain)
+- ⏳ **PR #28** — OPEN, MERGEABLE ✅, PM ✅ → **QA reviewing** (closes #21 ElizaOS)
+- 🔴 **SCHEMAS.securityAudit.uid** — Placeholder; after #25 merge: `PRIVATE_KEY=<key> npx ts-node scripts/register-security-audit.ts`
+- 🔴 **SCHEMAS.taskCompletion.uid** — Placeholder `0x00...00`; blocked on Remi
+- 🔴 **SCHEMAS.paymentReliable.uid** — Placeholder `0x00...00`; blocked on Remi
+- ⏳ **Issue #23 (Temporal Trust Decay)** — P3, queued after LangChain + ElizaOS land
+
+### Next Actions
+1. **QA (in progress):** Review PR #27 (LangChain) + PR #28 (ElizaOS) — post approval/rejection comments on GitHub
+2. **PM (next cycle):** After QA approvals → verify MERGEABLE → notify Remi
+3. **Remi:** Merge PR #25 → already fully approved (PM+QA)
+4. **Remi:** Merge PRs #27+#28 after QA approval → closes #20 + #21
+5. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+6. **Remi:** Publish `@nia-agent-cyber/agent-trust-langchain` + `@nia-agent-cyber/agent-trust-elizaos` to GitHub Packages after merges
 
 ---
 

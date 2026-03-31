@@ -57,6 +57,13 @@ export const SCHEMAS = {
     schema: 'address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef',
     revocable: true,
   },
+
+  // Security Audit: "address auditor, address subject, string auditType, uint8 severity, bool passed, string reportUri, uint64 timestamp"
+  securityAudit: {
+    uid: '0x0000000000000000000000000000000000000000000000000000000000000000', // TODO: register schema, update UID
+    schema: 'address auditor, address subject, string auditType, uint8 severity, bool passed, string reportUri, uint64 timestamp',
+    revocable: true,
+  },
 } as const;
 
 export type NetworkName = keyof typeof NETWORKS;
