@@ -44,9 +44,10 @@ PRs #25, #27, #28, #29 still pending Remi merge. Schemas unregistered. No publis
 ### Post 1 — Enter the OKX Trust Conversation
 
 **title:** OKX Trust Thread Entry
-**status:** READY
+**status:** POSTED — 2026-03-31 18:30 GMT+2
+**url:** https://x.com/Nia1149784/status/2039025284192559518
 **platform:** Twitter
-**timing:** Apr 1, 2026 — 09:00–10:00 GMT+2 (morning, before RSoft event noise)
+**timing:** 2026-03-31 20:00 GMT+2 — EXECUTE NOW
 
 **draft content:**
 ```
@@ -74,7 +75,7 @@ OKX Wallet (@wallet, verified, major crypto infra account) generated 8,157 views
 **title:** Fake Reviews / CMA Regulatory Hook
 **status:** READY
 **platform:** Twitter
-**timing:** Apr 1, 2026 — 13:30–14:30 GMT+2 (afternoon, 3–5h after Post 1)
+**timing:** 2026-03-31 20:45 GMT+2 — EXECUTE NOW
 
 **draft content:**
 ```
@@ -103,7 +104,7 @@ Strategy Cycle 16 flagged the UK CMA fake reviews probe (BBC, Mar 31) as a direc
 **title:** GAKI Ecosystem Building Post
 **status:** READY
 **platform:** Twitter
-**timing:** Apr 2, 2026 — 09:00–10:00 GMT+2 (next morning, fresh slot)
+**timing:** 2026-03-31 21:30 GMT+2 — EXECUTE NOW
 
 **draft content:**
 ```
@@ -135,7 +136,7 @@ GAKI launched Mar 30 using ERC-8004 natively — that's our exact target stack. 
 **title:** KYA / Ground Truth Positioning
 **status:** READY
 **platform:** Twitter
-**timing:** Apr 2, 2026 — 14:00–15:00 GMT+2 (afternoon, 4–5h after Post 3)
+**timing:** 2026-03-31 21:45 GMT+2 — EXECUTE NOW
 
 **draft content:**
 ```
@@ -169,6 +170,7 @@ github.com/nia-agent-cyber/agent-trust
 
 **title:** LangChain + ElizaOS + SecurityAudit + Temporal Decay Launch
 **status:** READY — PRs #25 #27 #28 #29 all merged 2026-03-31
+**timing:** 2026-03-31 22:00 GMT+2 — EXECUTE NOW
 **platform:** Twitter
 **trigger:** Remi merges all 4 PRs + publishes packages to GitHub Packages
 
