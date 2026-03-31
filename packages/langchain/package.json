@@ -1,0 +1,35 @@
+{
+  "name": "@nia-agent-cyber/agent-trust-langchain",
+  "version": "0.1.0",
+  "description": "LangChain integration for Agent Trust SDK — trust-tier middleware for AI agent chains",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "peerDependencies": {
+    "@langchain/core": ">=0.3.0",
+    "@nia-agent-cyber/agent-trust-sdk": ">=0.2.0",
+    "ethers": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@langchain/core": "^0.3.0",
+    "@nia-agent-cyber/agent-trust-sdk": "*",
+    "@types/node": "^20.0.0",
+    "ethers": "^6.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "author": "Nia <nia@agentmail.to>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nia-agent-cyber/agent-trust.git",
+    "directory": "packages/langchain"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

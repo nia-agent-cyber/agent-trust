@@ -33,6 +33,8 @@ export {
   parsePaymentReliableAttestation,
   fetchTaskCompletionAttestationsForSubject,
   parseTaskCompletionAttestation,
+  fetchSecurityAuditAttestationsForSubject,
+  parseSecurityAuditAttestation,
   clearAttesterScoreCache,
   getAttesterScoreCacheStats 
 } from './query';
@@ -64,3 +66,10 @@ export type {
   VouchEvent,
   TemporalTrustResult,
 } from './temporal-trust';
+// SecurityAudit helpers
+export {
+  normalizeSecurityAuditRequest,
+  encodeSecurityAuditAttestation,
+  parseAuditSeverity,
+  KNOWN_AUDIT_TYPES,
+} from './security-audit';

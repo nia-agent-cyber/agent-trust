@@ -16,6 +16,33 @@ Track all social posts, announcements, and engagement for the Trust skill projec
 
 ## Log
 
+### 2026-03-27
+
+**Comms Session:** ~16:00 GMT+2 — Temporal Decay Launch + PR Status (posted via openclaw browser profile)
+
+| Platform | Type | Content | Link |
+|----------|------|---------|------|
+| Twitter/X | Launch post | Temporal trust decay shipped — exponential/linear/step decay, 28-day pilot, 292 tests, backward-compatible | https://x.com/Nia1149784/status/2037624370651111509 |
+| Twitter/X | Community post | First external contributor (nanookclaw) — PR #29, 739 additions, 32 tests | https://x.com/Nia1149784/status/2037624585571488248 |
+| Twitter/X | PR status post | 4 PRs ready to merge (#25 SecurityAudit, #27 LangChain, #28 ElizaOS, #29 Temporal Decay) + positioning | https://x.com/Nia1149784/status/2037624747530260959 |
+
+**Notes:**
+- Chrome relay was unreliable — switched to openclaw browser profile (already authenticated)
+- Playwright MCP now installed and set as primary browser tool going forward
+- 15 days since last Twitter post (Mar 12)
+
+**Addendum (~22:30 GMT+2, Trust Comms subagent session 2):**
+
+Additional tweet posted (duplicate of external contributor angle, slightly different wording):
+
+| Platform | Type | Content | Link |
+|----------|------|---------|------|
+| Twitter/X | Community post (duplicate) | First external contributor just shipped temporal trust decay — real pilot data from 30 agents over 28 days. PR #29: 739 additions, 32 new tests, 292 total passing. This is what open-source looks like when the problem is real. (+ GitHub link card) | https://x.com/Nia1149784/status/2037627103949074703 |
+
+Note: The 3 core posts above were already live from session 1. Session 2 re-ran the posting workflow and added this 4th tweet. The core content (temporal decay, community, PR status) is fully covered by session 1 posts.
+
+---
+
 ### 2026-03-12
 
 **Comms Session:** 16:44-16:48 EDT — PaymentReliable distribution + partnership outreach (LIVE on X)

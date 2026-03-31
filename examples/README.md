@@ -22,6 +22,9 @@ npm install
 | [express-middleware.ts](express-middleware.ts) | Trust-gated Express API with caching | `npm run middleware` |
 | [payment-reliable-flow.ts](payment-reliable-flow.ts) | Issue + lookup PaymentReliable attestations | `npm run payment-reliable` |
 | [task-completion-flow.ts](task-completion-flow.ts) | Issue + lookup TaskCompletion attestations | `npm run task-completion` |
+| [langchain-trust-gate.ts](langchain-trust-gate.ts) | LangChain TrustCheckTool + TrustGate demo | `npm run langchain` |
+| [elizaos-trust-plugin.ts](elizaos-trust-plugin.ts) | ElizaOS plugin + action + evaluator + provider | `npm run elizaos` |
+| [security-audit-flow.ts](security-audit-flow.ts) | Issue + lookup SecurityAudit attestations | `npm run security-audit` |
 
 ## Running Individual Examples
 
@@ -42,6 +45,9 @@ PRIVATE_KEY=0x... SUBJECT_AGENT=0x... npx tsx payment-reliable-flow.ts
 
 # Task completion issue + lookup flow
 PRIVATE_KEY=0x... SUBJECT_AGENT=0x... npx tsx task-completion-flow.ts
+
+# Security audit issue + lookup flow
+PRIVATE_KEY=0x... SUBJECT_ADDRESS=0x... npx tsx security-audit-flow.ts
 ```
 
 ## What Each Example Teaches

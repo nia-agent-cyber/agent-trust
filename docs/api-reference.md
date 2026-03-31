@@ -260,6 +260,64 @@ for (const att of completions) {
 
 ---
 
+#### `issueSecurityAudit(request: SecurityAuditRequest): Promise<SecurityAuditResult>`
+
+Issue a SecurityAudit attestation for a subject address.
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `auditor` | `string` | ✅ | Address of the auditor performing the audit |
+| `subject` | `string` | ✅ | Address of the subject being audited (must not be zero address) |
+| `auditType` | `string` | ✅ | Type of audit: `"smart-contract"`, `"dependency-scan"`, `"penetration-test"`, `"code-review"`, `"fuzzing"` |
+| `severity` | `number \| AuditSeverity` | ✅ | Severity level: `0-4` or `"none"/"low"/"medium"/"high"/"critical"` |
+| `passed` | `boolean` | ✅ | Whether the subject passed the audit |
+| `reportUri` | `string` | — | URI to the full audit report (IPFS CID, URL, etc.) |
+| `timestamp` | `string \| number \| Date` | — | Audit timestamp (defaults to now) |
+
+**Returns:** `SecurityAuditResult`
+
+**Example:**
+
+```typescript
+const result = await agentTrust.issueSecurityAudit({
+  auditor: '0xAuditorAddress',
+  subject: '0xSubjectAddress',
+  auditType: 'smart-contract',
+  severity: 'critical',
+  passed: false,
+  reportUri: 'ipfs://QmAuditReport',
+  timestamp: new Date(),
+});
+
+if (result.success) {
+  console.log('SecurityAudit attestation UID:', result.attestationUid);
+}
+```
+
+---
+
+#### `getSecurityAudits(subjectAddress: string): Promise<SecurityAuditAttestation[]>`
+
+Lookup parsed SecurityAudit attestations where the subject is recipient.
+
+**Parameters:**
+- `subjectAddress` - Ethereum address to look up (must be a valid Ethereum address)
+
+**Returns:** Array of `SecurityAuditAttestation`
+
+**Example:**
+
+```typescript
+const audits = await agentTrust.getSecurityAudits('0xSubjectAddress');
+for (const audit of audits) {
+  console.log(audit.auditType, audit.severity, audit.passed, audit.reportUri);
+}
+```
+
+---
+
 #### `generateTwitterChallenge(agentId: string, handle: string): TwitterChallenge`
 
 Generate a Twitter verification challenge.
@@ -368,6 +426,71 @@ interface VerificationResult {
 }
 ```
 
+### SecurityAuditRequest
+
+```typescript
+type AuditSeverity = 'none' | 'low' | 'medium' | 'high' | 'critical';
+
+interface SecurityAuditRequest {
+  /** Address of the auditor performing the audit */
+  auditor: string;
+  /** Address of the subject being audited */
+  subject: string;
+  /**
+   * Type of audit performed.
+   * Known values: "smart-contract", "dependency-scan", "penetration-test", "code-review", "fuzzing"
+   */
+  auditType: string;
+  /** Severity of findings (number 0-4 or string like "high") */
+  severity: number | AuditSeverity;
+  /** Whether the subject passed the audit */
+  passed: boolean;
+  /** URI to the full audit report (IPFS CID, URL, etc.) */
+  reportUri?: string;
+  /** Audit timestamp (unix seconds/ms, Date, or ISO string). Defaults to now. */
+  timestamp?: string | number | Date;
+}
+```
+
+### SecurityAuditResult
+
+```typescript
+interface SecurityAuditResult {
+  success: boolean;
+  attestationUid?: string;
+  txHash?: string;
+  error?: string;
+}
+```
+
+### SecurityAuditAttestation
+
+```typescript
+interface SecurityAuditAttestation {
+  uid: string;
+  attester: string;
+  recipient: string;
+  auditor: string;
+  subject: string;
+  auditType: string;
+  severity: AuditSeverity;
+  passed: boolean;
+  reportUri: string;
+  timestamp: number;
+  time: number;
+  revoked: boolean;
+}
+```
+
+### AuditSeverity
+
+```typescript
+type AuditSeverity = 'none' | 'low' | 'medium' | 'high' | 'critical';
+// Maps to uint8 on-chain: none=0, low=1, medium=2, high=3, critical=4
+```
+
+---
+
 ### AgentTrustConfig
 
 ```typescript
@@ -448,6 +571,12 @@ SCHEMAS.flag.schema         // 'address flagged, uint8 severity, string reason, 
 
 SCHEMAS.paymentReliable.uid    // '0x000...000' (placeholder until schema registration)
 SCHEMAS.paymentReliable.schema // 'address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef'
+
+SCHEMAS.taskCompletion.uid    // '0x000...000' (placeholder until schema registration)
+SCHEMAS.taskCompletion.schema // 'address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef'
+
+SCHEMAS.securityAudit.uid    // '0x000...000' (placeholder until schema registration)
+SCHEMAS.securityAudit.schema // 'address auditor, address subject, string auditType, uint8 severity, bool passed, string reportUri, uint64 timestamp'
 ```
 
 ---
@@ -522,6 +651,77 @@ import { parseTaskOutcome } from '@nia-agent-cyber/agent-trust-sdk';
 parseTaskOutcome(0); // 'failed'
 parseTaskOutcome(1); // 'completed'
 parseTaskOutcome(2); // 'disputed'
+```
+
+### fetchSecurityAuditAttestationsForSubject
+
+Fetch SecurityAudit attestations for a subject address from EAS GraphQL.
+
+```typescript
+import { fetchSecurityAuditAttestationsForSubject } from '@nia-agent-cyber/agent-trust-sdk';
+
+const audits = await fetchSecurityAuditAttestationsForSubject('0xSubjectAddress', 'base');
+```
+
+### parseSecurityAuditAttestation
+
+Parse a raw EAS GraphQL attestation object into a typed `SecurityAuditAttestation`.
+
+```typescript
+import { parseSecurityAuditAttestation } from '@nia-agent-cyber/agent-trust-sdk';
+
+const parsed = parseSecurityAuditAttestation(rawGraphQLAttestation);
+// { uid, attester, recipient, auditor, subject, auditType, severity, passed, reportUri, timestamp, time, revoked }
+```
+
+### parseAuditSeverity
+
+Map a numeric severity code to a typed `AuditSeverity` string. Throws on unknown codes.
+
+```typescript
+import { parseAuditSeverity } from '@nia-agent-cyber/agent-trust-sdk';
+
+parseAuditSeverity(0); // 'none'
+parseAuditSeverity(1); // 'low'
+parseAuditSeverity(2); // 'medium'
+parseAuditSeverity(3); // 'high'
+parseAuditSeverity(4); // 'critical'
+```
+
+### normalizeSecurityAuditRequest
+
+Normalize and validate a `SecurityAuditRequest`. Throws on invalid inputs.
+
+```typescript
+import { normalizeSecurityAuditRequest } from '@nia-agent-cyber/agent-trust-sdk';
+
+const normalized = normalizeSecurityAuditRequest({
+  auditor: '0xAuditor',
+  subject: '0xSubject',
+  auditType: 'smart-contract',
+  severity: 'high',
+  passed: false,
+  timestamp: new Date(),
+});
+// { auditor, subject, auditType, severity: 'high', severityCode: 3, passed, reportUri, timestamp }
+```
+
+### encodeSecurityAuditAttestation
+
+ABI-encode a SecurityAudit attestation payload for EAS.
+
+```typescript
+import { encodeSecurityAuditAttestation } from '@nia-agent-cyber/agent-trust-sdk';
+
+const encoded = encodeSecurityAuditAttestation({
+  auditor: '0xAuditor',
+  subject: '0xSubject',
+  auditType: 'dependency-scan',
+  severity: 1,
+  passed: true,
+  timestamp: Date.now(),
+});
+// '0x...' — hex-encoded ABI payload
 ```
 
 ### clearAttesterScoreCache
@@ -789,3 +989,179 @@ interface AgentStats {
 | 2 | Trusted | ⭐ | 10 | 2 | 70% | 30 |
 | 3 | Verified | ✅ | 25 | 5 | 85% | 90 |
 | 4 | Expert | 👑 | 50 | 10 | 95% | 180 |
+
+---
+
+## ElizaOS Integration Package
+
+Package: `@nia-agent-cyber/agent-trust-elizaos`
+
+### createAgentTrustPlugin
+
+```typescript
+import { createAgentTrustPlugin } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const plugin = createAgentTrustPlugin({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'address',
+});
+```
+
+Returns an ElizaOS `Plugin` with:
+- `plugin.actions[0]` — `TrustCheckAction`
+- `plugin.evaluators[0]` — `TrustGuardEvaluator`
+- `plugin.providers[0]` — `TrustProvider`
+
+### createTrustCheckAction
+
+```typescript
+import { createTrustCheckAction } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const action = createTrustCheckAction({
+  agentTrust,
+  requiredTier: 'contributor',  // optional
+  addressKey: 'address',        // default: 'address'
+  name: 'CHECK_AGENT_TRUST',    // optional override
+});
+```
+
+- **validate**: returns `true` if a valid Ethereum address exists in `message.content[addressKey]` or `message.content.text`
+- **handler**: calls `getTier()+getScore()`, invokes callback with `{ text, trustCheck: TrustCheckResult }`
+- Callback payload: `{ address, tier: { level, name, score }, meets?, requiredTier?, error? }`
+
+### createTrustGuardEvaluator
+
+```typescript
+import { createTrustGuardEvaluator } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const evaluator = createTrustGuardEvaluator({
+  agentTrust,
+  requiredTier: 'trusted',
+  addressKey: 'address',
+});
+```
+
+- **validate**: returns `true` if a valid address is found
+- **handler**: writes `state.trustGuardResult` after each turn
+- `state.trustGuardResult`: `{ address, passed: boolean, tier: { level, name }, requiredTier, error? }`
+
+### createTrustProvider
+
+```typescript
+import { createTrustProvider } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const provider = createTrustProvider({ agentTrust, addressKey: 'address' });
+```
+
+- **get**: returns a formatted trust context string injected into agent state/system prompt
+
+Example output:
+```
+[Trust Context]
+Address: 0x...
+Tier: trusted (level 2)
+Score: 72
+Verified: no
+```
+
+---
+
+## LangChain Integration Package
+
+Package: `@nia-agent-cyber/agent-trust-langchain`
+
+### TrustCheckTool
+
+```typescript
+import { TrustCheckTool } from '@nia-agent-cyber/agent-trust-langchain';
+
+const tool = new TrustCheckTool({ agentTrust, requiredTier: 'contributor' });
+```
+
+**Config:**
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `agentTrust` | `AgentTrustLike` | AgentTrust instance |
+| `requiredTier?` | `TierName` | Default minimum tier |
+| `name?` | `string` | Tool name (default: `agent_trust_check`) |
+| `description?` | `string` | Tool description |
+
+**Methods:**
+- `_run(input: TrustCheckToolInput): Promise<TrustCheckOutput>` — structured result
+- `invoke(input): Promise<string>` — JSON-serialized result
+- `toLangChainTool(): DynamicStructuredTool` — native LangChain tool
+
+**Output shape:**
+```typescript
+interface TrustCheckOutput {
+  address: string;
+  tier: { level: number; name: TierName; score: number };
+  meets: boolean;
+  requiredTier?: TierName;
+  error?: string;
+}
+```
+
+### TrustGate
+
+```typescript
+import { TrustGate, TrustGateError } from '@nia-agent-cyber/agent-trust-langchain';
+
+const gate = new TrustGate({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'counterpartyAddress',
+  onBlocked: (state) => ({ ...state, blocked: true }),
+});
+```
+
+**Config:**
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `agentTrust` | `AgentTrustLike` | AgentTrust instance |
+| `requiredTier` | `TierName` | Minimum tier required |
+| `addressKey?` | `string` | State key for address (default: `'address'`) |
+| `onBlocked?` | `(state) => state` | Fallback instead of throwing |
+
+**Methods:**
+- `invoke(state): Promise<Record<string, unknown>>` — passes or blocks
+- `pipe(next): ComposedChain` — compose with next step
+- `toLangChainRunnable(): RunnableLambda` — native LangChain Runnable
+
+### TrustGateError
+
+Thrown when TrustGate blocks and no `onBlocked` is provided.
+
+```typescript
+error.address       // blocked address
+error.tier          // actual tier name
+error.requiredTier  // required tier name
+error.message       // human-readable description
+```
+
+### createTrustMiddleware
+
+```typescript
+import { createTrustMiddleware } from '@nia-agent-cyber/agent-trust-langchain';
+
+const { tool, gate } = createTrustMiddleware({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'walletAddress',
+});
+```
+
+Returns `{ tool: TrustCheckTool, gate: TrustGate }`.
+
+### Tier Names (LangChain package)
+
+| Level | Name |
+|-------|------|
+| 0 | `unverified` |
+| 1 | `contributor` |
+| 2 | `trusted` |
+| 3 | `verified` |
+| 4 | `expert` |

@@ -158,6 +158,84 @@ const result = await agentTrust.issueTaskCompletion({
 const completions = await agentTrust.getTaskCompletions('0xBountyHunter');
 ```
 
+### 🤖 ElizaOS Integration
+
+Add trust-tier gating to ElizaOS agents with `@nia-agent-cyber/agent-trust-elizaos`.
+
+```bash
+npm install @nia-agent-cyber/agent-trust-elizaos @elizaos/core
+```
+
+```typescript
+import { createAgentTrustPlugin } from '@nia-agent-cyber/agent-trust-elizaos';
+
+const plugin = createAgentTrustPlugin({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'callerAddress',
+});
+
+const runtime = new AgentRuntime({ plugins: [plugin] });
+```
+
+**Components:**
+- **`TrustCheckAction`** (`CHECK_AGENT_TRUST`) — looks up trust tier from wallet addresses in messages; invokes callback with `{ text, trustCheck: { tier, meets } }`
+- **`TrustGuardEvaluator`** (`TRUST_GUARD`) — post-processes messages; writes `state.trustGuardResult.passed` for downstream use
+- **`TrustProvider`** — enriches agent system prompt context with formatted trust tier info
+
+### 🔗 LangChain Integration
+
+Add trust-tier gating to LangChain agent chains with `@nia-agent-cyber/agent-trust-langchain`.
+
+```bash
+npm install @nia-agent-cyber/agent-trust-langchain @langchain/core
+```
+
+```typescript
+import { TrustCheckTool, TrustGate, TrustGateError, createTrustMiddleware } from '@nia-agent-cyber/agent-trust-langchain';
+
+const tool = new TrustCheckTool({ agentTrust, requiredTier: 'contributor' });
+const gate = new TrustGate({ agentTrust, requiredTier: 'contributor', addressKey: 'counterpartyAddress' });
+const chain = gate.pipe(myDownstreamTool);
+// Look up trust tier as a LangChain tool
+const tool = new TrustCheckTool({ agentTrust, requiredTier: 'contributor' });
+const result = await tool._run({ address: '0xAgent' });
+// { tier: { name: 'trusted', level: 2, score: 72 }, meets: true }
+
+// Gate chain execution by trust tier
+const gate = new TrustGate({
+  agentTrust,
+  requiredTier: 'contributor',
+  addressKey: 'counterpartyAddress',
+  onBlocked: (state) => ({ ...state, blocked: true }),
+});
+const chain = gate.pipe(myDownstreamTool);
+await chain.invoke({ counterpartyAddress: '0xAgent', payload: 'execute' });
+
+// Factory for quick setup
+const { tool: t, gate: g } = createTrustMiddleware({ agentTrust, requiredTier: 'contributor' });
+```
+
+See [LangChain tutorial](docs/tutorials/langchain-trust-middleware.md) for the full guide.
+
+### 🔒 Security Audit Attestations
+
+Record on-chain proof of security audits performed against agent code, contracts, or dependencies.
+
+```typescript
+const audit = await agentTrust.issueSecurityAudit({
+  auditor: '0xAuditorAddress',           // address of the auditor
+  subject: '0xSubjectAddress',           // address being audited
+  auditType: 'smart-contract',           // 'smart-contract' | 'dependency-scan' | 'penetration-test' | 'code-review' | 'fuzzing'
+  severity: 'high',                      // 'none' | 'low' | 'medium' | 'high' | 'critical' (or number 0-4)
+  passed: false,                         // whether the subject passed the audit
+  reportUri: 'ipfs://QmAuditReport',     // optional: IPFS CID, URL, or other URI
+  timestamp: new Date(),                 // optional: defaults to now
+});
+
+const audits = await agentTrust.getSecurityAudits('0xSubjectAddress');
+```
+
 ### 📊 Trust Score Algorithm
 
 Trust scores (0-100) are calculated from:
@@ -241,7 +319,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 - 🔜 Trust delegation (agents vouch on behalf of organizations)
 - 🔜 Batch attestation queries (reduce RPC calls)
 - 🔜 Webhook/event subscriptions for tier changes
-- 🔜 New attestation types (SecurityAudit)
+- 🔜 New attestation types (Reputation, Capability)
 
 ## Networks
 
@@ -259,6 +337,7 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 | Flag | `0x07b4542b80819e67b4310d8a5a01ee81d8b23137287983b0d5ecacfe34364a47` |
 | PaymentReliable | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
 | TaskCompletion | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
+| SecurityAudit | `0x0000000000000000000000000000000000000000000000000000000000000000` (placeholder, update after registration) |
 
 ## Why EAS (Not a New Standard)?
 
