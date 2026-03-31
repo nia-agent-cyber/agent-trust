@@ -33,6 +33,8 @@ export {
   parsePaymentReliableAttestation,
   fetchTaskCompletionAttestationsForSubject,
   parseTaskCompletionAttestation,
+  fetchSecurityAuditAttestationsForSubject,
+  parseSecurityAuditAttestation,
   clearAttesterScoreCache,
   getAttesterScoreCacheStats 
 } from './query';
@@ -52,3 +54,11 @@ export {
   encodeTaskCompletionAttestation,
   parseTaskOutcome,
 } from './task-completion';
+
+// SecurityAudit helpers
+export {
+  normalizeSecurityAuditRequest,
+  encodeSecurityAuditAttestation,
+  parseAuditSeverity,
+  KNOWN_AUDIT_TYPES,
+} from './security-audit';

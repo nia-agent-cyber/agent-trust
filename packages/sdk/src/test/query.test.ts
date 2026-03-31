@@ -12,6 +12,8 @@ import {
   parsePaymentReliableAttestation,
   fetchTaskCompletionAttestationsForSubject,
   parseTaskCompletionAttestation,
+  fetchSecurityAuditAttestationsForSubject,
+  parseSecurityAuditAttestation,
   getTrustScore,
   getAttestationSummary,
   clearAttesterScoreCache,
@@ -684,6 +686,185 @@ describe('fetchTaskCompletionAttestationsForSubject', () => {
     }));
 
     const results = await fetchTaskCompletionAttestationsForSubject(AGENT, 'baseSepolia');
+    expect(results).toEqual([]);
+  });
+});
+
+// ============ SecurityAudit Query Tests ============
+
+describe('parseSecurityAuditAttestation', () => {
+  const AUDITOR = '0x' + 'a'.repeat(40);
+  const SUBJECT = '0x' + 'b'.repeat(40);
+  const ATTESTER = '0x' + 'c'.repeat(40);
+
+  it('parses a passing critical audit with all fields', () => {
+    const raw = {
+      id: '0xaudit001',
+      attester: ATTESTER,
+      recipient: SUBJECT,
+      time: 1700000000,
+      revoked: false,
+      schemaId: '0x' + '0'.repeat(64),
+      decodedDataJson: JSON.stringify([
+        { name: 'auditor', value: { value: AUDITOR } },
+        { name: 'subject', value: { value: SUBJECT } },
+        { name: 'auditType', value: { value: 'smart-contract' } },
+        { name: 'severity', value: { value: 4 } },
+        { name: 'passed', value: { value: false } },
+        { name: 'reportUri', value: { value: 'ipfs://QmReport' } },
+        { name: 'timestamp', value: { value: 1700000000 } },
+      ]),
+    };
+
+    const parsed = parseSecurityAuditAttestation(raw);
+
+    expect(parsed.uid).toBe('0xaudit001');
+    expect(parsed.attester).toBe(ATTESTER);
+    expect(parsed.recipient).toBe(SUBJECT);
+    expect(parsed.auditor).toBe(AUDITOR);
+    expect(parsed.subject).toBe(SUBJECT);
+    expect(parsed.auditType).toBe('smart-contract');
+    expect(parsed.severity).toBe('critical');
+    expect(parsed.passed).toBe(false);
+    expect(parsed.reportUri).toBe('ipfs://QmReport');
+    expect(parsed.timestamp).toBe(1700000000);
+    expect(parsed.time).toBe(1700000000);
+    expect(parsed.revoked).toBe(false);
+  });
+
+  it('parses a passing audit (none severity)', () => {
+    const raw = {
+      id: '0xaudit002',
+      attester: ATTESTER,
+      recipient: SUBJECT,
+      time: 1700001000,
+      revoked: false,
+      schemaId: '0x' + '0'.repeat(64),
+      decodedDataJson: JSON.stringify([
+        { name: 'auditor', value: { value: AUDITOR } },
+        { name: 'subject', value: { value: SUBJECT } },
+        { name: 'auditType', value: { value: 'dependency-scan' } },
+        { name: 'severity', value: { value: 0 } },
+        { name: 'passed', value: { value: true } },
+        { name: 'reportUri', value: { value: '' } },
+        { name: 'timestamp', value: { value: 1700001000 } },
+      ]),
+    };
+
+    const parsed = parseSecurityAuditAttestation(raw);
+    expect(parsed.severity).toBe('none');
+    expect(parsed.passed).toBe(true);
+    expect(parsed.reportUri).toBe('');
+  });
+
+  it('parses a revoked audit', () => {
+    const raw = {
+      id: '0xaudit003',
+      attester: ATTESTER,
+      recipient: SUBJECT,
+      time: 1700002000,
+      revoked: true,
+      schemaId: '0x' + '0'.repeat(64),
+      decodedDataJson: JSON.stringify([
+        { name: 'auditor', value: { value: AUDITOR } },
+        { name: 'subject', value: { value: SUBJECT } },
+        { name: 'auditType', value: { value: 'code-review' } },
+        { name: 'severity', value: { value: 1 } },
+        { name: 'passed', value: { value: true } },
+        { name: 'reportUri', value: { value: 'https://report.example.com' } },
+        { name: 'timestamp', value: { value: 1700002000 } },
+      ]),
+    };
+
+    const parsed = parseSecurityAuditAttestation(raw);
+    expect(parsed.severity).toBe('low');
+    expect(parsed.revoked).toBe(true);
+  });
+});
+
+describe('fetchSecurityAuditAttestationsForSubject', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('queries EAS with correct schema ID and returns parsed attestations', async () => {
+    const AUDITOR = '0x' + 'a'.repeat(40);
+    const SUBJECT = '0x' + 'b'.repeat(40);
+    const ATTESTER = '0x' + 'c'.repeat(40);
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({
+        data: {
+          asRecipient: [
+            {
+              id: '0xsa001',
+              attester: ATTESTER,
+              recipient: SUBJECT,
+              time: 1700000000,
+              revoked: false,
+              schemaId: '0x' + '0'.repeat(64),
+              decodedDataJson: JSON.stringify([
+                { name: 'auditor', value: { value: AUDITOR } },
+                { name: 'subject', value: { value: SUBJECT } },
+                { name: 'auditType', value: { value: 'penetration-test' } },
+                { name: 'severity', value: { value: 3 } },
+                { name: 'passed', value: { value: false } },
+                { name: 'reportUri', value: { value: 'https://pentest.example.com' } },
+                { name: 'timestamp', value: { value: 1700000000 } },
+              ]),
+            },
+          ],
+        },
+      }),
+    }));
+
+    const results = await fetchSecurityAuditAttestationsForSubject(SUBJECT, 'baseSepolia');
+    expect(results).toHaveLength(1);
+    expect(results[0].auditType).toBe('penetration-test');
+    expect(results[0].severity).toBe('high');
+    expect(results[0].passed).toBe(false);
+  });
+
+  it('returns empty array when no attestations found', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({ data: { asRecipient: [] } }),
+    }));
+
+    const results = await fetchSecurityAuditAttestationsForSubject('0x' + 'a'.repeat(40), 'baseSepolia');
+    expect(results).toEqual([]);
+  });
+
+  it('skips malformed attestations without throwing', async () => {
+    const SUBJECT = '0x' + 'b'.repeat(40);
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: () => Promise.resolve({
+        data: {
+          asRecipient: [
+            {
+              id: '0xbadaudit',
+              attester: '0x' + 'c'.repeat(40),
+              recipient: SUBJECT,
+              time: 1700000000,
+              revoked: false,
+              schemaId: '0x' + '0'.repeat(64),
+              // severity code 99 → parseAuditSeverity throws → should be skipped
+              decodedDataJson: JSON.stringify([
+                { name: 'auditor', value: { value: '0x' + 'a'.repeat(40) } },
+                { name: 'subject', value: { value: SUBJECT } },
+                { name: 'auditType', value: { value: 'fuzzing' } },
+                { name: 'severity', value: { value: 99 } },
+                { name: 'passed', value: { value: true } },
+                { name: 'reportUri', value: { value: '' } },
+                { name: 'timestamp', value: { value: 1700000000 } },
+              ]),
+            },
+          ],
+        },
+      }),
+    }));
+
+    const results = await fetchSecurityAuditAttestationsForSubject(SUBJECT, 'baseSepolia');
     expect(results).toEqual([]);
   });
 });

@@ -1,7 +1,7 @@
 /**
  * AgentTrust - Main SDK class
  */
-import { AgentTrustConfig, TrustScore, VerificationRequest, VerificationResult, VouchRequest, VouchResult, FlagRequest, FlagResult, PaymentReliableRequest, PaymentReliableResult, PaymentReliableAttestation, TaskCompletionRequest, TaskCompletionResult, TaskCompletionAttestation } from './types';
+import { AgentTrustConfig, TrustScore, VerificationRequest, VerificationResult, VouchRequest, VouchResult, FlagRequest, FlagResult, PaymentReliableRequest, PaymentReliableResult, PaymentReliableAttestation, TaskCompletionRequest, TaskCompletionResult, TaskCompletionAttestation, SecurityAuditRequest, SecurityAuditResult, SecurityAuditAttestation } from './types';
 import { TwitterChallenge, TwitterProof } from './verification/twitter';
 import { GitHubChallenge, GitHubProof } from './verification/github';
 import { TierInfo, TierProgress } from './tier';
@@ -77,6 +77,23 @@ export declare class AgentTrust {
      * Lookup TaskCompletion attestations for a subject agent.
      */
     getTaskCompletions(subjectAgent: string): Promise<TaskCompletionAttestation[]>;
+    /**
+     * Issue a SecurityAudit attestation for a subject address.
+     *
+     * Validation + normalization are handled by encodeSecurityAuditAttestation:
+     * - required fields (auditor, subject, auditType, passed)
+     * - auditType validated against known values
+     * - severity normalized from number or string
+     * - timestamp normalized to unix seconds (defaults to now)
+     *
+     * Guards:
+     * - subject must not be the zero address
+     */
+    issueSecurityAudit(request: SecurityAuditRequest): Promise<SecurityAuditResult>;
+    /**
+     * Lookup SecurityAudit attestations for a subject address.
+     */
+    getSecurityAudits(subjectAddress: string): Promise<SecurityAuditAttestation[]>;
     /**
      * Hash a proof string to bytes32
      */

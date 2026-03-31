@@ -20,6 +20,9 @@ import {
   TaskCompletionRequest,
   TaskCompletionResult,
   TaskCompletionAttestation,
+  SecurityAuditRequest,
+  SecurityAuditResult,
+  SecurityAuditAttestation,
 } from './types';
 import { 
   generateTwitterChallenge, 
@@ -42,6 +45,7 @@ import {
   getAttestationSummary,
   fetchPaymentReliableAttestationsForSubject,
   fetchTaskCompletionAttestationsForSubject,
+  fetchSecurityAuditAttestationsForSubject,
 } from './query';
 import { 
   getTier as queryGetTier, 
@@ -53,6 +57,7 @@ import {
 import { buildEnrichedProfile, EnrichedAgentProfile, ERC8004Config } from './erc8004';
 import { encodePaymentReliableAttestation } from './payment-reliable';
 import { encodeTaskCompletionAttestation } from './task-completion';
+import { encodeSecurityAuditAttestation } from './security-audit';
 
 export class AgentTrust {
   private eas: EAS;
@@ -351,6 +356,66 @@ export class AgentTrust {
       throw new Error('Invalid subjectAgent: must be a valid Ethereum address');
     }
     return fetchTaskCompletionAttestationsForSubject(subjectAgent, this.network);
+  }
+
+  /**
+   * Issue a SecurityAudit attestation for a subject address.
+   *
+   * Validation + normalization are handled by encodeSecurityAuditAttestation:
+   * - required fields (auditor, subject, auditType, passed)
+   * - auditType validated against known values
+   * - severity normalized from number or string
+   * - timestamp normalized to unix seconds (defaults to now)
+   *
+   * Guards:
+   * - subject must not be the zero address
+   */
+  async issueSecurityAudit(request: SecurityAuditRequest): Promise<SecurityAuditResult> {
+    try {
+      const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+      if (request.subject && request.subject.toLowerCase() === ZERO_ADDRESS) {
+        throw new Error('Cannot issue SecurityAudit to the zero address');
+      }
+
+      const encodedData = encodeSecurityAuditAttestation(request);
+
+      if (!SCHEMAS.securityAudit.uid || /^0x0{64}$/i.test(SCHEMAS.securityAudit.uid)) {
+        throw new Error('SecurityAudit schema UID not configured. Register schema and update SCHEMAS.securityAudit.uid.');
+      }
+
+      const tx = await this.eas.attest({
+        schema: SCHEMAS.securityAudit.uid,
+        data: {
+          recipient: request.subject,
+          expirationTime: BigInt(0),
+          revocable: true,
+          data: encodedData,
+        },
+      });
+
+      const attestationUid = await tx.wait();
+
+      return {
+        success: true,
+        attestationUid,
+        txHash: (tx as any).tx?.hash || (tx as any).hash,
+      };
+    } catch (error: any) {
+      return {
+        success: false,
+        error: error.message,
+      };
+    }
+  }
+
+  /**
+   * Lookup SecurityAudit attestations for a subject address.
+   */
+  async getSecurityAudits(subjectAddress: string): Promise<SecurityAuditAttestation[]> {
+    if (!ethers.isAddress(subjectAddress)) {
+      throw new Error('Invalid subjectAddress: must be a valid Ethereum address');
+    }
+    return fetchSecurityAuditAttestationsForSubject(subjectAddress, this.network);
   }
 
   /**
