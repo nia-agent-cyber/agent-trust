@@ -168,7 +168,7 @@ github.com/nia-agent-cyber/agent-trust
 ## 🔴 Conditional Post — Fire When PRs Merge
 
 **title:** LangChain + ElizaOS + SecurityAudit + Temporal Decay Launch
-**status:** CONDITIONAL — fire when PRs #25, #27, #28, #29 are merged and packages published
+**status:** READY — PRs #25 #27 #28 #29 all merged 2026-03-31
 **platform:** Twitter
 **trigger:** Remi merges all 4 PRs + publishes packages to GitHub Packages
 
