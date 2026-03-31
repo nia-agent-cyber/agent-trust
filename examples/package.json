@@ -13,6 +13,8 @@
     "task-completion": "npx tsx task-completion-flow.ts",
     "langchain": "npx tsx langchain-trust-gate.ts",
     "elizaos": "npx tsx elizaos-trust-plugin.ts"
+    "langchain": "npx tsx langchain-trust-gate.ts"
+    "security-audit": "npx tsx security-audit-flow.ts"
   },
   "dependencies": {
     "@nia-agent-cyber/agent-trust-sdk": "^0.2.0",

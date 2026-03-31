@@ -181,6 +181,61 @@ export interface TaskCompletionAttestation {
     time: number;
     revoked: boolean;
 }
+/** Severity level for a security audit (matches uint8 on-chain) */
+export type AuditSeverity = 'none' | 'low' | 'medium' | 'high' | 'critical';
+export interface SecurityAuditRequest {
+    /** Address of the auditor performing the audit */
+    auditor: string;
+    /** Address of the subject being audited */
+    subject: string;
+    /**
+     * Type of audit performed.
+     * Known values: "smart-contract", "dependency-scan", "penetration-test", "code-review", "fuzzing"
+     */
+    auditType: string;
+    /** Severity of findings (number 0-4 or string like "high") */
+    severity: number | AuditSeverity;
+    /** Whether the subject passed the audit */
+    passed: boolean;
+    /** URI to the full audit report (IPFS CID, URL, etc.) */
+    reportUri?: string;
+    /** Audit timestamp (unix seconds/ms, Date, or ISO string). Defaults to now. */
+    timestamp?: string | number | Date;
+}
+export interface NormalizedSecurityAudit {
+    auditor: string;
+    subject: string;
+    auditType: string;
+    severity: AuditSeverity;
+    severityCode: 0 | 1 | 2 | 3 | 4;
+    passed: boolean;
+    reportUri: string;
+    timestamp: bigint;
+}
+export interface SecurityAuditResult {
+    /** Whether attestation succeeded */
+    success: boolean;
+    /** Attestation UID (if successful) */
+    attestationUid?: string;
+    /** Transaction hash */
+    txHash?: string;
+    /** Error message (if failed) */
+    error?: string;
+}
+export interface SecurityAuditAttestation {
+    uid: string;
+    attester: string;
+    recipient: string;
+    auditor: string;
+    subject: string;
+    auditType: string;
+    severity: AuditSeverity;
+    passed: boolean;
+    reportUri: string;
+    timestamp: number;
+    time: number;
+    revoked: boolean;
+}
 export interface AgentTrustConfig {
     /** Network to use */
     network: 'base' | 'baseSepolia';

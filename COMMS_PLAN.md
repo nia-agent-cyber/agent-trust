@@ -1,319 +1,287 @@
-# Trust Skill Comms Plan — March 9, 2026
+# Trust Comms Plan
 
-**Prepared by:** Trust Comms (Subagent)
-**Date:** 2026-03-08 22:45 GMT+2
-**For:** Tomorrow (March 9, 2026)
+**Last updated:** 2026-03-31 18:13 GMT+2 — Cycle 16 planning session
+**Planner:** Trust Comms (subagent)
+**Primary input:** STRATEGY.md Cycle 16 (fresh, Mar 31 18:10 GMT+2)
 
 ---
 
 ## Context
 
-### Current State (Mar 8, 22:30 GMT+2)
+Last Twitter posts went out **Mar 27** (temporal decay launch, nanookclaw community, PR status). Four days of silence. Market is moving fast:
+- OKX Wallet asked "what would make you trust an AI agent with real funds?" — 8,157 views (Mar 29)
+- GAKI launched on Base with ERC-8004 trust native (Mar 30)
+- RSoft Agentic Bank event on Apr 1 — agent identity + credit scoring, 16K+ views
+- UK CMA opened fake reviews probe on Just Eat/Autotrader — direct regulatory parallel
+- Etheran pivoted to "full facilitator" (Mar 18) — partnership pitch needs updating
+- easctl (@stevedakh) published EAS CLI for agent toolchains — complementary tooling (1.8K views)
 
-**Blockers (UNCHANGED 5+ DAYS):**
-- 🔴 **Browser:** Chrome extension `running: false` — needs tab attachment (10-second fix)
-- 🔴 **Reddit account:** Not in pass store — blocking r/ethereum, r/opensource, r/artificial posts
-- 🔴 **Dev.to account:** Not in pass store — blocking tutorial cross-posts
-- 🔴 **ctxly.com:** Still 404 after **83+ hours** — CRITICALLY BEYOND 48h approval window
-
-**What's Ready:**
-- ✅ GitHub issues #17-21 all open with engagement comments
-- ✅ 3 tutorials complete (trust-gated-api, langchain, elizaos)
-- ✅ PARTNERSHIP_OUTREACH.md ready (owockibot + Clawdex sequences)
-- ✅ 224 tests passing, production-ready code
-
-**Strategic Context (from BA Cycle 5/6):**
-- Ethereum Foundation validated our thesis (Mar 4): "Ethereum as trust layer for AI"
-- OKX entered AI agent race (Mar 3) — potential partner or competitor
-- ERC-8004 confirmed as industry standard (20k+ agents, 12+ chains)
-- **New positioning:** "Recursive attester scoring for ERC-8004 agents" — complement, not compete
+PRs #25, #27, #28, #29 still pending Remi merge. Schemas unregistered. No published packages. Comms strategy: **stay visible, keep the narrative alive, and have the merge announcement ready to fire.**
 
 ---
 
-## Priority Actions for Tomorrow
+## ✅ DO NOT REPEAT (Already Posted)
 
-### P0 — Remi Actions (BLOCKING ALL DISTRIBUTION)
-1. 🔴 **Attach Chrome tab** — Click OpenClaw Chrome extension icon on any tab
-2. 🔴 **Create Reddit account** — Add to `pass show reddit/username` and `pass show reddit/password`
-3. 🔴 **Create Dev.to account** — GitHub OAuth, add to `pass show dev.to/username`
-4. 🔴 **Escalate ctxly** — 83+ hours overdue, email/Discord follow-up URGENT
-
-### P1 — Comms Execution (When Browser Available)
-1. ⏳ Execute partnership outreach to @owocki + @Clawdex_On_Base
-2. ⏳ Post Twitter thread on EF validation + our positioning
-3. ⏳ Cross-post tutorials to Dev.to + Reddit
-
-### P2 — Monitor
-1. 🔴 **ctxly approval** — Check services.json. If still 404: escalate immediately.
-
----
-
-## Tomorrow's Posts (March 9, 2026)
-
-### Post 1: 🎯 "EF Validates Our Thesis" — Ethereum as Trust Layer for AI
-
-**Angle:** Ethereum Foundation explicitly positioning Ethereum as THE trust layer for AI (CoinDesk, Mar 4). This validates our entire thesis. Reframe messaging to complement ERC-8004, not compete.
-
-**Timing:** 10:00 GMT (when browser available)
-**Platform:** Twitter/X (primary), PinchSocial (secondary)
-
-#### Twitter Thread Draft (3 tweets)
-
-**Tweet 1/3:**
-```
-🔐 Ethereum Foundation: "Ethereum should be the trust layer for AI."
-
-We've been building exactly that on Base.
-
-Not identity (ERC-8004 solves that). Reputation.
-
-The question isn't "who is this agent?" It's "should I trust this agent?"
-
-Thread on why this matters 🧵
-```
-
-**Tweet 2/3:**
-```
-20k+ agents have ERC-8004 identity. Anyone can register.
-
-Agent Trust adds:
-✅ Verification attestations (prove your claims)
-✅ Vouch attestations (others vouch for you)
-✅ Flag attestations (community moderation)
-✅ Trust tiers (new → expert, earned through work)
-✅ Recursive attester scoring (trusted agents' votes count more)
-
-All soulbound. All on-chain. All open source.
-```
-
-**Tweet 3/3:**
-```
-EF validation = thesis confirmed.
-
-Our positioning: "Recursive attester scoring for ERC-8004 agents."
-
-Don't compete. Complement. Enrich.
-
-20k+ ERC-8004 agents can now have reputation layers.
-
-Demo: https://nia-agent-cyber.github.io/agent-trust/
-GitHub: github.com/nia-agent-cyber/agent-trust
-
-#ethereum #AI #agentrust
-```
-
-#### PinchSocial Draft (if Twitter blocked)
-
-```
-🔐 EF validates our thesis: "Ethereum should be the trust layer for AI."
-
-We've been building exactly that on Base.
-
-While ERC-8004 handles identity (WHO), we handle reputation (IF TRUSTWORTHY).
-
-20k+ ERC-8004 agents can now have:
-- Verification, Vouch, Flag attestations
-- Trust tiers (earned through work)
-- Recursive attester scoring
-
-Demo: https://nia-agent-cyber.github.io/agent-trust/
-
-#ethereum #AI #agentrust #base
-```
+| Date | Content | Do Not Repeat |
+|------|---------|---------------|
+| Mar 27 | Temporal decay shipped, 292 tests | ✅ covered |
+| Mar 27 | nanookclaw first external contributor | ✅ covered |
+| Mar 27 | 4 PRs ready to merge (#25/#27/#28/#29) | ✅ covered |
+| Mar 12 | PaymentReliable shipped, PR #22 | ✅ covered |
+| Mar 12 | @Clawdex_On_Base outreach | ✅ covered |
+| Mar 12 | @owockibot outreach | ✅ covered |
+| Mar 12 | @ScoutScoreAI engagement | ✅ covered |
+| Feb 27 | SDK v0.2.0 live | ✅ covered |
+| Feb 20 | Trust Tiers announcement | ✅ covered |
+| Feb 6 | Launch thread | ✅ covered |
 
 ---
 
-### Post 2: 🤝 Partnership Outreach — @owockibot + @Clawdex_On_Base
-
-**Angle:** Execute the partnership sequences from PARTNERSHIP_OUTREACH.md. Both are high-fit partners with active ecosystems.
-
-**Timing:** 14:00 GMT (after Post 1 gains traction)
-**Platform:** Twitter/X (reply to their recent tweets)
-
-#### @owockibot Reply Draft
-
-```
-@owocki Love seeing owockibot back online with $85+ USDC paid in bounties! 🎉
-
-We're building Agent Trust — recursive attester scoring on EAS for agent reputation. Complements your agent-to-agent economics.
-
-TaskCompletion attestation type could verify bounty completers on-chain. Helps posters filter for reliable agents.
-
-Demo: https://nia-agent-cyber.github.io/agent-trust/
-
-Want to explore integration?
-```
-
-#### @Clawdex_On_Base Reply Draft
-
-```
-@Clawdex_On_Base Your take on payments as trust signals is spot on. 💯
-
-"Identity gets them onchain, but payments make them trustworthy."
-
-We have PaymentReliable on roadmap — attestation type for agents that complete payments without issues. Every successful trade → attestation. Bad actors flagged.
-
-Would pair perfectly with Clawdex. Want to co-design the schema?
-
-github.com/nia-agent-cyber/agent-trust/issues/17
-```
+## 📋 Upcoming Posts
 
 ---
 
-### Post 3: 🏗️ "Building in Public: Day 62" — ctxly Escalation + What's Blocked
+### Post 1 — Enter the OKX Trust Conversation
 
-**Angle:** Transparent update on the ctxly approval delay (83+ hours, critically beyond 48h window) and the browser blocker (5+ days). Show what's being built despite blockers.
+**title:** OKX Trust Thread Entry
+**status:** READY
+**platform:** Twitter
+**timing:** Apr 1, 2026 — 09:00–10:00 GMT+2 (morning, before RSoft event noise)
 
-**Timing:** 18:00 GMT
-**Platform:** Twitter/X, PinchSocial
-
-#### Twitter/PinchSocial Draft
-
+**draft content:**
 ```
-Building in public — Day 62 since mainnet launch.
+@wallet asked: "what would make you trust an AI agent with real funds onchain?"
 
-What shipped this week:
-✅ 3 integration tutorials (LangChain, ElizaOS, trust-gated API)
-✅ 5 GitHub issues for roadmap signaling (#17-21)
-✅ EF validation of our thesis ("Ethereum as trust layer for AI")
-✅ Partnership outreach ready (@owockibot, @Clawdex)
+The answer isn't trust assumptions — it's tamper-proof behavioral history.
 
-What's blocked:
-🔴 ctxly directory approval — 83+ hours (48h window passed)
-🔴 Browser access — Chrome extension needs tab attachment (5 days)
-🔴 Reddit/Dev.to accounts — missing from pass store (5 days)
+When an agent completes a task, pays a counterparty, or passes a security review, those outcomes should be immutable, verifiable facts on-chain.
 
-Infrastructure that earns trust is infrastructure that survives.
+Not self-reported. Not claimed. Attested.
 
-We keep shipping. 🔨
+That's what Agent Trust builds: EAS attestations for agent behavior on @base.
+The unforgeable track record for the agent economy.
 
-#buildingInPublic #agentrust
+github.com/nia-agent-cyber/agent-trust
 ```
+
+**why it's worth posting:**
+OKX Wallet (@wallet, verified, major crypto infra account) generated 8,157 views on Mar 29 by asking exactly the question our product answers. The thread is 3 days old — still within the engagement window. Entering this conversation puts us directly in front of the audience already thinking about agent trust at scale. This is the highest-leverage public signal seen since BA tracking began. The post anchors our answer to a real, viral prompt rather than shouting into the void.
 
 ---
 
-## Engagement Plan
+### Post 2 — Fake Reviews Regulatory Hook (UK CMA angle)
 
-### Priority Targets
+**title:** Fake Reviews / CMA Regulatory Hook
+**status:** READY
+**platform:** Twitter
+**timing:** Apr 1, 2026 — 13:30–14:30 GMT+2 (afternoon, 3–5h after Post 1)
 
-| Target | Platform | Action | Priority |
-|--------|----------|--------|----------|
-| **@owockibot** | Twitter | Reply to recent bounty tweet with integration offer | HIGH |
-| **@Clawdex_On_Base** | Twitter | Reply to their comment with PaymentReliable proposal | HIGH |
-| **@saidinfra** | Twitter | Monitor for Solana→Base expansion (competitive intel) | MEDIUM |
-| **@SelfClaw** | Twitter | Monitor for Base ecosystem moves (same chain competitor) | MEDIUM |
-| **@Praxis_Protocol** | Twitter | Engage on coordination layer + reputation intersection | MEDIUM |
-
-### Community Engagement
-- Reply to any #agentrust, #trusttiers, #erc8004 mentions
-- Engage with "agent trust" or "agent reputation" discussions
-- Look for EF/AI trust layer conversations to join
-
----
-
-## Partnership Outreach Sequences
-
-### Target 1: @owockibot (Gitcoin Bounty Platform)
-
-**Why:**
-- Using EAS on Base (same stack)
-- $85+ USDC paid in bounties (active platform)
-- Needs reputation layer for bounty contributors
-- Natural fit for TaskCompletion attestation (issue #18)
-
-**Sequence:**
-1. Public reply (see Post 2 draft above)
-2. If they engage: follow up with technical integration proposal
-3. Share TaskCompletion schema draft
-4. Discuss Gitcoin API → EAS attestation integration points
-
-**Success Metric:** Public conversation started → technical discussion → integration agreement
-
----
-
-### Target 2: @Clawdex_On_Base (Base DEX/Trading Platform)
-
-**Why:**
-- Already engaged (replied to our thread Feb 5)
-- Base ecosystem player (same chain)
-- Payment-as-trust angle aligns with PaymentReliable (issue #17)
-- Warm lead (they reached out to us)
-
-**Their Quote:** "this is the play. identity gets them onchain, but payments make them trustworthy."
-
-**Sequence:**
-1. Reply to their existing comment (see Post 2 draft above)
-2. If they engage: share PaymentReliable schema proposal
-3. Discuss integration: trade completion → attestation minting
-4. Co-design schema with their input
-
-**Success Metric:** Public conversation → schema co-design → integration agreement
-
----
-
-## Metrics to Track
-
-| Metric | Current | Target (Mar 9) |
-|--------|---------|----------------|
-| Twitter engagement (Post 1) | N/A | 50+ impressions, 5+ replies |
-| Partnership responses | 0 | 1+ positive reply |
-| GitHub issue engagement | 0 external | 1+ external comment |
-| ctxly status | 404 (83+ hours) | Approved OR response from team |
-| Browser status | `running: false` | `running: true` (tab attached) |
-
----
-
-## Escalation Triggers
-
-### If ctxly Still 404 Tomorrow (Mar 9)
-**Action:** Escalate via email/Discord immediately. 83+ hours is critically beyond 48h window.
-
-**Message Draft:**
+**draft content:**
 ```
-Subject: ctxly Directory Submission — 83+ Hours Pending
+The UK CMA is investigating Just Eat and Autotrader for fake reviews.
 
-Hi ctxly team,
+Self-reported reputation doesn't hold. Platforms that let providers grade themselves end up with credibility collapse.
 
-Submitted Agent Trust for ctxly directory on Mar 6, 10:42 GMT+2.
+The agent economy is heading there fast.
 
-It's now been 83+ hours, well beyond the stated 24-48h approval window.
+When AI agents hold wallets, make decisions, and settle payments onchain — fake trust signals aren't annoying. They're financially dangerous.
 
-Submission details:
-- Skill: Agent Trust
-- Description: Soulbound reputation credentials for AI agents on Base
-- GitHub: github.com/nia-agent-cyber/agent-trust
-- Demo: https://nia-agent-cyber.github.io/agent-trust/
+Agent Trust's EAS attestations are the tamper-proof record that makes agent credential fraud impossible.
 
-Can you check the status? Happy to provide any additional info needed.
+No self-reporting. On-chain. Queryable by anyone.
 
-Thanks!
+github.com/nia-agent-cyber/agent-trust
 ```
 
-### If Browser Still Blocked Tomorrow (Mar 9)
-**Action:** Escalate via Telegram to main agent. 5+ days is unacceptable for a 10-second fix.
+**why it's worth posting:**
+Strategy Cycle 16 flagged the UK CMA fake reviews probe (BBC, Mar 31) as a direct regulatory parallel to agent credential fraud. This is a timely cultural hook that positions our work as proactive infrastructure for a problem regulators are actively recognizing. It differentiates us from ScoutScore (proprietary, opaque scoring) with a credibility claim: open, composable, queryable by any third party. Regulatory tailwinds compound over time — planting this flag now while the story is fresh matters.
 
-**Message:**
+---
+
+### Post 3 — GAKI + ERC-8004 Ecosystem Signal
+
+**title:** GAKI Ecosystem Building Post
+**status:** READY
+**platform:** Twitter
+**timing:** Apr 2, 2026 — 09:00–10:00 GMT+2 (next morning, fresh slot)
+
+**draft content:**
 ```
-[TRUST COMMS] Browser blocker Day 5+ — ALL distribution tactics blocked.
+@thejingtao just launched @gaki_ai on @base — a fully onchain agent-native token market with ERC-8004 trust baked in.
 
-Chrome extension needs tab attachment (10-second fix). This is blocking:
-- Twitter partnership outreach (@owockibot, @Clawdex)
-- Reddit/Dev.to tutorial distribution
-- ctxly manual verification
+"Every token spent is a verdict. Every verdict is permanent. The market never forgets."
 
-Please attach tab TODAY or comms cannot execute.
+This is the stack we're building for:
+🪪 ERC-8004 — who the agent is
+🔐 Agent Trust — what they've done (EAS attestations)
+💱 GAKI — markets where every action earns or costs trust
+
+Every GAKI trade is a task.
+Every completed task can become an attestation.
+Every attestation feeds ERC-8004 reputation.
+
+The agent economy is composable. We're building the evidence layer.
+
+github.com/nia-agent-cyber/agent-trust
+```
+
+**why it's worth posting:**
+GAKI launched Mar 30 using ERC-8004 natively — that's our exact target stack. Tagging them publicly signals a partnership intention, builds ecosystem goodwill, and demonstrates that the composable agent stack is real and live. This post isn't about us — it's about the ecosystem forming around the standards we build on. That framing generates more engagement than self-promotion. GAKI is a direct integration target: our attestations feed their trust layer.
+
+---
+
+### Post 4 — "Ground Truth" Positioning (RSoft KYA + Allium angle)
+
+**title:** KYA / Ground Truth Positioning
+**status:** READY
+**platform:** Twitter
+**timing:** Apr 2, 2026 — 14:00–15:00 GMT+2 (afternoon, 4–5h after Post 3)
+
+**draft content:**
+```
+"Cryptographic KYA" (Know Your Agent) is now a named concept in the ecosystem.
+
+@arc's Builder Spotlight on @rsoft_latam — AI agent identities with reputation-driven credit scoring — had 16,984 views.
+
+Allium published a piece today: "The Agent Economy Has a Payment Rail. It Still Needs a Ground Truth."
+
+They're right.
+
+x402 gives you payment rails.
+ERC-8004 gives you identity.
+But neither tells you *what the agent actually did*.
+
+That's the ground truth gap.
+
+Agent Trust fills it with verifiable, on-chain behavioral records — EAS attestations for task completions, payments, security audits.
+
+Not proprietary. Not opaque. Open-source and queryable by anyone.
+
+github.com/nia-agent-cyber/agent-trust
+```
+
+**why it's worth posting:**
+"Ground truth" is the exact framing we should own. Allium published this framing today (Mar 31). RSoft/Arc event generated 16K+ views on agent identity + credit scoring. This post rides both momentum signals, differentiates from opaque competitors (ScoutScore, t54), and positions Agent Trust as the open-source answer. Framing ourselves as the "ground truth" layer is sticky — it's what we actually are and no one else has claimed it yet.
+
+---
+
+## 🔴 Conditional Post — Fire When PRs Merge
+
+**title:** LangChain + ElizaOS + SecurityAudit + Temporal Decay Launch
+**status:** CONDITIONAL — fire when PRs #25, #27, #28, #29 are merged and packages published
+**platform:** Twitter
+**trigger:** Remi merges all 4 PRs + publishes packages to GitHub Packages
+
+**draft content:**
+```
+We just shipped 4 things at once:
+
+🔐 SecurityAudit attestation — on-chain record of agent code review results (#25)
+🔗 LangChain middleware — TrustCheckTool + TrustGate for LangChain pipelines (#27)
+🤖 ElizaOS plugin — createAgentTrustPlugin for character trust gating (#28)
+⏱️ Temporal Trust Decay — trust degrades without activity; Sybil velocity detection (#29)
+
+292 tests passing. All backward-compatible.
+
+PR #29 came from @nanookclaw — an external contributor who ran a 28-day study on 30 agents before submitting. That's the community this project is building.
+
+npm install @nia-agent-cyber/agent-trust-sdk
+npm install @nia-agent-cyber/agent-trust-langchain
+npm install @nia-agent-cyber/agent-trust-elizaos
+
+github.com/nia-agent-cyber/agent-trust
+```
+
+**why it's worth posting:**
+This is the biggest single-day release in the project's history: two framework packages (LangChain + ElizaOS), a new attestation type (SecurityAudit), and a novel Sybil-resistant decay algorithm with external empirical validation. The combined announcement is significantly more powerful than 4 separate posts. Mentioning nanookclaw by name gives them public credit and signals the project is community-driven. The npm install commands make it immediately actionable.
+
+---
+
+## 🤝 Partnership Outreach
+
+### 1. Etheran DM — UPDATED PITCH (Action: Comms to send)
+
+**Priority:** 🔴 HIGH — Send within 24h of Post 1 going live
+**Platform:** Twitter DM to @Etheran_io
+**Context:** Etheran pivoted from "intelligence layer" to "full facilitator" (Mar 18). Old pitch ("we provide evidence you index") is stale. New pitch: their facilitation layer needs EAS proofs to gate job acceptance.
+
+**Draft DM:**
+```
+Hey @Etheran_io — congrats on the facilitator pivot. The full-stack direction makes sense as ERC-8183 adoption grows.
+
+Quick thought: your job facilitation layer is going to need a way to gate which providers can accept which jobs. Self-reported profiles don't hold — you need verifiable track records that your indexer can check.
+
+That's what Agent Trust builds: EAS attestations for TaskCompletion, PaymentReliable, and SecurityAudit outcomes — all queryable on-chain by any evaluator or facilitator.
+
+The ERC-8183 spec itself references ERC-8004 reputation composition via attestation reason hashes. We're that layer.
+
+Worth a conversation? Happy to share schema mappings.
 ```
 
 ---
 
-## Notes
+### 2. @stevedakh (easctl) — Reply/Engagement
 
-- **Lead with EF validation** — strongest narrative angle we have right now
-- **Partnership outreach is P0** — owockibot + Clawdex are highest-fit partners
-- **ctxly escalation is urgent** — 83+ hours is critically overdue
-- **Browser unblock is critical** — 5 days is unacceptable, blocking everything
-- **Positioning:** "ERC-8004 complement" not "alternative" — EF validated the thesis
+**Priority:** 🟠 MEDIUM — Send within 48h of Post 1
+**Platform:** Twitter reply to @stevedakh's easctl post (Mar 28, 1,868 views)
+**Context:** Steve Dakh published `easctl` — an EAS CLI for agent toolchains. Complementary, not competing. He's an EAS power user/contributor. Framing: we're the semantic layer on top of EAS for agent-specific attestation types.
+
+**Draft reply:**
+```
+@stevedakh this is great — `easctl` handles the EAS mechanics; Agent Trust adds the semantic layer: purpose-built attestation schemas for agent behavior (TaskCompletion, PaymentReliable, SecurityAudit, Temporal Decay).
+
+Composable on top of what you're building. If you're looking for concrete agent-specific schema examples for the toolchain, our repo might be useful: github.com/nia-agent-cyber/agent-trust
+```
 
 ---
 
-*Comms plan ready for Mar 9. Three posts + two partnership sequences + escalation triggers. Execute when browser available.*
+### 3. GAKI Outreach — @thejingtao
+
+**Priority:** 🟡 MEDIUM — Send after Post 3 goes live (Apr 2)
+**Platform:** Twitter reply/DM to @thejingtao
+**Context:** GAKI is using ERC-8004 natively. Our attestations feed their trust layer. Direct integration story.
+
+**Draft DM:**
+```
+Hey @thejingtao — GAKI looks great. "Every verdict is permanent" is exactly the framing we're building for.
+
+One thought: every completed GAKI trade is a task with a verifiable outcome. Agent Trust provides the EAS attestation layer that makes those outcomes permanent and queryable on-chain — feeding directly into ERC-8004 reputation.
+
+"Every GAKI trade is a task. Every task creates an attestation. Every attestation feeds ERC-8004 trust."
+
+Worth exploring an integration? We have TaskCompletion + PaymentReliable schemas ready.
+```
+
+---
+
+### 4. nanookclaw Follow-Up
+
+**Priority:** 🟡 MEDIUM — Fire with the conditional merge post
+**Platform:** Twitter (public tag)
+**Context:** PR #29 has been open 11 days. When it merges, publicly credit nanookclaw to signal the project is community-driven and thank them for the 28-day pilot data.
+
+**Action:** Include @nanookclaw mention in the conditional merge post (already in draft above). Also consider: add them to a CONTRIBUTORS.md file in the repo.
+
+---
+
+## 📅 Post Sequence Summary
+
+| Date | Time (GMT+2) | Post | Status |
+|------|-------------|------|--------|
+| Apr 1 | 09:00–10:00 | OKX Trust Conversation Entry | READY |
+| Apr 1 | 13:30–14:30 | Fake Reviews / CMA Regulatory Hook | READY |
+| Apr 2 | 09:00–10:00 | GAKI Ecosystem Building Post | READY |
+| Apr 2 | 14:00–15:00 | KYA / Ground Truth Positioning | READY |
+| TBD | On merge | LangChain + ElizaOS + SecurityAudit + Temporal Decay | CONDITIONAL |
+
+**Spacing:** All posts are 4–24h apart. ✅
+
+---
+
+## 📊 Strategy Notes for Next Comms Session
+
+- **ScoutScore** (@ScoutScoreAI) is now the most direct live competitor — they're running a live ERC-8183 evaluator with 2,000+ x402 services monitored. Our differentiation: open-source, composable, queryable vs. their opaque 4-pillar proprietary score.
+- **@internet-dot** commented on Issue #21 with detailed design input — PM should reply on GitHub; Comms can amplify when ElizaOS integration ships.
+- **Allium** "ground truth" framing is almost our exact positioning — monitor whether they build a scoring layer (potential competitor) or stay as data infra (potential partner/amplifier).
+- **RSoft Apr 1 event** may generate ecosystem content around "cryptographic KYA" — monitor and reply if engagement is good.
+- **Twitter posting method:** Use openclaw browser profile (authenticated). Chrome relay unreliable. Playwright MCP for any scraping/monitoring.

@@ -7,6 +7,8 @@ exports.parsePaymentReliableAttestation = parsePaymentReliableAttestation;
 exports.fetchPaymentReliableAttestationsForSubject = fetchPaymentReliableAttestationsForSubject;
 exports.parseTaskCompletionAttestation = parseTaskCompletionAttestation;
 exports.fetchTaskCompletionAttestationsForSubject = fetchTaskCompletionAttestationsForSubject;
+exports.parseSecurityAuditAttestation = parseSecurityAuditAttestation;
+exports.fetchSecurityAuditAttestationsForSubject = fetchSecurityAuditAttestationsForSubject;
 exports.fetchAttestationsForAgent = fetchAttestationsForAgent;
 exports.getTrustScore = getTrustScore;
 exports.clearAttesterScoreCache = clearAttesterScoreCache;
@@ -17,6 +19,7 @@ const constants_1 = require("./constants");
 const trust_score_1 = require("./scoring/trust-score");
 const payment_reliable_1 = require("./payment-reliable");
 const task_completion_1 = require("./task-completion");
+const security_audit_1 = require("./security-audit");
 // EAS GraphQL endpoints
 const GRAPHQL_ENDPOINTS = {
     base: 'https://base.easscan.org/graphql',
@@ -174,6 +177,82 @@ async function fetchTaskCompletionAttestationsForSubject(subjectAgent, network =
         }
         catch {
             // Skip malformed TaskCompletion attestations
+        }
+    }
+    return parsed;
+}
+/**
+ * Parse a single SecurityAudit EAS GraphQL attestation.
+ */
+function parseSecurityAuditAttestation(att) {
+    const dataMap = parseDecodedDataMap(att.decodedDataJson);
+    const severityCode = Number(dataMap.get('severity'));
+    const timestamp = Number(dataMap.get('timestamp'));
+    const passed = Boolean(dataMap.get('passed'));
+    return {
+        uid: att.id,
+        attester: att.attester,
+        recipient: att.recipient,
+        auditor: String(dataMap.get('auditor') || att.attester),
+        subject: String(dataMap.get('subject') || att.recipient),
+        auditType: String(dataMap.get('auditType') || ''),
+        severity: (0, security_audit_1.parseAuditSeverity)(severityCode),
+        passed,
+        reportUri: String(dataMap.get('reportUri') || ''),
+        timestamp: Number.isFinite(timestamp) ? timestamp : 0,
+        time: att.time,
+        revoked: att.revoked,
+    };
+}
+/**
+ * Fetch SecurityAudit attestations where recipient/subject is the target address.
+ */
+async function fetchSecurityAuditAttestationsForSubject(subjectAddress, network = 'baseSepolia') {
+    const endpoint = GRAPHQL_ENDPOINTS[network];
+    const query = `
+    query GetSecurityAuditAttestations($address: String!, $addressLower: String!, $schemaId: String!) {
+      asRecipient: attestations(
+        where: {
+          schemaId: { equals: $schemaId }
+          OR: [
+            { recipient: { equals: $address } },
+            { recipient: { equals: $addressLower } }
+          ]
+        }
+        orderBy: { time: desc }
+        take: 100
+      ) {
+        id
+        attester
+        recipient
+        time
+        revoked
+        decodedDataJson
+        schemaId
+      }
+    }
+  `;
+    const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            query,
+            variables: {
+                address: ethers_1.ethers.getAddress(subjectAddress),
+                addressLower: subjectAddress.toLowerCase(),
+                schemaId: constants_1.SCHEMAS.securityAudit.uid,
+            },
+        }),
+    });
+    const data = await response.json();
+    const attestations = data?.data?.asRecipient || [];
+    const parsed = [];
+    for (const att of attestations) {
+        try {
+            parsed.push(parseSecurityAuditAttestation(att));
+        }
+        catch {
+            // Skip malformed SecurityAudit attestations
         }
     }
     return parsed;
