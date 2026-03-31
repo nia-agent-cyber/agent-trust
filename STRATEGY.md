@@ -2,7 +2,208 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-24 07:40 EDT — Cycle 15 (Night Research Update)*
+*Last updated: 2026-03-31 18:10 GMT+2 — Cycle 16 (Weekly Research Update)*
+
+---
+
+## 🌙 Cycle 16: Mar 31, 2026 (18:10 GMT+2) — WEEKLY RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; no AI trust/reputation headlines directly; 2 adjacent signals noted
+- ✅ GitHub Issues/PRs — state verified; PR ages recalculated; external contributor comment on Issue #21 discovered
+- ✅ Twitter/X via OpenClaw browser (profile=openclaw) — searched "agent trust onchain", checked @Etheran_io + @ScoutScoreAI profiles
+- ✅ etheran.io — fetched; site content unchanged, but Twitter profile revealed **critical strategic pivot** missed by Cycles 12–15
+- ✅ t54.ai — fetched; content unchanged from Cycle 12
+- ✅ explorer.lyneth.ai — fetched; title unchanged ("ERC-8004 Agent Explorer")
+- ✅ gaki.ai — fetched; new entrant confirmed
+- ✅ ctxly.com/services.json — still 404 (abandoned per Cycle 6 decision)
+- ❌ Brave web search — API key still not configured
+- ❌ PinchSocial — API key still missing
+
+### ⚠️ NEW DEVELOPMENTS SINCE CYCLE 15 (Mar 24 — 7 days ago)
+
+#### 🔴 CRITICAL: Etheran Pivoting to Full Job Facilitator (Mar 18 — missed by Cycles 12–15)
+
+Cycles 12–15 checked etheran.io site content (unchanged), but missed a **strategically pivotal Twitter post** from Mar 18:
+
+> "Etheran started as an intelligence layer. we read every job, every evaluator attestation, every settlement on ERC-8183. built track records. computed reputation. indexed the agent economy. now we're going further. **Etheran is becoming a full facilitator. create jobs, submit**…"
+> — @Etheran_io, Mar 18, **1,699 views, 8 replies, 13 likes**
+
+**What this means:** Etheran is no longer just the "reputation score" layer above ERC-8183. They are now building the job creation/submission side of the stack. This changes the competitive picture:
+- **Before (Cycles 9–15 framing)**: Etheran = intelligence reader + scorer → WE = EAS attestation evidence inputs that enrich their scores → PARTNERSHIP
+- **After**: Etheran = intelligence reader + scorer + **job creator + facilitator** → they are encroaching on a fuller agentic stack
+
+**Revised competitive stance**: Etheran is now semi-competitive in the "agentic workflow" layer, though their EAS attestation intake (our data) remains a clear integration point. The partnership window is still open, but the nature of the integration has changed — they're now a platform, not just an indexer.
+
+**Action**: PM should update Etheran outreach pitch. Instead of "we provide the evidence you index," pitch: "We provide the EAS attestation proofs your facilitator layer needs to gate job acceptance and protect clients from unverified providers."
+
+**Etheran current state (Mar 31):**
+- 294 followers (up from 282 on Mar 17)
+- 20 posts
+- Joined March 2026 — still very new but building fast
+
+#### 🔴 CRITICAL: OKX Wallet Asked the Agent Trust Question — 8,157 Views (Mar 29)
+
+@wallet (OKX Wallet, verified, large account) posted:
+> "**What would make you trust an AI agent with real funds onchain?**"
+> — Mar 29, **8,157 views, 25 replies, 57 likes, 3 bookmarks**
+
+This is the highest-signal mainstream validation of our problem space seen since tracking began. A top-tier crypto infrastructure company (OKX) is publicly asking the exact question our product answers. The replies included:
+- Hard caps per tx, mandatory human approval above threshold, full audit trail onchain — "trust comes from constraints, not promises" (@shitcoinmaster_, Mar 30)
+- Binding agent intent → exact calldata onchain via caveats — "No trust assumptions, just enforcement" (@Osobotai)
+
+**Strategic implication**: The conversation is happening at scale. Agent trust is no longer a niche idea — it's a question being asked by OKX-level players with 8K+ views per post. We have the architecture to answer this (EAS attestations for behavioral track records) but are invisible in this conversation because our schemas aren't live and our packages aren't published.
+
+#### 🟠 ScoutScore: Live Working ERC-8183 Evaluator (Mar 10 — first full profile read)
+
+**New competitive detail confirmed**: ScoutScore is already operating as a live ERC-8183 evaluator on Base Sepolia:
+- Full on-chain lifecycle: client escrows funds → provider submits work → ScoutScore evaluates trust (73/100 score) → calls `complete()` → funds release
+- **Score hash stored on-chain as the reason** — this is the ERC-8183 attestation pattern our SDK is built for, but ScoutScore is doing it via their own trust scoring engine
+- Monitoring **2,000+ x402 services** (per bio)
+- 620 followers
+- Stack: x402 + ERC-8004 + ERC-8183 — exactly our target stack
+- Reposted (Mar 27): Dave Shake piece on "Agent Payments Are Only Half the Story" — x402 (Coinbase), Tempo (Stripe/Paradigm)
+
+**Assessment**: ScoutScore is now the most direct competitor observed — they are running the evaluator pattern live. Their score is a proprietary 4-pillar trust score, not EAS attestations. Our differentiation: we're the **open-source, composable, verifiable attestation layer** that any agent or evaluator can use/build on. ScoutScore's scoring is opaque; ours is transparent, on-chain, and queryable by any third party.
+
+#### 🟡 GAKI (gaki.ai) — New Entrant Using ERC-8004 Natively (Mar 30)
+
+@thejingtao (verified) posted:
+> "Built gaki.ai on @base - fully onchain agent-native token market with X402 payments and **permanent ERC8004 rating and trust**"
+> — Mar 30, 95 views (reply in @base thread)
+
+gaki.ai is live: "Market for hungry agents. Permissionless. Every action bears fruit. No delay. No appeal. Every token spent is a verdict. Every verdict is permanent. The market never forgets."
+
+**What this is**: An agent-native token market on Base with ERC-8004 trust baked into the product. GAKI is using ERC-8004 natively — their agents acquire trust through token market activity.
+
+**Partnership angle**: GAKI is using ERC-8004 ratings as a trust primitive. Our SDK provides the EAS attestation evidence that feeds ERC-8004 reputation. Direct integration story: "Every GAKI trade is a task. Every completed task creates an Agent Trust attestation. Every attestation strengthens ERC-8004 rating."
+
+#### 🟡 RSoft Agentic Bank + Arc — AI Agent Identity with Credit Scoring (Apr 1 event)
+
+@arc (verified) posted (Mar 28, **16,984 views, 56 reposts, 204 likes, 10 bookmarks** — highest-engagement post in this research cycle):
+> "Arc Builder Spotlight: RSoft Agentic Bank. On April 1st at 10am ET — @rsoft_latam is building **AI agent identities with reputation-driven credit scoring and onchain USDC settlement.** They'll demo their **cryptographic KYA** system, designed to bring trust…"
+
+**What this means**:
+1. "Cryptographic KYA" (Know Your Agent) is now a named concept in the ecosystem — this is the kind of credentialing our SDK supports
+2. Reputation-driven credit scoring = the EAS attestation model applied to credit allocation
+3. 16,984 views = agent identity+credit is becoming mainstream, not niche
+4. The Apr 1 event will likely generate more ecosystem content around agent identity — monitor
+
+**Assessment**: RSoft/Arc are not direct competitors (they're focused on credit/banking layer, not open EAS attestations). Potential partnership: "RSoft's KYA needs verifiable attestation primitives — our SDK provides the evidence layer."
+
+#### 🟡 Allium — New Data Infrastructure for Agent Ground Truth
+
+@yinkaabeeb (1 hour ago at time of research) wrote a Medium piece: "The Agent Economy Has a Payment Rail. It Still Needs a Ground Truth. How Allium is solving the data problem that identity and payments alone can't fix."
+
+**Who is Allium**: Blockchain data infrastructure (known for on-chain analytics). The framing is: x402 gives you payment rails, but you still need **ground truth** about agent behavior.
+
+**Strategic relevance**: This framing ("ground truth") is almost exactly our positioning. We provide the verifiable, on-chain behavioral record (ground truth) for agents. Allium is attacking this from the analytics/data infrastructure side; we're attacking from the attestation/credentials side.
+
+**Monitor**: If Allium is building agent-specific data products, they may become a partner (we're the attestation source; they're the aggregator) or compete (if they build their own scoring layer).
+
+#### 🟡 Steve Dakh (@stevedakh) — easctl: EAS CLI for Agent Toolchains (Mar 28)
+
+> "npm i -g easctl — An EAS CLI with built-in schemas, JSON output for agent toolchains, and support for 12+ chains. AI agents are starting to operate onchain. For them to be useful, they need trust — identity, credentials, reputation, accountability. EAS attestations are the [answer]"
+> — Mar 28, **1,868 views, 5 reposts, 13 likes**
+
+**Who this is**: Steve Dakh appears to be an EAS core contributor or power user building tooling.
+
+**What it means**:
+1. EAS tooling ecosystem is growing — we're not alone in building on EAS for agents
+2. `easctl` is a CLI tool; our SDK is a programmatic layer — complementary, not competing
+3. Steve's framing ("identity, credentials, reputation, accountability") is our exact positioning
+4. **Engagement opportunity**: Reply to @stevedakh mentioning our SDK as the semantic layer on top of EAS for agent-specific attestation types
+
+#### 🟡 Second External Contributor on Issue #21 — @internet-dot (Mar 28)
+
+@internet-dot (GitHub: `internet-dot`) posted a detailed comment on Issue #21 (ElizaOS integration) on **March 28**, covering:
+- On-chain vs. off-chain reputation tradeoffs (hybrid model: off-chain compute, on-chain anchor)
+- Multiple signal types needed: completion rate, quality scores from counterparties, behavioral signals (latency, uptime), third-party attestations
+- ElizaOS character file integration approach
+- **Reputation portability via DID/UAID** — reputation tied to verifiable identity, not framework-specific ID
+
+**Strategic significance**:
+1. This is the **second external contributor** engaging with the project in one week (nanookclaw PR #29 + internet-dot Issue #21 comment)
+2. The DID/UAID portability point is forward-thinking and aligns with long-term ERC-8004 direction
+3. The hybrid model suggestion (off-chain compute + on-chain anchor) is worth evaluating as a roadmap item — could differentiate from ScoutScore's fully on-chain scoring
+
+**Immediate action**: PM should reply to @internet-dot on Issue #21, acknowledging their contribution and inviting continued input.
+
+### 🟢 BBC Tech Feed — Regulatory/Macro Signals
+
+Current BBC tech stories (Mar 31):
+
+| Story | Relevance |
+|-------|-----------|
+| "Tech CEOs blame AI for mass job cuts" | Macro AI narrative: enterprises are deploying AI at scale → agent trust becomes critical infrastructure |
+| "Judge rejects Pentagon's attempt to 'cripple' Anthropic" | Regulatory turbulence around AI: governments want to control/restrict AI providers → provenance/attestation layer becomes more valuable as compliance evidence |
+| "Just Eat and Autotrader investigated in fake reviews probe" | UK CMA going after fake reviews = direct parallel to agent credential fraud; our attestation model is the answer to this for the agent layer |
+| "Lloyds bank IT glitch affected 500K customers" | Financial system reliability → agent-managed finance needs verifiable audit trails |
+
+**Key regulatory signal**: The "fake reviews probe" against Just Eat/Autotrader by the UK Competition and Markets Authority maps cleanly to agent credential fraud. Comms angle: "The CMA is investigating fake reviews on consumer platforms. When AI agents hold wallets and make decisions, fake trust signals aren't just misleading — they're financially dangerous. Agent Trust's EAS attestations are the tamper-proof, on-chain record that makes agent credential fraud impossible."
+
+### 📊 Competitive Landscape Summary (Mar 31)
+
+| Player | Role | Activity Since Mar 24 | Threat Level |
+|--------|------|-----------------------|--------------|
+| **Etheran** | Intelligence layer + (NEW) Job Facilitator | Pivoted to full facilitator (Mar 18) — missed by prior cycles | 🟡 MEDIUM (now semi-competitive in workflow layer) |
+| **ScoutScore** | Live ERC-8183 evaluator, 2000+ x402 services monitored | Most recent: Mar 27 repost (Dave Shake). Live evaluator since Mar 10 | 🟠 HIGH DIRECT COMPETITOR |
+| **Lyneth Labs** | ERC-8004 Agent Explorer | Site unchanged. Still in "Who to Follow" alongside GhostRank | 🟡 MEDIUM |
+| **t54 Labs** | Enterprise financial rails (Trustline, x402 Secure) | Content unchanged. Enterprise-focused | 🟢 LOW (diverged to enterprise) |
+| **GAKI** | Agent token market, ERC-8004 trust native | Live on Base (Mar 30) | 🟡 NEW — PARTNERSHIP TARGET |
+| **RSoft Agentic Bank** | Agent identity + reputation credit scoring | Apr 1 event (16K+ views) | 🟡 MEDIUM — MONITOR |
+| **Allium** | Blockchain data infrastructure — "ground truth" for agents | Article published today | 🟡 NEW — MONITOR/PARTNER |
+| **easctl** | EAS CLI for agent toolchains | npm tool, 1.8K views (Mar 28) | 🟢 LOW — COMPLEMENTARY |
+| **GhostRank** | Unknown — in "Who to Follow" sidebar | No new observable data | 🟡 MEDIUM — MONITOR |
+
+### 🔴 Execution Stall: Now 15 Days for PRs #25/#27/#28, 11 Days for PR #29
+
+**Status as of Mar 31:**
+
+| PR | Feature | Status | Days Open | Days Without Merge |
+|----|---------|--------|-----------|-------------------|
+| #25 | SecurityAudit attestation | OPEN, MERGEABLE, PM+QA approved | 15 days | 15 days overdue |
+| #27 | LangChain integration | OPEN, MERGEABLE, PM+QA approved | 15 days | 15 days overdue |
+| #28 | ElizaOS integration | OPEN, MERGEABLE, PM+QA approved | 14 days | 14 days overdue |
+| #29 | Temporal trust decay (nanookclaw) | OPEN, MERGEABLE, external contributor | 11 days | 11 days since opened |
+
+**During this stall period:**
+- OKX asked the agent trust question publicly (8K views)
+- ScoutScore ran a live ERC-8183 evaluator
+- GAKI launched with ERC-8004 trust native
+- RSoft Agentic Bank went from concept to 17K-view event
+- Etheran pivoted to full facilitator
+
+**The market is not waiting.** Every week without published schemas and packages is a week competitors define the standards we could have set.
+
+### Updated Top 3 Actions (Cycle 16 — Mar 31)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Remi: Merge PRs #25, #27, #28, #29 + register 3 schema UIDs + publish packages** — 15 days overdue. OKX is asking the trust question at 8K views. ScoutScore is running live evaluators. The market is active and we have no published artifacts. | Remi | 🔴 CRITICAL | All 4 PRs merged, 3 schema UIDs on-chain, packages published to GitHub Packages |
+| **2** | **PM: Reply to @internet-dot on Issue #21** and send outreach to @stevedakh (easctl) — second external contributor engagement + EAS ecosystem alignment opportunity. Both are building in our space and could become contributors or amplifiers. | PM | 🟠 HIGH | Issue #21 reply posted; @stevedakh reply drafted for Comms review |
+| **3** | **Comms: Enter the OKX trust conversation + update Etheran outreach** — (a) Reply to @wallet's "what would make you trust an AI agent?" thread with our attestation-based answer. (b) Update Etheran DM to reflect their facilitator pivot: "Your facilitator needs EAS attestation proofs to gate job acceptance. We build those." | Comms + PM | 🟠 HIGH (after PR #29 merge) | Reply posted on @wallet thread; Etheran DM updated and sent |
+
+### Cycle 16 Summary (7-day delta since Mar 24)
+
+**What changed:**
+- 🔴 **Etheran strategic pivot** — Becoming a "full facilitator" (job creator, not just indexer). Missed by Cycles 12–15. Changes partnership pitch.
+- 🔴 **OKX Wallet asked the trust question** — 8,157 views. Mainstream attention on agent trust at scale.
+- 🟠 **ScoutScore is live** — First full profile read reveals they are running a live ERC-8183 evaluator with their own 4-pillar trust score. Most direct live competitor.
+- 🟡 **GAKI launched** on Base with ERC-8004 trust native (direct integration target)
+- 🟡 **RSoft Agentic Bank** event (Apr 1) — agent identity + credit scoring at 17K views; KYA concept entering mainstream
+- 🟡 **Allium** positioning as "ground truth" data layer for agent economy
+- 🟡 **easctl** — new EAS CLI tooling for agent toolchains (complementary)
+- 🟡 **Second external contributor** on Issue #21 (@internet-dot) — detailed design input on hybrid reputation model + DID portability
+- 🟢 PR stall continues — still 0 stars, no merges, no schema registrations
+
+**What didn't change:**
+- PR merge stall — all 4 PRs still open, all requiring Remi action
+- Schema UIDs — all 3 still placeholder, blocked on Remi
+- Tool availability — Brave search still unconfigured, PinchSocial key missing
+- GitHub stars — still 0
+
+**Recommended stance**: The market is accelerating. In the 7 days since Cycle 15: OKX generated 8K views on the agent trust question; ScoutScore ran live transactions; GAKI launched; RSoft got 17K views. The project has zero published artifacts. The singular priority is getting Remi to merge+publish. Every other action (Comms, partnership outreach, community building) is blocked by the execution stall.
 
 ---
 
