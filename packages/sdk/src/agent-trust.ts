@@ -58,6 +58,13 @@ import { buildEnrichedProfile, EnrichedAgentProfile, ERC8004Config } from './erc
 import { encodePaymentReliableAttestation } from './payment-reliable';
 import { encodeTaskCompletionAttestation } from './task-completion';
 import { encodeSecurityAuditAttestation } from './security-audit';
+import {
+  evaluateTemporalTrust,
+  computeTrustVelocity,
+  TemporalDecayConfig,
+  TemporalTrustResult,
+  VouchEvent,
+} from './temporal-trust';
 
 export class AgentTrust {
   private eas: EAS;
@@ -645,5 +652,62 @@ export class AgentTrust {
    */
   areSchemasRegistered(): boolean {
     return !!(SCHEMAS.verification.uid && SCHEMAS.vouch.uid && SCHEMAS.flag.uid);
+  }
+
+  // ============ Temporal Trust Methods ============
+
+  /**
+   * Evaluate temporal trust decay for an agent.
+   *
+   * A pure, read-time function that applies time-based decay to a raw trust
+   * score without modifying the blockchain or stored attestations.
+   *
+   * Recommended workflow:
+   * 1. Call `getScore(agentId)` to retrieve the raw score
+   * 2. Call `evaluateTemporalTrust(rawScore, lastAttestationTime, vouches)` to
+   *    get a decay-adjusted score that reflects how recently the agent was attested
+   *
+   * @param rawScore - Undecayed trust score (0–100), from `getScore()`
+   * @param lastPositiveAttestationTime - Unix timestamp (seconds) of the most
+   *   recent non-revoked positive attestation. Pass null if unknown.
+   * @param vouches - Vouch event history for trust velocity calculation.
+   * @param config - Optional decay configuration overrides.
+   * @returns Decay-adjusted score with diagnostic metadata.
+   *
+   * @example
+   * ```typescript
+   * const score = await trust.getScore(agentId);
+   * const temporal = trust.evaluateTemporalTrust(
+   *   score.score,
+   *   score.updatedAt,
+   *   vouchHistory,
+   *   { lambda: 0.02, gracePeriodDays: 30 }
+   * );
+   * console.log(`Adjusted: ${temporal.adjustedScore} (velocity: ${temporal.trustVelocity}/day)`);
+   * ```
+   */
+  evaluateTemporalTrust(
+    rawScore: number,
+    lastPositiveAttestationTime: number | null,
+    vouches: VouchEvent[] = [],
+    config?: TemporalDecayConfig,
+  ): TemporalTrustResult {
+    return evaluateTemporalTrust(rawScore, lastPositiveAttestationTime, vouches, config);
+  }
+
+  /**
+   * Compute trust velocity for an agent — net weighted vouches per day over a
+   * rolling window.
+   *
+   * Velocity is an additive signal alongside trust score:
+   * - High velocity (> 5/day) over a short window may indicate Sybil farming
+   * - Gradual velocity over weeks/months is a healthy trust-building trajectory
+   * - Velocity = 0 for stable, established agents with no recent activity
+   *
+   * @param vouches - Vouch history with timestamps and trust levels
+   * @param windowDays - Rolling window in days (default: 7)
+   */
+  computeTrustVelocity(vouches: VouchEvent[], windowDays?: number): number {
+    return computeTrustVelocity(vouches, windowDays);
   }
 }

@@ -62,3 +62,14 @@ export {
   parseAuditSeverity,
   KNOWN_AUDIT_TYPES,
 } from './security-audit';
+// Temporal trust decay
+export {
+  evaluateTemporalTrust,
+  computeTrustVelocity,
+} from './temporal-trust';
+export type {
+  DecayType,
+  TemporalDecayConfig,
+  VouchEvent,
+  TemporalTrustResult,
+} from './temporal-trust';
