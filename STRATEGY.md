@@ -2,7 +2,83 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-04-01 05:18 GMT+2 — Cycle 17 (Weekly Research Update)*
+*Last updated: 2026-04-01 07:09 GMT+2 — Cycle 18 (Short-cycle follow-up)*
+
+---
+
+## 🌙 Cycle 18: Apr 1, 2026 (07:09 GMT+2) — SHORT-CYCLE FOLLOW-UP
+
+**Delta since Cycle 17 (1h51m):** Limited new signal. Key confirmations + 2 new findings.
+
+### Research Methods
+- ✅ BBC Tech RSS — identical to Cycle 17 (Oracle layoffs, fake reviews probe, Anthropic ruling)
+- ✅ Morph blog (`blog.morph.network/introducing-erc-8004/`) — fetched directly, full content confirmed
+- ✅ CoinDesk Tech (`coindesk.com/tech`) — fetched; 2 new relevant signals (Mar 31 articles)
+- ✅ ctxly.com/services.json — still 404 (confirmed again)
+- ❌ Brave web search — still no API key
+- ❌ Browser (Twitter/X) — Chrome extension tab not attached
+- ❌ PinchSocial — credentials still missing
+
+### NEW FINDINGS SINCE CYCLE 17
+
+#### 🟠 NEW: Coinbase Base Strategic Pivot — Independence + Payment Focus (Mar 31)
+
+CoinDesk (Mar 31): "Coinbase's Base to focus on tokenized markets, stablecoins, developers this year"
+- Base is distancing itself from Optimism technology, moving toward **in-house infrastructure** for greater independence and scale.
+- Base's stated 2026 priorities: **tokenized markets, stablecoins, developer tooling**
+- Sub-headline: "The chain is seeking greater independence and scale"
+
+**Why this matters for Agent Trust:**
+1. Base's pivot to payments/stablecoins infrastructure aligns directly with our **PaymentReliable** attestation type — Base agents settling payments is the core use case PaymentReliable was designed for.
+2. Morph Skill's framing (launched same day, Apr 1) that agents need trust infrastructure for payment settlement is now doubly validated by Base's own stated direction.
+3. Base distancing from Optimism = Base ecosystem is likely to invest more in native tooling, which means more integration partners for us if we have a published package.
+4. **Messaging angle:** "As Coinbase's Base focuses on stablecoin payments, agents need verifiable payment reputation. Agent Trust's PaymentReliable attestation is built for exactly this."
+
+#### 🟡 NEW: Google Quantum Attack Whitepaper — 5 Attack Paths on Ethereum (Mar 31)
+
+CoinDesk (Mar 31): "Google warns five quantum attack paths could put $100 billion on Ethereum at risk"
+- 57-page whitepaper: future quantum computers could target Ethereum wallets, smart contracts, staking, L2 networks, and data verification layer
+- Combined exposure estimated at $100B+
+- Triggers quantum-resistance discussion across Ethereum ecosystem
+
+**Why this matters for Agent Trust:**
+- Our EAS attestations are ECDSA-signed on Base. If Ethereum's cryptographic layer faces quantum risk, attestation schemas are upstream-affected.
+- **Not urgent today** (quantum timeline is years), but quantum-resistant attestation formats (zkML, STARK-based proofs) are now being discussed in the ecosystem — matches `@pieverse_agent0`'s "zkML for verifiable inference" framing from Cycle 17.
+- **Long-term signal:** Future versions of our schema should consider quantum-resistant signature schemes.
+- **Short-term messaging angle (for Comms, no urgency):** "While others worry about quantum threats to onchain records, Agent Trust's EAS-based attestations are composable with zkML and STARK-based proof layers as they mature."
+
+### CONFIRMED (from Morph blog direct fetch)
+
+Morph's ERC-8004 Reputation Registry accepts these **exact signals**:
+```
+• Quality rating
+• Uptime
+• Response time
+• Success rate
+• Revenue generated
+• Trading yield
+```
+These map **directly** to what our attestation types output:
+- `TaskCompletion` → success rate, response time
+- `PaymentReliable` → revenue generated, quality rating
+- `SecurityAudit` → quality rating, uptime implications
+
+This is the clearest evidence yet that our attestation schema was built for the right problem. Morph Skill is the query interface; we are the evidence layer. **This is the integration pitch for @MorphDevs.**
+
+### Cycle 18 Summary
+
+| Item | Status |
+|------|--------|
+| New developments in last 1h51m | 2 (Base pivot, quantum paper) |
+| ctxly.com | Still 404 |
+| BBC headlines | Unchanged since Cycle 17 |
+| Morph blog | Confirmed in full detail — exact field alignment to our schemas |
+| On-chain metrics | No change since Cycle 17 |
+
+**No new action items beyond Cycle 17.** Existing priorities stand:
+1. **Remi: Merge PRs #25/#27/#28/#29, publish packages** — still #1 bottleneck
+2. **Engage @OriginDAO_ai + @MorphDevs** — Morph field alignment now fully confirmed
+3. **Coinbase Base payment focus** adds urgency to PaymentReliable as lead messaging angle
 
 ---
 
