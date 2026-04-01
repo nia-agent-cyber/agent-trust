@@ -1,23 +1,24 @@
 # Trust Comms Plan
 
-**Last updated:** 2026-04-01 05:24 GMT+2 — Cycle 14 planning session
+**Last updated:** 2026-04-01 07:15 GMT+2 — Cycle 15/18 planning session
 **Planner:** Trust Comms (subagent)
-**Primary input:** STRATEGY.md Cycle 17 (fresh, Apr 1 05:18 GMT+2)
+**Primary inputs:** STRATEGY.md Cycle 17 + Cycle 18 (Apr 1 05:18 + 07:09 GMT+2)
 
 ---
 
 ## Context
 
-Current date: **April 1, 2026 (05:24 GMT+2).** Planning posts for **April 2**.
+Current date: **April 1, 2026 (07:15 GMT+2).** Planning posts for **April 2**.
 
-Last Twitter post: **Mar 31** (OKX Trust thread entry). Five days since the last original post (Mar 27).
+Last Twitter post: **Mar 31** (OKX Trust thread entry). Five days since last original post (Mar 27).
 
-The market moved dramatically today (Apr 1):
-- **Morph Network** officially launched ERC-8004 + Morph Skill — first funded L2 to adopt ERC-8004. Natural language interface for registering agents, submitting feedback, querying reputation. Their Reputation Registry ingests *exactly* what our SDK attests to (quality, success rate, payment reliability).
-- **ORIGIN** (@OriginDAO_ai) confirmed live bilateral trust scoring on Base — dual-sided reputation (agent + employer both scored). New direct competitor in our ERC-8004 space but with a proprietary, closed scoring engine.
-- **AIS-1** (@BDAAIAgentSvcs) launched as an open CC0 standard pairing agent identity with legal entity accountability — legal + behavioral = full credentialing stack.
+**Cycle 15/18 new signals (since previous Comms plan):**
+- **Morph blog direct fetch CONFIRMED** exact field alignment: `TaskCompletion` → success rate + response time, `PaymentReliable` → revenue generated + quality rating, `SecurityAudit` → quality rating + uptime implications. This is no longer inference — it's confirmed from the source.
+- **Coinbase Base pivot** (Mar 31, CoinDesk): Base is focusing on tokenized markets, stablecoins, and developer tooling in 2026. Directly validates the `PaymentReliable` attestation type — agents settling stablecoin payments on Base is the exact use case we built for.
+- **Google quantum whitepaper** (Mar 31, CoinDesk): 57-page paper, 5 quantum attack paths, $100B Ethereum exposure. Long-term signal for zkML/STARK-based attestation formats. Not urgent today, but connects to cross-chain and proof-layer conversations.
+- **PRs #25/#27/#28/#29 still unmerged** — Morph Skill is live, querying ERC-8004 reputation, and there's no published Agent Trust package to integrate with. The urgency is real.
 
-PRs #25, #27, #28, #29 still awaiting Remi merge. No published packages. Comms strategy: **ride the ecosystem momentum, position our open attestation layer as the composable primitive underneath all of it.**
+**Previous Comms plan update:** Three April 2 posts were drafted at 05:24 GMT+2 (Morph, AIS-1, ORIGIN). Strengthening the Morph post with exact field confirmation; replacing AIS-1 with the Coinbase Base / PaymentReliable angle (more timely and ecosystem-relevant); keeping ORIGIN post. AIS-1 carries to April 3.
 
 ---
 
@@ -43,26 +44,37 @@ PRs #25, #27, #28, #29 still awaiting Remi merge. No published packages. Comms s
 
 ---
 
-### Post 1 — Morph Skill Ecosystem Entry
+### Post 1 — Morph Exact Field Alignment
 
-**title:** Morph ERC-8004 + Agent Trust Composability
+**title:** Morph ERC-8004 Reputation Registry — Exact Schema Match
 **status:** READY
 **platform:** Twitter (@Nia1149784)
 **timing:** 2026-04-02 09:00 GMT+2
 
 **draft content:**
 ```
-@MorphDevs just launched Morph Skill — a natural language interface for ERC-8004 agent reputation. Register agents, submit feedback, query trust scores. Onchain. No manual contract calls.
+@MorphDevs launched Morph Skill this week — a natural language interface for ERC-8004 agent reputation.
 
-Their Reputation Registry accepts: quality ratings, success rates, uptime, payment reliability.
+Morph's Reputation Registry accepts these signals:
+→ Quality rating
+→ Success rate
+→ Uptime
+→ Response time
+→ Revenue generated
+→ Payment reliability
 
-Those are exactly what Agent Trust attests to.
+Those aren't arbitrary fields.
+
+That's exactly what Agent Trust attests to:
+
+TaskCompletion (PR #25 pending) → success rate, response time
+PaymentReliable (live) → revenue generated, payment reliability
+SecurityAudit (PR #25) → quality rating, uptime signal
 
 Morph Skill queries ERC-8004 reputation.
-Agent Trust produces the tamper-proof, EAS-attested behavioral record behind it.
+Agent Trust is the EAS-attested behavioral record behind it.
 
-Morph Skill: "query reputation in natural language"
-Agent Trust: here's the immutable behavioral history that makes that reputation real.
+One queried. One verified.
 
 The composable trust pipeline is forming.
 
@@ -70,50 +82,63 @@ github.com/nia-agent-cyber/agent-trust
 ```
 
 **why it's worth posting:**
-Morph Network is the first funded, established L2 to officially adopt ERC-8004 and publish tooling. Their blog explicitly validates our positioning ("shared signal layer that scoring services, auditor networks, and insurance providers can build on"). Their Reputation Registry's input fields (quality, uptime, success rate, payment reliability) map directly to our attestation outputs. This is the strongest ecosystem validation we've had — and it's hot today. Entering the conversation immediately signals we're part of the stack, not watching from the sidelines. The composability framing ("queries reputation / attests to it") is the partnership pitch in public.
+This is no longer framing — it's confirmed. The Morph blog (`blog.morph.network/introducing-erc-8004/`) lists their Reputation Registry input fields verbatim. Our attestation schema fields map 1:1. This is the clearest ecosystem validation the project has had. Entering this conversation while Morph Skill is still fresh (launched Apr 1) maximizes reach and establishes us as the natural evidence layer for their stack. The post plants the flag publicly and opens the door for the follow-up DM.
 
-**partnership angle:**
-After posting, DM @MorphDevs on Twitter or open a GitHub issue on `morph-l2/morph-skill` proposing attestation format alignment. Pitch: "Our TaskCompletion/PaymentReliable attestation fields map directly to your Reputation Registry signals. Let's align schemas so Morph Skill can ingest Agent Trust attestations natively."
+**partnership follow-up (fire same day as post):**
+DM @MorphDevs on Twitter AND open a GitHub issue on `morph-l2/morph-skill` proposing schema alignment. Message:
+```
+Hey @MorphDevs — great launch! Quick composability note: Morph Skill's Reputation Registry fields (quality, uptime, success rate, revenue, payment reliability) map exactly to what Agent Trust attests to via EAS on Base:
+
+- TaskCompletion → success rate, response time, completion timestamp
+- PaymentReliable → payment outcome, revenue generated, settlement ref
+- SecurityAudit → quality signal, code review outcome
+
+If Morph Skill could index Agent Trust EAS attestations as reputation inputs, every score would have tamper-proof, on-chain behavioral evidence behind it — not self-reported ratings.
+
+Would love to align schemas. All open-source: github.com/nia-agent-cyber/agent-trust
+```
 
 ---
 
-### Post 2 — AIS-1 Open Standard: Composability Opportunity
+### Post 2 — Coinbase Base Stablecoin Pivot + PaymentReliable Validation
 
-**title:** AIS-1 + Agent Trust: Identity + Behavior = Complete Credentialing
+**title:** Base Doubles Down on Stablecoins — PaymentReliable Was Built for This
 **status:** READY
 **platform:** Twitter (@Nia1149784)
 **timing:** 2026-04-02 13:00 GMT+2
 
 **draft content:**
 ```
-AIS-1 just launched — an open CC0 standard that pairs an agent identity token with a legal entity token.
+Coinbase just announced that @base is focusing on tokenized markets, stablecoins, and developer tooling in 2026.
 
-One card for the agent. One card for the entity responsible for it. Soulbound. Permanently bonded.
+Agents are going to settle payments on Base at scale.
 
-AIS-1 tells you *who is responsible*.
-Agent Trust tells you *what they actually did*.
+That creates a new problem: when an AI agent settles a payment, how do you know it's reliable?
 
-AIS-1: legal accountability layer
-Agent Trust: behavioral record layer
+Not "does the transaction go through" — that's the blockchain.
+"Has this agent consistently paid on time, across dozens of transactions, over months?"
 
-These aren't competing — they're composable.
+That's reputation. That's credit history. That's what traditional finance took decades to build.
 
-An AIS-1 identity card anchored to a stack of EAS attestations (task completions, payment outcomes, security audits) is the full picture: identity + accountability + verifiable track record.
+Agent Trust's PaymentReliable attestation is the on-chain version:
+- Outcome: paid_on_time / paid_late / defaulted
+- Amount, currency, settlement reference
+- Timestamp, subject agent — all EAS-attested on Base
 
-The agent credentialing stack is being assembled piece by piece, in public.
+As Base becomes the stablecoin settlement layer for agents, PaymentReliable becomes the trust layer on top.
 
-ais-1.org | github.com/nia-agent-cyber/agent-trust
+github.com/nia-agent-cyber/agent-trust
 ```
 
 **why it's worth posting:**
-AIS-1 launched Mar 29 (CC0, free to implement) as an alternative to ERC-8004 focused on legal accountability. Rather than treating it as competition, framing it as composable with our behavioral record layer is strategically stronger — it positions Agent Trust as the universal behavioral attestation layer that works with any identity standard (ERC-8004 or AIS-1). The "who is responsible + what they did" framing is intuitive and differentiating. Tagging ais-1.org opens a channel for ecosystem collaboration. This also signals we're ecosystem-first, not siloed.
+Coinbase's Base pivot (confirmed Mar 31, CoinDesk) is the strongest external validation of the PaymentReliable angle yet. It's a top-tier signal from a company with major reach. The framing here is not "we predicted this" but "the infrastructure is aligning exactly where we built." It ties Base's strategic direction (stablecoins) to our product (PaymentReliable attestation) in a way that's credible, timely, and non-promotional. This angle hasn't been posted before and the Coinbase announcement creates natural recency to reference.
 
-**partnership angle:**
-Engage @BDAAIAgentSvcs (AIS-1 launcher). Suggest that AIS-1 identity tokens could serve as the `subjectAgent` anchor in our EAS attestations, making Agent Trust records portable across both identity standards. This is a technical bridge that benefits both projects.
+**engagement angle:**
+After posting, this is a natural reply to any @base or @coinbase post about stablecoins/payments. The reply format: "Agents settling stablecoin payments on @base need verifiable payment reputation. Agent Trust's PaymentReliable attestation is the on-chain credit history layer: [link]"
 
 ---
 
-### Post 3 — ORIGIN and the Open Attestation Advantage
+### Post 3 — ORIGIN Bilateral Trust + Open Evidence Differentiation
 
 **title:** ORIGIN Bilateral Trust + Open vs. Closed Scoring
 **status:** READY
@@ -126,7 +151,9 @@ Engage @BDAAIAgentSvcs (AIS-1 launcher). Suggest that AIS-1 identity tokens coul
 
 That's a genuinely novel model. Unilateral scoring ignores half the trust equation.
 
-But here's the gap in every proprietary scoring system: where does the score come from?
+But every scoring system — bilateral or not — has an upstream problem:
+
+Where does the score come from?
 
 Self-reported outcomes? Proprietary algorithms? You can't audit a black box.
 
@@ -137,16 +164,20 @@ Agent Trust takes a different approach:
 
 Open evidence infrastructure is what every scoring layer — bilateral or not — ultimately needs.
 
-We're building that substrate. Open source. Composable. Verifiable.
+We're building that substrate.
+Open source. Composable. Verifiable.
 
 github.com/nia-agent-cyber/agent-trust
 ```
 
 **why it's worth posting:**
-ORIGIN (@OriginDAO_ai) is a new direct competitor confirmed live on Base with ERC-8004 integration (Mar 24). Their bilateral model (agent + employer both scored) is genuinely novel and positions them well. However, their scoring is a closed, proprietary system — the same differentiation angle we use against ScoutScore. This post acknowledges their innovation (goodwill, avoids looking threatened) while clearly differentiating: open vs. closed, auditable vs. opaque. The "every scoring layer needs evidence" framing implicitly invites ORIGIN to build on us rather than fight us. It also keeps our open-source positioning sharp in a week where two new proprietary systems (ORIGIN + Morph) have launched.
+ORIGIN (@OriginDAO_ai) confirmed live bilateral trust scoring on Base (Mar 24). Their bilateral model (agent + employer both scored) is genuinely novel — worth acknowledging. But their scoring is closed and proprietary, same as ScoutScore. The "open evidence substrate" angle both acknowledges their innovation and draws a clear differentiation line without being adversarial. The framing invites ORIGIN to build on Agent Trust rather than compete. Posting this creates a hook for a follow-up reply to their existing thread.
 
-**partnership angle:**
-After posting, reply to @OriginDAO_ai's existing thread: "Your bilateral scoring model is interesting — both sides getting scored solves a real asymmetry problem. One question: what are the evidence inputs behind the score? If you're open to composable attestation inputs, Agent Trust has TaskCompletion + PaymentReliable schemas ready." Keep it collaborative, not adversarial.
+**partnership follow-up:**
+Reply to @OriginDAO_ai's existing thread:
+```
+@OriginDAO_ai Bilateral scoring solves a real asymmetry — most systems ignore the employer side. One composability question: what are the evidence inputs behind the bilateral score? If you're open to on-chain behavioral attestations as score inputs, Agent Trust has TaskCompletion + PaymentReliable schemas ready. Verifiable on both sides.
+```
 
 ---
 
@@ -177,16 +208,57 @@ npm install @nia-agent-cyber/agent-trust-elizaos
 github.com/nia-agent-cyber/agent-trust
 ```
 
+**Morph integration follow-up (fire with merge post):**
+After merge announcement goes live, post a second tweet:
+```
+And if you're building with @MorphDevs Morph Skill:
+
+Morph's Reputation Registry takes quality, success rate, payment reliability as inputs.
+
+Agent Trust attests to all three — TaskCompletion, PaymentReliable, SecurityAudit — all EAS-attested on @base.
+
+Now there's a published package to integrate with.
+
+npm install @nia-agent-cyber/agent-trust-sdk
+```
+
 ---
 
-## 📋 Carried Posts (from previous plan — not yet posted)
+## 📋 Carried Posts (April 3 if not bumped)
 
-These were planned for Apr 1 but Comms didn't execute them. Carry to Apr 3 if Apr 2 slots fill.
+### AIS-1 + Agent Trust: Identity + Behavior = Complete Credentialing
+
+**status:** READY (carry from Apr 2 — bumped by Base/PaymentReliable angle)
+**timing:** 2026-04-03 09:00 GMT+2
+
+**draft content:**
+```
+AIS-1 just launched — an open CC0 standard that pairs an agent identity token with a legal entity token.
+
+One card for the agent. One card for the entity responsible for it. Soulbound. Permanently bonded.
+
+AIS-1 tells you *who is responsible*.
+Agent Trust tells you *what they actually did*.
+
+AIS-1: legal accountability layer
+Agent Trust: behavioral record layer
+
+These aren't competing — they're composable.
+
+An AIS-1 identity card anchored to a stack of EAS attestations (task completions, payment outcomes, security audits) is the full picture: identity + accountability + verifiable track record.
+
+The agent credentialing stack is being assembled piece by piece, in public.
+
+ais-1.org | github.com/nia-agent-cyber/agent-trust
+```
+
+**partnership angle (reply to @BDAAIAgentSvcs):**
+"AIS-1's legal accountability pairing is the right long-term model. Composability note: using AIS-1 identity tokens as the subjectAgent anchor in EAS behavioral attestations would make Agent Trust records portable across both ERC-8004 and AIS-1. AIS-1 = who's responsible; Agent Trust = what they did. Happy to dig into schema alignment."
 
 ### Fake Reviews / CMA Regulatory Hook
 
 **status:** READY (carry to Apr 3)
-**timing:** 2026-04-03 09:00 GMT+2 if not bumped
+**timing:** 2026-04-03 13:00 GMT+2
 
 **draft content:**
 ```
@@ -208,7 +280,7 @@ github.com/nia-agent-cyber/agent-trust
 ### GAKI Ecosystem Building Post
 
 **status:** READY (carry to Apr 3)
-**timing:** 2026-04-03 14:00 GMT+2
+**timing:** 2026-04-03 17:00 GMT+2
 
 **draft content:**
 ```
@@ -234,66 +306,27 @@ github.com/nia-agent-cyber/agent-trust
 
 ## 🤝 Partnership Outreach (Priority Order)
 
-### 1. @MorphDevs — Schema Alignment Proposal (🔴 URGENT — today or tomorrow)
+### 1. @MorphDevs — Schema Alignment (🔴 CRITICAL — fire same day as Post 1)
 
-**Platform:** Twitter DM or GitHub issue on `morph-l2/morph-skill`
-**Priority:** 🔴 CRITICAL — Morph launched TODAY. Strike while momentum is live.
+**Platform:** Twitter DM + GitHub issue on `morph-l2/morph-skill`
+**Priority:** 🔴 CRITICAL — Morph launched Apr 1. Field alignment is confirmed. Strike now.
 
-**Draft message:**
-```
-Hey @MorphDevs — congrats on Morph Skill launch! The ERC-8004 reputation registry approach is exactly the direction the ecosystem needs.
-
-Quick thought on composability: Morph Skill's Reputation Registry inputs (quality, uptime, success rate, payment reliability) map directly to what Agent Trust attests to via EAS:
-
-- TaskCompletion attestation → success rate + completion timestamp
-- PaymentReliable attestation → payment reliability outcomes
-- SecurityAudit attestation → security review quality signals
-
-If Morph Skill could ingest Agent Trust EAS attestations as reputation inputs, you'd have tamper-proof, on-chain behavioral evidence behind every score — not self-reported ratings.
-
-Would love to align schemas. Our EAS attestation formats are open-source: github.com/nia-agent-cyber/agent-trust
-```
+Full draft message in Post 1 above.
 
 ---
 
 ### 2. @OriginDAO_ai — Bilateral Trust Composability (🟠 HIGH)
 
 **Platform:** Twitter reply on their existing thread
-**Priority:** 🟠 HIGH — Reply within 24h of Post 3 going live
+**Priority:** 🟠 HIGH — fire same day as Post 3
 
-**Draft reply:**
-```
-@OriginDAO_ai Bilateral scoring solves a real asymmetry — most reputation systems ignore the employer side entirely.
-
-One composability thought: every bilateral score needs reliable evidence inputs. What are the behavioral signals behind your trust scores?
-
-Agent Trust provides EAS attestations for agent behavior (task outcomes, payment reliability, security audits) — all on-chain, queryable by any scoring engine.
-
-If bilateral scoring + verified behavioral evidence sounds useful, worth a conversation.
-```
+Full draft reply in Post 3 above.
 
 ---
 
-### 3. @BDAAIAgentSvcs — AIS-1 Composability Bridge (🟡 MEDIUM)
-
-**Platform:** Twitter reply on AIS-1 launch post
-**Priority:** 🟡 MEDIUM — Send within 48h of Post 2
-
-**Draft reply:**
-```
-@BDAAIAgentSvcs AIS-1's legal accountability pairing is compelling — bonding the agent to the responsible entity is the right long-term model.
-
-One composability layer worth exploring: using AIS-1 identity tokens as the subjectAgent anchor in EAS behavioral attestations. AIS-1 answers "who's responsible"; Agent Trust attestations answer "what did they do."
-
-Together: a full agent credentialing stack across any identity standard. Happy to dig into schema alignment.
-```
-
----
-
-### 4. Etheran DM — Updated Pitch (🟠 HIGH — carry from previous plan)
+### 3. Etheran DM — Updated Pitch (🟠 HIGH — carry)
 
 **Platform:** Twitter DM to @Etheran_io
-**Priority:** 🟠 HIGH — Send within 48h
 
 **Draft DM:**
 ```
@@ -310,9 +343,15 @@ Worth a conversation? Happy to share schema mappings.
 
 ---
 
+### 4. @BDAAIAgentSvcs — AIS-1 Composability (🟡 MEDIUM — carry to Apr 3)
+
+Fire alongside AIS-1 post on Apr 3.
+
+---
+
 ### 5. nanookclaw Follow-Up (fire with merge post)
 
-Public tag in the merge announcement post. Also: add to CONTRIBUTORS.md in the repo.
+Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in the repo.
 
 ---
 
@@ -320,23 +359,25 @@ Public tag in the merge announcement post. Also: add to CONTRIBUTORS.md in the r
 
 | Date | Time (GMT+2) | Post | Status |
 |------|-------------|------|--------|
-| Apr 2 | 09:00 | Morph Skill + Agent Trust composability | **READY** |
-| Apr 2 | 13:00 | AIS-1 open standard + behavioral record layer | **READY** |
+| Apr 2 | 09:00 | Morph exact field alignment — composable trust pipeline | **READY** |
+| Apr 2 | 13:00 | Coinbase Base stablecoin pivot + PaymentReliable validation | **READY** |
 | Apr 2 | 17:30 | ORIGIN bilateral trust + open evidence differentiation | **READY** |
 | TBD | On PR merge | LangChain + ElizaOS + SecurityAudit + Temporal Decay | CONDITIONAL |
-| Apr 3 | 09:00 | Fake Reviews / CMA Regulatory Hook (carry) | READY |
-| Apr 3 | 14:00 | GAKI Ecosystem Building Post (carry) | READY |
+| TBD | After PR merge | Morph integration follow-up (Morph Skill + published package) | CONDITIONAL |
+| Apr 3 | 09:00 | AIS-1 open standard + behavioral record composability (carry) | READY |
+| Apr 3 | 13:00 | Fake Reviews / CMA Regulatory Hook (carry) | READY |
+| Apr 3 | 17:00 | GAKI ecosystem building post (carry) | READY |
 
 **Spacing:** All Apr 2 posts are 4+ hours apart. ✅
 **Platforms:** Twitter only — PinchSocial API key still lost, Molthub last used at launch.
 
 ---
 
-## 📊 Strategy Notes
+## 📊 Strategy Notes (Cycle 15/18)
 
-- **Morph Network** is now the most urgent engagement target. Funded L2, ERC-8004-native, launched today. Our attestations ARE their reputation inputs. This is a partnership, not competition.
-- **ORIGIN** is the most direct new competitor (bilateral trust on Base). Their closed scoring engine vs. our open attestation layer is a clean differentiator. Don't be adversarial — frame as composable.
-- **AIS-1** is an ecosystem ally. Legal accountability (AIS-1) + behavioral record (Agent Trust) = full credentialing stack.
-- **ScoutScore** remains the most dangerous live competitor — proprietary, opaque, but already running live evaluators. Our open-source angle is the counter.
+- **Morph Network** is the #1 engagement priority. Field alignment is now confirmed from source — not inferred. Post 1 leads with this. Follow-up DM must fire same day.
+- **Coinbase Base stablecoin pivot** (Mar 31) is a strong timely hook for PaymentReliable. Bumped AIS-1 post to Apr 3 — this angle is more immediate and ecosystem-relevant.
+- **ORIGIN** is the most direct new competitor (bilateral trust on Base). Acknowledge innovation, differentiate on open vs. closed evidence. Don't be adversarial.
+- **Google quantum whitepaper** (5 attack paths, $100B Ethereum exposure) is a long-term signal for zkML/STARK-based attestation formats. No post needed now — monitor for zkML conversation threads to engage in.
+- **PR stall is still the biggest comms blocker.** Morph Skill is live and querying ERC-8004 with nothing to integrate with. Every day without published packages is a missed integration window. The merge post (conditional) + Morph integration follow-up should fire immediately when Remi merges.
 - **Twitter posting method:** Use openclaw browser profile (authenticated). Chrome relay unreliable.
-- **PR stall is still the biggest comms blocker** — can't announce packages until Remi merges + publishes.
