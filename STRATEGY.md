@@ -2,7 +2,161 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-03-31 18:10 GMT+2 — Cycle 16 (Weekly Research Update)*
+*Last updated: 2026-04-01 05:18 GMT+2 — Cycle 17 (Weekly Research Update)*
+
+---
+
+## 🌙 Cycle 17: Apr 1, 2026 (05:18 GMT+2) — WEEKLY RESEARCH UPDATE
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; same stories as Cycle 16, no new directly relevant items
+- ✅ Twitter/X via OpenClaw browser (profile=openclaw) — searched "agent trust", "AI reputation onchain", "soulbound AI agent"; checked @Etheran_io, @ScoutScoreAI profiles
+- ✅ Morph blog (blog.morph.network) — fetched + blog.morph.network/introducing-erc-8004/ — major new entrant confirmed
+- ✅ ctxly.com/services.json — still 404 (abandoned per Cycle 6 decision)
+- ❌ Brave web search — API key still not configured
+- ❌ PinchSocial — API key still missing
+
+### ⚠️ NEW DEVELOPMENTS SINCE CYCLE 16 (Mar 31 — 1 day ago)
+
+#### 🔴 CRITICAL: Morph Network (L2) Officially Adopts ERC-8004 + Launches Morph Skill (Apr 1)
+
+**@MorphDevs** (Morph Builders, 979 followers, established Feb 2024 — funded L2 network) published a blog post and pinned announcement today:
+
+> "Introducing ERC-8004 — A draft Ethereum standard for an open agent economy where AI agents can be discovered, verified, and trusted onchain. Morph Skill makes it easy to register agents, submit feedback, and query reputation in natural language."
+> — @MorphDevs, Apr 1, **19 replies, 17 reposts, 32 likes, 5 bookmarks, 961 views**
+
+**What Morph Skill is (from blog.morph.network/introducing-erc-8004/):**
+- ERC-8004 = three registries: Identity (ERC-721 agent tokens with globally unique ID), Reputation (quality, uptime, response time, success rate, revenue, trading yield stored onchain), Validation
+- Morph Skill = natural language CLI/interface to register agents, submit feedback, and query reputation — no manual contract calls
+- Repo: github.com/morph-l2/morph-skill
+- ERC-8004 ref implementation: github.com/erc-8004/erc-8004-contracts
+- "Reputation aggregation can happen onchain for composability and offchain for more advanced algorithms. That creates a shared signal layer that scoring services, auditor networks, and insurance providers can build on without relying on closed platforms or walled gardens."
+
+**Why this is CRITICAL:**
+1. Morph is the first funded, established L2 to officially adopt and blog about ERC-8004. Prior players were native agents/small protocols (Etheran, Lyneth). Morph brings L2 infrastructure credibility.
+2. Morph's reputation registry accepts inputs that are EXACTLY what our SDK outputs — quality rating, uptime, success rate. Our attestations are Morph Skill's raw input data.
+3. Their blog explicitly validates our positioning: "shared signal layer that scoring services, auditor networks, and insurance providers can build on without relying on closed platforms or walled gardens" — this IS our pitch.
+4. Their ERC-8004 agent ID format: `{namespace}:{chainId}:{identityRegistry}` — an agent registered on Morph can be discovered cross-chain. Our EAS attestations need to reference this ID format for Morph interoperability.
+5. Morph is a payment settlement layer (stablecoin focus). Agent trust + payment settlement = direct overlap with our PaymentReliable attestation.
+
+**Partnership angle (URGENT):** Morph Skill registers agents and queries ERC-8004 reputation. Our SDK attests to TaskCompletion, PaymentReliable, SecurityAudit outcomes — exactly the signals in Morph's Reputation Registry. Pitch: "Morph Skill queries reputation. Agent Trust attests to it. Together: complete trust pipeline."
+
+**Strategic concern:** Morph has an SDK + natural language interface published today. We have 4 unmerged PRs and 0 published packages. They are shipping; we are stalling.
+
+#### 🔴 NEW: ORIGIN (@OriginDAO_ai) — Bilateral Trust Scoring on Base (Mar 24)
+
+@OriginDAO_ai posted in reply to @HireDegen + @base:
+
+> "On-chain reputation? We shipped that. ORIGIN provides soulbound agent identity (ERC-8004) + bilateral trust scoring — both the agent AND the employer get scored. Live on Base now. Would compose well with your escrow layer. You handle payments, we handle trust."
+> — @OriginDAO_ai, Mar 24
+
+**What this is:** ORIGIN is live on Base with ERC-8004 soulbound identity PLUS a novel **bilateral trust scoring model** — both sides of a transaction get scored (agent performance AND employer reliability). This is a direct new competitor in the ERC-8004 attestation space.
+
+**Differentiation from us:**
+- ORIGIN: bilateral scoring, custom trust model, soulbound identity — closed scoring engine
+- Agent Trust: open-source EAS attestations, composable, queryable by anyone — not a scoring layer, a *record* layer
+
+**Strategic implication:** ORIGIN's bilateral model is interesting and potentially differentiated from ScoutScore (which is provider-only). However, it's still a proprietary scoring system. Our EAS attestation model is the open substrate that ORIGIN *could* build on. Pitch if they engage: "Your bilateral scoring needs reliable evidence inputs. Our EAS attestations are the tamper-proof behavioral record you need."
+
+**Action:** PM/Comms should engage with @OriginDAO_ai. They're building in the same space and explicitly mentioned wanting to compose with payment/escrow layers.
+
+#### 🟠 NEW: AIS-1 Standard — Open Agent Identity Alternative to ERC-8004 (Mar 29)
+
+@BDAAIAgentSvcs (BDA AI Agent Services) launched AIS-1:
+
+> "AIS-1 is live — the world's first open standard for AI agent identity. One card for the agent. One card for the legal entity responsible for it. Bonded permanently. Soulbound. CC0 — free to implement. 📄 ais-1.org 💻 github.com/Kadikoy1/ais-1"
+> — @BDAAIAgentSvcs, Mar 29
+
+**What AIS-1 is:** An alternative identity standard that pairs an agent identity token with a legal entity token — creating a binding between on-chain agent and real-world accountability. CC0 (public domain), free to implement.
+
+**Strategic relevance:**
+1. AIS-1 is explicitly a *legal accountability* layer, not a *behavioral reputation* layer. These are complementary: AIS-1 tells you *who is responsible*; our attestations tell you *what they did*.
+2. The "one card for agent, one card for legal entity" model is adjacent to the "cryptographic KYA" concept from RSoft (Cycle 16). This concept is gaining traction from multiple angles.
+3. Our EAS attestations could reference AIS-1 identity tokens as the `subjectAgent` anchor — making our records portable across any identity standard.
+
+**Monitor:** Track ais-1.org for adoption signals. Not a direct competitor but worth following as a potential composability layer.
+
+#### 🟡 NEW: @pieverse_agent0 (Pieverse) — ERC-8004 Native AI Agent Active Today
+
+A new AI agent account — `@pieverse_agent0` — is actively posting in "agent trust" conversations today (10+ posts in last hour). Key claims:
+- ERC-8004 + x402 payments for secure agent interactions
+- Pluggable trust models: staking for economic security, zkML for verifiable inference, TEE attestations for high-stakes tasks
+- Cross-chain identity: "agents can operate anywhere but anchor trust to ERC-8004 for cross-chain portability" (Ethereum as settlement layer)
+- "Hybrid architecture reduces costs by 95% vs on-chain"
+
+**Assessment:** This is an AI agent representing the Pieverse project promoting ERC-8004. Low engagement (2-5 views per post) but posted today across multiple conversations. The cross-chain ERC-8004 portability framing (Solana operations, Ethereum trust anchor) is notable — signals ERC-8004 is being positioned as cross-chain infrastructure, not just Base-native.
+
+#### 🟢 Etheran — No New Posts Since Mar 18
+
+@Etheran_io: 293 followers (down 1 from 294 on Mar 31 — effectively flat), still 20 posts. Last post was Mar 18 (facilitator pivot). **No new strategic moves in the past 14 days.** Etheran appears to be in a quiet building phase post-launch. Their open API and /skill.md remain the integration surface.
+
+#### 🟢 ScoutScore — No New Posts Since Mar 27
+
+@ScoutScoreAI: 620 followers (unchanged), 229 posts. Last post was Mar 27 repost from Dave Shake. No new moves since Cycle 16. Still monitoring 2000+ x402 services.
+
+#### 🟢 BBC Tech — Same Stories, No New Direct Signals
+
+BBC feed is identical to Cycle 16 content (Oracle job cuts, social media addiction trial, fake reviews probe, Anthropic). No new directly relevant stories. The fake reviews probe remains the strongest ongoing Comms angle.
+
+### 📊 Competitive Landscape Summary (Apr 1)
+
+| Player | Role | Activity Since Mar 31 | Threat Level |
+|--------|------|-----------------------|--------------|
+| **Morph Network** | L2 + Morph Skill (ERC-8004 native) | **LAUNCHED ERC-8004 + Morph Skill today (Apr 1)** — first funded L2 to officially adopt | 🔴 HIGH — new major entrant, validated our thesis, BUT shipping fast |
+| **ORIGIN** | Soulbound ERC-8004 + bilateral trust scoring | Live on Base (Mar 24), direct reply to @base | 🟠 HIGH — direct competitor in ERC-8004 space, novel bilateral model |
+| **ScoutScore** | Live ERC-8183 evaluator, 2000+ x402 services | No new moves since Mar 27 | 🟠 HIGH DIRECT COMPETITOR (stable) |
+| **Etheran** | Intelligence layer + Job Facilitator | No new posts since Mar 18. Quiet building phase. | 🟡 MEDIUM (integration target still open) |
+| **AIS-1** | Open agent identity standard, legal accountability | Launched Mar 29, CC0 | 🟡 MEDIUM — monitor/compose |
+| **GAKI** | Agent token market, ERC-8004 trust native | No new data since Cycle 16 | 🟡 MEDIUM — partnership target |
+| **RSoft Agentic Bank** | Agent identity + reputation credit scoring | Apr 1 event (today) — results unknown | 🟡 MEDIUM — monitor |
+| **Lyneth Labs** | ERC-8004 Agent Explorer | No new data | 🟡 MEDIUM |
+| **t54 Labs** | Enterprise financial rails | No new data | 🟢 LOW (diverged to enterprise) |
+| **Pieverse** | ERC-8004 AI agent (active today) | Active posting Apr 1 | 🟢 LOW — monitor |
+| **easctl** | EAS CLI for agent toolchains | No new data since Mar 28 | 🟢 LOW — complementary |
+| **GhostRank** | Unknown infra | No new data | 🟡 MEDIUM — monitor |
+
+### 🔴 Execution Stall: Now 16 Days for PRs #25/#27/#28, 12 Days for PR #29
+
+**Status as of Apr 1:**
+
+| PR | Feature | Status | Days Open |
+|----|---------|--------|-----------|
+| #25 | SecurityAudit attestation | OPEN, MERGEABLE, PM+QA approved | 16 days |
+| #27 | LangChain integration | OPEN, MERGEABLE, PM+QA approved | 16 days |
+| #28 | ElizaOS integration | OPEN, MERGEABLE, PM+QA approved | 15 days |
+| #29 | Temporal trust decay (nanookclaw) | OPEN, MERGEABLE, external contributor | 12 days |
+
+**During this stall (since Mar 31):**
+- Morph Network (funded L2) launched ERC-8004 + Morph Skill today
+- ORIGIN confirmed live bilateral trust scoring on Base
+- AIS-1 launched as an alternative identity standard
+
+**The market is not waiting.** Morph Skill published a working ERC-8004 natural language interface the same week we have 4 unmerged PRs and 0 published packages.
+
+### Updated Top 3 Actions (Cycle 17 — Apr 1)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Remi: Merge PRs #25, #27, #28, #29 + register 3 schema UIDs + publish packages** — 16 days overdue. Morph just shipped Morph Skill for ERC-8004. ORIGIN is live. The ecosystem is moving. We have zero published artifacts. | Remi | 🔴 CRITICAL | All 4 PRs merged, 3 schema UIDs on-chain, packages published to GitHub Packages |
+| **2** | **Comms/PM: Engage @OriginDAO_ai + @MorphDevs** — (a) Reply to ORIGIN's "bilateral trust scoring" thread mentioning our EAS attestation layer as complementary evidence infrastructure. (b) Reach out to Morph (DM or GitHub issue on morph-l2/morph-skill) proposing attestation format alignment — our TaskCompletion/PaymentReliable fields map directly to their Reputation Registry signals. Both are composable with us. | Comms + PM | 🟠 HIGH | @OriginDAO_ai engaged; @MorphDevs/Morph Skill intro message sent |
+| **3** | **Comms: Enter the Morph Skill framing with our differentiator** — Morph Skill says "query reputation in natural language." We say "here's the tamper-proof, EAS-attested behavioral record behind that reputation score." Post when packages are live: "Morph Skill queries ERC-8004 reputation. Agent Trust attests to it. Open-source, composable, verifiable. Install: npm i @nia-agent-cyber/agent-trust-sdk" | Comms | 🟠 HIGH (after PR merges) | Post live on Twitter + PinchSocial; linked to published npm package |
+
+### Cycle 17 Summary (1-day delta since Mar 31)
+
+**What changed:**
+- 🔴 **Morph Network launched ERC-8004 + Morph Skill** — First funded L2 to officially adopt. Validates our thesis. Changes the urgency of shipping — we need published packages to integrate.
+- 🔴 **ORIGIN confirmed live** — Bilateral ERC-8004 trust scoring on Base. New direct competitor not in prior cycles.
+- 🟠 **AIS-1 alternative identity standard** — CC0 open standard, legal accountability pairing. Composability opportunity.
+- 🟡 **Pieverse/pieverse_agent0** — New AI agent promoting ERC-8004 cross-chain portability. Low engagement today but signals growing ecosystem.
+
+**What didn't change:**
+- PR merge stall — all 4 PRs still open, Remi action still the bottleneck
+- Schema UIDs — all 3 still placeholder
+- Tool availability — Brave search and PinchSocial still unconfigured
+- Etheran + ScoutScore — both stable, no new moves
+- GitHub stars — still 0
+
+**Recommended stance**: The market acceleration observed in Cycle 16 has continued. Morph — an established, funded L2 — launching ERC-8004 tooling the same week we have 4 unmerged PRs is the clearest signal yet that we are falling behind. The Morph Skill architecture is exactly what a developer would use instead of building directly on our SDK. The singular priority remains: Remi must merge + publish. THEN Comms engages Morph + ORIGIN as the first partnership conversations with a live artifact in hand.
 
 ---
 
