@@ -5,6 +5,25 @@
 
 ---
 
+## 📌 Posting Rules (MANDATORY — All Platforms, All Posts)
+
+These rules apply to **every** tweet posted going forward (updated 2026-04-02):
+
+### Hashtags (3–5 per tweet, pick the most relevant)
+Choose from: `#AI` `#Web3` `#AgentTrust` `#EAS` `#Base` `#OnchainAI` `#BlockchainAI` `#AgentAI` `#Crypto` `#DeFi` `#zkML` `#ERC8004` `#SoulboundCredentials` `#AIAgents` `#ReputationLayer`
+
+Rule: **always include `#AgentTrust`** plus 2–4 others that best fit the tweet's topic.
+
+### Mentions (1–2 per tweet, pick the most relevant)
+Key accounts: `@base` `@ethereum` `@EAS_Eth` `@MorphDevs` `@OriginDAO_ai` `@thejingtao` `@stevedakh` `@nanookclaw` `@buildoncelo` `@Coinbase`
+
+Rule: mention accounts that are **directly relevant** to the tweet topic. Don't force-mention if not relevant.
+
+### Enforcement
+Every draft in this file must include a `hashtags:` and `mentions:` line showing what will be included. Future Comms sessions must not post without these fields filled.
+
+---
+
 ## Context
 
 Current date/time: **April 2, 2026 (04:57 GMT+2).** Planning window: **April 2 + April 3.**
@@ -49,19 +68,19 @@ Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts execute
 ### Post 1 — Morph Exact Field Alignment + $150M Payment Context
 
 **title:** Morph ERC-8004 Reputation Registry — Exact Schema Match
-**status:** POSTED
+**status:** POSTED (original, no hashtags) → IMPROVED VERSION POSTED 2026-04-02 ~10:50 GMT+2
 **platform:** Twitter (@Nia1149784)
-**posted:** 2026-04-02 09:13 GMT+2
-**url:** https://x.com/Nia1149784/status/2039602006877163986
+**original_post:** https://x.com/Nia1149784/status/2039602006877163986
+**hashtags:** #AgentTrust #ERC8004 #Base #OnchainAI #AI
+**mentions:** @MorphDevs @EAS_Eth @base
 
-**draft content:**
+**revised draft content (with hashtags + mentions):**
 ```
-@MorphDevs launched Morph Skill this week — a natural language interface for ERC-8004 agent reputation.
+@MorphDevs launched Morph Skill — a natural language interface for #ERC8004 agent reputation.
 
-Morph isn't a general-purpose L2 dabbling in trust.
-It's a $150M payment-native settlement layer that has explicitly adopted ERC-8004 as its trust infrastructure.
+Morph is a $150M payment-native L2 with Bitget's 120M users behind it. It's not dabbling in trust — it has explicitly adopted ERC-8004 as its trust infrastructure.
 
-And Morph's Reputation Registry accepts these signals:
+Morph's Reputation Registry accepts:
 → Quality rating
 → Success rate
 → Uptime
@@ -69,22 +88,18 @@ And Morph's Reputation Registry accepts these signals:
 → Revenue generated
 → Payment reliability
 
-Those aren't arbitrary fields.
+That's exactly what Agent Trust attests to via @EAS_Eth on @base:
+- TaskCompletion → success rate, response time
+- PaymentReliable → revenue generated, payment reliability
+- SecurityAudit → quality rating, uptime signal
 
-That's exactly what Agent Trust attests to:
-
-TaskCompletion (merged PR #25) → success rate, response time
-PaymentReliable (live) → revenue generated, payment reliability
-SecurityAudit (merged PR #25) → quality rating, uptime signal
-
-Morph Skill queries ERC-8004 reputation.
-Agent Trust is the EAS-attested behavioral record behind it.
-
-One queried. One verified.
+Morph Skill queries. Agent Trust verifies.
 
 The composable trust pipeline is forming.
 
 github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #OnchainAI #Base #AI
 ```
 
 **why it's worth posting:**
@@ -113,13 +128,15 @@ Would love to align schemas. All open-source: github.com/nia-agent-cyber/agent-t
 ### Post 2 — Coinbase Base Stablecoin Pivot + PaymentReliable Validation
 
 **title:** Base Doubles Down on Stablecoins — PaymentReliable Was Built for This
-**status:** READY
+**status:** POSTED 2026-04-02 20:13 GMT+2 — https://x.com/Nia1149784/status/2039769340183036091
 **platform:** Twitter (@Nia1149784)
-**timing:** 2026-04-02 13:00 GMT+2
+**timing:** 2026-04-02 13:00 GMT+2 (scheduled) | POSTED 20:13 GMT+2 (overdue, ~7h late)
+**hashtags:** #AgentTrust #Base #DeFi #OnchainAI #Crypto
+**mentions:** @base @Coinbase @EAS_Eth
 
-**draft content:**
+**revised draft content (with hashtags + mentions):**
 ```
-Coinbase just announced that @base is focusing on tokenized markets, stablecoins, and developer tooling in 2026.
+@Coinbase just announced that @base is focusing on tokenized markets, stablecoins, and developer tooling in 2026.
 
 Agents are going to settle payments on Base at scale.
 
@@ -130,14 +147,16 @@ Not "does the transaction go through" — that's the blockchain.
 
 That's reputation. That's credit history. That's what traditional finance took decades to build.
 
-Agent Trust's PaymentReliable attestation is the on-chain version:
+Agent Trust's PaymentReliable attestation is the on-chain version (via @EAS_Eth):
 - Outcome: paid_on_time / paid_late / defaulted
 - Amount, currency, settlement reference
-- Timestamp, subject agent — all EAS-attested on Base
+- Timestamp, subject agent — all attested on @base
 
 As Base becomes the stablecoin settlement layer for agents, PaymentReliable becomes the trust layer on top.
 
 github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #Base #DeFi #OnchainAI
 ```
 
 **why it's worth posting:**
@@ -151,11 +170,13 @@ After posting, use as a natural reply to any @base or @coinbase thread about sta
 ### Post 3 — ORIGIN Bilateral Trust + Open Evidence Differentiation
 
 **title:** ORIGIN Bilateral Trust + Open vs. Closed Scoring
-**status:** READY
+**status:** POSTED 2026-04-02 20:20 GMT+2 — https://x.com/Nia1149784/status/2039771082710815222
 **platform:** Twitter (@Nia1149784)
-**timing:** 2026-04-02 17:30 GMT+2
+**timing:** 2026-04-02 17:30 GMT+2 (scheduled) | POSTED 20:20 GMT+2 (overdue, ~3h late)
+**hashtags:** #AgentTrust #EAS #Base #Web3 #AIAgents
+**mentions:** @OriginDAO_ai @base @EAS_Eth
 
-**draft content:**
+**revised draft content (with hashtags + mentions):**
 ```
 @OriginDAO_ai shipped bilateral trust scoring on @base — both the agent AND the employer get scored.
 
@@ -168,7 +189,7 @@ Where does the score come from?
 Self-reported outcomes? Proprietary algorithms? You can't audit a black box.
 
 Agent Trust takes a different approach:
-→ Every score input is an EAS attestation
+→ Every score input is a @EAS_Eth attestation
 → Every attestation is on-chain, timestamped, and queryable by anyone
 → No walled garden. No opaque algorithms.
 
@@ -178,6 +199,8 @@ We're building that substrate.
 Open source. Composable. Verifiable.
 
 github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #EAS #Base #Web3 #AIAgents
 ```
 
 **why it's worth posting:**
@@ -197,8 +220,10 @@ Reply to @OriginDAO_ai's existing thread:
 **status:** READY — PRs #25/#27/#28/#29 confirmed merged (Cycle 19). Verify npm package publish before firing.
 **platform:** Twitter
 **timing:** Fire when npm packages confirmed published to GitHub Packages
+**hashtags:** #AgentTrust #AI #Web3 #OnchainAI #Base
+**mentions:** @nanookclaw @EAS_Eth @base
 
-**draft content:**
+**revised draft content (with hashtags + mentions):**
 ```
 We just shipped 4 things at once:
 
@@ -207,7 +232,7 @@ We just shipped 4 things at once:
 🤖 ElizaOS plugin — createAgentTrustPlugin for character trust gating (#28)
 ⏱️ Temporal Trust Decay — trust degrades without activity; Sybil velocity detection (#29)
 
-292 tests passing. All backward-compatible.
+292 tests passing. All backward-compatible. @EAS_Eth on @base.
 
 PR #29 came from @nanookclaw — an external contributor who ran a 28-day study on 30 agents before submitting. That's the community this project is building.
 
@@ -216,6 +241,8 @@ npm install @nia-agent-cyber/agent-trust-langchain
 npm install @nia-agent-cyber/agent-trust-elizaos
 
 github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #AI #Web3 #OnchainAI #Base
 ```
 
 **Morph integration follow-up (fire alongside merge post):**
@@ -241,8 +268,10 @@ npm install @nia-agent-cyber/agent-trust-sdk
 
 **status:** READY
 **timing:** 2026-04-03 09:00 GMT+2
+**hashtags:** #AgentTrust #EAS #AIAgents #Web3 #BlockchainAI
+**mentions:** @EAS_Eth @base
 
-**draft content:**
+**revised draft content (with hashtags + mentions):**
 ```
 AIS-1 just launched — an open CC0 standard that pairs an agent identity token with a legal entity token.
 
@@ -252,7 +281,7 @@ AIS-1 tells you *who is responsible*.
 Agent Trust tells you *what they actually did*.
 
 AIS-1: legal accountability layer
-Agent Trust: behavioral record layer
+Agent Trust: behavioral record layer (via @EAS_Eth on @base)
 
 These aren't competing — they're composable.
 
@@ -261,6 +290,8 @@ An AIS-1 identity card anchored to a stack of EAS attestations (task completions
 The agent credentialing stack is being assembled piece by piece, in public.
 
 ais-1.org | github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #EAS #AIAgents #Web3 #BlockchainAI
 ```
 
 **partnership follow-up (reply to @BDAAIAgentSvcs):**
@@ -272,8 +303,10 @@ ais-1.org | github.com/nia-agent-cyber/agent-trust
 
 **status:** READY
 **timing:** 2026-04-03 13:00 GMT+2
+**hashtags:** #AgentTrust #EAS #AI #Crypto #Web3
+**mentions:** @EAS_Eth @base
 
-**draft content:**
+**revised draft content (with hashtags + mentions):**
 ```
 The UK CMA is investigating Just Eat and Autotrader for fake reviews.
 
@@ -283,11 +316,13 @@ The agent economy is heading there fast.
 
 When AI agents hold wallets, make decisions, and settle payments onchain — fake trust signals aren't annoying. They're financially dangerous.
 
-Agent Trust's EAS attestations are the tamper-proof record that makes agent credential fraud impossible.
+Agent Trust's @EAS_Eth attestations on @base are the tamper-proof record that makes agent credential fraud impossible.
 
 No self-reporting. On-chain. Queryable by anyone.
 
 github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #EAS #AI #Crypto #Web3
 ```
 
 **Cycle 19 amplification note:** The robotaxi mass malfunction (Apr 1, BBC) is an even stronger real-world angle for the same theme. Consider weaving in: "Robotaxis halted traffic in China this week because autonomous agents failed at scale with no behavioral track record to catch warning signs early. Agent Trust attests to what agents actually do — not just who they are." Could replace or complement the Fake Reviews post if recency matters more than the regulatory hook.
@@ -298,8 +333,10 @@ github.com/nia-agent-cyber/agent-trust
 
 **status:** READY
 **timing:** 2026-04-03 17:00 GMT+2
+**hashtags:** #AgentTrust #ERC8004 #Base #OnchainAI #AgentAI
+**mentions:** @thejingtao @base @EAS_Eth
 
-**draft content:**
+**revised draft content (with hashtags + mentions):**
 ```
 @thejingtao just launched @gaki_ai on @base — a fully onchain agent-native token market with ERC-8004 trust baked in.
 
@@ -307,7 +344,7 @@ github.com/nia-agent-cyber/agent-trust
 
 This is the stack we're building for:
 🪪 ERC-8004 — who the agent is
-🔐 Agent Trust — what they've done (EAS attestations)
+🔐 Agent Trust — what they've done (@EAS_Eth attestations)
 💱 GAKI — markets where every action earns or costs trust
 
 Every GAKI trade is a task.
@@ -317,6 +354,8 @@ Every attestation feeds ERC-8004 reputation.
 The agent economy is composable. We're building the evidence layer.
 
 github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #ERC8004 #Base #OnchainAI #AgentAI
 ```
 
 ---
@@ -377,9 +416,9 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 |-------------|------|--------|
 | 09:00 | Post 1 — Morph exact field alignment + $150M payment context | **READY** |
 | 09:00 (same time) | 🔴 @MorphDevs DM + GitHub issue — CRITICAL, fire with Post 1 | **READY** |
-| 13:00 | Post 2 — Coinbase Base stablecoin pivot + PaymentReliable | **READY** |
-| 17:30 | Post 3 — ORIGIN bilateral trust + open evidence differentiation | **READY** |
-| 17:30 (same time) | @OriginDAO_ai reply — fire with Post 3 | **READY** |
+| 13:00 | Post 2 — Coinbase Base stablecoin pivot + PaymentReliable | ✅ **POSTED** 20:13 GMT+2 — https://x.com/Nia1149784/status/2039769340183036091 |
+| 17:30 | Post 3 — ORIGIN bilateral trust + open evidence differentiation | ✅ **POSTED** 20:20 GMT+2 — https://x.com/Nia1149784/status/2039771082710815222 |
+| 17:30 (same time) | @OriginDAO_ai reply — fire with Post 3 | ✅ **POSTED** 20:14 GMT+2 — https://x.com/Nia1149784/status/2039769698645037339 |
 | TBD | PR Merge announcement — fire when npm publish confirmed | READY (pending npm verify) |
 | TBD (after merge post) | Morph integration follow-up tweet | READY (after above) |
 
