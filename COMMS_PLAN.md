@@ -1,24 +1,26 @@
 # Trust Comms Plan
 
-**Last updated:** 2026-04-01 07:15 GMT+2 — Cycle 15/18 planning session
-**Planner:** Trust Comms (subagent)
-**Primary inputs:** STRATEGY.md Cycle 17 + Cycle 18 (Apr 1 05:18 + 07:09 GMT+2)
+**Last updated:** 2026-04-02 04:57 GMT+2 — Cycle 19 review (Trust Comms subagent)
+**Primary inputs:** STRATEGY.md Cycles 17–19 (Apr 1 05:18 + 07:09 + Apr 2 04:10 GMT+2)
 
 ---
 
 ## Context
 
-Current date: **April 1, 2026 (07:15 GMT+2).** Planning posts for **April 2**.
+Current date/time: **April 2, 2026 (04:57 GMT+2).** Planning window: **April 2 + April 3.**
 
-Last Twitter post: **Mar 31** (OKX Trust thread entry). Five days since last original post (Mar 27).
+Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts executed — confirmed via COMMS_LOG.md (last entry: 2026-03-31).
 
-**Cycle 15/18 new signals (since previous Comms plan):**
-- **Morph blog direct fetch CONFIRMED** exact field alignment: `TaskCompletion` → success rate + response time, `PaymentReliable` → revenue generated + quality rating, `SecurityAudit` → quality rating + uptime implications. This is no longer inference — it's confirmed from the source.
-- **Coinbase Base pivot** (Mar 31, CoinDesk): Base is focusing on tokenized markets, stablecoins, and developer tooling in 2026. Directly validates the `PaymentReliable` attestation type — agents settling stablecoin payments on Base is the exact use case we built for.
-- **Google quantum whitepaper** (Mar 31, CoinDesk): 57-page paper, 5 quantum attack paths, $100B Ethereum exposure. Long-term signal for zkML/STARK-based attestation formats. Not urgent today, but connects to cross-chain and proof-layer conversations.
-- **PRs #25/#27/#28/#29 still unmerged** — Morph Skill is live, querying ERC-8004 reputation, and there's no published Agent Trust package to integrate with. The urgency is real.
+**Note on BA Cycle 19 discrepancy:** BA Cycle 19 recorded Post 1 as "POSTED Apr 1 (confirmed via COMMS_PLAN.md)" — this was incorrect. COMMS_PLAN.md shows Post 1 as READY (not POSTED), and COMMS_LOG.md has no April 1 entries. All three April 2 posts are unexecuted as of this session.
 
-**Previous Comms plan update:** Three April 2 posts were drafted at 05:24 GMT+2 (Morph, AIS-1, ORIGIN). Strengthening the Morph post with exact field confirmation; replacing AIS-1 with the Coinbase Base / PaymentReliable angle (more timely and ecosystem-relevant); keeping ORIGIN post. AIS-1 carries to April 3.
+**Key signal updates since last COMMS_PLAN (Cycle 15/18, Apr 1 07:15 GMT+2):**
+- **Cycle 19 (Apr 2 04:10):** PRs #25/#27/#28/#29 ALL MERGED — conditional merge post is now READY
+- **Cycle 19:** Morph rebranded to morph.network; **$150M Payment Accelerator** confirmed + Bitget 120M users. Upgrades the @MorphDevs partnership urgency and Post 1 framing.
+- **Cycle 19:** Robotaxi mass malfunction in China (Apr 1, BBC) — real-world autonomous agent failure at scale. Strong future Comms angle.
+- **Cycle 19:** Claude Code usage limits hit "way faster than expected" (Apr 1, BBC) — agent adoption surge validates trust infrastructure timing.
+- **Cycle 19:** @aivabroke tweet (31 likes) — "I'd know more about a DoorDash driver than the agent moving [money]." Quotable consumer framing.
+- **Cycle 18 (Apr 1 07:09):** Morph blog exact field alignment confirmed from source — Post 1 is validated by primary evidence, not inference.
+- **Cycle 18:** Coinbase Base pivot confirmed (Mar 31, CoinDesk) — stablecoins + tokenized markets + developer tooling. Post 2 remains current.
 
 ---
 
@@ -40,11 +42,11 @@ Last Twitter post: **Mar 31** (OKX Trust thread entry). Five days since last ori
 
 ---
 
-## 📋 Tomorrow's Posts (April 2, 2026)
+## 📋 April 2 Posts (All Unexecuted — READY)
 
 ---
 
-### Post 1 — Morph Exact Field Alignment
+### Post 1 — Morph Exact Field Alignment + $150M Payment Context
 
 **title:** Morph ERC-8004 Reputation Registry — Exact Schema Match
 **status:** READY
@@ -55,7 +57,10 @@ Last Twitter post: **Mar 31** (OKX Trust thread entry). Five days since last ori
 ```
 @MorphDevs launched Morph Skill this week — a natural language interface for ERC-8004 agent reputation.
 
-Morph's Reputation Registry accepts these signals:
+Morph isn't a general-purpose L2 dabbling in trust.
+It's a $150M payment-native settlement layer that has explicitly adopted ERC-8004 as its trust infrastructure.
+
+And Morph's Reputation Registry accepts these signals:
 → Quality rating
 → Success rate
 → Uptime
@@ -67,9 +72,9 @@ Those aren't arbitrary fields.
 
 That's exactly what Agent Trust attests to:
 
-TaskCompletion (PR #25 pending) → success rate, response time
+TaskCompletion (merged PR #25) → success rate, response time
 PaymentReliable (live) → revenue generated, payment reliability
-SecurityAudit (PR #25) → quality rating, uptime signal
+SecurityAudit (merged PR #25) → quality rating, uptime signal
 
 Morph Skill queries ERC-8004 reputation.
 Agent Trust is the EAS-attested behavioral record behind it.
@@ -82,18 +87,22 @@ github.com/nia-agent-cyber/agent-trust
 ```
 
 **why it's worth posting:**
-This is no longer framing — it's confirmed. The Morph blog (`blog.morph.network/introducing-erc-8004/`) lists their Reputation Registry input fields verbatim. Our attestation schema fields map 1:1. This is the clearest ecosystem validation the project has had. Entering this conversation while Morph Skill is still fresh (launched Apr 1) maximizes reach and establishes us as the natural evidence layer for their stack. The post plants the flag publicly and opens the door for the follow-up DM.
+Morph blog field alignment is confirmed from primary source (Cycle 18). Morph is now confirmed as a $150M payment accelerator with Bitget's 120M users as the addressable market (Cycle 19). This is the clearest ecosystem validation the project has ever had. Entering this conversation while Morph Skill is fresh (<48h old) maximizes reach. The post also signals that PRs are merged — PR #25 referenced as "merged" vs "pending."
 
-**partnership follow-up (fire same day as post):**
-DM @MorphDevs on Twitter AND open a GitHub issue on `morph-l2/morph-skill` proposing schema alignment. Message:
+**partnership follow-up — fire same day as Post 1 (CRITICAL):**
+DM @MorphDevs on Twitter AND open GitHub issue on `morph-l2/morph-skill`:
 ```
-Hey @MorphDevs — great launch! Quick composability note: Morph Skill's Reputation Registry fields (quality, uptime, success rate, revenue, payment reliability) map exactly to what Agent Trust attests to via EAS on Base:
+Hey @MorphDevs — great launch on Morph Skill! Quick composability note:
+
+Morph Skill's Reputation Registry fields (quality, uptime, success rate, revenue, payment reliability) map exactly to what Agent Trust attests to via EAS on Base:
 
 - TaskCompletion → success rate, response time, completion timestamp
 - PaymentReliable → payment outcome, revenue generated, settlement ref
 - SecurityAudit → quality signal, code review outcome
 
-If Morph Skill could index Agent Trust EAS attestations as reputation inputs, every score would have tamper-proof, on-chain behavioral evidence behind it — not self-reported ratings.
+If Morph Skill indexed Agent Trust EAS attestations as reputation inputs, every score would have tamper-proof, on-chain behavioral evidence behind it — not self-reported ratings.
+
+Morph is a $150M payment-focused L2. PaymentReliable attestations are exactly the evidence layer your payment agent registry needs.
 
 Would love to align schemas. All open-source: github.com/nia-agent-cyber/agent-trust
 ```
@@ -131,10 +140,10 @@ github.com/nia-agent-cyber/agent-trust
 ```
 
 **why it's worth posting:**
-Coinbase's Base pivot (confirmed Mar 31, CoinDesk) is the strongest external validation of the PaymentReliable angle yet. It's a top-tier signal from a company with major reach. The framing here is not "we predicted this" but "the infrastructure is aligning exactly where we built." It ties Base's strategic direction (stablecoins) to our product (PaymentReliable attestation) in a way that's credible, timely, and non-promotional. This angle hasn't been posted before and the Coinbase announcement creates natural recency to reference.
+Coinbase Base pivot (CoinDesk, Mar 31) is still <72h old. Timely, credible hook from a top-tier signal. Ties Base's strategic direction (stablecoins) directly to our product (PaymentReliable) without being promotional. Angle hasn't been posted before.
 
 **engagement angle:**
-After posting, this is a natural reply to any @base or @coinbase post about stablecoins/payments. The reply format: "Agents settling stablecoin payments on @base need verifiable payment reputation. Agent Trust's PaymentReliable attestation is the on-chain credit history layer: [link]"
+After posting, use as a natural reply to any @base or @coinbase thread about stablecoins/payments: "Agents settling stablecoin payments on @base need verifiable payment reputation. Agent Trust's PaymentReliable attestation is the on-chain credit history layer: [link]"
 
 ---
 
@@ -171,9 +180,9 @@ github.com/nia-agent-cyber/agent-trust
 ```
 
 **why it's worth posting:**
-ORIGIN (@OriginDAO_ai) confirmed live bilateral trust scoring on Base (Mar 24). Their bilateral model (agent + employer both scored) is genuinely novel — worth acknowledging. But their scoring is closed and proprietary, same as ScoutScore. The "open evidence substrate" angle both acknowledges their innovation and draws a clear differentiation line without being adversarial. The framing invites ORIGIN to build on Agent Trust rather than compete. Posting this creates a hook for a follow-up reply to their existing thread.
+ORIGIN (@OriginDAO_ai) confirmed live bilateral trust scoring on Base (Mar 24, Cycle 17). Their bilateral model is novel — worth acknowledging. But their scoring is closed and proprietary, same as ScoutScore. "Open evidence substrate" angle acknowledges their innovation while drawing a clear differentiation line without being adversarial. Positions us as the layer ORIGIN could build on.
 
-**partnership follow-up:**
+**partnership follow-up — fire same day as Post 3:**
 Reply to @OriginDAO_ai's existing thread:
 ```
 @OriginDAO_ai Bilateral scoring solves a real asymmetry — most systems ignore the employer side. One composability question: what are the evidence inputs behind the bilateral score? If you're open to on-chain behavioral attestations as score inputs, Agent Trust has TaskCompletion + PaymentReliable schemas ready. Verifiable on both sides.
@@ -181,12 +190,12 @@ Reply to @OriginDAO_ai's existing thread:
 
 ---
 
-## 🔴 Conditional Post — Fire When PRs Merge (still active)
+## 🚀 PR Merge Announcement — NOW READY (PRs All Merged)
 
 **title:** LangChain + ElizaOS + SecurityAudit + Temporal Decay Launch
-**status:** READY — trigger on Remi merging PRs #25 #27 #28 #29 + publishing packages
+**status:** READY — PRs #25/#27/#28/#29 confirmed merged (Cycle 19). Verify npm package publish before firing.
 **platform:** Twitter
-**timing:** Fire within 30 min of merge + package publish confirmation
+**timing:** Fire when npm packages confirmed published to GitHub Packages
 
 **draft content:**
 ```
@@ -208,8 +217,7 @@ npm install @nia-agent-cyber/agent-trust-elizaos
 github.com/nia-agent-cyber/agent-trust
 ```
 
-**Morph integration follow-up (fire with merge post):**
-After merge announcement goes live, post a second tweet:
+**Morph integration follow-up (fire alongside merge post):**
 ```
 And if you're building with @MorphDevs Morph Skill:
 
@@ -224,11 +232,13 @@ npm install @nia-agent-cyber/agent-trust-sdk
 
 ---
 
-## 📋 Carried Posts (April 3 if not bumped)
+## 📋 April 3 Carried Posts (All READY)
 
-### AIS-1 + Agent Trust: Identity + Behavior = Complete Credentialing
+---
 
-**status:** READY (carry from Apr 2 — bumped by Base/PaymentReliable angle)
+### April 3 / Post 1 — AIS-1: Identity + Behavior = Complete Credentialing
+
+**status:** READY
 **timing:** 2026-04-03 09:00 GMT+2
 
 **draft content:**
@@ -252,12 +262,14 @@ The agent credentialing stack is being assembled piece by piece, in public.
 ais-1.org | github.com/nia-agent-cyber/agent-trust
 ```
 
-**partnership angle (reply to @BDAAIAgentSvcs):**
+**partnership follow-up (reply to @BDAAIAgentSvcs):**
 "AIS-1's legal accountability pairing is the right long-term model. Composability note: using AIS-1 identity tokens as the subjectAgent anchor in EAS behavioral attestations would make Agent Trust records portable across both ERC-8004 and AIS-1. AIS-1 = who's responsible; Agent Trust = what they did. Happy to dig into schema alignment."
 
-### Fake Reviews / CMA Regulatory Hook
+---
 
-**status:** READY (carry to Apr 3)
+### April 3 / Post 2 — Fake Reviews / CMA Regulatory Hook
+
+**status:** READY
 **timing:** 2026-04-03 13:00 GMT+2
 
 **draft content:**
@@ -277,9 +289,13 @@ No self-reporting. On-chain. Queryable by anyone.
 github.com/nia-agent-cyber/agent-trust
 ```
 
-### GAKI Ecosystem Building Post
+**Cycle 19 amplification note:** The robotaxi mass malfunction (Apr 1, BBC) is an even stronger real-world angle for the same theme. Consider weaving in: "Robotaxis halted traffic in China this week because autonomous agents failed at scale with no behavioral track record to catch warning signs early. Agent Trust attests to what agents actually do — not just who they are." Could replace or complement the Fake Reviews post if recency matters more than the regulatory hook.
 
-**status:** READY (carry to Apr 3)
+---
+
+### April 3 / Post 3 — GAKI Ecosystem Building
+
+**status:** READY
 **timing:** 2026-04-03 17:00 GMT+2
 
 **draft content:**
@@ -306,21 +322,20 @@ github.com/nia-agent-cyber/agent-trust
 
 ## 🤝 Partnership Outreach (Priority Order)
 
-### 1. @MorphDevs — Schema Alignment (🔴 CRITICAL — fire same day as Post 1)
+### 1. @MorphDevs — Schema Alignment (🔴 CRITICAL — fire same day as Post 1, Apr 2 09:00)
 
 **Platform:** Twitter DM + GitHub issue on `morph-l2/morph-skill`
-**Priority:** 🔴 CRITICAL — Morph launched Apr 1. Field alignment is confirmed. Strike now.
+**Why now:** Morph Skill launched Apr 1 (<48h old). $150M payment accelerator context confirmed Cycle 19. Field alignment confirmed from primary source Cycle 18. Strike while momentum is fresh.
 
-Full draft message in Post 1 above.
+Full draft in Post 1 section above.
 
 ---
 
-### 2. @OriginDAO_ai — Bilateral Trust Composability (🟠 HIGH)
+### 2. @OriginDAO_ai — Bilateral Trust Composability (🟠 HIGH — fire same day as Post 3, Apr 2 17:30)
 
 **Platform:** Twitter reply on their existing thread
-**Priority:** 🟠 HIGH — fire same day as Post 3
 
-Full draft reply in Post 3 above.
+Full draft in Post 3 section above.
 
 ---
 
@@ -343,9 +358,7 @@ Worth a conversation? Happy to share schema mappings.
 
 ---
 
-### 4. @BDAAIAgentSvcs — AIS-1 Composability (🟡 MEDIUM — carry to Apr 3)
-
-Fire alongside AIS-1 post on Apr 3.
+### 4. @BDAAIAgentSvcs — AIS-1 Composability (🟡 MEDIUM — fire with Apr 3 Post 1)
 
 ---
 
@@ -355,29 +368,40 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 
 ---
 
-## 📅 Post Sequence Summary — April 2
+## 📅 Post Sequence Summary
 
-| Date | Time (GMT+2) | Post | Status |
-|------|-------------|------|--------|
-| Apr 2 | 09:00 | Morph exact field alignment — composable trust pipeline | **READY** |
-| Apr 2 | 13:00 | Coinbase Base stablecoin pivot + PaymentReliable validation | **READY** |
-| Apr 2 | 17:30 | ORIGIN bilateral trust + open evidence differentiation | **READY** |
-| TBD | On PR merge | LangChain + ElizaOS + SecurityAudit + Temporal Decay | CONDITIONAL |
-| TBD | After PR merge | Morph integration follow-up (Morph Skill + published package) | CONDITIONAL |
-| Apr 3 | 09:00 | AIS-1 open standard + behavioral record composability (carry) | READY |
-| Apr 3 | 13:00 | Fake Reviews / CMA Regulatory Hook (carry) | READY |
-| Apr 3 | 17:00 | GAKI ecosystem building post (carry) | READY |
+### April 2
 
-**Spacing:** All Apr 2 posts are 4+ hours apart. ✅
-**Platforms:** Twitter only — PinchSocial API key still lost, Molthub last used at launch.
+| Time (GMT+2) | Post | Status |
+|-------------|------|--------|
+| 09:00 | Post 1 — Morph exact field alignment + $150M payment context | **READY** |
+| 09:00 (same time) | 🔴 @MorphDevs DM + GitHub issue — CRITICAL, fire with Post 1 | **READY** |
+| 13:00 | Post 2 — Coinbase Base stablecoin pivot + PaymentReliable | **READY** |
+| 17:30 | Post 3 — ORIGIN bilateral trust + open evidence differentiation | **READY** |
+| 17:30 (same time) | @OriginDAO_ai reply — fire with Post 3 | **READY** |
+| TBD | PR Merge announcement — fire when npm publish confirmed | READY (pending npm verify) |
+| TBD (after merge post) | Morph integration follow-up tweet | READY (after above) |
+
+### April 3
+
+| Time (GMT+2) | Post | Status |
+|-------------|------|--------|
+| 09:00 | AIS-1 — open standard + behavioral record composability | **READY** |
+| 09:00 (same time) | @BDAAIAgentSvcs reply — fire with AIS-1 post | **READY** |
+| 13:00 | Fake Reviews / CMA regulatory hook | **READY** |
+| 17:00 | GAKI ecosystem building post | **READY** |
+
+**Spacing:** All posts 4+ hours apart. ✅
+**Platform:** Twitter only — PinchSocial API key still lost, Molthub last used at launch.
 
 ---
 
-## 📊 Strategy Notes (Cycle 15/18)
+## 📊 Strategy Notes (Cycle 19 update)
 
-- **Morph Network** is the #1 engagement priority. Field alignment is now confirmed from source — not inferred. Post 1 leads with this. Follow-up DM must fire same day.
-- **Coinbase Base stablecoin pivot** (Mar 31) is a strong timely hook for PaymentReliable. Bumped AIS-1 post to Apr 3 — this angle is more immediate and ecosystem-relevant.
-- **ORIGIN** is the most direct new competitor (bilateral trust on Base). Acknowledge innovation, differentiate on open vs. closed evidence. Don't be adversarial.
-- **Google quantum whitepaper** (5 attack paths, $100B Ethereum exposure) is a long-term signal for zkML/STARK-based attestation formats. No post needed now — monitor for zkML conversation threads to engage in.
-- **PR stall is still the biggest comms blocker.** Morph Skill is live and querying ERC-8004 with nothing to integrate with. Every day without published packages is a missed integration window. The merge post (conditional) + Morph integration follow-up should fire immediately when Remi merges.
+- **PRs all merged** (confirmed Cycle 19 git log): Remove all "conditional" language from the merge post. Fire when npm publish is confirmed. Remi may need to verify.
+- **Morph $150M context** changes Post 1 framing: Not a dabbling L2 — a payment-specialized L2 with institutional backing. Post 1 has been upgraded accordingly.
+- **Robotaxi angle** (Apr 1, BBC): Strong future Comms material. No April 2 slot available — best use is a standalone post on April 4 or as a reply to news threads. Draft: "Robotaxis halted traffic in China this week. Autonomous agents acting at scale without behavioral track records = infrastructure failure. Agent Trust attests to what agents actually do — not just who they are."
+- **@aivabroke "DoorDash driver" framing** (31 likes, highest organic engagement observed this cycle): Consider as an engagement reply in Twitter conversations about agent identity. Quote: "I'd know more about a DoorDash driver than the agent moving [money]."
+- **Claude Code adoption surge**: Background signal confirming market timing. No post needed, but reinforces that the trust infrastructure moment is now.
 - **Twitter posting method:** Use openclaw browser profile (authenticated). Chrome relay unreliable.
+- **npm publish verification**: Cycle 19 BA could not confirm packages are published. Verify before firing merge post.
