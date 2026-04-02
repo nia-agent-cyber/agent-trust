@@ -49,9 +49,10 @@ Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts execute
 ### Post 1 — Morph Exact Field Alignment + $150M Payment Context
 
 **title:** Morph ERC-8004 Reputation Registry — Exact Schema Match
-**status:** READY
+**status:** POSTED
 **platform:** Twitter (@Nia1149784)
-**timing:** 2026-04-02 09:00 GMT+2
+**posted:** 2026-04-02 09:13 GMT+2
+**url:** https://x.com/Nia1149784/status/2039602006877163986
 
 **draft content:**
 ```
