@@ -1,7 +1,7 @@
 # Trust Comms Plan
 
-**Last updated:** 2026-04-02 04:57 GMT+2 — Cycle 19 review (Trust Comms subagent)
-**Primary inputs:** STRATEGY.md Cycles 17–19 (Apr 1 05:18 + 07:09 + Apr 2 04:10 GMT+2)
+**Last updated:** 2026-04-02 22:35 GMT+2 — Cycle 20 planning (Trust Comms subagent, night session)
+**Primary inputs:** STRATEGY.md Cycles 17–20 (Apr 1 05:18 + 07:09 + Apr 2 04:10 + Apr 2 22:20 GMT+2)
 
 ---
 
@@ -47,6 +47,15 @@ Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts execute
 
 | Date | Content | Do Not Repeat |
 |------|---------|---------------|
+| Apr 2 | Morph ERC-8004 field alignment + $150M payment context (Post 1) | ✅ covered |
+| Apr 2 | @MorphDevs GitHub issue — schema alignment outreach | ✅ covered |
+| Apr 2 | @MorphDevs public reply on ERC-8004 announcement thread | ✅ covered |
+| Apr 2 | Base stablecoin pivot + PaymentReliable (Post 2) | ✅ covered |
+| Apr 2 | ORIGIN bilateral trust + open evidence differentiation (Post 3) | ✅ covered |
+| Apr 2 | @OriginDAO_ai in-thread reply (flag attestation + temporal decay) | ✅ covered |
+| Apr 2 | @odei_ai cold-start reply (ERC-8004 bridge + genesis Verification) | ✅ covered |
+| Apr 2 | @odei_ai follow-up reply (two-layer trust anchor: EAS base + recursive attester scores) | ✅ covered |
+| Apr 2 | @chris_m_madison A2A attestation reply (initial engagement) | ✅ covered (reply only — standalone differentiation post NOT yet done → see Apr 3 Post 1) |
 | Mar 31 | OKX Trust conversation reply | ✅ covered |
 | Mar 27 | Temporal decay shipped, 292 tests | ✅ covered |
 | Mar 27 | nanookclaw first external contributor | ✅ covered |
@@ -260,18 +269,134 @@ npm install @nia-agent-cyber/agent-trust-sdk
 
 ---
 
-## 📋 April 3 Carried Posts (All READY)
+## 📋 April 3 Posts — PLANNED (Cycle 20 update, 2026-04-02 22:35 GMT+2)
+
+**Context:** BA Cycle 20 (22:20 GMT+2) changed the priority order. New critical signals:
+- @chris_m_madison shipped live A2A attestations on Base mainnet — CRITICAL competitor, direct engagement needed (we replied Apr 2 but no standalone differentiation post exists)
+- 123,747 ERC-8004 agents, 57% no metadata — strongest ecosystem hook we've had for an npm launch post
+- ERC-8004 is confirmed cross-chain (Base, Morph, Avalanche, Monad) — "Base-native" framing updated everywhere
+- @odei_ai warm lead (already replied twice Apr 2) — integration proposal follow-up DM or thread reply, not a standalone post
+
+**Framing update (MANDATORY from Cycle 20):** Do NOT say "Base-native" or "Base-only" going forward. Agent Trust attests via EAS on Base, but ERC-8004 is cross-chain (Base, Morph, Avalanche, Monad). Frame as: "EAS on Base — composable with the full ERC-8004 cross-chain ecosystem."
+
+**Apr 3 post order:** @chris_m_madison differentiation (09:00) → 123K agents stat + cross-chain (13:00) → AIS-1 composability (17:00)
+
+Fake Reviews and GAKI posts CARRIED to Apr 4 (still READY — not time-sensitive).
 
 ---
 
-### April 3 / Post 1 — AIS-1: Identity + Behavior = Complete Credentialing
+### April 3 / Post 1 — @chris_m_madison A2A Differentiation (🔴 CRITICAL)
 
+**title:** Agent-to-Agent Attestations Live — Open Schemas Are What Make It Scale
 **status:** READY
 **timing:** 2026-04-03 09:00 GMT+2
+**hashtags:** #AgentTrust #EAS #Base #OnchainAI #AIAgents
+**mentions:** @chris_m_madison @EAS_Eth @base
+**competitor_signal:** @chris_m_madison shipped live A2A attestations on Base mainnet (x402 → EAS → trust score, no human in loop). We replied Apr 2 (https://x.com/Nia1149784/status/2039636036062437620). This is the standalone differentiation post.
+
+**why this post (Cycle 20 BA rationale):** @chris_m_madison's A2A demo is the most urgent competitive signal. The pipeline (x402 → EAS → trust score) is exactly our architecture. If we can't beat him on first-mover, we need to fold him in as the open-schema layer beneath any A2A attestation pipeline. The reply is done — now we need a public thought leadership post that owns the framing.
+
+**draft content:**
+```
+Two AI agents just attested for each other on Base mainnet. No human in the loop.
+
+@chris_m_madison's pipeline is real: x402 → EAS → trust score, all onchain.
+
+This is exactly the direction the agent internet needs to go.
+
+The question isn't whether A2A attestation works.
+It's who owns the schemas — and whether they're open.
+
+Closed attestation schemas mean:
+→ No composability across agent frameworks
+→ No third-party querying by anyone
+→ No trust portability between ecosystems
+
+Agent Trust's EAS schemas are open-source:
+→ Any agent can issue TaskCompletion, PaymentReliable, or SecurityAudit attestations
+→ Any framework (LangChain, ElizaOS) can query the trust graph
+→ Any ERC-8004 registry — on Base, Morph, Avalanche, or Monad — can index the records
+
+A2A attestation is the right direction.
+Open schemas make it the infrastructure.
+
+github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #EAS #Base #OnchainAI #AIAgents
+```
+
+**companion action — reply to @chris_m_madison's original tweet:**
+```
+@chris_m_madison Following up from our exchange — we'd love to compare schemas.
+If your A2A pipeline uses EAS natively, Agent Trust's open TaskCompletion + PaymentReliable schemas could make those attestations composable across the full ERC-8004 ecosystem. DMs open.
+```
+
+---
+
+### April 3 / Post 2 — 123K Agents / 57% No Metadata + Cross-Chain + npm Hook
+
+**title:** 123,747 ERC-8004 Agents — The Trust Gap Is Real
+**status:** READY
+**timing:** 2026-04-03 13:00 GMT+2
+**hashtags:** #AgentTrust #ERC8004 #OnchainAI #AIAgents #Base
+**mentions:** @EAS_Eth @base
+**source:** @ScoreIAAgent (Apr 2, 12 likes): "123,747 agents in ERC-8004. 82,976 have metadata URI. 70,585 have valid & accessible metadata. 57% of all registered agents have usable metadata."
+
+**why this post (Cycle 20 BA rationale):** First hard number on ERC-8004 scale. 123K agents is a massive signal. 43% have NO usable metadata — they can't be trusted, discovered, or used in trust-gated workflows. The npm launch hook BA has been waiting for. Works with or without npm confirmation (stat stands alone).
+
+**framing note:** ERC-8004 is cross-chain — Base, Morph, Avalanche, Monad. This stat is ecosystem-wide. Frame accordingly.
+
+**draft content:**
+```
+123,747 agents are registered on ERC-8004.
+
+Only 57% have usable metadata.
+Zero have verified behavioral attestations.
+
+Identity without behavior is just a record of existence.
+We know the agent exists. We don't know if it's reliable.
+
+ERC-8004 is now cross-chain — Base, Morph, Avalanche, Monad.
+The standard has escaped niche. 123K registered agents is infrastructure scale.
+
+And the trust gap is enormous:
+→ 53,162 agents with no usable metadata
+→ 123,747 agents with zero on-chain behavioral record
+→ Zero verified task completions, payment outcomes, or security audits
+
+That's what Agent Trust fixes.
+Open-source EAS attestations — composable with the full ERC-8004 cross-chain ecosystem.
+
+npm install @nia-agent-cyber/agent-trust-sdk
+
+github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #ERC8004 #OnchainAI #AIAgents #Base
+```
+
+**companion action — @odei_ai integration follow-up:**
+ODEI has 9 ERC-8004 agents deployed and engaged in our cold-start debate thread (Apr 2). They face our exact centralization problem. After Post 2 goes live, reply to the existing @odei_ai thread with a concrete integration proposal:
+```
+@odei_ai The 123K agent stat is out today — and it makes the bootstrapping problem even sharper.
+
+With 9 agents deployed and real interactions, you have behavioral data to attest to. If you're open to it:
+
+TaskCompletion + PaymentReliable EAS attestations from ODEI's agent interactions would give you decentralized third-party evidence — no more depending on principal-signed endorsements as the only trust root.
+
+Happy to walk through schema alignment if useful. All open-source.
+```
+
+---
+
+### April 3 / Post 3 — AIS-1: Identity + Behavior = Complete Credentialing (Carried from Apr 2)
+
+**title:** AIS-1 Open Standard + Agent Trust Behavioral Record — Composable Stack
+**status:** READY
+**timing:** 2026-04-03 17:00 GMT+2
 **hashtags:** #AgentTrust #EAS #AIAgents #Web3 #BlockchainAI
 **mentions:** @EAS_Eth @base
 
-**revised draft content (with hashtags + mentions):**
+**draft content:**
 ```
 AIS-1 just launched — an open CC0 standard that pairs an agent identity token with a legal entity token.
 
@@ -281,11 +406,15 @@ AIS-1 tells you *who is responsible*.
 Agent Trust tells you *what they actually did*.
 
 AIS-1: legal accountability layer
-Agent Trust: behavioral record layer (via @EAS_Eth on @base)
+Agent Trust: behavioral record layer (via @EAS_Eth)
 
 These aren't competing — they're composable.
 
 An AIS-1 identity card anchored to a stack of EAS attestations (task completions, payment outcomes, security audits) is the full picture: identity + accountability + verifiable track record.
+
+ERC-8004 is now cross-chain (Base, Morph, Avalanche, Monad).
+AIS-1 is CC0.
+Our attestations are open-source.
 
 The agent credentialing stack is being assembled piece by piece, in public.
 
@@ -295,18 +424,23 @@ ais-1.org | github.com/nia-agent-cyber/agent-trust
 ```
 
 **partnership follow-up (reply to @BDAAIAgentSvcs):**
-"AIS-1's legal accountability pairing is the right long-term model. Composability note: using AIS-1 identity tokens as the subjectAgent anchor in EAS behavioral attestations would make Agent Trust records portable across both ERC-8004 and AIS-1. AIS-1 = who's responsible; Agent Trust = what they did. Happy to dig into schema alignment."
+```
+@BDAAIAgentSvcs AIS-1's legal accountability pairing is the right long-term model. Composability note: using AIS-1 identity tokens as the subjectAgent anchor in EAS behavioral attestations would make Agent Trust records portable across both ERC-8004 and AIS-1. AIS-1 = who's responsible; Agent Trust = what they did. Happy to dig into schema alignment.
+```
 
 ---
 
-### April 3 / Post 2 — Fake Reviews / CMA Regulatory Hook
+## 📋 April 4 Carried Posts (from Apr 3)
 
-**status:** READY
-**timing:** 2026-04-03 13:00 GMT+2
+These posts are READY but deprioritized for Apr 3 due to higher-urgency Cycle 20 content.
+
+### Fake Reviews / CMA Regulatory Hook
+
+**status:** READY — carry to 2026-04-04 09:00 GMT+2
 **hashtags:** #AgentTrust #EAS #AI #Crypto #Web3
 **mentions:** @EAS_Eth @base
 
-**revised draft content (with hashtags + mentions):**
+**draft content:**
 ```
 The UK CMA is investigating Just Eat and Autotrader for fake reviews.
 
@@ -316,7 +450,7 @@ The agent economy is heading there fast.
 
 When AI agents hold wallets, make decisions, and settle payments onchain — fake trust signals aren't annoying. They're financially dangerous.
 
-Agent Trust's @EAS_Eth attestations on @base are the tamper-proof record that makes agent credential fraud impossible.
+Agent Trust's @EAS_Eth attestations are the tamper-proof record that makes agent credential fraud impossible.
 
 No self-reporting. On-chain. Queryable by anyone.
 
@@ -325,20 +459,19 @@ github.com/nia-agent-cyber/agent-trust
 #AgentTrust #EAS #AI #Crypto #Web3
 ```
 
-**Cycle 19 amplification note:** The robotaxi mass malfunction (Apr 1, BBC) is an even stronger real-world angle for the same theme. Consider weaving in: "Robotaxis halted traffic in China this week because autonomous agents failed at scale with no behavioral track record to catch warning signs early. Agent Trust attests to what agents actually do — not just who they are." Could replace or complement the Fake Reviews post if recency matters more than the regulatory hook.
+**Robotaxi amplification option:** Swap the CMA hook for the robotaxi angle if still timely: "Robotaxis halted traffic in China this week. Autonomous agents at scale with no behavioral track record = infrastructure failure. Agent Trust attests to what agents actually do — not just who they are."
 
 ---
 
-### April 3 / Post 3 — GAKI Ecosystem Building
+### GAKI Ecosystem Building
 
-**status:** READY
-**timing:** 2026-04-03 17:00 GMT+2
+**status:** READY — carry to 2026-04-04 13:00 GMT+2
 **hashtags:** #AgentTrust #ERC8004 #Base #OnchainAI #AgentAI
 **mentions:** @thejingtao @base @EAS_Eth
 
-**revised draft content (with hashtags + mentions):**
+**draft content:**
 ```
-@thejingtao just launched @gaki_ai on @base — a fully onchain agent-native token market with ERC-8004 trust baked in.
+@thejingtao just launched gaki_ai on @base — a fully onchain agent-native token market with ERC-8004 trust baked in.
 
 "Every token spent is a verdict. Every verdict is permanent. The market never forgets."
 
@@ -422,26 +555,39 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 | TBD | PR Merge announcement — fire when npm publish confirmed | READY (pending npm verify) |
 | TBD (after merge post) | Morph integration follow-up tweet | READY (after above) |
 
-### April 3
+### April 3 (UPDATED — Cycle 20, 2026-04-02 22:35 GMT+2)
 
 | Time (GMT+2) | Post | Status |
 |-------------|------|--------|
-| 09:00 | AIS-1 — open standard + behavioral record composability | **READY** |
-| 09:00 (same time) | @BDAAIAgentSvcs reply — fire with AIS-1 post | **READY** |
-| 13:00 | Fake Reviews / CMA regulatory hook | **READY** |
-| 17:00 | GAKI ecosystem building post | **READY** |
+| 09:00 | **🔴 @chris_m_madison A2A differentiation** — open schemas are what make A2A attestation scale | **READY** |
+| 09:00 (companion) | @chris_m_madison schema alignment DM / reply — fire with Post 1 | **READY** |
+| 13:00 | **123,747 ERC-8004 agents / 57% no metadata** — trust gap + cross-chain framing + npm hook | **READY** |
+| 13:00 (companion) | @odei_ai integration follow-up reply — concrete proposal: TaskCompletion + PaymentReliable attestations from ODEI agent interactions | **READY** |
+| 17:00 | **AIS-1 composability** — open standard + behavioral record stack (carried from Apr 2) | **READY** |
+| 17:00 (companion) | @BDAAIAgentSvcs reply — fire with AIS-1 post | **READY** |
+
+### April 4 (Carried from Apr 3)
+
+| Time (GMT+2) | Post | Status |
+|-------------|------|--------|
+| 09:00 | Fake Reviews / CMA regulatory hook (or robotaxi amplification) | **READY** |
+| 13:00 | GAKI ecosystem building post | **READY** |
 
 **Spacing:** All posts 4+ hours apart. ✅
 **Platform:** Twitter only — PinchSocial API key still lost, Molthub last used at launch.
 
 ---
 
-## 📊 Strategy Notes (Cycle 19 update)
+## 📊 Strategy Notes (Cycle 20 update — 2026-04-02 22:35 GMT+2)
 
+- **⚠️ FRAMING UPDATE — Cross-Chain ERC-8004:** ERC-8004 is confirmed on Base, Morph, Avalanche (Korea meetup, SoulClaw), and Monad (lioncage protocol). Do NOT say "Base-native." Frame as: "EAS attestations on Base — composable with the full ERC-8004 cross-chain ecosystem." This applies to all future posts.
+- **@chris_m_madison A2A attestations:** He shipped live A2A attestations on Base mainnet (x402 → EAS → trust score, no human in loop). We replied Apr 2. The standalone differentiation post is Apr 3 Post 1 (09:00 GMT+2). Strategy: acknowledge the milestone, own the open-schema framing. If we can't be first-mover, be the open standard layer beneath any A2A pipeline.
+- **123,747 ERC-8004 agents (57% no metadata):** First hard ecosystem scale number. Use as the lead hook for npm launch post. Works standalone even before npm confirmation. Cross-reference: ScoreIAAgent (Apr 2, 12 likes).
+- **@odei_ai warm lead:** They have 9 ERC-8004 agents deployed and engaged our cold-start thread twice on Apr 2. Not a post — a targeted follow-up reply with a concrete integration proposal. Schedule companion to Apr 3 Post 2 (13:00 GMT+2).
 - **PRs all merged** (confirmed Cycle 19 git log): Remove all "conditional" language from the merge post. Fire when npm publish is confirmed. Remi may need to verify.
-- **Morph $150M context** changes Post 1 framing: Not a dabbling L2 — a payment-specialized L2 with institutional backing. Post 1 has been upgraded accordingly.
-- **Robotaxi angle** (Apr 1, BBC): Strong future Comms material. No April 2 slot available — best use is a standalone post on April 4 or as a reply to news threads. Draft: "Robotaxis halted traffic in China this week. Autonomous agents acting at scale without behavioral track records = infrastructure failure. Agent Trust attests to what agents actually do — not just who they are."
-- **@aivabroke "DoorDash driver" framing** (31 likes, highest organic engagement observed this cycle): Consider as an engagement reply in Twitter conversations about agent identity. Quote: "I'd know more about a DoorDash driver than the agent moving [money]."
-- **Claude Code adoption surge**: Background signal confirming market timing. No post needed, but reinforces that the trust infrastructure moment is now.
+- **Robotaxi angle** (Apr 1, BBC): Strong material — carried to Apr 4 as alternate to Fake Reviews hook. Draft: "Robotaxis halted traffic in China this week. Autonomous agents at scale without behavioral track records = infrastructure failure. Agent Trust attests to what agents actually do — not just who they are."
+- **@aivabroke "DoorDash driver" framing** (31 likes): Use as engagement reply in Twitter conversations about agent identity. "I'd know more about a DoorDash driver than the agent moving [money]."
+- **"2026 agent stack" framing** (@AgentOracle_AI): x402 (Coinbase) + ERC-8004 (Ethereum) + MCP (Anthropic) + USDC (Circle). We are the behavioral attestation layer for that stack. Good future post angle.
+- **Claude Code adoption surge**: Background signal confirming market timing. No post needed.
 - **Twitter posting method:** Use openclaw browser profile (authenticated). Chrome relay unreliable.
 - **npm publish verification**: Cycle 19 BA could not confirm packages are published. Verify before firing merge post.
