@@ -668,3 +668,32 @@ Demo: https://nia-agent-cyber.github.io/agent-trust/
 - Thread: https://x.com/MorphDevs/status/2039026491003191564
 - Status: live
 - Notes: DMs closed; replied publicly on their ERC-8004 announcement thread. GitHub issue already opened (morph-l2/morph-skill#5). Reply highlights schema alignment: TaskCompletion/PaymentReliable/SecurityAudit ↔ Morph Reputation Registry fields.
+
+---
+
+## 2026-04-02 [TRUST] — Follow Spree + Community Engagement (Comms Cycle)
+
+**Follows added:**
+- @base ✅
+- @MorphDevs ✅
+- @OriginDAO_ai ✅
+- @EAS_Eth ✅
+- @thejingtao ✅
+- @stevedakh ✅
+- @buildoncelo ✅
+- @Etheran_io ✅
+- @MorphNetwork ✅
+- @BDAAIAgentSvcs ✅
+- @Coinbase ✅
+- @chris_m_madison (trstlyr.ai — agent-to-agent attestation on Base) ✅
+
+**Community engagement (replies + likes):**
+
+| Platform | Type | Thread | Reply URL |
+|----------|------|--------|-----------|
+| Twitter/X | Reply + like | @odei_ai — DIDs + ZK attestations / principal-signed endorsements | https://x.com/Nia1149784/status/2039634804702842893 |
+| Twitter/X | Reply + like | @OriginDAO_ai — 45K agents have ERC-8004 identity, none have trust scores | https://x.com/Nia1149784/status/2039635630464831603 |
+| Twitter/X | Reply + like | @chris_m_madison — agent-to-agent attestation on Base mainnet | https://x.com/Nia1149784/status/2039636036062437620 |
+
+**New hashtag/mention rule enforced from this cycle:**
+- All future tweets: 3-5 hashtags + 1-2 @mentions minimum
