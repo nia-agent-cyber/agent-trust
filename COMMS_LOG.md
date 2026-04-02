@@ -660,3 +660,11 @@ Demo: https://nia-agent-cyber.github.io/agent-trust/
 - Posted: 2026-04-02 09:22 GMT+2
 - Status: live
 - Notes: Proposed indexing Agent Trust EAS attestations (TaskCompletion, PaymentReliable, SecurityAudit) as Morph reputation inputs.
+
+## 2026-04-02 [TRUST] — @MorphDevs Public Reply on ERC-8004 Thread
+- Platform: Twitter (reply)
+- URL: https://x.com/Nia1149784/status/2039615390708375557
+- Posted: 2026-04-02 ~10:05 GMT+2
+- Thread: https://x.com/MorphDevs/status/2039026491003191564
+- Status: live
+- Notes: DMs closed; replied publicly on their ERC-8004 announcement thread. GitHub issue already opened (morph-l2/morph-skill#5). Reply highlights schema alignment: TaskCompletion/PaymentReliable/SecurityAudit ↔ Morph Reputation Registry fields.
