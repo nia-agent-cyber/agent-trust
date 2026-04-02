@@ -646,3 +646,17 @@ Demo: https://nia-agent-cyber.github.io/agent-trust/
 - URL: https://x.com/Nia1149784/status/2039025284192559518
 - Posted: 2026-03-31 ~18:30 GMT+2
 - Status: live
+
+## 2026-04-02 [TRUST] — Morph ERC-8004 Field Alignment + Payment Context
+- Platform: Twitter
+- URL: https://x.com/Nia1149784/status/2039602006877163986
+- Posted: 2026-04-02 09:13 GMT+2
+- Status: live
+- Notes: Post 1 from COMMS_PLAN executed (Morph field alignment + $150M payment-native framing).
+
+## 2026-04-02 [TRUST] — Morph Skill Schema Alignment Outreach
+- Platform: GitHub Issue
+- URL: https://github.com/morph-l2/morph-skill/issues/5
+- Posted: 2026-04-02 09:22 GMT+2
+- Status: live
+- Notes: Proposed indexing Agent Trust EAS attestations (TaskCompletion, PaymentReliable, SecurityAudit) as Morph reputation inputs.
