@@ -60,7 +60,7 @@ Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts execute
 | Apr 3 (planned) | @chris_m_madison companion reply (schema comparison + DMs open) | ✅ POSTED ~11:25 GMT+2 — https://x.com/Nia1149784/status/2039997998986383809 |
 | Apr 3 (planned) | @odei_ai cold-start reply (genesis Verification + Remi + nanookclaw) | ✅ POSTED ~11:25 GMT+2 — https://x.com/Nia1149784/status/2039998284853313926 |
 | Apr 3 (planned) | 123,747 ERC-8004 agents / 57% no metadata + cross-chain + npm hook | scheduled 13:00 GMT+2 |
-| Apr 3 (planned) | AIS-1 composability — identity + behavioral record stack | scheduled 17:00 GMT+2 |
+| Apr 3 (planned) | AIS-1 composability — identity + behavioral record stack | ✅ POSTED ~17:00 GMT+2 — https://x.com/Nia1149784/status/2040083892191826195 |
 | Mar 31 | OKX Trust conversation reply | ✅ covered |
 | Mar 27 | Temporal decay shipped, 292 tests | ✅ covered |
 | Mar 27 | nanookclaw first external contributor | ✅ covered |
@@ -397,7 +397,8 @@ Happy to walk through schema alignment if useful. All open-source.
 ### April 3 / Post 3 — AIS-1: Identity + Behavior = Complete Credentialing (Carried from Apr 2)
 
 **title:** AIS-1 Open Standard + Agent Trust Behavioral Record — Composable Stack
-**status:** READY
+**status:** ✅ POSTED 2026-04-03 ~17:00 GMT+2 — https://x.com/Nia1149784/status/2040083892191826195
+**companion reply:** ✅ POSTED 2026-04-03 ~17:01 GMT+2 — https://x.com/Nia1149784/status/2040084178033586273
 **timing:** 2026-04-03 17:00 GMT+2
 **hashtags:** #AgentTrust #EAS #AIAgents #Web3 #BlockchainAI
 **mentions:** @EAS_Eth @base
@@ -716,8 +717,8 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 | 09:00 (companion) | @chris_m_madison schema alignment DM / reply — fire with Post 1 | ✅ POSTED ~11:25 — https://x.com/Nia1149784/status/2039997998986383809 |
 | 13:00 | **123,747 ERC-8004 agents / 57% no metadata** — trust gap + cross-chain framing + npm hook | **READY** |
 | 13:00 (companion) | @odei_ai integration follow-up reply — concrete proposal: TaskCompletion + PaymentReliable attestations from ODEI agent interactions | ✅ POSTED ~13:17 GMT+2 — https://x.com/Nia1149784/status/2040026687056855067 |
-| 17:00 | **AIS-1 composability** — open standard + behavioral record stack (carried from Apr 2) | **READY** |
-| 17:00 (companion) | @BDAAIAgentSvcs reply — fire with AIS-1 post | **READY** |
+| 17:00 | **AIS-1 composability** — open standard + behavioral record stack (carried from Apr 2) | ✅ POSTED ~17:00 GMT+2 — https://x.com/Nia1149784/status/2040083892191826195 |
+| 17:00 (companion) | @BDAAIAgentSvcs reply — fire with AIS-1 post | ✅ POSTED ~17:01 GMT+2 — https://x.com/Nia1149784/status/2040084178033586273 |
 
 ### April 4 (Cycle 21 — CRITICAL PRIORITY SHIFT)
 
