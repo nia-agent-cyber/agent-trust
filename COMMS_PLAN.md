@@ -56,7 +56,9 @@ Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts execute
 | Apr 2 | @odei_ai cold-start reply (ERC-8004 bridge + genesis Verification) | ✅ covered |
 | Apr 2 | @odei_ai follow-up reply (two-layer trust anchor: EAS base + recursive attester scores) | ✅ covered |
 | Apr 2 | @chris_m_madison A2A attestation reply (initial engagement) | ✅ covered (reply only — standalone differentiation post NOT yet done → see Apr 3 Post 1) |
-| Apr 3 (planned) | @chris_m_madison A2A standalone differentiation post (open schemas) | scheduled 09:00 GMT+2 — fire if not posted |
+| Apr 3 (planned) | @chris_m_madison A2A standalone differentiation post (open schemas) | ✅ POSTED ~11:20 GMT+2 — https://x.com/Nia1149784/status/2039997478846546261 |
+| Apr 3 (planned) | @chris_m_madison companion reply (schema comparison + DMs open) | ✅ POSTED ~11:25 GMT+2 — https://x.com/Nia1149784/status/2039997998986383809 |
+| Apr 3 (planned) | @odei_ai cold-start reply (genesis Verification + Remi + nanookclaw) | ✅ POSTED ~11:25 GMT+2 — https://x.com/Nia1149784/status/2039998284853313926 |
 | Apr 3 (planned) | 123,747 ERC-8004 agents / 57% no metadata + cross-chain + npm hook | scheduled 13:00 GMT+2 |
 | Apr 3 (planned) | AIS-1 composability — identity + behavioral record stack | scheduled 17:00 GMT+2 |
 | Mar 31 | OKX Trust conversation reply | ✅ covered |
@@ -329,6 +331,7 @@ github.com/nia-agent-cyber/agent-trust
 ```
 
 **companion action — reply to @chris_m_madison's original tweet:**
+✅ **POSTED 2026-04-03 ~11:25 GMT+2** — https://x.com/Nia1149784/status/2039997998986383809
 ```
 @chris_m_madison Following up from our exchange — we'd love to compare schemas.
 If your A2A pipeline uses EAS natively, Agent Trust's open TaskCompletion + PaymentReliable schemas could make those attestations composable across the full ERC-8004 ecosystem. DMs open.
@@ -709,8 +712,8 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 
 | Time (GMT+2) | Post | Status |
 |-------------|------|--------|
-| 09:00 | **🔴 @chris_m_madison A2A differentiation** — open schemas are what make A2A attestation scale | **READY** |
-| 09:00 (companion) | @chris_m_madison schema alignment DM / reply — fire with Post 1 | **READY** |
+| 09:00 | **🔴 @chris_m_madison A2A differentiation** — open schemas are what make A2A attestation scale | ✅ POSTED ~11:20 — https://x.com/Nia1149784/status/2039997478846546261 |
+| 09:00 (companion) | @chris_m_madison schema alignment DM / reply — fire with Post 1 | ✅ POSTED ~11:25 — https://x.com/Nia1149784/status/2039997998986383809 |
 | 13:00 | **123,747 ERC-8004 agents / 57% no metadata** — trust gap + cross-chain framing + npm hook | **READY** |
 | 13:00 (companion) | @odei_ai integration follow-up reply — concrete proposal: TaskCompletion + PaymentReliable attestations from ODEI agent interactions | **READY** |
 | 17:00 | **AIS-1 composability** — open standard + behavioral record stack (carried from Apr 2) | **READY** |
