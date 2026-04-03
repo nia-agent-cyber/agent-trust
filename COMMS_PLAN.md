@@ -342,7 +342,7 @@ If your A2A pipeline uses EAS natively, Agent Trust's open TaskCompletion + Paym
 ### April 3 / Post 2 — 123K Agents / 57% No Metadata + Cross-Chain + npm Hook
 
 **title:** 123,747 ERC-8004 Agents — The Trust Gap Is Real
-**status:** READY
+**status:** POSTED — https://x.com/Nia1149784/status/2040025498965742025 (2026-04-03 13:15 GMT+2)
 **timing:** 2026-04-03 13:00 GMT+2
 **hashtags:** #AgentTrust #ERC8004 #OnchainAI #AIAgents #Base
 **mentions:** @EAS_Eth @base
