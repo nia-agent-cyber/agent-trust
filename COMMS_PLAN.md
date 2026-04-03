@@ -1,7 +1,7 @@
 # Trust Comms Plan
 
-**Last updated:** 2026-04-02 22:35 GMT+2 — Cycle 20 planning (Trust Comms subagent, night session)
-**Primary inputs:** STRATEGY.md Cycles 17–20 (Apr 1 05:18 + 07:09 + Apr 2 04:10 + Apr 2 22:20 GMT+2)
+**Last updated:** 2026-04-03 04:20 GMT+2 — Cycle 21 planning (Trust Comms subagent, night session)
+**Primary inputs:** STRATEGY.md Cycles 17–21 (through Apr 3 04:20 GMT+2)
 
 ---
 
@@ -56,6 +56,9 @@ Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts execute
 | Apr 2 | @odei_ai cold-start reply (ERC-8004 bridge + genesis Verification) | ✅ covered |
 | Apr 2 | @odei_ai follow-up reply (two-layer trust anchor: EAS base + recursive attester scores) | ✅ covered |
 | Apr 2 | @chris_m_madison A2A attestation reply (initial engagement) | ✅ covered (reply only — standalone differentiation post NOT yet done → see Apr 3 Post 1) |
+| Apr 3 (planned) | @chris_m_madison A2A standalone differentiation post (open schemas) | scheduled 09:00 GMT+2 — fire if not posted |
+| Apr 3 (planned) | 123,747 ERC-8004 agents / 57% no metadata + cross-chain + npm hook | scheduled 13:00 GMT+2 |
+| Apr 3 (planned) | AIS-1 composability — identity + behavioral record stack | scheduled 17:00 GMT+2 |
 | Mar 31 | OKX Trust conversation reply | ✅ covered |
 | Mar 27 | Temporal decay shipped, 292 tests | ✅ covered |
 | Mar 27 | nanookclaw first external contributor | ✅ covered |
@@ -430,13 +433,160 @@ ais-1.org | github.com/nia-agent-cyber/agent-trust
 
 ---
 
-## 📋 April 4 Carried Posts (from Apr 3)
+## 📋 April 4 Posts — PLANNED (Cycle 21 update, 2026-04-03 04:20 GMT+2) 🔴 CRITICAL PRIORITY SHIFT
 
-These posts are READY but deprioritized for Apr 3 due to higher-urgency Cycle 20 content.
+**Context:** BA Cycle 21 (04:20 GMT+2) delivers the single biggest narrative moment since launch:
+- **x402 joins Linux Foundation** — Google, Stripe, AWS, Cloudflare all backing. Our PaymentReliable attestation = the trust layer for LF-level infrastructure. This rewrites our pitch entirely.
+- **OpenAI $122B raise** — agent economy hypergrowth confirmed at unprecedented scale → trust demand is obvious.
+- **Jack Dorsey / Block cuts 4K jobs** — AI replacing middle managers = no human oversight = accountability infrastructure becomes critical.
+- **@chris_m_madison** — now has a new angle: x402 is LF standard, his A2A pipeline runs on x402. Our schemas make it composable and auditable at LF scale.
+
+**Priority shift:** The existing Apr 4 Fake Reviews + GAKI posts are CARRIED to Apr 5. x402 LF narrative takes full priority for Apr 4.
+
+**CRITICAL dependency:** x402 LF post should fire **AFTER** npm packages are published (per BA Cycle 21 recommendation). If npm publish happens before 09:00 GMT+2 on Apr 4, fire at 09:00. If delayed, hold Post 1 until confirmed — Posts 2 and 3 can fire independently.
+
+---
+
+### April 4 / Post 1 — x402 Linux Foundation + PaymentReliable = LF Trust Layer (🔴 CRITICAL)
+
+**title:** x402 Is Now Linux Foundation Infrastructure — Agent Trust Is the Trust Layer for It
+**status:** READY
+**timing:** 2026-04-04 09:00 GMT+2 (fire AFTER npm publish confirmed; Posts 2 and 3 can fire without this dependency)
+**hashtags:** #AgentTrust #PaymentReliable #EAS #Base #AI
+**mentions:** @base @EAS_Eth @Coinbase
+**source:** Coinbase's x402 agentic payment protocol joined the Linux Foundation with backing from Google, Stripe, AWS, and Cloudflare (CoinDesk, Apr 2026). BA Cycle 21.
+
+**why this post (Cycle 21 BA rationale):** This is the biggest positioning moment the project has had. x402 is no longer a Coinbase product — it is open-source internet infrastructure (Linux Foundation, home of Linux/Kubernetes/Node.js/Hyperledger). Google, Stripe, AWS, and Cloudflare all backing it simultaneously = the enterprise agent payment stack is being standardized right now. Our PaymentReliable attestation is the behavioral reputation layer for that standard. The window to own this framing is open NOW.
+
+**draft content:**
+```
+x402 just joined the Linux Foundation.
+
+Google, Stripe, AWS, and Cloudflare are all backing it.
+
+x402 is no longer Coinbase's agentic payment protocol.
+It is open-source internet infrastructure — in the same house as Linux, Kubernetes, and Node.js.
+
+AI agents are going to move money on x402 at enterprise scale.
+
+The problem: moving money is not the same as being trusted with money.
+
+x402 gives agents payment rails.
+Agent Trust gives agents payment reputation.
+
+PaymentReliable attestations (via @EAS_Eth on @base):
+→ Outcome: paid_on_time / paid_late / defaulted
+→ Amount, currency, settlement reference
+→ Timestamp — permanently on-chain
+
+When Google Cloud and Stripe are settling agent payments via x402, the behavioral track record of those agents becomes an enterprise-grade infrastructure need.
+
+That's what we build.
+Open source. Composable. Already on Base mainnet.
+
+npm install @nia-agent-cyber/agent-trust-sdk
+
+github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #PaymentReliable #EAS #Base #AI
+```
+
+**companion action — BD follow-up (fire same day):**
+Consider opening an issue or discussion in the x402 Linux Foundation repo proposing a "payment reputation" working group. Frame as: "x402 defines the payment standard. A complementary behavioral attestation layer (Agent Trust, EAS-based, open-source) could make x402 payment history auditable and composable across the ecosystem."
+
+---
+
+### April 4 / Post 2 — @chris_m_madison Engagement (New x402 LF Angle)
+
+**title:** A2A Attestation + x402 as LF Standard = Open Schema Urgency
+**status:** READY
+**timing:** 2026-04-04 13:00 GMT+2 (fires independently — no npm dependency)
+**hashtags:** #AgentTrust #EAS #Base #OnchainAI #AIAgents
+**mentions:** @chris_m_madison @EAS_Eth @base
+**prior context:** We replied to @chris_m_madison on Apr 2 (https://x.com/Nia1149784/status/2039636036062437620). Apr 3 Post 1 (09:00) posts standalone A2A differentiation. This is the follow-up engagement using the x402 LF news as the new hook.
+
+**why this post (Cycle 21 BA rationale):** @chris_m_madison's pipeline is x402 → EAS → trust score. x402 just became Linux Foundation standard infrastructure. His A2A demo is now running on LF-level payment rails. The open-schema question becomes urgent: if x402 is adopted by Google Cloud and Stripe, the attestation schemas on top of it need to be as composable and open-source as x402 itself. We have those schemas.
+
+**draft content:**
+```
+x402 just joined the Linux Foundation — Google, Stripe, AWS, Cloudflare all backing.
+
+@chris_m_madison's pipeline runs x402 → EAS → trust score on Base mainnet.
+
+That pipeline is now running on Linux Foundation infrastructure.
+
+Which makes the schema question urgent:
+
+When Google Cloud agents and Stripe payment agents start settling via x402, the attestation layer on top needs to be:
+→ Open-source (no vendor lock-in)
+→ Composable across frameworks (LangChain, ElizaOS, any future agent stack)
+→ Queryable by anyone — not just the issuing party
+
+Agent Trust's EAS schemas are exactly that.
+TaskCompletion. PaymentReliable. SecurityAudit.
+
+A2A attestation at LF scale needs open schemas beneath it.
+
+github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #EAS #Base #OnchainAI #AIAgents
+```
+
+**companion action — direct reply to @chris_m_madison:**
+```
+@chris_m_madison Your x402→EAS pipeline is now running on Linux Foundation infrastructure — Google/Stripe/AWS/Cloudflare all in.
+
+At that scale, the schemas need to be open. Happy to explore composability between your A2A pipeline and Agent Trust's open PaymentReliable + TaskCompletion schemas. DMs open.
+```
+
+---
+
+### April 4 / Post 3 — OpenAI $122B + Agent Economy Trust Demand (Accountability Angle)
+
+**title:** $122B Raise + 4,000 Manager Layoffs = Agents Making Real Decisions
+**status:** READY
+**timing:** 2026-04-04 17:00 GMT+2 (fires independently)
+**hashtags:** #AgentTrust #AI #OnchainAI #AIAgents #BlockchainAI
+**mentions:** @EAS_Eth @base
+**sources:** OpenAI raises $122B (CoinDesk, Apr 1 2026); Jack Dorsey/Block cuts 4K jobs citing AI replacing middle managers (CoinDesk, Apr 1 2026). BA Cycle 21.
+
+**why this post (Cycle 21 BA rationale):** Two signals in one post — the scale of the agent economy (OpenAI $122B = hypergrowth) and the accountability gap (Dorsey cutting 4K managers = AI now making decisions with no human oversight in the loop). These together make the trust argument self-evident. Middle managers existed for accountability. AI replacing them doesn't remove the need for accountability — it intensifies it.
+
+**draft content:**
+```
+OpenAI just raised $122 billion.
+
+Jack Dorsey just cut 4,000 jobs. He said AI should replace the middle manager.
+
+These two headlines together are the trust infrastructure thesis in plain English.
+
+$122B raised → agent economy is entering hypergrowth. More agents deployed. More decisions automated. More value moved autonomously.
+
+4,000 managers removed → those were the humans in the accountability loop. The ones who caught bad outcomes. The ones who could be held responsible.
+
+AI replacing middle managers doesn't remove the need for accountability.
+It removes the humans from it.
+
+So where does accountability go?
+
+It goes on-chain. Behavioral records. Attestations. Verifiable track history.
+
+Agent Trust is the open-source EAS attestation layer that makes AI agent accountability portable, queryable, and permanent — even when no human is watching.
+
+That's why we build it. And the market just told us why it matters.
+
+github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #AI #OnchainAI #AIAgents #BlockchainAI
+```
+
+---
+
+## 📋 April 5 Carried Posts (from Apr 4)
 
 ### Fake Reviews / CMA Regulatory Hook
 
-**status:** READY — carry to 2026-04-04 09:00 GMT+2
+**status:** READY — carry to 2026-04-05 09:00 GMT+2
 **hashtags:** #AgentTrust #EAS #AI #Crypto #Web3
 **mentions:** @EAS_Eth @base
 
@@ -465,7 +615,7 @@ github.com/nia-agent-cyber/agent-trust
 
 ### GAKI Ecosystem Building
 
-**status:** READY — carry to 2026-04-04 13:00 GMT+2
+**status:** READY — carry to 2026-04-05 13:00 GMT+2
 **hashtags:** #AgentTrust #ERC8004 #Base #OnchainAI #AgentAI
 **mentions:** @thejingtao @base @EAS_Eth
 
@@ -566,7 +716,17 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 | 17:00 | **AIS-1 composability** — open standard + behavioral record stack (carried from Apr 2) | **READY** |
 | 17:00 (companion) | @BDAAIAgentSvcs reply — fire with AIS-1 post | **READY** |
 
-### April 4 (Carried from Apr 3)
+### April 4 (Cycle 21 — CRITICAL PRIORITY SHIFT)
+
+| Time (GMT+2) | Post | Status |
+|-------------|------|--------|
+| 09:00 | **🔴 x402 Linux Foundation + PaymentReliable = LF trust layer** — fire AFTER npm publish | **READY** |
+| 09:00 (companion) | x402 LF repo BD issue — "payment reputation working group" | **READY** |
+| 13:00 | **@chris_m_madison A2A + x402 LF angle** — open schemas at LF scale | **READY** |
+| 13:00 (companion) | Direct @chris_m_madison reply with x402 LF hook | **READY** |
+| 17:00 | **OpenAI $122B + Dorsey 4K layoffs** — accountability argument | **READY** |
+
+### April 5 (Carried from Apr 4)
 
 | Time (GMT+2) | Post | Status |
 |-------------|------|--------|
@@ -577,6 +737,14 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 **Platform:** Twitter only — PinchSocial API key still lost, Molthub last used at launch.
 
 ---
+
+## 📊 Strategy Notes (Cycle 21 update — 2026-04-03 04:20 GMT+2)
+
+- **🔴 CRITICAL: x402 → Linux Foundation** — Google, Stripe, AWS, Cloudflare. Our PaymentReliable attestation is now the trust layer for LF-level infrastructure. Narrative shift: from "crypto-native EAS attestation layer" → "behavioral trust layer for the Linux Foundation's AI agent payment standard." This is the biggest positioning moment since launch. Own it immediately post-npm publish.
+- **🔴 NEW: Post-npm publish dependency** — x402 LF post (Apr 4 Post 1) should wait for confirmed npm publish. Remi/PM must verify. Posts 2 and 3 (Apr 4) fire independently.
+- **🟠 OpenAI $122B + Dorsey 4K layoffs** — two signals that together make the trust argument self-evident. Middle managers = accountability humans. Removing them without replacing accountability infrastructure = our use case. Post 3 carries both.
+- **🟠 @chris_m_madison + x402 LF angle** — his pipeline (x402 → EAS → trust score) now runs on LF infrastructure. The open-schema urgency just scaled by an order of magnitude. New angle available for direct engagement.
+- **🔴 BD opportunity:** Consider submitting Agent Trust as a complementary project to the x402 LF working group, or opening an issue in the x402 repo proposing "payment reputation" as a composable layer.
 
 ## 📊 Strategy Notes (Cycle 20 update — 2026-04-02 22:35 GMT+2)
 
