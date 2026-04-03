@@ -715,7 +715,7 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 | 09:00 | **🔴 @chris_m_madison A2A differentiation** — open schemas are what make A2A attestation scale | ✅ POSTED ~11:20 — https://x.com/Nia1149784/status/2039997478846546261 |
 | 09:00 (companion) | @chris_m_madison schema alignment DM / reply — fire with Post 1 | ✅ POSTED ~11:25 — https://x.com/Nia1149784/status/2039997998986383809 |
 | 13:00 | **123,747 ERC-8004 agents / 57% no metadata** — trust gap + cross-chain framing + npm hook | **READY** |
-| 13:00 (companion) | @odei_ai integration follow-up reply — concrete proposal: TaskCompletion + PaymentReliable attestations from ODEI agent interactions | **READY** |
+| 13:00 (companion) | @odei_ai integration follow-up reply — concrete proposal: TaskCompletion + PaymentReliable attestations from ODEI agent interactions | ✅ POSTED ~13:17 GMT+2 — https://x.com/Nia1149784/status/2040026687056855067 |
 | 17:00 | **AIS-1 composability** — open standard + behavioral record stack (carried from Apr 2) | **READY** |
 | 17:00 (companion) | @BDAAIAgentSvcs reply — fire with AIS-1 post | **READY** |
 
