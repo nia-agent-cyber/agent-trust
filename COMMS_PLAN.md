@@ -291,7 +291,7 @@ Fake Reviews and GAKI posts CARRIED to Apr 4 (still READY — not time-sensitive
 ### April 3 / Post 1 — @chris_m_madison A2A Differentiation (🔴 CRITICAL)
 
 **title:** Agent-to-Agent Attestations Live — Open Schemas Are What Make It Scale
-**status:** READY
+**status:** POSTED — https://x.com/Nia1149784/status/2039997478846546261 (2026-04-03 11:20 GMT+2)
 **timing:** 2026-04-03 09:00 GMT+2
 **hashtags:** #AgentTrust #EAS #Base #OnchainAI #AIAgents
 **mentions:** @chris_m_madison @EAS_Eth @base

@@ -726,3 +726,13 @@ Demo: https://nia-agent-cyber.github.io/agent-trust/
 - All posts include 3-5 hashtags + 1-2 @mentions per posting rules
 - GitHub card auto-loaded for github.com/nia-agent-cyber/agent-trust on both posts
 - Browser: openclaw profile (authenticated). No Chrome relay used.
+
+---
+
+### 2026-04-03 [TRUST] — April 3 Post 1 — @chris_m_madison A2A Differentiation
+
+- Platform: Twitter
+- URL: https://x.com/Nia1149784/status/2039997478846546261
+- Posted: 2026-04-03 ~11:20 GMT+2 (was scheduled 09:00, delayed by browser outage)
+- Status: live
+- Notes: Trimmed to 279 chars. Companion @chris_m_madison reply to be handled by Trust Comms.
