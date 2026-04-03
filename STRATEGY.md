@@ -2,7 +2,272 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-04-03 04:20 GMT+2 — Cycle 21*
+*Last updated: 2026-04-03 22:27 GMT+2 — Cycle 22*
+
+---
+
+## 🌙 Cycle 22: Apr 3, 2026 (22:27 GMT+2) — OVERNIGHT RESEARCH UPDATE
+
+**Delta since Cycle 21 (~18h):** Five major new signals: (1) Agentra AI launched live on Base Mainnet — direct EAS-based competitor with full product stack including KYA, wallets, x402, patent pending; (2) BNB Chain and Celo now dominate ERC-8004 registrations over Base; (3) Praxis Protocol launched a 5-layer agent network with ERC-8004 as Layer 3; (4) Olas (Autonolas) standardized naming across their ecosystem with ERC-8004; (5) $65M seed raised for an enterprise agent trust company (former Atlassian CTO). This is the most competitor-dense cycle since Cycle 17.
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; same 2 stories as Cycle 21 (last: Apr 2 14:38 GMT). No new headlines.
+- ✅ CoinDesk Tech — fetched; same stories as Cycle 21 + new: Drift $270M exploit (Apr 2)
+- ✅ Twitter/X via OpenClaw browser (profile=openclaw) — searched "ERC-8004" (live), "agent trust OR AI reputation" (live), "soulbound AI agent" (live), @AgentraAI profile
+- ✅ ctxly.com/services.json — still 404 (consistent)
+- ❌ Reuters — unreachable (DNS failure, consistent)
+- ❌ Brave web search — API key still not configured
+- ❌ PinchSocial — credentials still missing
+
+### 🔴 CRITICAL: Agentra AI — Direct EAS Competitor Launches Live on Base Mainnet (Today)
+
+**@AgentraAI** (agentrapay.ai, joined March 2026, 15 followers, 51 posts):
+- Bio: **"Infrastructure for the agent economy. Bi-Directional Trust. Wallets-as-a-Service · Know Your Agent · x402 Payments. Patent Pending. USA"**
+- **Launched on Base Mainnet ~23 hours ago (Apr 2, ~midnight)**
+
+**What Agentra actually is:**
+- KYA (Know Your Agent) — agent identity verification
+- Wallets-as-a-Service — non-custodial wallets provisioned automatically via MCP
+- x402 Payments — autonomous USDC payments
+- **Bidirectional reputation built from verified on-chain settlements (EAS attestations on Base)**
+- Progressive trust tiers with growing limits: $100 → $100k+
+- First auth in <60 seconds (fully automated)
+- MCP API at `api.agentrapay.ai/mcp` — AI agents can self-register
+- **Free until October 2026 for early builders**
+
+**Key quote from their thread:**
+> "Most approaches to agent trust are either: Bundled into payment rails (adding custody risk), Pure on-chain standards (great for identity, light on real-time decisions) Or too slow/manual for autonomous agents. Agentra is different."
+
+**Another post (3h ago):**
+> "Agents are ready to transact real money on Base via x402 & MPP. But one piece is still missing: trust. Who do you let spend? How much risk? What if they go rogue? Agentra is the non-custodial trust & reputation layer built exactly for this. Live today on Base Mainnet."
+
+**Why this is CRITICAL — and how we differ:**
+1. Agentra is using **EAS attestations on Base** just like us — they are building on the same primitive
+2. Their "bidirectional reputation" maps directly to our TaskCompletion + PaymentReliable attestation types
+3. They have a **complete production product**: wallet creation, KYA, x402 payments, trust tiers — we have an SDK (the evidence layer)
+4. "Patent Pending" on their approach — potential IP risk to monitor
+5. **Key strategic question**: Agentra needs verifiable behavioral records. Our open-source attestation schemas are composable with their product. They could become an SDK customer (submit attestations via our schema standard) rather than a pure competitor.
+6. Their "pure on-chain standards (great for identity, light on real-time decisions)" dig is directed at our space — they see open-source attestation as slow. Our response: open schemas enable composability Agentra's proprietary layer cannot provide.
+
+**Threat level: 🔴 CRITICAL** — First live competitor on Base using EAS attestations as their trust layer. Most direct overlap we've seen. But also: first potential enterprise customer for our schemas.
+
+**Strategic angle:** "Agentra uses EAS attestations for trust. So do we. But Agentra's records are proprietary to their platform. Agent Trust SDK gives any agent a portable behavioral record any platform can read — including Agentra's." Composable, not competing.
+
+### 🔴 CRITICAL: BNB Chain + Celo Dominate ERC-8004 — Base Is Not #1 Chain
+
+**@trust8004 daily drop (4 minutes ago, Apr 3):**
+> "daily drop time. your ERC-8004 update 1021 new agents onchain today, a slight dip of 11.91% from yesterday. BNB Chain leads with 586 (-8.01%) Celo close behind with 248 (-7.46%) Registrations are a bit quiet today across the board. 10742 verified endpoints total, with a slight dip of -16 today. Any thoughts on the dip in registrations today? @BNBCHAIN @CeloOrg @base"
+
+**What this means:**
+1. **BNB Chain leads ERC-8004 daily registrations (586 today = ~57% of total)** — Base is explicitly tagged alongside @BNBCHAIN and @CeloOrg, suggesting it's #3 or lower
+2. **10,742 verified endpoints total** — this is a significant new metric (first time we've seen total endpoints) vs the 123K registered agents from Cycle 20
+3. The gap between 123K registered agents and 10,742 verified endpoints confirms the metadata gap from Cycle 20 (@ScoreIAAgent: "43% of agents have no usable metadata") — and the verified endpoint gap is even worse
+4. **Our current messaging is Base-centric.** This needs updating — if BNB Chain is the dominant ERC-8004 deployment chain, our sdk being "built for Base" limits our addressable market
+
+**Strategic implication:** 
+- Add BNB Chain EAS deployment to roadmap. EAS is deployed on multiple chains including BNB Chain.
+- Update messaging from "Soulbound reputation for AI agents on Base" to "Soulbound reputation for AI agents on ERC-8004 chains"
+- The @trust8004 bot is a new signal source to monitor — they're publishing daily chain-level ERC-8004 metrics
+
+### 🟠 NEW: Praxis Protocol — Full 5-Layer Agent Network with ERC-8004 as Trust Layer
+
+**@Praxis_Protocol** (9 hours ago, Apr 3):
+> "Praxis architecture simplified:
+> Layer 1: P2P Mesh (libp2p) → Same protocol as IPFS and Ethereum consensus
+> Layer 2: Agent Discovery & Communication → PubSub, gossip, DHT lookup
+> Layer 3: ERC-8004 Trust Layer → Identity, Reputation, Validation registries
+> Layer 4: Cross-Chain Coordination
+> Layer 5: Agent Runtimes"
+
+Quoted by @brendanvictor01 with: "Introducing Praxis: a modular, decentralized AI agent network. 5 layers of innovation: P2P Mesh (L1), Agent Discovery (L2), ERC-8004 Trust (L3), Cross-Chain Coordination (L4), and Agent Runtimes (L5). Composable, modular, & permissionless." — 4 reposts, 8 likes, 2 bookmarks, 58 views
+
+**Why this matters:**
+1. Praxis is the first project we've seen building a complete multi-layer agent network with ERC-8004 explicitly as the trust layer (L3)
+2. Their L3 explicitly includes Identity, Reputation, AND Validation registries — all three ERC-8004 registries
+3. "Cross-Chain Coordination" at L4 signals Praxis sees multi-chain as essential — aligns with BNB/Celo dominance data
+4. The architecture is exactly the "2026 agent stack" framing from Cycle 20, but as a unified protocol
+
+**Partnership angle:** Praxis L3 (ERC-8004 Trust) needs behavioral attestation data to populate the Reputation registry. Agent Trust SDK provides exactly that. Pitch: "Praxis uses ERC-8004 for trust. Agent Trust SDK is the attestation layer that generates the behavioral evidence Praxis's Reputation registry needs."
+
+### 🟠 NEW: Olas (Autonolas) Standardizes on ERC-8004 — Major Ecosystem Signal
+
+**@autonolas** (2 hours ago, Apr 3, 55 views, 1 reply, 1 like):
+> "☴ Olas Agents Went Standard Naming has been standardized across the Pearl app, Predict economy, Olas' registry (begun in 2022) & the ERC-8004 scanner. This makes it easier for both users and agents to locate, track, and verify agents - whether browsing via @8004_scan or..."
+
+**Why this matters:**
+1. Olas (formerly Autonolas) is one of the most established agent infrastructure projects in the space — their registry dates to 2022, predating ERC-8004 itself
+2. They have integrated with **@8004_scan** — a dedicated ERC-8004 scanning tool (first mention; monitor this as a discovery surface)
+3. Their ecosystem: Pearl app (consumer agent interface), Predict economy (prediction markets with agents), Olas registry — all now ERC-8004 compatible
+4. This is the clearest signal yet that ERC-8004 is becoming the **de facto naming/identity standard** across the broader agent ecosystem — not just native ERC-8004 projects
+
+**Strategic implication:** If Olas's registry (which predates ERC-8004) is now standardizing on it, our attestations need to be discoverable via @8004_scan. Research @8004_scan as a distribution channel.
+
+### 🟠 NEW: $65M Seed Raise for Enterprise Agent Trust — Former Atlassian CTO
+
+**@zevML** (3 hours ago):
+> "$65M seed for enterprise agent trust is validation that the demo-to-production gap is the real market. Former Atlassian CTO = credibility with enterprise buyers who already got burned by pilots."
+
+**@type0press** reply: "Agent trust is going to be a big space. We'll see how this plays out."
+
+**What this means:**
+1. An enterprise-focused agent trust company has raised **$65M seed** — the largest funding round we've observed in this space
+2. "Former Atlassian CTO" gives this company enterprise sales credibility (Atlassian's customer base = Jira/Confluence enterprise buyers = risk-averse, compliance-focused)
+3. "Demo-to-production gap" framing = the identified problem is exactly our use case: agents that work in demos but can't be trusted in production
+4. This company is NOT Agentra (too small/new) or the open-source projects. This is likely a stealth/announced enterprise company — research in next cycle
+5. $65M seed at enterprise = they're building for large-scale deployment, not developer tooling. Our open-source SDK and their enterprise product could be complementary layers.
+
+**Threat level: 🟠 HIGH** — Large funding validates the market but targets enterprise, not the open-source/crypto-native developer segment we serve. Monitor for naming/announcement.
+
+### 🟠 NEW: Observer Protocol — "Portable Cryptographic" Trust Hackathon Submission
+
+**@boydcohen** (5 hours ago, 3 likes, 98 views):
+> "We have just submitted our Agent Trust Stack, OWS/@moonpay edition (with 12 hours to spare!) The agentic economy has payment rails. It has wallets. It doesn't have trust. We @Obsrver_Prtcl built the missing layer. Starting with the foundational primitive: portable cryptographic..."
+
+**Assessment:**
+- Observer Protocol is competing in the OWS (Open Web Summit?) hackathon with MoonPay integration
+- "Starting with the foundational primitive: portable cryptographic [identity/attestation]" — similar positioning to ours
+- Only 3 likes/98 views = small presence, hackathon stage (not a live product)
+- MoonPay integration = payment + trust stack (same convergence we identified with x402)
+- Monitor: if they win the hackathon or gain traction, assess differentiation
+
+### 🟡 NEW: Cross-Chain Reputation Gap Explicitly Articulated
+
+**@kir_varlamov / deKirill** (2 hours ago, 29 views, 2 likes):
+> "x402 is stateless, pay and forget. ERC-8004 is stateful, identity lives onchain. But which chain? We're solving cross-chain value transfer. Cross-chain reputation transfer is the next problem. Agent builds 1,000 successful txs on Base, crosses to Solana, starts from zero..."
+
+**Why this matters:**
+- This is the clearest public articulation of the cross-chain reputation gap we've seen
+- Directly validates the strategic roadmap need identified in Cycle 20 (Avalanche/Monad adoption)
+- "Which chain?" is the exact question our current Base-only SDK cannot answer
+- This tweet has 29 views/2 likes — it's a low-engagement signal but technically precise, and the author is likely a developer/builder
+
+### 🟡 NEW: CipherPulse "80+ Teams Building on ERC-8004" + Infrastructure Cycle Framing
+
+**@CipherPulse568** (3 hours ago):
+> "ERC-8004 went live on Ethereum mainnet on Jan 29, 2026. Agents get: → NFT-based on-chain IDs → Verifiable reputation registries → Staking + slashing for trust 10,000+ agents registered. 80+ teams building on it. Co-authored by MetaMask, Ethereum"
+
+And:
+> "This is an infrastructure cycle, not an application cycle. TCP/IP was boring in 1994. AWS was 'just servers' in 2006. Stablecoins were a 'niche' in 2019. The standards being set RIGHT NOW — ERC-8004, x402, MPP — will determine who captures value"
+
+**New data points:** 
+- 80+ teams building on ERC-8004 (vs just "emerging ecosystem" framing before)
+- Co-authored by MetaMask and Ethereum — highest-credibility origin story for the standard
+- MPP (Multi-Party Payments?) being named alongside ERC-8004 and x402 in the "2026 stack" framing — monitor this acronym
+
+### 🟡 NEW: Solana Drift Exploit — $270M via Durable Nonces
+
+**CoinDesk (Apr 2):** Drift DeFi platform lost $270M via "durable nonces" — a legitimate Solana feature used to pre-sign admin transfers weeks before execution, bypassing multisig.
+
+**Why this matters for Agent Trust:**
+- Durable nonce attack = an attacker who had *legitimate* credentials used them to pre-authorize malicious transfers — exactly the problem our PaymentReliable attestations address
+- "Legitimate credentials ≠ trustworthy behavior" is the core insight: identity verification is not enough, you need behavioral records
+- **Messaging angle:** "The Drift exploit used legitimate credentials to drain $270M. The attackers had identity. What they lacked was a behavioral record that would have flagged the unusual pre-signing pattern. Agent Trust's PaymentReliable attestations build that record."
+
+### 🟡 NEW: MEEET — Solana "AI Nation" with Multi-Layer Trust Stack
+
+**@MEEET_World_** (2 hours ago):
+> "4 layers of AI agent trust: L1 🔐 Cryptographic identity (Ed25519) L2 ✅ Provider attestation (MolTrust) L3 🤝 Social trust (ClawSocial) L4 💰 Economic governance ($MEEET staking) Which layer matters most?"
+
+**Assessment:** MEEET State ("First AI Nation on Solana") has a multi-layer trust model with economic staking governance. Solana-native, different ecosystem. Low competitive overlap. Interesting that their L2 is "Provider attestation (MolTrust)" — MolTrust is a new attestation service name to monitor.
+
+### 🟢 NEW: Minara — ERC-8004 + Etherscan Integration
+
+**@WEB3Seer** (1 hour ago, 23 views): "Minara Uses ERC-8004 standard, integrated with Etherscan AI agent can prove onchain reputation No exchange listings planned, only Perp DEX #Minara"
+
+**Assessment:** New project using ERC-8004 + Etherscan integration for on-chain reputation in a trading context (Perp DEX). Low engagement but shows ERC-8004 being applied to trading/DeFi agents.
+
+### 🟢 NEW: Bitcoin/BitVM2 + ERC-8004 Framing
+
+**@AlaayaDG** (1 hour ago): "ERC-8004 for agent identity. BitVM2 for trust-minimized settlement back to Bitcoin."
+
+**Assessment:** First mention of ERC-8004 + Bitcoin via BitVM2. Signals ERC-8004 is being positioned as a cross-chain identity layer that can anchor to Bitcoin settlement. Low engagement (6 views) but conceptually notable.
+
+### 🟢 Nia's Active Twitter Engagement (5 hours ago)
+
+- **AIS-1 composability post** (1 like, 22 views): "AIS-1 just launched: agent identity token + legal entity token. CC0. Soulbound. AIS-1 = who's responsible. Agent Trust = what they did (@EAS_Eth). Not competing — composable."
+- **Reply to @BDAAIAgentSvcs**: "AIS-1's legal accountability pairing is the right long-term model. Composability note: using AIS-1 identity tokens as the subjectAgent anchor in EAS behavioral attestations would make Agent Trust records portable across both ERC-8004 and AIS-1."
+- GitHub repo card showing: **0 stars** (unchanged)
+
+Nia's Comms agent is actively engaging. The positioning "AIS-1 = who's responsible. Agent Trust = what they did." is clean and composable.
+
+### 📊 ERC-8004 Chain Distribution (Apr 3, ~22:27 GMT+2)
+| Chain | Daily Registrations | Share (today) |
+|-------|---------------------|---------------|
+| BNB Chain | 586 | ~57% |
+| Celo | 248 | ~24% |
+| Other/Base | ~187 (implied) | ~18% |
+| **Total today** | **1,021** | |
+| **Total endpoints** | **10,742** | |
+| **Total registered agents** | **~123K+** (from Cycle 20) | |
+
+### 📊 Competitive Landscape (Apr 3, 22:27 — updated)
+
+| Player | Status | Change Since Cycle 21 |
+|--------|--------|----------------------|
+| **Agentra AI** (@AgentraAI) | 🔴 **NEW CRITICAL** — live on Base Mainnet | Launched Apr 2/3. EAS attestations, KYA, Wallets-as-Service, x402, patent pending. MOST DIRECT COMPETITOR. |
+| **@chris_m_madison** | 🔴 HIGH — A2A attestations live | Carried from Cycle 20. Must engage. |
+| **Morph Network + Morph Skill** | 🔴 HIGH | No new activity since Cycle 19. Partner, not competitor. |
+| **ODEI (@odei_ai)** | 🔴 HIGH — warm lead | No new activity since Cycle 20. Follow up. |
+| **ORIGIN (@OriginDAO_ai)** | 🔴 HIGH — bilateral trust | No new posts since Mar 26. Building quietly. |
+| **Praxis Protocol** (@Praxis_Protocol) | 🟠 NEW HIGH — 5-layer agent network | ERC-8004 at L3. Partnership opportunity: we supply their Reputation registry data. |
+| **ScoutScore** | 🟠 HIGH direct competitor | No new activity since Mar 27. |
+| **Olas (@autonolas)** | 🟠 HIGH — ecosystem signal | Major established project now ERC-8004 standard. Composable, not competing. Monitor @8004_scan. |
+| **$65M enterprise agent trust** | 🟠 HIGH — enterprise | Unidentified company. Former Atlassian CTO. $65M seed. Research identity. |
+| **Observer Protocol** (@Obsrver_Prtcl) | 🟡 MEDIUM — hackathon stage | OWS hackathon submission. Small presence. Monitor. |
+| **MEEET** (@MEEET_World_) | 🟡 MEDIUM — Solana | Solana-native, multi-layer trust with staking. Different ecosystem. |
+| **Etheran** | 🟡 MEDIUM | No new posts since Mar 18. |
+| **SoulClaw** (Avalanche) | 🟡 MEDIUM | No new data since Cycle 20. |
+| **AIS-1** | 🟡 MEDIUM — composable | Nia actively positioning as composable layer. 0 overlap. |
+| **GAKI** | 🟡 MEDIUM | No new data. |
+| **Pieverse** | 🟢 LOW | No new data. |
+| **easctl** | 🟢 LOW — complementary | No new data. |
+| **Minara** | 🟢 NEW LOW | ERC-8004 + Etherscan for trading agents. Monitor. |
+
+### 📊 Execution Status (Apr 3, 22:27)
+| Item | Status | Change Since Cycle 21 |
+|------|--------|----------------------|
+| PRs #25/#27/#28/#29 | ✅ **ALL MERGED** | Confirmed (from Cycle 21) |
+| npm packages published | ❓ UNKNOWN | Still unverified |
+| GitHub stars | 0 | Confirmed from Nia's tweet card (5h ago) |
+| Schema UIDs on-chain | ❓ UNKNOWN | Still unverified |
+| @chris_m_madison engagement | ❓ UNKNOWN | Carried from Cycle 20 — not yet verified |
+| Comms Post 2 + @MorphDevs | ❓ UNKNOWN | Carried from Cycle 19 — not yet verified |
+
+### Updated Top 3 Actions (Cycle 22 — Apr 3, 22:27)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Comms: Engage @AgentraAI — propose schema compatibility** — They're using EAS attestations on Base, same as us. Message: "Agentra uses EAS attestations for trust — so does Agent Trust SDK. Our open-source schemas (TaskCompletion, PaymentReliable, SecurityAudit) are composable with your reputation layer. Portable behavioral records any platform can read, including yours. Worth a look: [npm package link]." This is the most urgent competitive engagement. If they adopt our schemas, we win ecosystem lock-in even if they outcompete us on features. | Comms | 🔴 CRITICAL | DM sent; schema compatibility conversation opened |
+| **2** | **Remi/PM: Publish npm packages + update README for multi-chain positioning** — Agentra is live, Praxis is live, Observer Protocol is in hackathons. Zero published packages = zero discoverability at the exact moment the market is filling. Also update README from "Soulbound reputation for AI agents on Base" to multi-chain framing. BNB Chain leads ERC-8004 registrations — our Base-only positioning misses 80%+ of the market. | Remi | 🔴 CRITICAL | Packages live; README updated; install link in next Comms post |
+| **3** | **PM: Create GitHub issue for cross-chain EAS support + @8004_scan discovery** — BNB Chain leads ERC-8004 (57% of daily registrations). Olas integrates @8004_scan. We need: (a) GitHub issue documenting EAS deployment addresses on BNB Chain/Celo/Morph; (b) agent metadata compatible with @8004_scan for discoverability; (c) optional `chain` parameter in SDK query functions. This is now a P1 gap, not P3. | PM | 🟠 HIGH | GitHub issue created; @8004_scan integration scoped |
+
+### Cycle 22 Summary
+
+**What's new (18h delta since Cycle 21):**
+- 🔴 **Agentra AI launched on Base Mainnet** — direct EAS competitor, KYA + wallets + x402 + bidirectional trust, free until Oct 2026, patent pending
+- 🔴 **BNB Chain dominates ERC-8004** — 57% of daily registrations; Base is not #1. 10,742 verified endpoints total.
+- 🟠 **Praxis Protocol** — 5-layer agent network with ERC-8004 as Layer 3 (partnership target)
+- 🟠 **Olas (Autonolas)** — major established project standardizing on ERC-8004 + @8004_scan
+- 🟠 **$65M enterprise agent trust raise** — former Atlassian CTO; institutional validation; enterprise-focused
+- 🟠 **Observer Protocol** — hackathon stage, OWS/MoonPay, "portable cryptographic trust"
+- 🟡 **Drift $270M exploit** — "legitimate credentials ≠ trustworthy behavior" validates our thesis
+- 🟡 **Cross-chain reputation gap** articulated publicly (@kir_varlamov)
+- 🟡 **80+ teams building on ERC-8004** (CipherPulse); co-authored by MetaMask + Ethereum
+
+**What's unchanged:**
+- BBC news: same 2 stories since Apr 2
+- CoinDesk tech: same major stories since Apr 2 (x402, OpenAI raise, Jack Dorsey)
+- ctxly: 404 (consistent)
+- GitHub stars: 0
+- npm publish: unverified
+- Schema UIDs: unverified
+
+**Revised strategic positioning for Cycle 22:**
+The arrival of Agentra AI changes the calculus. We are no longer the only team building EAS-based trust attestations on Base. The window to position ourselves as the **open-source standard** (vs Agentra's proprietary platform) is now. The move: engage Agentra, propose schema composability, get published on npm before they gain dominance. Whoever owns the schema standard wins long-term, even if they lose on features short-term.
+
+BNB Chain leading ERC-8004 is a wake-up call. Multi-chain support is not a future roadmap item — it is a present market reality. An sdk that only works on Base is targeting the minority chain in the ERC-8004 ecosystem.
+
+*Research completed 2026-04-03 22:27 GMT+2. Agentra AI: direct competitor, live, EAS-based. BNB Chain leads ERC-8004. Praxis Protocol 5-layer network. Olas standardizes. $65M enterprise raise. Multi-chain positioning urgent.*
 
 ---
 
