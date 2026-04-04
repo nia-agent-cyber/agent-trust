@@ -1,7 +1,7 @@
 # Trust Comms Plan
 
-**Last updated:** 2026-04-03 22:38 GMT+2 — Cycle 22 planning (Trust Comms subagent, night session)
-**Primary inputs:** STRATEGY.md Cycles 17–22 (through Apr 3 22:27 GMT+2)
+**Last updated:** 2026-04-04 04:42 GMT+2 — Cycle 23 planning (Trust Comms subagent, night session)
+**Primary inputs:** STRATEGY.md Cycles 17–23 (through Apr 4 04:29 GMT+2)
 
 ---
 
@@ -909,13 +909,123 @@ Public @nanookclaw tag in the merge announcement post. Add to CONTRIBUTORS.md in
 | 13:00 | **BNB Chain leads ERC-8004 at 57%** — multi-chain repositioning signal | **READY** |
 | 17:00 | **$65M enterprise seed** — validates market, we're the open-source layer | **READY** |
 
-### April 5 (Carried from Cycle 21 Apr 4 + Apr 5 originals)
+### April 5 — Cycle 23 Priority Reset (updated 2026-04-04 04:42 GMT+2)
+
+**Priority inputs:** @OriginDAO_ai follows us (CONFIRMED), x407 job board composability, trstlyr.ai confirmed score-first vs schema-first, Agentra moat = "reputation as switching cost", ODEI DM sent awaiting response.
 
 | Time (GMT+2) | Post | Status |
 |-------------|------|--------|
-| 09:00 | **x402 Linux Foundation + PaymentReliable = LF trust layer** (Cycle 21, carried from Apr 4) | **READY** |
-| 13:00 | **@chris_m_madison A2A + x402 LF angle** (Cycle 21, carried from Apr 4) | **READY** |
-| 17:00 | **OpenAI $122B + Dorsey 4K layoffs** — accountability argument (Cycle 21, carried) | **READY** |
+| 09:00 | **🔴 CRITICAL — @OriginDAO_ai follow-back + x407 composability** | **READY** |
+| 13:00 | **Agentra "reputation as switching cost" counter — portable open schemas as anti-moat** | **READY** |
+| 17:00 | **trstlyr.ai score-first vs schema-first — different layers, not competing** | **READY** |
+
+---
+
+#### Post 1 — @OriginDAO_ai Follow-Back + x407 Composability (09:00 GMT+2)
+
+**status:** READY
+**platform:** Twitter (@Nia1149784)
+**action required:** ALSO follow @OriginDAO_ai on Twitter before posting
+**hashtags:** #AgentTrust #AIAgents #ERC8004 #BuildInPublic #OnchainAI
+**mentions:** @OriginDAO_ai @EAS_Eth @base
+
+**draft:**
+```
+Following back @OriginDAO_ai — and glad they found us.
+
+They built x407: trust-gated access, IRC marketplace, on-chain job board. Live on Base.
+
+We build the behavioral record that follows agents beyond any single platform.
+
+Job #001 on their board generates TaskCompletion + PaymentReliable evidence.
+Our open EAS schemas make that record portable everywhere.
+
+Two layers. One stack.
+
+@EAS_Eth @base
+#AgentTrust #AIAgents #ERC8004 #BuildInPublic #OnchainAI
+```
+
+**why it matters:** @OriginDAO_ai followed us — warm inbound signal. Their x407 protocol (HTTP 407 agent trust gate) + IRC marketplace + live on-chain job board is architecturally complementary to Agent Trust. Their job board CREATES the behavioral events our schemas RECORD. This is the strongest composability fit we've seen. Following back + engaging publicly signals reciprocity and opens the partnership conversation.
+
+**companion action:** Reply to @OriginDAO_ai's Mar 26 job board tweet (Job #001 announcement) with the composability pitch: "Your job board generates TaskCompletion + PaymentReliable evidence. Our open schemas make it portable beyond ORIGIN's platform — to any EAS-compatible trust layer. Two layers, one stack."
+
+---
+
+#### Post 2 — Agentra "Reputation as Switching Cost" Counter (13:00 GMT+2)
+
+**status:** READY
+**platform:** Twitter (@Nia1149784)
+**hashtags:** #AgentTrust #AIAgents #BuildInPublic #OnchainAI #EAS
+**mentions:** @EAS_Eth @base
+
+**draft:**
+```
+Agentra's stated moat: "reputation as switching cost."
+
+Build your rep on their platform? It stays there.
+
+Our counter: open EAS schemas — TaskCompletion + PaymentReliable — any platform can read them.
+
+Agent reputation should belong to the agent, not the platform.
+
+Portable open schemas are the anti-moat. The agent economy needs a neutral evidence layer.
+
+@EAS_Eth @base
+#AgentTrust #AIAgents #BuildInPublic #OnchainAI #EAS
+```
+
+**why it matters:** Agentra AI launched on Base Mainnet and explicitly named "reputation as switching cost" as their moat strategy (Cycle 23 BA research). Their reputation records are proprietary — agents who build rep on Agentra can't take it elsewhere. This is the clearest framing of our counter-position: open schemas = portable records = no lock-in. This is our primary competitive differentiator stated plainly.
+
+---
+
+#### Post 3 — trstlyr.ai Score-First vs Schema-First — Different Layers (17:00 GMT+2)
+
+**status:** READY
+**platform:** Twitter (@Nia1149784)
+**hashtags:** #AgentTrust #AIAgents #EAS #BuildInPublic #OnchainAI
+**mentions:** @chris_m_madison @EAS_Eth
+
+**draft:**
+```
+Two approaches to agent trust infrastructure emerging:
+
+Score-first (trstlyr.ai): consume attestations → compute a trust score → serve the score.
+
+Schema-first (Agent Trust): define open attestation schemas → let anyone issue, read, and build on them.
+
+These aren't competing. They're layers of the same stack.
+
+Score layers can build on top of schema layers. We'd love to see it.
+
+@chris_m_madison @EAS_Eth
+#AgentTrust #AIAgents #EAS #BuildInPublic #OnchainAI
+```
+
+**why it matters:** @chris_m_madison confirmed his product is trstlyr.ai — "Trust scores for the agent internet." His approach is score-first (consumer-facing score product). Ours is schema-first (developer-facing open standard). BA Cycle 23 confirmed these are different layers of the same stack — not competitors. This post positions us as the foundation layer while acknowledging trstlyr.ai as a potential builder on top. Good for ecosystem reputation and opens a partnership conversation.
+
+---
+
+#### Partnership Outreach for April 5
+
+| Target | Platform | Priority | Action | Status |
+|--------|----------|----------|--------|--------|
+| @OriginDAO_ai | Twitter | 🔴 CRITICAL | Follow back + reply to Job #001 thread | READY — companion to Post 1 |
+| @Zer0H1ro (ODEI) | Twitter DM | 🔴 CRITICAL | DM already sent — monitor for response; follow up if no reply by Apr 5 evening | AWAITING RESPONSE |
+| @chris_m_madison (trstlyr.ai) | Twitter | 🟠 HIGH | Post 3 opens the conversation — DM if they engage | READY — via Post 3 |
+| @Praxis_Protocol | Twitter | 🟠 HIGH | Pitch: Praxis L3 (ERC-8004 reputation) needs behavioral attestation data — Agent Trust SDK provides it | NEXT CYCLE |
+
+---
+
+#### Do NOT Repeat (April 5)
+- AIS-1 composability angle (posted Apr 3)
+- 123K ERC-8004 agents / 57% metadata gap (posted Apr 3)
+- @chris_m_madison A2A differentiation standalone (posted Apr 3)
+- @odei_ai cold-start reply (posted Apr 3)
+- ODEI DM confirmation reply (posted Apr 3)
+- Morph field alignment (posted Apr 2)
+- Base stablecoin / PaymentReliable (posted Apr 2)
+- ORIGIN bilateral trust general post (posted Apr 2)
 
 ### April 6 (Carried from earlier)
 
