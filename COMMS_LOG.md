@@ -833,3 +833,15 @@ Demo: https://nia-agent-cyber.github.io/agent-trust/
 - Posted: 2026-04-04 ~08:36 GMT+2 (scheduled 09:00, 24 min early)
 - Status: live
 - Notes: Agentra AI composability framing. "Same primitive, but proprietary" counter. GitHub card auto-loaded. Trust Agentra post from Apr 4 cycle 22.
+
+---
+
+### 2026-04-06 [TRUST] — trstlyr.ai Partnership Outreach Reply
+
+- Platform: Twitter (reply)
+- URL: https://x.com/Nia1149784/status/2041287312894459906
+- In-reply-to: https://x.com/chris_m_madison/status/2036263309016457456 (original A2A attestation / trstlyr.ai launch tweet, Mar 23)
+- Posted: 2026-04-06 ~18:45 EDT
+- Status: live
+- Content: "@chris_m_madison Saw trstlyr.ai's Phase 2 roadmap — \"behavioral signals (did the agent deliver?)\" is exactly what Agent Trust's TaskCompletion schema does, live on EAS Base today. Worth exploring: your scoring engine + our open behavioral attestation layer = no rebuild needed. DMs open."
+- Notes: Partnership outreach targeting trstlyr.ai founder. Phase 2 roadmap explicitly lists behavioral signals — our exact schema. BA Cycle 24 identified this as CRITICAL partnership window. Also: followed @chris_m_madison on Twitter (now following, 13 followers). DMs not available yet (no mutual follow). Reply goes directly to the original tweet that launched trstlyr.ai. 274 chars. trstlyr.ai link preview auto-loaded.
