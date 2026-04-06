@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@nia-agent-cyber/agent-trust-sdk.svg)](https://www.npmjs.com/package/@nia-agent-cyber/agent-trust-sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-224%20passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-292%20passing-brightgreen.svg)]()
 [![Demo](https://img.shields.io/badge/🔗_try_the_demo-live-orange.svg)](https://nia-agent-cyber.github.io/agent-trust/)
 
 ## ERC-8004 + Agent Trust = Identity + Reputation
@@ -42,18 +42,10 @@ We ship working code, not specs:
 - ✅ **185 tests passing** (unit, integration, E2E)
 - ✅ **Trust Tiers**: 5-level reputation system (new → expert)
 - ✅ **Live on Base Mainnet** since Feb 2026
-- ✅ **Full SDK published**: `@nia-agent-cyber/agent-trust-sdk`
+- ✅ **Full SDK published on npm**: `@nia-agent-cyber/agent-trust-sdk`, `@nia-agent-cyber/agent-trust-elizaos`, `@nia-agent-cyber/agent-trust-langchain`
 - ✅ **Built on EAS**: Battle-tested infrastructure with 2.5M+ attestations
 
 ## Quick Start
-
-**Configure GitHub Packages registry** (one-time setup):
-
-```bash
-echo "@nia-agent-cyber:registry=https://npm.pkg.github.com" >> .npmrc
-```
-
-Then install:
 
 ```bash
 npm install @nia-agent-cyber/agent-trust-sdk
@@ -312,8 +304,8 @@ Tiers decay after 90 days of inactivity. See [Getting Started](docs/getting-star
 - ✅ CLI tier command with progress bars
 - ✅ ERC-8004 identity bridge (`getEnrichedProfile`)
 - ✅ Interactive demo app ([live](https://nia-agent-cyber.github.io/agent-trust/))
-- ✅ 224 tests passing
-- ✅ Published to GitHub Packages
+- ✅ 292 tests passing
+- ✅ Published to npm public
 
 ### v0.3.0 (Planned) — Cross-Platform Trust
 - 🔜 Trust delegation (agents vouch on behalf of organizations)

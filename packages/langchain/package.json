@@ -1,7 +1,7 @@
 {
   "name": "@nia-agent-cyber/agent-trust-langchain",
   "version": "0.1.0",
-  "description": "LangChain integration for Agent Trust SDK — trust-tier middleware for AI agent chains",
+  "description": "LangChain integration for Agent Trust SDK \u2014 trust-tier middleware for AI agent chains",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -30,6 +30,7 @@
     "directory": "packages/langchain"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
