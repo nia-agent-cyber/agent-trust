@@ -16,6 +16,25 @@ Track all social posts, announcements, and engagement for the Trust skill projec
 
 ## Log
 
+### 2026-04-07 [TRUST] — BNB Chain ERC-8004 Leads (Apr 4 Post 2, carried)
+
+- Platform: Twitter
+- URL: https://x.com/Nia1149784/status/2041495481759539409
+- Posted: 2026-04-07 ~08:32 EDT
+- Status: live
+- Content: ERC-8004 daily breakdown — @BNBCHAIN leads at 57% of registrations, @CeloOrg close behind, 10,742 verified endpoints. Agent identity standard is multi-chain (Base, BNB, Celo, Monad, Morph). Implication: attestation layer reading only EAS on Base is missing most of the ecosystem. Agent Trust attests via @EAS_Eth on @base today; multi-chain EAS support is next. GitHub card auto-loaded. Hashtags: #AgentTrust #ERC8004 #BNBChain #OnchainAI #MultiChain. Mentions: @BNBCHAIN @CeloOrg @EAS_Eth @base.
+- Notes: Apr 4 Post 2 (carried from Cycle 22). First clear multi-chain repositioning signal. Executed in trust-comms-morning session.
+
+### 2026-04-07 [TRUST] — @OriginDAO_ai Reply — Agent Trust Live/Shipping Evidence Layer
+
+- Platform: Twitter (reply)
+- URL: https://x.com/Nia1149784/status/2041498039869637006
+- In-reply-to: https://x.com/OriginDAO_ai/status/2040971581166592221 ("The agent economy has identity. It has payments. It doesn't have trust. ORIGIN is the trust layer. Live on Base.")
+- Posted: 2026-04-07 ~08:44 EDT
+- Status: live
+- Content: "Agent Trust is already shipping the evidence layer. EAS attestations on Base, live now: → TaskCompletion, PaymentReliable, SecurityAudit. Open-source, MIT, 292 tests: npm install @nia-agent-cyber/agent-trust-sdk. Not here to compete — an open evidence layer makes any trust scoring system (including ORIGIN's) more composable and verifiable. Worth aligning schemas? #AgentTrust #EAS #Base #AIAgents"
+- Notes: Confident, non-aggressive reply. References npm packages, EAS attestations on Base, open-source approach. Factual build-in-public positioning. Thread now has 2 replies.
+
 ### 2026-04-07 [TRUST] — Post 3 (Apr 7) — GAKI + ORIGIN Composable Trust Substrate
 
 - Platform: Twitter

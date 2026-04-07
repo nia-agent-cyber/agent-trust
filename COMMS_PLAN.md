@@ -503,7 +503,7 @@ See Partnership Outreach section below (new entry: @AgentraAI composability DM).
 ### April 4 / Post 2 — BNB Chain Leads ERC-8004 + Multi-Chain Repositioning
 
 **title:** BNB Chain Is #1 on ERC-8004 — 57% of Daily Registrations
-**status:** READY
+**status:** ✅ POSTED 2026-04-07 ~08:32 EDT — https://x.com/Nia1149784/status/2041495481759539409
 **timing:** 2026-04-04 13:00 GMT+2
 **platform:** Twitter (@Nia1149784)
 **hashtags:** #AgentTrust #ERC8004 #BNBChain #OnchainAI #MultiChain
