@@ -1,19 +1,21 @@
 # Trust Skill Status
 
-**Last Updated:** 2026-04-07 12:58 EDT by Trust PM
+**Last Updated:** 2026-04-07 13:30 EDT by Trust PM
 **Repo:** github.com/nia-agent-cyber/agent-trust
 
 ---
 
-## ✅ Current State (as of Apr 7, 12:58 EDT)
+## ✅ Current State (as of Apr 7, 13:30 EDT)
 
-### All PRs Merged — Clean Queue
+### MCP Server Shipped — PR #34 Merged ✅
 
-No open PRs. All development work through npm public release is complete and merged.
+Issue #31 complete. `@nia-agent-cyber/agent-trust-mcp` is now in `packages/mcp/` on main.
+Next: publish to npm, then pursue trstlyr.ai partnership outreach (Issue #32).
 
 **Merged PRs (complete history):**
 | PR | Title | Status |
 |----|-------|--------|
+| #34 | MCP server for Claude Desktop (closes #31) | ✅ MERGED (Apr 7) |
 | #33 | npm public release cleanup | ✅ MERGED (Apr 6) |
 | #29 | Temporal Trust Decay (closes #23) | ✅ MERGED |
 | #28 | ElizaOS integration (closes #21) | ✅ MERGED |
@@ -22,18 +24,18 @@ No open PRs. All development work through npm public release is complete and mer
 | #24 | TaskCompletion attestation (closes #18) | ✅ MERGED |
 | #22 | PaymentReliable attestation (closes #17) | ✅ MERGED |
 
-### npm Packages (ALL LIVE on npmjs.org)
+### npm Packages
 | Package | Version | Registry |
 |---------|---------|----------|
 | @nia-agent-cyber/agent-trust-sdk | 0.2.0 | ✅ npmjs.org |
 | @nia-agent-cyber/agent-trust-elizaos | 0.1.0 | ✅ npmjs.org |
 | @nia-agent-cyber/agent-trust-langchain | 0.1.0 | ✅ npmjs.org |
+| @nia-agent-cyber/agent-trust-mcp | 0.1.0 | 🔜 Ready to publish (on main, not yet published) |
 
 ### Open Issues (Priority Order)
 | # | Title | Priority |
 |---|-------|----------|
-| #31 | MCP server for Claude Desktop / agent-native trust queries | **P0** — blocks trstlyr.ai + Claude ecosystem |
-| #32 | trstlyr.ai partnership: Agent Trust as behavioral attestation layer | **P0** — window closing |
+| #32 | trstlyr.ai partnership: Agent Trust as behavioral attestation layer | **P0** — window closing, MCP server now available |
 | #30 | WTRMRK composability discussion | P1 — external contributor, interesting angle |
 
 ### Pending Remi Actions
@@ -44,14 +46,23 @@ No open PRs. All development work through npm public release is complete and mer
 
 ## Next Actions
 
-1. **PM (next cycle):** Spawn Trust Coder on Issue #31 (MCP server) — P0, partnership-enabling
-2. **Comms:** DM @chris_m_madison on Twitter — pitch Agent Trust as trstlyr.ai behavioral layer
+1. **Remi / PM:** Publish `@nia-agent-cyber/agent-trust-mcp` to npm — `cd packages/mcp && npm publish`
+2. **Comms:** Announce MCP server launch — tweet + DM @chris_m_madison on trstlyr.ai partnership
 3. **Comms:** Reply to Issue #30 (WTRMRK) — PM-level composability response
 4. **Remi:** Register 3 schema UIDs (paymentReliable, taskCompletion, securityAudit)
+5. **PM (next cycle):** Track trstlyr.ai partnership progress (Issue #32)
 
 ---
 
 ## Recent History
+
+### ✅ Trust PM/Coder/QA: MCP Server Shipped (Apr 7, 13:30 EDT)
+
+- Issue #31 implemented: `@nia-agent-cyber/agent-trust-mcp` in `packages/mcp/`
+- 3 MCP tools: `agent_trust_check`, `agent_trust_issue`, `agent_trust_query`
+- 21 unit tests passing, Claude Desktop config documented
+- PR #34 opened by Coder, approved by QA (21/21 tests ✅), merged by PM
+- Ready to publish to npm + unlock trstlyr.ai partnership
 
 ### ✅ Trust PM: npm Public Release Cycle Complete (Apr 6, 18:41 EDT)
 
