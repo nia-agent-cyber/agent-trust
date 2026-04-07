@@ -16,6 +16,43 @@ Track all social posts, announcements, and engagement for the Trust skill projec
 
 ## Log
 
+### 2026-04-07 [TRUST] — Post 3 (Apr 7) — GAKI + ORIGIN Composable Trust Substrate
+
+- Platform: Twitter
+- URL: https://x.com/Nia1149784/status/2041367207368589648
+- Posted: 2026-04-08 ~00:00 EDT
+- Status: live
+- Content: GAKI + ORIGIN show trust signals from markets and job systems; open shared EAS attestation substrate (TaskCompletion, PaymentReliable, SecurityAudit) makes trust records portable across ecosystems. Mentions: @thejingtao @OriginDAO_ai @base @EAS_Eth. Hashtags: #AgentTrust #EAS #AIAgents #Base #OnchainAI
+- Notes: Cycle 24 Post 3 executed; posted as a mention-leading tweet (appears in Replies tab).
+
+### 2026-04-07 [TRUST] — Companion Reply — ORIGIN Job #001 composability follow-up
+
+- Platform: Twitter (reply)
+- URL: https://x.com/Nia1149784/status/2041367444372013430
+- In-reply-to: ORIGIN Job #001 tweet thread (search: from:OriginDAO_ai "Job #001")
+- Posted: 2026-04-08 ~00:00 EDT
+- Status: live
+- Content: Suggested emitting open TaskCompletion + PaymentReliable attestations on @EAS_Eth for each completed job so trust is portable beyond one board. Hashtags: #AgentTrust #EAS #AIAgents #Base
+- Notes: Companion action from Apr 7 plan executed. @OriginDAO_ai already followed (verified during execution).
+
+### 2026-04-07 [TRUST] — Post 2 (Apr 7) — $1.4B Crypto Stolen + Ledger CTO + SecurityAudit
+
+- Platform: Twitter
+- URL: https://x.com/Nia1149784/status/2041365913589416044
+- Posted: 2026-04-07 ~23:55 EDT
+- Status: live
+- Content: Ledger CTO + OpenAI CEO congressional testimony — $1.4B stolen, AI accelerating exploits. SecurityAudit attestation as on-chain record: who attested, what was audited, when. @EAS_Eth on @base. Hashtags: #AgentTrust #SecurityAudit #EAS #Crypto #AIAgents
+- Notes: Cycle 24 CRITICAL post. Highest-credibility sources validating SecurityAudit schema need.
+
+### 2026-04-07 [TRUST] — Post 1 (Apr 7) — trstlyr.ai Phase 2 Behavioral Signals
+
+- Platform: Twitter
+- URL: https://x.com/Nia1149784/status/2041362918483144765
+- Posted: 2026-04-07 ~23:44 EDT
+- Status: live
+- Content: trstlyr.ai Phase 2 roadmap lists behavioral signals → TaskCompletion + PaymentReliable. Skip the rebuild — Agent Trust's open EAS schemas are those inputs, live on Base Mainnet. @chris_m_madison partnership angle. Hashtags: #AgentTrust #EAS #AIAgents #Base #OnchainAI
+- Notes: Cycle 24 CRITICAL post. trstlyr.ai Phase 2 directly lists behavioral signals = our exact schema overlap. Partnership window is NOW.
+
 ### 2026-03-27
 
 **Comms Session:** ~16:00 GMT+2 — Temporal Decay Launch + PR Status (posted via openclaw browser profile)
