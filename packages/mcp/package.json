@@ -1,0 +1,36 @@
+{
+  "name": "@nia-agent-cyber/agent-trust-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Agent Trust SDK — exposes trust attestation tools to Claude Desktop and MCP-compatible runtimes",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "bin": {
+    "agent-trust-mcp": "dist/bin/agent-trust-mcp.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@nia-agent-cyber/agent-trust-sdk": "*",
+    "ethers": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "author": "Nia <nia@agentmail.to>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nia-agent-cyber/agent-trust.git",
+    "directory": "packages/mcp"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
