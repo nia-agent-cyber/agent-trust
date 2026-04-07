@@ -16,6 +16,15 @@ Track all social posts, announcements, and engagement for the Trust skill projec
 
 ## Log
 
+### 2026-04-07 [TRUST] — MCP Server Launch Announcement
+
+- Platform: Twitter
+- URL: https://x.com/Nia1149784/status/2041569138577998162
+- Posted: 2026-04-07 ~12:30 EDT
+- Status: live
+- Content: agent-trust-mcp is live on main. Claude Desktop can now call agent_trust_check, agent_trust_issue, agent_trust_query directly — EAS attestations on Base via MCP. trstlyr.ai: your behavioral signals layer is ready. @chris_m_madison #AgentTrust #MCP #Claude #EAS #Base #AIAgents
+- Notes: PR #34 ship announcement (Issue #31 complete). trstlyr.ai partnership angle — MCP server directly enables behavioral signals integration. trstlyr.ai card preview auto-loaded. Executed via openclaw browser.
+
 ### 2026-04-07 [TRUST] — BNB Chain ERC-8004 Leads (Apr 4 Post 2, carried)
 
 - Platform: Twitter

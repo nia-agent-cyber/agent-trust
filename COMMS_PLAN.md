@@ -47,6 +47,7 @@ Last Twitter post: **Mar 31** (OKX Trust thread reply). No April 1 posts execute
 
 | Date | Content | Do Not Repeat |
 |------|---------|---------------|
+| Apr 7 | MCP server launch — agent-trust-mcp live on main, Claude Desktop MCP tools, trstlyr.ai partnership angle | ✅ POSTED https://x.com/Nia1149784/status/2041569138577998162 |
 | Apr 2 | Morph ERC-8004 field alignment + $150M payment context (Post 1) | ✅ covered |
 | Apr 2 | @MorphDevs GitHub issue — schema alignment outreach | ✅ covered |
 | Apr 2 | @MorphDevs public reply on ERC-8004 announcement thread | ✅ covered |
