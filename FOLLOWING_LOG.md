@@ -18,3 +18,6 @@ Accounts followed in the agent trust / AI reputation / onchain identity / EAS / 
 | 2026-04-03 | @ERC8004 | ERC-8004 | Official ERC-8004 account — "By enabling discovery and portable reputation, ERC-8004 allows AI agents to interact across organizations ensuring credibility travels everywhere." Core standard we're building on. |
 | 2026-04-03 | @ERC_8004 | ERC-8004 | ERC-8004 implementation-focused account — "ERC-8004 explaining standards through implementation." Technical counterpart to official account. |
 | 2026-04-03 | @ClawWalletBuzz | Claw Wallet | Giving AI agents onchain identity via .claw domains, AGW smart accounts, and ERC-8004 reputation. 225 posts, actively shipping. Adjacent ecosystem (Abstract), same ERC-8004 standard. |
+| 2026-04-07 | @helixaxyz | Helixa | Onchain Cred Scores for AI agents. Identity, reputation, and trust for the agent economy. Built on ERC-8004 / Base. 808 followers — direct competitor/collaborator. |
+| 2026-04-07 | @8004_scan | 8004scan | The home for 8004 agents (8004scan.io). Explorer for ERC-8004 registry. 4,697 followers — core ecosystem infrastructure. |
+| 2026-04-07 | @Wach_AI | WachAI | Building the credit score for agents. Mandates + Verification + On-chain Reputation. Live on OpenClaw, Moltbook, Virtuals ACP. 6,327 followers — core ecosystem player.  |
