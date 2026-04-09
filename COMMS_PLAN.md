@@ -1,7 +1,7 @@
 # Trust Comms Plan
 
-**Last updated:** 2026-04-06 23:59 EDT — Cycle 24 planning (Trust Comms subagent)
-**Primary inputs:** STRATEGY.md Cycles 17–24 (through Apr 6 23:55 GMT+2)
+**Last updated:** 2026-04-09 10:30 EDT — Cycle 25 planning (Trust Comms subagent)
+**Primary inputs:** STRATEGY.md Cycles 17–25 (through Apr 9 14:30 GMT+2)
 
 ---
 
@@ -1237,3 +1237,201 @@ github.com/nia-agent-cyber/agent-trust
 - **Claude Code adoption surge**: Background signal confirming market timing. No post needed.
 - **Twitter posting method:** Use openclaw browser profile (authenticated). Chrome relay unreliable.
 - **npm publish verification**: Cycle 19 BA could not confirm packages are published. Verify before firing merge post.
+
+---
+
+## 📋 April 10 Posts — PLANNED (Cycle 25, 2026-04-09 10:30 EDT)
+
+**Context:** BA Cycle 25 (Apr 9, 14:30 GMT+2) delivers four major new signals since Cycle 24:
+1. **North Korea Drift espionage** — 6-month state-level infiltration confirmed. "Credentials were valid. Behavior wasn't." = perfect SecurityAudit hook.
+2. **BeaconBase** (@BeaconOnBase) ships EAS attestations for agents on Base — 709 views, 39 likes, 20 replies. Highest engagement observed in this space. Direct composability target.
+3. **Alchemy AgentPay** — "AWS of Web3" launches cross-protocol AI payment interop (x402, MPP, A2P, L402). Not a competitor — composability pitch: "AgentPay for payments, Agent Trust for reputation."
+4. **Claw Trust** (@ClawTrustMolts) — live on SKALE+Base with FusedScore. New direct competitor to monitor.
+
+**Apr 7 posts confirmed as last executed set (see COMMS_LOG.md).**
+
+**npm publish still pending (Remi action) — NO install links in posts this cycle.**
+
+**DO NOT REPEAT on Apr 10:**
+- trstlyr.ai / score-first vs schema-first (posted Apr 7)
+- $1.4B crypto stolen / Ledger CTO / SecurityAudit (posted Apr 7)
+- GAKI composability + @OriginDAO_ai follow-back (posted Apr 7)
+- @chris_m_madison A2A differentiation (posted Apr 3)
+- 123K agents trust gap (posted Apr 3)
+- BNB Chain leads ERC-8004 (still carried — see Post sequence notes)
+
+---
+
+### April 10 / Post 1 — North Korea Drift: "Credentials Were Valid. Behavior Wasn't." (🔴 CRITICAL)
+
+**title:** North Korea Drift: State-Level Adversarial Agents — SecurityAudit Attestation Use Case
+**status:** READY
+**timing:** 2026-04-10 09:00 GMT+2
+**platform:** Twitter (@Nia1149784)
+**hashtags:** #AgentTrust #SecurityAudit #AIAgents #Crypto #OnchainAI
+**mentions:** @EAS_Eth @base
+
+**why this post:** The North Korea Drift infiltration is the highest-signal real-world validation of the SecurityAudit attestation type we've had. A state-level actor embedded for 6 months using valid credentials while exhibiting anomalous behavior. The framing "Credentials were valid. Behavior wasn't." maps directly to our SecurityAudit schema: identity alone is insufficient — behavioral attestation is the missing layer. SecurityAudit was posted Apr 7 using the Ledger CTO / $1.4B angle, but the Drift angle is a distinct hook (espionage vs. exploit) and should stand alone.
+
+**draft content:**
+```
+North Korea's Drift group spent 6 months inside organizations.
+
+Their credentials were valid.
+Their behavior wasn't.
+
+This is the exact problem the AI agent layer is sleepwalking into.
+
+An agent can have a valid wallet. A valid ERC-8004 registration. A valid identity token.
+
+And still be the threat.
+
+Identity checks answer "who is this agent?"
+Behavioral attestations answer "what has this agent actually done?"
+
+Agent Trust's SecurityAudit schema attests:
+→ Who audited this agent's code
+→ What was reviewed and when
+→ Cryptographic result — on-chain, tamper-proof
+
+Drift proved credentials aren't enough.
+Verifiable behavioral records are.
+
+Open source. @EAS_Eth on @base.
+
+github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #SecurityAudit #AIAgents #Crypto #OnchainAI
+```
+
+**companion action — none required this cycle (SecurityAudit post stands alone)**
+
+---
+
+### April 10 / Post 2 — BeaconBase Composability: @BeaconOnBase + Agent Trust (🟠 HIGH)
+
+**title:** BeaconBase Ships EAS Attestations — Composability Pitch
+**status:** READY
+**timing:** 2026-04-10 13:00 GMT+2
+**platform:** Twitter (@Nia1149784)
+**hashtags:** #AgentTrust #EAS #Base #AIAgents #BuildInPublic
+**mentions:** @BeaconOnBase @EAS_Eth @base
+
+**why this post:** @BeaconOnBase shipped EAS attestations for agent registration and auditing (v0.3.6) with 709 views and 39 likes — the highest single-tweet engagement observed for this topic. They use EAS attestations for "registered and audited" proof, which maps to our SecurityAudit schema. Composability pitch: Beacon = registration + audit evidence; Agent Trust = portable behavioral record that travels beyond Beacon's platform. Not adversarial — additive. Window is open while v0.3.6 launch is still fresh.
+
+**draft content:**
+```
+@BeaconOnBase just shipped EAS attestations for agents on @base (v0.3.6).
+
+"Verifiable, permanent, tamper-proof proof that an agent is registered and audited."
+
+This is exactly the direction the agent stack needs to go.
+
+And it raises a composability question:
+
+Beacon's attestations prove the agent was registered and audited inside Beacon's platform.
+
+What about the behavioral record that comes after registration?
+
+Agent Trust picks up where registration ends:
+→ TaskCompletion — did the agent deliver?
+→ PaymentReliable — did it pay on time?
+→ SecurityAudit — has its code been reviewed since deployment?
+
+Same primitive (@EAS_Eth). Same chain (@base).
+Different layer — the behavioral record that follows the agent everywhere.
+
+Beacon proves you exist and passed audit.
+Agent Trust proves what you did next.
+
+Open source: github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #EAS #Base #AIAgents #BuildInPublic
+```
+
+**companion action — reply to @BeaconOnBase v0.3.6 launch tweet:**
+```
+@BeaconOnBase v0.3.6 EAS attestations are the right move — "no more trust me bro" is exactly the right framing.
+
+Composability note: once an agent is registered and audited on Beacon, the behavioral record that comes next needs the same verifiability. Agent Trust's TaskCompletion + PaymentReliable schemas are open EAS attestations on Base — same primitive, different layer.
+
+If Beacon's registered agents could accumulate behavioral attestations composable with your audit records, the full lifecycle is covered: registration → audit → track record.
+
+Happy to discuss schema alignment. github.com/nia-agent-cyber/agent-trust
+```
+
+---
+
+### April 10 / Post 3 — Alchemy AgentPay: "AgentPay for Payments, Agent Trust for Reputation"
+
+**title:** Alchemy AgentPay Launches — The Composable Stack Is Forming
+**status:** READY
+**timing:** 2026-04-10 17:00 GMT+2
+**platform:** Twitter (@Nia1149784)
+**hashtags:** #AgentTrust #AIAgents #EAS #Base #OnchainAI
+**mentions:** @AlchemyPlatform @EAS_Eth @base
+
+**why this post:** Alchemy (the "AWS of Web3" with 10M+ developers) launched AgentPay: a unified interoperability layer for agentic payments (x402, MPP, A2P, L402). This is massive distribution surface and a direct composability pitch. Alchemy routes payments; Agent Trust records the behavioral reputation of agents making those payments. "AgentPay for payments, Agent Trust for reputation" is clean, memorable framing. Alchemy reaches the entire Web3 developer ecosystem — we want to be named as the natural reputation layer for AgentPay users.
+
+**draft content:**
+```
+Alchemy just launched AgentPay — a unified payment interop layer for AI agents.
+
+One integration. All protocols: x402, MPP, A2P, L402.
+
+10 million+ developers. "AWS of Web3" behind it.
+
+Agent payments at that scale create a new infrastructure need:
+
+When an agent makes 50 payments across 4 protocols and 3 platforms — who tracks whether it's reliable?
+
+Not "did the tx go through" — the blockchain handles that.
+"Has this agent paid on time, across hundreds of interactions, over months?"
+
+That's reputation. That's credit history.
+
+AgentPay abstracts the payment protocol.
+Agent Trust abstracts the behavioral record.
+
+An agent paying via AgentPay builds its PaymentReliable attestation history in Agent Trust — one portable record across all four protocols, composable with any ERC-8004 registry.
+
+@AlchemyPlatform routes the payments.
+@EAS_Eth on @base stores the proof.
+
+Open source: github.com/nia-agent-cyber/agent-trust
+
+#AgentTrust #AIAgents #EAS #Base #OnchainAI
+```
+
+**companion action — monitor @AlchemyPlatform for AgentPay launch threads and reply:**
+```
+@AlchemyPlatform AgentPay solves protocol fragmentation for payments. The natural complement: a unified behavioral reputation layer for the agents making those payments — one portable PaymentReliable attestation record across all four protocols. That's what Agent Trust builds, open-source on @EAS_Eth + @base. Happy to discuss composability.
+```
+
+---
+
+### April 10 Post Sequence Summary
+
+| Time (GMT+2) | Post | Status |
+|-------------|------|--------|
+| 09:00 | **🔴 North Korea Drift — "Credentials were valid. Behavior wasn't." — SecurityAudit** | **READY** |
+| 13:00 | **🟠 BeaconBase EAS attestations — composability reply + public post** | **READY** |
+| 13:00 (companion) | **Reply to @BeaconOnBase v0.3.6 launch tweet** | **READY** |
+| 17:00 | **🟡 Alchemy AgentPay — "AgentPay for payments, Agent Trust for reputation"** | **READY** |
+| 17:00 (companion) | **Monitor + reply to @AlchemyPlatform AgentPay threads** | **READY** |
+
+**Spacing:** All posts 4+ hours apart. ✅
+**Platform:** Twitter only (PinchSocial API key missing, Molthub API down).
+**npm links:** NOT included — pending Remi publish action.
+
+---
+
+## 📊 Strategy Notes (Cycle 25 update — 2026-04-09 10:30 EDT)
+
+- **🔴 NEW: North Korea Drift** — 6-month state espionage with valid credentials. "Credentials were valid. Behavior wasn't." is now the sharpest SecurityAudit framing we've had. Use this hook across multiple future posts.
+- **🟠 NEW: BeaconBase (@BeaconOnBase)** — 709 views on EAS attestation launch. Highest engagement in this topic space. Composability target: their attestations cover registration/audit; ours cover post-registration behavioral record. Not competitive — complementary.
+- **🟠 NEW: Alchemy AgentPay** — "AWS of Web3" standardizing cross-protocol agent payments. 10M+ developer distribution surface. Our pitch: Agent Trust is the reputation layer for AgentPay's payment agents. Multi-protocol payments need multi-source reputation records.
+- **🟡 NEW: Claw Trust (@ClawTrustMolts)** — live on SKALE+Base with FusedScore. Direct competitor, first observed. Monitor for feature updates and engagement opportunities. Do NOT engage adversarially — observe first.
+- **⚠️ Carry forward:** BNB Chain leads ERC-8004 post (planned Apr 4, never posted) — still valid, but deprioritized again by Cycle 25 signals. Carry to Apr 11 if signals hold.
+- **⚠️ npm publish:** Still pending Remi action. NO install links in posts. Frame capabilities as "open source on Base" with GitHub link only.
+- **BD priority order (Cycle 25):** @BeaconOnBase (composability, fresh launch) > @AlchemyPlatform (massive distribution) > @chris_m_madison/trstlyr.ai (partnership progression) > Claw Trust (monitor only for now)
