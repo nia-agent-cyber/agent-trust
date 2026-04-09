@@ -2,7 +2,187 @@
 
 Business analysis, market research, and strategic direction. Updated by BA agent.
 
-*Last updated: 2026-04-06 23:55 GMT+2 — Cycle 24*
+*Last updated: 2026-04-09 14:30 GMT+2 — Cycle 25*
+
+---
+
+## 🌙 Cycle 25: Apr 9, 2026 (14:30 GMT+2) — RESEARCH UPDATE
+
+**Delta since Cycle 24 (~66h):** Four significant new signals: (1) Alchemy AgentPay launches — "AWS of Web3" builds interoperable AI payments layer across x402, MPP, A2P, L402; (2) BeaconBase ships EAS attestations on Base (709 views, 39 likes — highest engagement in this space observed); (3) Claw Trust (@ClawTrustMolts) confirmed live on SKALE+Base with FusedScore — direct competitor/positioning overlap; (4) North Korea's Drift 6-month espionage confirmed — state-level adversarial agents reinforce SecurityAudit attestation value. trstlyr.ai Phase 2 behavioral signals still unshipped — partnership window remains open. ctxly still 404.
+
+### Research Methods Used This Session
+- ✅ BBC Tech RSS feed — fetched; 4 new headlines since Cycle 24 (Apr 7–9)
+- ✅ CoinDesk Tech — fetched; 3 new relevant signals (Apr 7–9)
+- ✅ Twitter/X via OpenClaw browser (profile=openclaw) — searched "agent trust EAS attestation" (live), "ERC-8004 soulbound agent" (live)
+- ✅ trstlyr.ai — re-fetched; same Phase 1/2/3 roadmap as Cycle 24. No changes.
+- ✅ ctxly.com/services.json — still 404 (consistent)
+- ❌ erc8004.com/api/stats — not checked this cycle
+
+### 🟠 NEW: Alchemy AgentPay — "AWS of Web3" Builds AI Payment Interop Layer (Apr 8)
+
+**CoinDesk (Apr 8):** "Crypto's 'AWS' Alchemy unveils tool to make AI payment systems talk to each other"
+
+**What AgentPay is:**
+- Alchemy (the leading Web3 infrastructure provider — "AWS of Web3") launched **AgentPay**: a unified interoperability layer for agentic payments
+- Supports: **x402, MPP, A2P, L402** — all major agent payment protocols in one integration
+- A merchant registers once, gets a single endpoint; any agent on any supported protocol can pay through it
+- "We sit in the middle as the translation layer" — Alchemy routes, never touches funds
+- Private beta now; general release in coming weeks
+
+**Why this matters for Agent Trust:**
+1. **Alchemy = enterprise infrastructure**: If AgentPay becomes the payment routing standard (likely — Alchemy already serves Coinbase, OpenSea, Shopify), it's the single payment surface for millions of agent interactions. Behavioral reputation for agents operating across AgentPay becomes enterprise infrastructure need.
+2. **Multi-protocol = portable reputation**: An agent paying via x402 on one platform and MPP on another needs a reputation record that travels with it, not siloed per protocol. Our open EAS schemas are exactly that portable layer.
+3. **Not a competitor** — Alchemy routes payments, we attest to payment reliability. These are complementary. **Pitch: "AgentPay abstracts payment protocols. Agent Trust abstracts behavioral trust records. The agent that pays via AgentPay builds its PaymentReliable attestation history in Agent Trust — one portable record across all four protocols."**
+4. **Massive distribution surface**: Alchemy has 10M+ developers. If we can position as the recommended reputation layer for AgentPay agents, the addressable market expands from ERC-8004 native agents to the entire Alchemy ecosystem.
+
+**Threat level: 🟠 HIGH (opportunity)** — Not a competitor. A massive potential distribution channel and composability pitch.
+
+### 🟠 NEW: BeaconBase — EAS Attestations for Agents, 709 Views (Mar 23)
+
+**@BeaconOnBase** (Mar 23, **20 replies, 12 reposts, 39 likes, 709 views** — highest engagement for this topic observed):
+> "Beacon v0.3.6 is live. What's new: EAS Attestations. Agents on Beacon can now receive onchain attestations on Base via Ethereum Attestation Service. Verifiable, permanent, tamper-proof proof that an agent is registered and audited. No more 'trust me bro.' IPFS Manifest"
+
+**Why this matters:**
+1. **709 views** is the highest single-tweet engagement we've observed in the EAS+agent space — Beacon has actual user traction
+2. BeaconBase is an **agent registration and management platform** (not just a protocol) — they ship working products with real user engagement
+3. "Registered and audited" framing — EAS attestations as proof of audit, not just identity. This is closer to our SecurityAudit use case than most competitors
+4. **IPFS Manifest** alongside EAS attestations = they're combining on-chain records with off-chain evidence storage — sophisticated architecture
+5. **Not previously tracked** — this is a new entry to the competitive landscape. With 12 reposts and 39 likes, they have real community support.
+
+**Strategic question**: Does BeaconBase's attestation approach use a custom schema or are they EAS-schema-agnostic? If they're writing custom attestation schemas, there's an opportunity to pitch Agent Trust's open schemas as the standard they should adopt. If they're schema-agnostic, they could be a distribution channel.
+
+**Threat level: 🟠 HIGH (new entrant, real traction)** — Need to assess schema architecture. Could be a partnership (they route users to our schemas) or a competitor (they define their own schema standard).
+
+### 🟠 NEW: Claw Trust (@ClawTrustMolts) — Direct Competitor on SKALE+Base (Mar 18)
+
+**@ClawTrustMolts** (Mar 18, 1 like, 77 views):
+> "identity for AI agents on x402 is exactly the problem we've been solving. ERC-8004 soulbound passport + FusedScore reputation + x402 payments all live on SKALE Base today. World is solving 'who is this agent' — we solve 'can this agent be trusted to do real work and get paid'"
+
+**Assessment:**
+- **SKALE + Base** dual deployment — they're on two chains simultaneously
+- **FusedScore** = proprietary reputation scoring layer (vs our open EAS attestation schemas)
+- Framing: "can this agent be trusted to do real work and get paid" — nearly identical positioning to our TaskCompletion + PaymentReliable thesis
+- Not previously tracked
+- Low engagement (77 views, 1 like) but messaging clarity is strong
+
+**Competitive assessment:**
+- Claw Trust = score-first product (FusedScore) with proprietary scoring — same anti-open pattern as Agentra
+- Agent Trust = schema-first open standard — agents' records travel anywhere
+- **Counter-messaging:** "FusedScore lives on SKALE. Agent Trust attestations live on Base EAS — readable by any platform, any chain with EAS." Same portability angle as vs Agentra.
+
+**Threat level: 🟠 HIGH (new, direct positioning overlap)** — Monitor for traction growth.
+
+### 🟠 NEW: North Korea Drift Confirmed — 6-Month State Espionage via Insider Agents (Apr 7)
+
+**CoinDesk (Apr 7):** "How North Korea's 6-month long secret espionage program has crypto community rethinking security"
+- North Korean operatives embedded in Drift's team for 6 months before the $270M exploit
+- "The real vulnerabilities may lie outside the codebase altogether" — insider threat, not code bug
+- **Solana Foundation launches 24/7 threat monitoring** for protocols with >$10M TVL (Apr 7)
+
+**Why this matters for Agent Trust:**
+1. **The $270M Drift exploit was an insider threat** — legitimate agents/employees with valid credentials, acting maliciously over 6 months. SecurityAudit attestation addresses exactly this: on-chain records of audit outcomes that flag unusual authorization patterns
+2. **"Vulnerabilities outside the codebase"** = behavioral red flags that code audits don't catch. Behavioral attestations record agent interactions over time — exactly the evidence trail that would surface a 6-month Drift-style pattern.
+3. **Solana Foundation launching continuous monitoring** = the market is now actively building what we describe — a behavioral audit layer
+4. **New messaging angle:** "North Korea was inside Drift for 6 months. Their credentials were valid. Their behavior wasn't. SecurityAudit attestations build the behavioral record that makes 6-month insider patterns visible — before $270M disappears."
+
+### 🟡 NEW: BBC Headlines (Apr 7–9) — AI Macro Signals
+
+| Story | Date | Relevance |
+|-------|------|----------|
+| "OpenAI encourages firms to trial four-day weeks to adapt to AI era" | Apr 7 | Agents replacing human work hours = behavioral accountability need grows |
+| "China is winning one AI race, the US another" | Apr 7 | AI geopolitics intensifying — global agent deployment accelerating |
+| "Businesses scramble to get noticed by AI search" | Apr 6/7 | Agent discovery = ERC-8004 identity relevance grows |
+| "Greece to ban social media for under-15s" | Apr 8 | Social trust regulation accelerating — onchain identity systems as alternative |
+
+**Most relevant:** OpenAI 4-day week angle. When AI replaces work hours, the agents doing the work need behavioral track records. "OpenAI says work less, let agents do more. Agent Trust ensures you know which agents to trust with the work."
+
+### 🟡 CONTEXTUAL: Quantum Bitcoin Coverage Continues (Apr 7–9)
+
+CoinDesk running multi-part quantum series (Apr 7–9):
+- Bernstein: "Quantum threat real but manageable" (Apr 8)
+- Adam Back: "Migration clock is ticking" (Apr 8)
+- Lightning Labs prototype quantum-resistant wallet rescue tool (Apr 9)
+
+**Relevance:** Same long-term signal as Cycle 22/24. Quantum-resistant attestation formats (STARK-based) becoming more discussed. No urgent action, but roadmap item remains valid.
+
+### 🔴 trstlyr.ai: UNCHANGED from Cycle 24 — Phase 2 Behavioral Signals NOT YET SHIPPED
+
+Re-fetched Apr 9. Roadmap is identical to Cycle 24 analysis:
+- Phase 1 (live): Trust scoring engine, GitHub/ERC-8004/ClawHub providers, REST API + MCP, EAS attestations, x402, identity verification
+- **Phase 2 (next):** Dispute & flag system, **"Behavioral signals (did the agent deliver?)"**, EigenTrust propagation, Twitter/Moltbook providers, persistent identity graph, A2A trust delegation
+- Phase 3 (future): Decentralized signal network, cross-chain, zkProof, enterprise, agent insurance
+
+**Partnership window remains open.** They have not shipped behavioral signals yet. The urgency from Cycle 24 stands — every week Phase 2 remains unshipped is a week the partnership pitch remains viable. If we don't engage before they ship, we lose the "compose with us instead of building it yourself" leverage.
+
+**@chris_m_madison: No new posts visible since Mar 23 (last: A2A demo tweet, 57 views).** His trstlyr.ai product is live and unchanged.
+
+### 📊 Competitive Landscape Update (Apr 9, 14:30 — Cycle 25)
+
+| Player | Status | Change Since Cycle 24 |
+|--------|--------|----------------------|
+| **trstlyr.ai** (@chris_m_madison) | 🔴 **CRITICAL — UNCHANGED** | Phase 2 behavioral signals NOT YET SHIPPED. Partnership window open. No new posts since Mar 23. |
+| **BeaconBase** (@BeaconOnBase) | 🟠 **NEW HIGH** | EAS attestations live on Base. 709 views, 39 likes, 12 reposts — highest engagement in space. Not previously tracked. Schema architecture unknown — assess for partnership or competition. |
+| **Claw Trust** (@ClawTrustMolts) | 🟠 **NEW HIGH** | ERC-8004 + FusedScore + x402 on SKALE+Base. Direct positioning overlap. Proprietary scoring = same anti-open pattern as Agentra. |
+| **@OriginDAO_ai (ORIGIN)** | 🟠 HIGH | Last posts Mar 24–26. No new activity visible. 4 primitives confirmed: Birth Certs, Trust Grades, The Gauntlet, The Book. Still a partnership target. |
+| **Agentra AI** (@AgentraAI) | 🔴 CRITICAL | No new data this cycle. Proprietary moat continues. |
+| **ODEI (@odei_ai)** | 🔴 CRITICAL — DM awaiting response | @Zer0H1ro DM still pending. No update visible. |
+| **Praxis Protocol** | 🟠 HIGH | No new data. ERC-8004 L3. Partnership target. |
+| **@MorphDevs / Morph Skill** | 🟠 HIGH | No new data. |
+| **Olas (@autonolas)** | 🟠 HIGH | No new data. |
+| **ScoutScore** | 🟠 HIGH | No new data. |
+| **$65M enterprise raise** | 🟠 HIGH | Still unidentified. |
+| **Clawfable** | 🟡 LOW | Adjacent, unchanged. |
+| **Observer Protocol** | 🟡 MEDIUM | Hackathon stage, unchanged. |
+| **AIS-1** | 🟡 MEDIUM | Composable, unchanged. |
+| **Etheran** | 🟡 MEDIUM | No new data. |
+| **MEEET** | 🟡 MEDIUM | Solana-native, unchanged. |
+
+### 📊 Execution Status (Apr 9, 14:30 — Cycle 25)
+
+| Item | Status | Change Since Cycle 24 |
+|------|--------|----------------------|
+| PRs #25/#27/#28/#29/#34 | ✅ ALL MERGED | MCP server on main |
+| npm packages | ❓ UNKNOWN | MCP still unpublished per STATUS.md |
+| Schema UIDs | ❓ UNKNOWN | Still unverified |
+| @Zer0H1ro DM (ODEI) | ✅ SENT — no response yet | Stale — may need follow-up |
+| @OriginDAO_ai follow-back | ❌ NOT DONE | Carried from Cycle 23 |
+| trstlyr.ai engagement | ❌ NOT STARTED | CRITICAL — @chris_m_madison DM pending Comms |
+| BeaconBase schema assessment | ❌ NEW | Need to check their attestation schema |
+
+### Updated Top 3 Actions (Cycle 25 — Apr 9, 14:30)
+
+| # | Action | Owner | Priority | Success Metric |
+|---|--------|-------|----------|----------------|
+| **1** | **Comms: Engage trstlyr.ai (@chris_m_madison) NOW** — Phase 2 behavioral signals still unshipped. Pitch: "Phase 2 needs behavioral evidence inputs. Our open-source TaskCompletion + PaymentReliable schemas are EAS-native, Base Mainnet, x402-compatible — exactly the data your Subjective Logic engine needs. Skip the rebuild: compose with Agent Trust SDK and get behavioral signals in days." DM @chris_m_madison directly. This is carried from Cycle 24 and now 3 days stale. | Comms | 🔴 CRITICAL | DM sent; composability conversation opened |
+| **2** | **Comms: Assess + engage BeaconBase (@BeaconOnBase)** — 709 views makes them the highest-traction new EAS player in this space. Two scenarios: (a) They use generic EAS schemas → pitch Agent Trust's behavioral schemas as their standard; (b) They built their own schemas → propose composability. Either way, 39 likes of traction means this is worth engaging. Reply to their v0.3.6 thread: "Agent registration + audit attestations via EAS. That's our exact use case. Agent Trust's TaskCompletion + PaymentReliable schemas give Beacon agents a portable behavioral record beyond identity. Worth connecting?" | Comms | 🔴 CRITICAL | Engagement started; schema architecture understood |
+| **3** | **Remi/PM: Publish MCP to npm** — trstlyr.ai has MCP for Claude Desktop live in Phase 1. Claw Trust and BeaconBase are shipping. Every week without published packages is a week we can't link to an install command in Comms engagements. `cd ~/repos/agent-trust/packages/mcp && npm publish` unblocks the entire engagement pipeline. | Remi | 🔴 CRITICAL | MCP package live on npm |
+
+### Cycle 25 Summary
+
+**What's new since Cycle 24 (~66h):**
+- 🟠 **Alchemy AgentPay** (Apr 8) — "AWS of Web3" unifies x402/MPP/A2P/L402. Massive payment interop layer. Not a competitor — composability opportunity. Agents using AgentPay need portable behavioral records: our pitch.
+- 🟠 **BeaconBase** (Mar 23, 709 views!) — EAS attestations on Base for agent registration/audit. Highest-engagement EAS+agent tweet observed. Not previously tracked. Schema architecture unknown — assess urgently.
+- 🟠 **Claw Trust** (@ClawTrustMolts) — ERC-8004 + FusedScore on SKALE+Base. Direct positioning overlap. Proprietary vs open = same competitive story as Agentra.
+- 🟠 **North Korea Drift confirmed** — 6-month insider espionage ($270M). "Vulnerabilities outside the codebase" = behavioral attestations. Solana Foundation launching 24/7 monitoring = market building what we describe.
+- 🟡 **BBC**: AI four-day week, China AI race, AI search discovery — macro adoption signals.
+- 🟡 **Quantum coverage** — continues through Apr 9. Long-term roadmap signal.
+
+**What's unchanged:**
+- trstlyr.ai: Phase 2 behavioral signals NOT shipped. Partnership window still open.
+- @chris_m_madison: no new posts since Mar 23.
+- ctxly: 404.
+- ODEI DM: still awaiting @Zer0H1ro response.
+- npm/Schema UIDs: unverified.
+
+**Strategic insight for Cycle 25:**
+Alchemy AgentPay is the biggest infrastructure development since x402 joined the Linux Foundation. If Alchemy's AgentPay becomes the canonical payment routing layer (likely given their market position), Agent Trust needs to be positioned as the portable behavioral reputation layer for AgentPay-enabled agents. The pitch writes itself: "AgentPay abstracts payment protocols. Agent Trust abstracts behavioral trust records. One portable reputation across every protocol AgentPay routes." This could be the clearest enterprise pitch we've had — and Alchemy's developer reach is enormous.
+
+BeaconBase is the wake-up call we needed on engagement — 709 views shows real user traction exists in the EAS+agent space. We've been building with 0 Twitter engagement on our own posts while the ecosystem moves. Comms must prioritize BeaconBase engagement this week.
+
+*Research completed 2026-04-09 14:30 GMT+2. Alchemy AgentPay: composability target. BeaconBase: new high-traction entrant, 709 views. Claw Trust: new direct competitor on SKALE+Base. North Korea Drift: behavioral attestation validation. trstlyr.ai Phase 2 still unshipped. ctxly 404.*
+
+---
+
 
 ---
 
