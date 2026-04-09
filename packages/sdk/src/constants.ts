@@ -46,21 +46,21 @@ export const SCHEMAS = {
 
   // Payment Reliable: "address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef"
   paymentReliable: {
-    uid: '0x0000000000000000000000000000000000000000000000000000000000000000', // TODO: register schema, update UID
+    uid: '0x9b7c13e1bc029bfc0a88012bfe71ba4f1756a849711236ca03769f3d8c28f5f5', // Base Mainnet
     schema: 'address subjectAgent, uint8 outcome, uint256 amount, string currency, uint64 dueAt, uint64 paidAt, string settlementRef',
     revocable: true,
   },
 
   // Task Completion: "address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef"
   taskCompletion: {
-    uid: '0x0000000000000000000000000000000000000000000000000000000000000000', // TODO: register schema, update UID
+    uid: '0x4a5b4f8d55298d87cb03f74666ecf05a231df557d9d0dff296768bc751975030', // Base Mainnet
     schema: 'address subjectAgent, uint8 outcome, string taskId, string category, uint64 completedAt, uint256 reward, string rewardToken, string taskRef',
     revocable: true,
   },
 
   // Security Audit: "address auditor, address subject, string auditType, uint8 severity, bool passed, string reportUri, uint64 timestamp"
   securityAudit: {
-    uid: '0x0000000000000000000000000000000000000000000000000000000000000000', // TODO: register schema, update UID
+    uid: '0x9b80b7ab7ddd09eae365ebba2beb845ab8c81db123246f3ec757300d3e657718', // Base Mainnet
     schema: 'address auditor, address subject, string auditType, uint8 severity, bool passed, string reportUri, uint64 timestamp',
     revocable: true,
   },
